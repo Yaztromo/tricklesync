@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 44;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B0BE2910D483EB700EA81A2 /* TimeControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE28E0D483EB700EA81A2 /* TimeControllerTests.m */; };
+		8B0BE3660D4EA86F00EA81A2 /* SyncSimulationFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0BE3650D4EA86F00EA81A2 /* SyncSimulationFramework.h */; };
+		8B0BE3680D4EA94F00EA81A2 /* SyncProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0BE3670D4EA94F00EA81A2 /* SyncProtocol.h */; };
+		8B60416B0D42DFFE00927ECA /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B6041690D42DFFE00927ECA /* User.h */; };
+		8B60416C0D42DFFE00927ECA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B60416A0D42DFFE00927ECA /* User.m */; };
+		8B60416D0D42DFFE00927ECA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B60416A0D42DFFE00927ECA /* User.m */; };
+		8B6041700D42E09A00927ECA /* LocationVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B60416F0D42E09A00927ECA /* LocationVector.m */; };
+		8B6041710D42E09A00927ECA /* LocationVector.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B60416E0D42E09A00927ECA /* LocationVector.h */; };
+		8B6041720D42E09A00927ECA /* LocationVector.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B60416F0D42E09A00927ECA /* LocationVector.m */; };
+		8B6041A90D4317F200927ECA /* ServerDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6041A80D4317F200927ECA /* ServerDatabase.m */; };
+		8B6041AA0D4317F200927ECA /* ServerDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B6041A70D4317F200927ECA /* ServerDatabase.h */; };
+		8B6041AB0D4317F200927ECA /* ServerDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6041A80D4317F200927ECA /* ServerDatabase.m */; };
+		8B6041AE0D43182300927ECA /* MobileDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6041AD0D43182300927ECA /* MobileDatabase.m */; };
+		8B6041AF0D43182300927ECA /* MobileDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B6041AC0D43182300927ECA /* MobileDatabase.h */; };
+		8B6041B00D43182300927ECA /* MobileDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6041AD0D43182300927ECA /* MobileDatabase.m */; };
+		8B7BDF0D0D108A3F008F9F94 /* NetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B85500D0D0B74DD000F949A /* NetworkTest.m */; };
+		8B7BDF0E0D108A3F008F9F94 /* DistributionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550B30D0BC0A9000F949A /* DistributionsTest.m */; };
+		8B7BDF0F0D108A3F008F9F94 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8551650D0CD958000F949A /* DatabaseTests.m */; };
+		8B7BDF100D108A3F008F9F94 /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B854FC90D0B6B62000F949A /* Network.m */; };
+		8B7BDF110D108A3F008F9F94 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B854FDD0D0B715E000F949A /* Location.m */; };
+		8B7BDF120D108A3F008F9F94 /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550430D0B908E000F949A /* Record.m */; };
+		8B7BDF130D108A3F008F9F94 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550470D0B94BB000F949A /* Database.m */; };
+		8B7BDF140D108A3F008F9F94 /* GaussianGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550620D0BABAC000F949A /* GaussianGenerator.m */; };
+		8B7BDF160D108A3F008F9F94 /* ProbabilityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEF58B00D0E8CE10023C0ED /* ProbabilityController.m */; };
+		8B7BDF170D108A3F008F9F94 /* CostRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEF59510D0E98D30023C0ED /* CostRecorder.m */; };
+		8B854FC60D0B6A84000F949A /* TimerProtocols.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B854FC50D0B6A84000F949A /* TimerProtocols.h */; };
+		8B854FCA0D0B6B62000F949A /* Network.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B854FC80D0B6B62000F949A /* Network.h */; };
+		8B854FCB0D0B6B62000F949A /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B854FC90D0B6B62000F949A /* Network.m */; };
+		8B854FDE0D0B715E000F949A /* Location.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B854FDC0D0B715E000F949A /* Location.h */; };
+		8B854FDF0D0B715E000F949A /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B854FDD0D0B715E000F949A /* Location.m */; };
+		8B8550480D0B94BB000F949A /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8550460D0B94BB000F949A /* Database.h */; };
+		8B8550490D0B94BB000F949A /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550470D0B94BB000F949A /* Database.m */; };
+		8B85504A0D0B94D6000F949A /* Record.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8550420D0B908E000F949A /* Record.h */; };
+		8B85504B0D0B94EA000F949A /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550430D0B908E000F949A /* Record.m */; };
+		8B8550630D0BABAC000F949A /* GaussianGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8550610D0BABAC000F949A /* GaussianGenerator.h */; };
+		8B8550640D0BABAC000F949A /* GaussianGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550620D0BABAC000F949A /* GaussianGenerator.m */; };
+		8BD4AC350D4514B50053A40F /* TimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4AC340D4514B50053A40F /* TimeController.m */; };
+		8BD4AC360D4514B50053A40F /* TimeController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BD4AC330D4514B50053A40F /* TimeController.h */; };
+		8BD4AC370D4514B50053A40F /* TimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4AC340D4514B50053A40F /* TimeController.m */; };
+		8BEF58B20D0E8CE10023C0ED /* ProbabilityController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BEF58AF0D0E8CE10023C0ED /* ProbabilityController.h */; };
+		8BEF58B30D0E8CE10023C0ED /* ProbabilityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEF58B00D0E8CE10023C0ED /* ProbabilityController.m */; };
+		8BEF59520D0E98D30023C0ED /* CostRecorder.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BEF59500D0E98D30023C0ED /* CostRecorder.h */; };
+		8BEF59530D0E98D30023C0ED /* CostRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEF59510D0E98D30023C0ED /* CostRecorder.m */; };
+		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
+		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		32DBCF5E0370ADEE00C91783 /* SyncSimulationFramework_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncSimulationFramework_Prefix.pch; sourceTree = "<group>"; };
+		8B0BE28D0D483EB700EA81A2 /* TimeControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeControllerTests.h; sourceTree = "<group>"; };
+		8B0BE28E0D483EB700EA81A2 /* TimeControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeControllerTests.m; sourceTree = "<group>"; };
+		8B0BE3650D4EA86F00EA81A2 /* SyncSimulationFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncSimulationFramework.h; sourceTree = "<group>"; };
+		8B0BE3670D4EA94F00EA81A2 /* SyncProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncProtocol.h; sourceTree = "<group>"; };
+		8B6041690D42DFFE00927ECA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		8B60416A0D42DFFE00927ECA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		8B60416E0D42E09A00927ECA /* LocationVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationVector.h; sourceTree = "<group>"; };
+		8B60416F0D42E09A00927ECA /* LocationVector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationVector.m; sourceTree = "<group>"; };
+		8B6041A70D4317F200927ECA /* ServerDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerDatabase.h; sourceTree = "<group>"; };
+		8B6041A80D4317F200927ECA /* ServerDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerDatabase.m; sourceTree = "<group>"; };
+		8B6041AC0D43182300927ECA /* MobileDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileDatabase.h; sourceTree = "<group>"; };
+		8B6041AD0D43182300927ECA /* MobileDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileDatabase.m; sourceTree = "<group>"; };
+		8B7BDF080D1089D3008F9F94 /* Unit Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Test.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B7BDF090D1089D3008F9F94 /* Unit Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Test-Info.plist"; sourceTree = "<group>"; };
+		8B854FC30D0B6A0C000F949A /* SyncSimulationFramework.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = SyncSimulationFramework.xcclassmodel; sourceTree = "<group>"; };
+		8B854FC50D0B6A84000F949A /* TimerProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerProtocols.h; sourceTree = "<group>"; };
+		8B854FC80D0B6B62000F949A /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
+		8B854FC90D0B6B62000F949A /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
+		8B854FDC0D0B715E000F949A /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		8B854FDD0D0B715E000F949A /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		8B854FF10D0B7313000F949A /* Unit Test Target-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Test Target-Info.plist"; sourceTree = "<group>"; };
+		8B85500C0D0B74DD000F949A /* NetworkTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTest.h; sourceTree = "<group>"; };
+		8B85500D0D0B74DD000F949A /* NetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTest.m; sourceTree = "<group>"; };
+		8B8550420D0B908E000F949A /* Record.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Record.h; sourceTree = "<group>"; };
+		8B8550430D0B908E000F949A /* Record.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Record.m; sourceTree = "<group>"; };
+		8B8550460D0B94BB000F949A /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		8B8550470D0B94BB000F949A /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
+		8B8550610D0BABAC000F949A /* GaussianGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaussianGenerator.h; sourceTree = "<group>"; };
+		8B8550620D0BABAC000F949A /* GaussianGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaussianGenerator.m; sourceTree = "<group>"; };
+		8B8550B20D0BC0A9000F949A /* DistributionsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistributionsTest.h; sourceTree = "<group>"; };
+		8B8550B30D0BC0A9000F949A /* DistributionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistributionsTest.m; sourceTree = "<group>"; };
+		8B8551640D0CD958000F949A /* DatabaseTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseTests.h; sourceTree = "<group>"; };
+		8B8551650D0CD958000F949A /* DatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTests.m; sourceTree = "<group>"; };
+		8BD4AC330D4514B50053A40F /* TimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeController.h; sourceTree = "<group>"; };
+		8BD4AC340D4514B50053A40F /* TimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeController.m; sourceTree = "<group>"; };
+		8BEF58AF0D0E8CE10023C0ED /* ProbabilityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProbabilityController.h; sourceTree = "<group>"; };
+		8BEF58B00D0E8CE10023C0ED /* ProbabilityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbabilityController.m; sourceTree = "<group>"; };
+		8BEF59500D0E98D30023C0ED /* CostRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostRecorder.h; sourceTree = "<group>"; };
+		8BEF59510D0E98D30023C0ED /* CostRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CostRecorder.m; sourceTree = "<group>"; };
+		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DC2EF5B0486A6940098B216 /* SyncSimulationFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SyncSimulationFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8B7BDF050D1089D3008F9F94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC2EF560486A6940098B216 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2EF5B0486A6940098B216 /* SyncSimulationFramework.framework */,
+				8B7BDF080D1089D3008F9F94 /* Unit Test.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* SyncSimulationFramework */ = {
+			isa = PBXGroup;
+			children = (
+				8B854FE20D0B71FA000F949A /* Tests */,
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				089C1665FE841158C02AAC07 /* Resources */,
+				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				034768DFFF38A50411DB9C8B /* Products */,
+				8B854FF10D0B7313000F949A /* Unit Test Target-Info.plist */,
+				8B7BDF090D1089D3008F9F94 /* Unit Test-Info.plist */,
+			);
+			name = SyncSimulationFramework;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
+				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C1665FE841158C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2EF5A0486A6940098B216 /* Info.plist */,
+				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8B6041AC0D43182300927ECA /* MobileDatabase.h */,
+				8B6041AD0D43182300927ECA /* MobileDatabase.m */,
+				8B6041A70D4317F200927ECA /* ServerDatabase.h */,
+				8B6041A80D4317F200927ECA /* ServerDatabase.m */,
+				8B60416E0D42E09A00927ECA /* LocationVector.h */,
+				8B60416F0D42E09A00927ECA /* LocationVector.m */,
+				8B854FC50D0B6A84000F949A /* TimerProtocols.h */,
+				8B854FC80D0B6B62000F949A /* Network.h */,
+				8B854FC90D0B6B62000F949A /* Network.m */,
+				8B854FDC0D0B715E000F949A /* Location.h */,
+				8B854FDD0D0B715E000F949A /* Location.m */,
+				8B8550420D0B908E000F949A /* Record.h */,
+				8B8550430D0B908E000F949A /* Record.m */,
+				8B8550460D0B94BB000F949A /* Database.h */,
+				8B8550470D0B94BB000F949A /* Database.m */,
+				8B8550610D0BABAC000F949A /* GaussianGenerator.h */,
+				8B8550620D0BABAC000F949A /* GaussianGenerator.m */,
+				8BEF58AF0D0E8CE10023C0ED /* ProbabilityController.h */,
+				8BEF58B00D0E8CE10023C0ED /* ProbabilityController.m */,
+				8BEF59500D0E98D30023C0ED /* CostRecorder.h */,
+				8BEF59510D0E98D30023C0ED /* CostRecorder.m */,
+				8B6041690D42DFFE00927ECA /* User.h */,
+				8B60416A0D42DFFE00927ECA /* User.m */,
+				8BD4AC330D4514B50053A40F /* TimeController.h */,
+				8BD4AC340D4514B50053A40F /* TimeController.m */,
+				8B0BE3650D4EA86F00EA81A2 /* SyncSimulationFramework.h */,
+				8B0BE3670D4EA94F00EA81A2 /* SyncProtocol.h */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7B2FEA5585E11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0867D6A5FE840307C02AAC07 /* AppKit.framework */,
+				D2F7E79907B2D74100F64583 /* CoreData.framework */,
+				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8B854FC30D0B6A0C000F949A /* SyncSimulationFramework.xcclassmodel */,
+				32DBCF5E0370ADEE00C91783 /* SyncSimulationFramework_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		8B854FE20D0B71FA000F949A /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8B85500C0D0B74DD000F949A /* NetworkTest.h */,
+				8B85500D0D0B74DD000F949A /* NetworkTest.m */,
+				8B8550B20D0BC0A9000F949A /* DistributionsTest.h */,
+				8B8550B30D0BC0A9000F949A /* DistributionsTest.m */,
+				8B8551640D0CD958000F949A /* DatabaseTests.h */,
+				8B8551650D0CD958000F949A /* DatabaseTests.m */,
+				8B0BE28D0D483EB700EA81A2 /* TimeControllerTests.h */,
+				8B0BE28E0D483EB700EA81A2 /* TimeControllerTests.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8DC2EF500486A6940098B216 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B85504A0D0B94D6000F949A /* Record.h in Headers */,
+				8B854FC60D0B6A84000F949A /* TimerProtocols.h in Headers */,
+				8B854FCA0D0B6B62000F949A /* Network.h in Headers */,
+				8B854FDE0D0B715E000F949A /* Location.h in Headers */,
+				8B8550480D0B94BB000F949A /* Database.h in Headers */,
+				8B8550630D0BABAC000F949A /* GaussianGenerator.h in Headers */,
+				8BEF58B20D0E8CE10023C0ED /* ProbabilityController.h in Headers */,
+				8BEF59520D0E98D30023C0ED /* CostRecorder.h in Headers */,
+				8B60416B0D42DFFE00927ECA /* User.h in Headers */,
+				8B6041710D42E09A00927ECA /* LocationVector.h in Headers */,
+				8B6041AA0D4317F200927ECA /* ServerDatabase.h in Headers */,
+				8B6041AF0D43182300927ECA /* MobileDatabase.h in Headers */,
+				8BD4AC360D4514B50053A40F /* TimeController.h in Headers */,
+				8B0BE3660D4EA86F00EA81A2 /* SyncSimulationFramework.h in Headers */,
+				8B0BE3680D4EA94F00EA81A2 /* SyncProtocol.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8B7BDF070D1089D3008F9F94 /* Unit Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B7BDF0C0D1089D4008F9F94 /* Build configuration list for PBXNativeTarget "Unit Test" */;
+			buildPhases = (
+				8B7BDF030D1089D3008F9F94 /* Resources */,
+				8B7BDF040D1089D3008F9F94 /* Sources */,
+				8B7BDF050D1089D3008F9F94 /* Frameworks */,
+				8B7BDF060D1089D3008F9F94 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Unit Test";
+			productName = "Unit Test";
+			productReference = 8B7BDF080D1089D3008F9F94 /* Unit Test.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		8DC2EF4F0486A6940098B216 /* SyncSimulationFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "SyncSimulationFramework" */;
+			buildPhases = (
+				8DC2EF500486A6940098B216 /* Headers */,
+				8DC2EF520486A6940098B216 /* Resources */,
+				8DC2EF540486A6940098B216 /* Sources */,
+				8DC2EF560486A6940098B216 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SyncSimulationFramework;
+			productInstallPath = "$(HOME)/Library/Frameworks";
+			productName = SyncSimulationFramework;
+			productReference = 8DC2EF5B0486A6940098B216 /* SyncSimulationFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+			};
+			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "SyncSimulationFramework" */;
+			compatibilityVersion = "Xcode 3.0";
+			hasScannedForEncodings = 1;
+			mainGroup = 0867D691FE84028FC02AAC07 /* SyncSimulationFramework */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DC2EF4F0486A6940098B216 /* SyncSimulationFramework */,
+				8B7BDF070D1089D3008F9F94 /* Unit Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8B7BDF030D1089D3008F9F94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC2EF520486A6940098B216 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8B7BDF060D1089D3008F9F94 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B7BDF040D1089D3008F9F94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B7BDF0D0D108A3F008F9F94 /* NetworkTest.m in Sources */,
+				8B7BDF0E0D108A3F008F9F94 /* DistributionsTest.m in Sources */,
+				8B7BDF0F0D108A3F008F9F94 /* DatabaseTests.m in Sources */,
+				8B7BDF100D108A3F008F9F94 /* Network.m in Sources */,
+				8B7BDF110D108A3F008F9F94 /* Location.m in Sources */,
+				8B7BDF120D108A3F008F9F94 /* Record.m in Sources */,
+				8B7BDF130D108A3F008F9F94 /* Database.m in Sources */,
+				8B7BDF140D108A3F008F9F94 /* GaussianGenerator.m in Sources */,
+				8B7BDF160D108A3F008F9F94 /* ProbabilityController.m in Sources */,
+				8B7BDF170D108A3F008F9F94 /* CostRecorder.m in Sources */,
+				8B60416D0D42DFFE00927ECA /* User.m in Sources */,
+				8B6041700D42E09A00927ECA /* LocationVector.m in Sources */,
+				8B6041A90D4317F200927ECA /* ServerDatabase.m in Sources */,
+				8B6041AE0D43182300927ECA /* MobileDatabase.m in Sources */,
+				8BD4AC350D4514B50053A40F /* TimeController.m in Sources */,
+				8B0BE2910D483EB700EA81A2 /* TimeControllerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DC2EF540486A6940098B216 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B854FCB0D0B6B62000F949A /* Network.m in Sources */,
+				8B854FDF0D0B715E000F949A /* Location.m in Sources */,
+				8B8550490D0B94BB000F949A /* Database.m in Sources */,
+				8B85504B0D0B94EA000F949A /* Record.m in Sources */,
+				8B8550640D0BABAC000F949A /* GaussianGenerator.m in Sources */,
+				8BEF58B30D0E8CE10023C0ED /* ProbabilityController.m in Sources */,
+				8BEF59530D0E98D30023C0ED /* CostRecorder.m in Sources */,
+				8B60416C0D42DFFE00927ECA /* User.m in Sources */,
+				8B6041720D42E09A00927ECA /* LocationVector.m in Sources */,
+				8B6041AB0D4317F200927ECA /* ServerDatabase.m in Sources */,
+				8B6041B00D43182300927ECA /* MobileDatabase.m in Sources */,
+				8BD4AC370D4514B50053A40F /* TimeController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C1666FE841158C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C1667FE841158C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB91AE08733DA50010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				PRODUCT_NAME = SyncSimulationFramework;
+				WRAPPER_EXTENSION = framework;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		1DEB91AF08733DA50010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				PRODUCT_NAME = SyncSimulationFramework;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		1DEB91B208733DA50010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Debug;
+		};
+		1DEB91B308733DA50010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_ENABLE_OBJC_GC = required;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_ENABLE_SYMBOL_SEPARATION = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_PPC64 = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = YES;
+				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+			};
+			name = Release;
+		};
+		8B7BDF0A0D1089D3008F9F94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Unit Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "Unit Test";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		8B7BDF0B0D1089D3008F9F94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Unit Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRELINK_LIBS = "";
+				PRODUCT_NAME = "Unit Test";
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "SyncSimulationFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91AE08733DA50010E9CD /* Debug */,
+				1DEB91AF08733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "SyncSimulationFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91B208733DA50010E9CD /* Debug */,
+				1DEB91B308733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B7BDF0C0D1089D4008F9F94 /* Build configuration list for PBXNativeTarget "Unit Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B7BDF0A0D1089D3008F9F94 /* Debug */,
+				8B7BDF0B0D1089D3008F9F94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
