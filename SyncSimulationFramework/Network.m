@@ -34,6 +34,7 @@
    andTransferRate:(double)rate {
    
    [super init];
+   
    networkName = name;
    costPerByte = cost;
    transferRate = rate;
@@ -46,6 +47,10 @@
 
 - (int)timeToTransfer:(int)bytes {
    return (int)(bytes*transferRate);
+} // end-method
+
+- (NSString *)description {
+   return [NSString stringWithFormat:@"This is the network object with name \"%@\", cost per byte %f and transfer rate %f", networkName, costPerByte, transferRate];
 } // end-method
 
 @end

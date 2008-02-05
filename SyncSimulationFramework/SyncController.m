@@ -47,8 +47,8 @@
    networks = [NSMutableDictionary dictionaryWithCapacity:[arr count]];
    for(NSXMLElement *elem in arr) {
       [networks setObject: [[Network alloc] initWithName:[[elem attributeForName:@"name"] stringValue] 
-                                                 andCost:[[[elem attributeForName:@"cost"] objectValue] doubleValue]
-                                         andTransferRate:[[[elem attributeForName:@"xferrate"] objectValue] doubleValue]]
+                                                 andCost:[[[elem attributeForName:@"cost"] stringValue] doubleValue]
+                                         andTransferRate:[[[elem attributeForName:@"xferrate"] stringValue] doubleValue]]
                    forKey: [[elem attributeForName:@"name"] stringValue]];
       NSLog(@"   - Got network %@ with cost %@ and transfer rate of %@", [[elem attributeForName:@"name"] stringValue], [[elem attributeForName:@"cost"] stringValue], [[elem attributeForName:@"xferrate"] stringValue]);
    } // end-for
@@ -72,11 +72,11 @@
          [nets addObject:[networks objectForKey:[elem2 stringValue]]];
       } // end-for
       
-      NSLog(@"   - Got location with name %@ and networks %@ and expected syncs %@ and modrate %@", [[elem attributeForName:@"name"] stringValue], nets, [[elem attributeForName:@"expectedsyncs"] objectValue], [[elem attributeForName:@"expectedacesses"] objectValue]);
+      NSLog(@"   - Got location with name %@ and networks %@ and expected syncs %@ and modrate %@", [[elem attributeForName:@"name"] stringValue], nets, [[elem attributeForName:@"expectedsyncs"] stringValue], [[elem attributeForName:@"expectedaccesses"] stringValue]);
       [locations setObject: [[Location alloc] initWithName:[[elem attributeForName:@"name"] stringValue]
                                                andNetworks:nets 
-                                   andExpectedSyncsPerHour:[[[elem attributeForName:@"expectedsyncs"] objectValue] intValue]
-                           andDatabaseModificationsPerHour:[[[elem attributeForName:@"expectedacesses"] objectValue] intValue]]
+                                   andExpectedSyncsPerHour:[[[elem attributeForName:@"expectedsyncs"] stringValue] intValue]
+                           andDatabaseModificationsPerHour:[[[elem attributeForName:@"expectedaccesses"] stringValue] intValue]]
                     forKey:[[elem attributeForName:@"name"] stringValue]];
    } // end-for
    
@@ -90,8 +90,8 @@
    
    locationVects = [NSMutableArray arrayWithCapacity:[arr count]];
    for(NSXMLElement *elem in arr) {
-      NSLog(@"   - Found event at time %d for location %@", [[[elem attributeForName:@"time"] objectValue] intValue], [[elem attributeForName:@"locname"] stringValue]);
-      [locationVects addObject: [[LocationVector alloc] initEntryTime:[[[elem attributeForName:@"time"] objectValue] intValue]
+      NSLog(@"   - Found event at time %d for location %@", [[[elem attributeForName:@"time"] stringValue] intValue], [[elem attributeForName:@"locname"] stringValue]);
+      [locationVects addObject: [[LocationVector alloc] initEntryTime:[[[elem attributeForName:@"time"] stringValue] intValue]
                                                           forLocation:[locations objectForKey:[[elem attributeForName:@"locname"] stringValue]]]];
        } // end-for
    
@@ -104,12 +104,12 @@
       return nil;
    } // end-if   
    
-   dbSize = [[[[arr objectAtIndex:0] attributeForName:@"numrecords"] objectValue] intValue];
-   NSLog(@"   - Found database entry with record count %d, arrival rate %d, interval %d, and max arrivals %d.", dbSize, [[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] objectValue] doubleValue], [[[[arr objectAtIndex:0] attributeForName:@"interval"] objectValue] intValue], [[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] objectValue] intValue]);
+   dbSize = [[[[arr objectAtIndex:0] attributeForName:@"numrecords"] stringValue] intValue];
+   NSLog(@"   - Found database entry with record count %d, arrival rate %f, interval %d, and max arrivals %d.", dbSize, [[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] stringValue] doubleValue], [[[[arr objectAtIndex:0] attributeForName:@"interval"] stringValue] intValue], [[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] stringValue] intValue]);
    sdb = [[ServerDatabase alloc] initWithRecordCount:dbSize
-                                     withArrivalRate:[[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] objectValue] doubleValue] 
-                                        withInterval:[[[[arr objectAtIndex:0] attributeForName:@"interval"] objectValue] intValue]
-                                      andMaxArrivals:[[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] objectValue] intValue]];
+                                     withArrivalRate:[[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] stringValue] doubleValue] 
+                                        withInterval:[[[[arr objectAtIndex:0] attributeForName:@"interval"] stringValue] intValue]
+                                      andMaxArrivals:[[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] stringValue] intValue]];
    
    // Create the cost and user objects
    cost = [[CostRecorder alloc] init];

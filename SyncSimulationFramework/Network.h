@@ -40,5 +40,6 @@
 
 - (int)costToTransfer:(int)bytes;
 - (int)timeToTransfer:(int)bytes;
+- (NSString *)description;
 
 @end
