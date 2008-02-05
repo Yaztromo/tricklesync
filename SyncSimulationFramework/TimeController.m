@@ -74,17 +74,17 @@
    
    // In a loop increment the time, call all the tick listeners, then call any alarm listeners regstered for this time.
    while (time<SECONDS_PER_DAY) {
-      // Call the tick listeners
-      for(i=0;i<[tickListeners count];i++) {
-         [[tickListeners objectAtIndex:i] activateTick:time];
-      } // end-for
-      
       // Activate the alarms, if any
       if ((alarms=[alarmListeners objectForKey:[NSNumber numberWithInt:time]])!=nil) {
          for(i=0;i<[alarms count];i++) {
             [[alarms objectAtIndex:i] activateAlarm:time];
          } // end-for
       } // end-if
+      
+      // Call the tick listeners
+      for(i=0;i<[tickListeners count];i++) {
+         [[tickListeners objectAtIndex:i] activateTick:time];
+      } // end-for
       
       time++;
    } // end-while
