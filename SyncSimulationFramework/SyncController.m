@@ -39,6 +39,11 @@
    
    // Find the 'networks' element, and read each 'network' element entry
    arr = [xmlDoc nodesForXPath:@"/etssimulation/networks/network" error:&err];
+   if (arr==nil) {
+      NSLog(@"We were unable to find any networks/network elements!");
+      return nil;
+   } // end-if
+   
    networks = [NSMutableDictionary dictionaryWithCapacity:[arr count]];
    for(NSXMLElement *elem in arr) {
       [networks setObject: [[Network alloc] initWithName:[[elem attributeForName:@"name"] stringValue] 
@@ -52,6 +57,11 @@
    
    NSLog(@"Finding the locations:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/locations/location" error:&err];
+   if (arr==nil) {
+      NSLog(@"We were unable to find any locations/location elements!");
+      return nil;
+   } // end-if
+
    locations = [NSMutableDictionary dictionaryWithCapacity:[arr count]];
    for(NSXMLElement *elem in arr) {
       nets = [NSMutableArray array];
@@ -73,6 +83,11 @@
    // Find the 'userschedule' element and read each 'entry' element entry
    NSLog(@"Finding the location change events:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/userschedule/entry" error:&err];
+   if (arr==nil) {
+      NSLog(@"We were unable to find any userschedule/entry elements!");
+      return nil;
+   } // end-if
+   
    locationVects = [NSMutableArray arrayWithCapacity:[arr count]];
    for(NSXMLElement *elem in arr) {
       NSLog(@"   - Found event at time %d for location %@", [[[elem attributeForName:@"time"] objectValue] intValue], [[elem attributeForName:@"locname"] stringValue]);
@@ -84,6 +99,10 @@
    // 	<database numrecords="1" arrivalrate="1.0" interval="1.0" maxarrivals="1.0"/>
    NSLog(@"Finding the database element:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/database" error:&err];
+   if (arr==nil) {
+      NSLog(@"We were unable to find the database element!");
+      return nil;
+   } // end-if   
    
    dbSize = [[[[arr objectAtIndex:0] attributeForName:@"numrecords"] objectValue] intValue];
    NSLog(@"   - Found database entry with record count %d, arrival rate %d, interval %d, and max arrivals %d.", dbSize, [[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] objectValue] doubleValue], [[[[arr objectAtIndex:0] attributeForName:@"interval"] objectValue] intValue], [[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] objectValue] intValue]);
@@ -103,15 +122,31 @@
    // Find the syncprotocol element
    NSLog(@"Finding the sync protocol:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/syncprotocol" error:&err];
+   if (arr==nil) {
+      NSLog(@"We were unable to find the syncprotocol element!");
+      return nil;
+   } // end-if
+   
    protocolName = [[[arr objectAtIndex:0] attributeForName:@"name"] stringValue];
    NSLog(@"   - Got sync protocol name: %@", protocolName);
    
    protocolClass = NSClassFromString(protocolName);
+   if (protocolClass==nil) {
+      NSLog(@"We were unable to find the sync protocol with class name %@!", protocolName);
+      return nil;
+   } // end-if   
+   
    protocol = [[protocolClass alloc] initWithUser:user
                                withServerDatabase:sdb
                                withTimeController:timer
                                  withCostRecorder:cost
                                 andWithProperties:[arr objectAtIndex:0]];   
+
+   if(protocol==nil) {
+      NSLog(@"We were unable to instantiate the specified sync protocol!");
+      return nil;
+   } // end-if
+   
    NSLog(@"Done!");
    return self;
 } // end-constructor
