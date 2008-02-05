@@ -317,7 +317,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>project.pbxproj</string>
+								<string>SyncControllerTests.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +325,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>project.pbxproj</string>
+										<string>SyncControllerTests.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>8B6C33980D59212E003A7D8E</string>
+										<string>8B6C339B0D59213A003A7D8E</string>
 										<key>history</key>
 										<array>
 											<string>8B854FF70D0B73BB000F949A</string>
@@ -342,10 +342,10 @@
 											<string>8B6C337F0D592111003A7D8E</string>
 											<string>8B6C33800D592111003A7D8E</string>
 											<string>8B6C33810D592111003A7D8E</string>
-											<string>8B6C33820D592111003A7D8E</string>
 											<string>8B6C33830D592111003A7D8E</string>
 											<string>8B6C33840D592111003A7D8E</string>
-											<string>8B6C33850D592111003A7D8E</string>
+											<string>8B6C33990D59213A003A7D8E</string>
+											<string>8B6C33820D592111003A7D8E</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -405,6 +405,7 @@
 											<string>8B6C33910D592111003A7D8E</string>
 											<string>8B6C33920D592111003A7D8E</string>
 											<string>8B6C33930D592111003A7D8E</string>
+											<string>8B6C339A0D59213A003A7D8E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

@@ -359,6 +359,9 @@
 			8B6C33930D592111003A7D8E /* PBXTextBookmark */ = 8B6C33930D592111003A7D8E /* PBXTextBookmark */;
 			8B6C33940D592111003A7D8E /* PBXTextBookmark */ = 8B6C33940D592111003A7D8E /* PBXTextBookmark */;
 			8B6C33980D59212E003A7D8E /* PBXTextBookmark */ = 8B6C33980D59212E003A7D8E /* PBXTextBookmark */;
+			8B6C33990D59213A003A7D8E /* PBXTextBookmark */ = 8B6C33990D59213A003A7D8E /* PBXTextBookmark */;
+			8B6C339A0D59213A003A7D8E /* PBXTextBookmark */ = 8B6C339A0D59213A003A7D8E /* PBXTextBookmark */;
+			8B6C339B0D59213A003A7D8E /* PBXTextBookmark */ = 8B6C339B0D59213A003A7D8E /* PBXTextBookmark */;
 			8B7BDF220D108AF3008F9F94 = 8B7BDF220D108AF3008F9F94 /* PBXTextBookmark */;
 			8B7BDF230D108AF3008F9F94 = 8B7BDF230D108AF3008F9F94 /* PBXTextBookmark */;
 			8B854FF70D0B73BB000F949A = 8B854FF70D0B73BB000F949A /* PBXTextBookmark */;
@@ -2702,6 +2705,7 @@
 	};
 	8B6C33950D592111003A7D8E /* project.pbxproj */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = text.pbxproject;
 		name = project.pbxproj;
 		path = "/Users/yaztromo/Development/Expedient Trickle Sync/trunk/SyncSimulationFramework/SyncSimulationFramework.xcodeproj/project.pbxproj";
 		sourceTree = "<absolute>";
@@ -2719,6 +2723,36 @@
 		rLoc = 35440;
 		rType = 0;
 		vrLen = 3290;
+		vrLoc = 0;
+	};
+	8B6C33990D59213A003A7D8E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B6C33950D592111003A7D8E /* project.pbxproj */;
+		name = "project.pbxproj: 615";
+		rLen = 0;
+		rLoc = 35440;
+		rType = 0;
+		vrLen = 3290;
+		vrLoc = 0;
+	};
+	8B6C339A0D59213A003A7D8E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B6C33950D592111003A7D8E /* project.pbxproj */;
+		name = "project.pbxproj: 615";
+		rLen = 0;
+		rLoc = 35440;
+		rType = 0;
+		vrLen = 3290;
+		vrLoc = 0;
+	};
+	8B6C339B0D59213A003A7D8E /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B6C100A0D591DAB00DC1EF2 /* SyncControllerTests.h */;
+		name = "SyncControllerTests.h: 15";
+		rLen = 22;
+		rLoc = 258;
+		rType = 0;
+		vrLen = 287;
 		vrLoc = 0;
 	};
 	8B7BDEC40D0FDEB2008F9F94 /* RunUnitTests */ = {
