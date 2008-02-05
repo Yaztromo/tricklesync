@@ -21,7 +21,11 @@
    NSMutableArray *locationVects, *nets;
    NSMutableDictionary *networks, *locations;
    NSError *err=nil;
-   int i=0;
+   ServerDatabase *sdb;
+   int dbSize = 0;
+   NSString *protocolName;
+   Class protocolClass;
+   
    [super init];
    
    // Start by verifying that this is an etssimulation document
@@ -60,11 +64,41 @@
    } // end-for
    
    // Find the 'userschedule' element and read each 'entry' element entry
+   arr = [xmlDoc nodesForXPath:@"/etssimulation/userschedule/entry" error:&err];
+   locationVects = [NSMutableArray arrayWithCapacity:[arr count]];
+   for(NSXMLElement *elem in arr) {
+      [locationVects addObject: [[LocationVector alloc] initEntryTime:[[[elem attributeForName:@"time"] objectValue] intValue]
+                                                          forLocation:[locations objectForKey:[[elem attributeForName:@"locname"] stringValue]]]];
+       } // end-for
    
    // Find the database element
+   // 	<database numrecords="1" arrivalrate="1.0" interval="1.0" maxarrivals="1.0"/>
+   arr = [xmlDoc nodesForXPath:@"/etssimulation/database" error:&err];
+   
+   dbSize = [[[[arr objectAtIndex:0] attributeForName:@"numrecords"] objectValue] intValue];
+   sdb = [[ServerDatabase alloc] initWithRecordCount:dbSize
+                                     withArrivalRate:[[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] objectValue] doubleValue] 
+                                        withInterval:[[[[arr objectAtIndex:0] attributeForName:@"interval"] objectValue] intValue]
+                                      andMaxArrivals:[[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] objectValue] intValue]];
+   
+   // Create the cost and user objects
+   cost = [[CostRecorder alloc] init];
+   user = [[User alloc] initUserWithLocations:locationVects
+                          andDatabaseWithSize:dbSize
+                             withCostRecorder:cost
+                        againstServerDatabase:sdb];
+   timer = [[TimeController alloc] init];
    
    // Find the syncprotocol element
+   arr = [xmlDoc nodesForXPath:@"/etssimulation/syncprotocol" error:&err];
+   protocolName = [[[arr objectAtIndex:0] attributeForName:@"name"] stringValue];
    
+   protocolClass = NSClassFromString(protocolName);
+   protocol = [[protocolClass alloc] initWithUser:user
+                               withServerDatabase:sdb
+                               withTimeController:timer
+                                 withCostRecorder:cost
+                                andWithProperties:[arr objectAtIndex:0]];   
    return self;
 } // end-constructor
 
