@@ -27,9 +27,10 @@
 
 @protocol SyncProtocol <SimulationTickProtocol, SimulationAlarmProtocol>
 -  (id)initWithUser:(User *)u
- withServerDatabase:(ServerDatabase *):sd
+ withServerDatabase:(ServerDatabase *)sd
  withTimeController:(TimeController *)tc
-andWithCostRecorder:(CostRecorder *)cr;
+   withCostRecorder:(CostRecorder *)cr
+  andWithProperties:(NSXMLElement *)syncProtocolElement;
 
 - (void)activateAlarm:(int)time;
 - (void)activateTick:(int)time;

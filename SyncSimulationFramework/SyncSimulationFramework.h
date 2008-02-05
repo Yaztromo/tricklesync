@@ -36,3 +36,4 @@
 #import "User.h"
 #import "TimeController.h"
 #import "SyncProtocol.h"
+#import "SyncController.h"
