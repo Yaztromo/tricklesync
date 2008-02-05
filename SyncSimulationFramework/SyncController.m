@@ -62,6 +62,7 @@
          [nets addObject:[networks objectForKey:[elem2 stringValue]]];
       } // end-for
       
+      NSLog(@"   - Got location with name %@ and networks %@ and expected syncs %@ and modrate %@", [[elem attributeForName:@"name"] stringValue], nets, [[elem attributeForName:@"expectedsyncs"] objectValue], [[elem attributeForName:@"expectedacesses"] objectValue]);
       [locations setObject: [[Location alloc] initWithName:[[elem attributeForName:@"name"] stringValue]
                                                andNetworks:nets 
                                    andExpectedSyncsPerHour:[[[elem attributeForName:@"expectedsyncs"] objectValue] intValue]
@@ -70,18 +71,22 @@
    } // end-for
    
    // Find the 'userschedule' element and read each 'entry' element entry
+   NSLog(@"Finding the location change events:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/userschedule/entry" error:&err];
    locationVects = [NSMutableArray arrayWithCapacity:[arr count]];
    for(NSXMLElement *elem in arr) {
+      NSLog(@"   - Found event at time %d for location %@", [[[elem attributeForName:@"time"] objectValue] intValue], [[elem attributeForName:@"locname"] stringValue]);
       [locationVects addObject: [[LocationVector alloc] initEntryTime:[[[elem attributeForName:@"time"] objectValue] intValue]
                                                           forLocation:[locations objectForKey:[[elem attributeForName:@"locname"] stringValue]]]];
        } // end-for
    
    // Find the database element
    // 	<database numrecords="1" arrivalrate="1.0" interval="1.0" maxarrivals="1.0"/>
+   NSLog(@"Finding the database element:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/database" error:&err];
    
    dbSize = [[[[arr objectAtIndex:0] attributeForName:@"numrecords"] objectValue] intValue];
+   NSLog(@"   - Found database entry with record count %d, arrival rate %d, interval %d, and max arrivals %d.", dbSize, [[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] objectValue] doubleValue], [[[[arr objectAtIndex:0] attributeForName:@"interval"] objectValue] intValue], [[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] objectValue] intValue]);
    sdb = [[ServerDatabase alloc] initWithRecordCount:dbSize
                                      withArrivalRate:[[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] objectValue] doubleValue] 
                                         withInterval:[[[[arr objectAtIndex:0] attributeForName:@"interval"] objectValue] intValue]
@@ -96,8 +101,10 @@
    timer = [[TimeController alloc] init];
    
    // Find the syncprotocol element
+   NSLog(@"Finding the sync protocol:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/syncprotocol" error:&err];
    protocolName = [[[arr objectAtIndex:0] attributeForName:@"name"] stringValue];
+   NSLog(@"   - Got sync protocol name: %@", protocolName);
    
    protocolClass = NSClassFromString(protocolName);
    protocol = [[protocolClass alloc] initWithUser:user
@@ -105,6 +112,7 @@
                                withTimeController:timer
                                  withCostRecorder:cost
                                 andWithProperties:[arr objectAtIndex:0]];   
+   NSLog(@"Done!");
    return self;
 } // end-constructor
 

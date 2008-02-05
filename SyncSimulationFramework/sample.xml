@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etssimulation>
+	<networks>
+		<network name="name" cost="1.0" xferrate="1.0"/>
+		<network name="name" cost="1.0" xferrate="1.0"/>
+		<network name="name" cost="1.0" xferrate="1.0"/>
+		<network name="name" cost="1.0" xferrate="1.0"/>
+	</networks>
+
+	<locations>
+		<location name="name" expectedsyncs="1.0" expectedaccesses="1.0>
+			<localnet>name</localnet>
+			<localnet>name</localnet>
+		</location>
+		<location name="name" expectedsyncs="1.0" expectedaccesses="1.0>
+			<localnet>name</localnet>
+			<localnet>name</localnet>
+		</location>
+		<location name="name" expectedsyncs="1.0" expectedaccesses="1.0>
+			<localnet>name</localnet>
+			<localnet>name</localnet>
+		</location>
+	</locations>
+
+	<userschedule>
+		<entry locname="name" time="1"/>
+		<entry locname="name" time="1"/>
+		<entry locname="name" time="1"/>
+	</userschedule>
+
+	<database numrecords="1" arrivalrate="1.0" interval="1.0" maxarrivals="1.0"/>
+
+	<syncprotocol name="name">
+		<!-- ...protocol specific nodes go here... --!>
+	</syncprotocol>
+</etssimulation>
