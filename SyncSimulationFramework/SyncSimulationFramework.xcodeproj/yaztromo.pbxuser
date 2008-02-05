@@ -328,6 +328,11 @@
 			8B6C0FC10D58291B00DC1EF2 = 8B6C0FC10D58291B00DC1EF2 /* PBXBookmark */;
 			8B6C0FC20D58291B00DC1EF2 = 8B6C0FC20D58291B00DC1EF2 /* PBXTextBookmark */;
 			8B6C0FC30D58291B00DC1EF2 = 8B6C0FC30D58291B00DC1EF2 /* PBXTextBookmark */;
+			8B6C0FF90D582BA200DC1EF2 /* PBXTextBookmark */ = 8B6C0FF90D582BA200DC1EF2 /* PBXTextBookmark */;
+			8B6C0FFA0D582BA200DC1EF2 /* PBXTextBookmark */ = 8B6C0FFA0D582BA200DC1EF2 /* PBXTextBookmark */;
+			8B6C0FFB0D582BA200DC1EF2 /* PBXTextBookmark */ = 8B6C0FFB0D582BA200DC1EF2 /* PBXTextBookmark */;
+			8B6C0FFC0D582BA200DC1EF2 /* PBXTextBookmark */ = 8B6C0FFC0D582BA200DC1EF2 /* PBXTextBookmark */;
+			8B6C0FFE0D58320A00DC1EF2 /* PBXTextBookmark */ = 8B6C0FFE0D58320A00DC1EF2 /* PBXTextBookmark */;
 			8B7BDF220D108AF3008F9F94 = 8B7BDF220D108AF3008F9F94 /* PBXTextBookmark */;
 			8B7BDF230D108AF3008F9F94 = 8B7BDF230D108AF3008F9F94 /* PBXTextBookmark */;
 			8B854FF70D0B73BB000F949A = 8B854FF70D0B73BB000F949A /* PBXTextBookmark */;
@@ -568,9 +573,9 @@
 	};
 	8B3A156D0D57D60A0009380A /* SyncController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {884, 1806}}";
-			sepNavSelRange = "{3211, 0}";
-			sepNavVisRange = "{4743, 863}";
+			sepNavIntBoundsRect = "{{0, 0}, {1316, 1988}}";
+			sepNavSelRange = "{2148, 0}";
+			sepNavVisRange = "{1113, 1873}";
 		};
 	};
 	8B3A15750D57E69A0009380A /* PBXTextBookmark */ = {
@@ -624,7 +629,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 65";
 		rLen = 0;
-		rLoc = 5600;
+		rLoc = 5966;
 		rType = 0;
 		vrLen = 245;
 		vrLoc = 1650;
@@ -634,7 +639,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 65";
 		rLen = 0;
-		rLoc = 5600;
+		rLoc = 5966;
 		rType = 0;
 		vrLen = 478;
 		vrLoc = 1390;
@@ -652,7 +657,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 65";
 		rLen = 0;
-		rLoc = 5600;
+		rLoc = 5966;
 		rType = 0;
 		vrLen = 478;
 		vrLoc = 1390;
@@ -970,7 +975,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 16";
 		rLen = 0;
-		rLoc = 5600;
+		rLoc = 5966;
 		rType = 0;
 		vrLen = 401;
 		vrLoc = 0;
@@ -990,7 +995,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 18";
 		rLen = 0;
-		rLoc = 5600;
+		rLoc = 5966;
 		rType = 0;
 		vrLen = 449;
 		vrLoc = 0;
@@ -1010,7 +1015,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 22";
 		rLen = 0;
-		rLoc = 5600;
+		rLoc = 5966;
 		rType = 0;
 		vrLen = 782;
 		vrLoc = 98;
@@ -1030,7 +1035,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 31";
 		rLen = 0;
-		rLoc = 5600;
+		rLoc = 5966;
 		rType = 0;
 		vrLen = 941;
 		vrLoc = 301;
@@ -1050,7 +1055,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 15";
 		rLen = 0;
-		rLoc = 5600;
+		rLoc = 5966;
 		rType = 0;
 		vrLen = 415;
 		vrLoc = 0;
@@ -1070,7 +1075,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 18";
 		rLen = 0;
-		rLoc = 5600;
+		rLoc = 5966;
 		rType = 0;
 		vrLen = 415;
 		vrLoc = 0;
@@ -1424,7 +1429,7 @@
 		comments = "error: syntax error before ']' token";
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		rLen = 1;
-		rLoc = 61;
+		rLoc = 67;
 		rType = 1;
 	};
 	8B6C0F520D57FD2D00DC1EF2 /* PBXTextBookmark */ = {
@@ -1432,7 +1437,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 58";
 		rLen = 0;
-		rLoc = 2528;
+		rLoc = 2894;
 		rType = 0;
 		vrLen = 697;
 		vrLoc = 2125;
@@ -1572,7 +1577,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 67";
 		rLen = 0;
-		rLoc = 4819;
+		rLoc = 5185;
 		rType = 0;
 		vrLen = 1229;
 		vrLoc = 1806;
@@ -1752,7 +1757,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 58";
 		rLen = 0;
-		rLoc = 2528;
+		rLoc = 2894;
 		rType = 0;
 		vrLen = 1716;
 		vrLoc = 765;
@@ -1772,7 +1777,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 67";
 		rLen = 0;
-		rLoc = 4819;
+		rLoc = 5185;
 		rType = 0;
 		vrLen = 1229;
 		vrLoc = 1806;
@@ -1890,7 +1895,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 81";
 		rLen = 0;
-		rLoc = 4269;
+		rLoc = 4635;
 		rType = 0;
 		vrLen = 1239;
 		vrLoc = 3106;
@@ -1910,7 +1915,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 71";
 		rLen = 0;
-		rLoc = 3929;
+		rLoc = 4295;
 		rType = 0;
 		vrLen = 1413;
 		vrLoc = 2001;
@@ -1960,7 +1965,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 72";
 		rLen = 0;
-		rLoc = 4273;
+		rLoc = 4639;
 		rType = 0;
 		vrLen = 1413;
 		vrLoc = 2001;
@@ -2000,7 +2005,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 81";
 		rLen = 0;
-		rLoc = 4269;
+		rLoc = 4635;
 		rType = 0;
 		vrLen = 1239;
 		vrLoc = 3106;
@@ -2020,7 +2025,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 95";
 		rLen = 0;
-		rLoc = 4560;
+		rLoc = 4926;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 3273;
@@ -2030,7 +2035,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 95";
 		rLen = 0;
-		rLoc = 4560;
+		rLoc = 4926;
 		rType = 0;
 		vrLen = 1295;
 		vrLoc = 3273;
@@ -2040,7 +2045,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 96";
 		rLen = 0;
-		rLoc = 4490;
+		rLoc = 4856;
 		rType = 0;
 		vrLen = 1201;
 		vrLoc = 3743;
@@ -2050,7 +2055,7 @@
 		comments = "error: 'elem' undeclared (first use in this function)";
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		rLen = 1;
-		rLoc = 77;
+		rLoc = 83;
 		rType = 1;
 	};
 	8B6C0FA30D5807FA00DC1EF2 /* PBXTextBookmark */ = {
@@ -2058,7 +2063,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 82";
 		rLen = 0;
-		rLoc = 3871;
+		rLoc = 4237;
 		rType = 0;
 		vrLen = 1017;
 		vrLoc = 3368;
@@ -2078,7 +2083,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 97";
 		rLen = 0;
-		rLoc = 4563;
+		rLoc = 4929;
 		rType = 0;
 		vrLen = 1091;
 		vrLoc = 3862;
@@ -2098,7 +2103,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 74";
 		rLen = 0;
-		rLoc = 3211;
+		rLoc = 3577;
 		rType = 0;
 		vrLen = 1965;
 		vrLoc = 2211;
@@ -2108,7 +2113,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 74";
 		rLen = 0;
-		rLoc = 3211;
+		rLoc = 3577;
 		rType = 0;
 		vrLen = 863;
 		vrLoc = 4743;
@@ -2188,7 +2193,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 74";
 		rLen = 0;
-		rLoc = 3211;
+		rLoc = 3577;
 		rType = 0;
 		vrLen = 863;
 		vrLoc = 4743;
@@ -2330,6 +2335,56 @@
 		name = yaztromo.pbxuser;
 		path = /Users/yaztromo/Development/tricklesync/trunk/SyncSimulationFramework/SyncSimulationFramework.xcodeproj/yaztromo.pbxuser;
 		sourceTree = "<absolute>";
+	};
+	8B6C0FF90D582BA200DC1EF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B0BE3670D4EA94F00EA81A2 /* SyncProtocol.h */;
+		name = "SyncProtocol.h: 29";
+		rLen = 200;
+		rLoc = 1317;
+		rType = 0;
+		vrLen = 1043;
+		vrLoc = 547;
+	};
+	8B6C0FFA0D582BA200DC1EF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
+		name = "SyncController.m: 74";
+		rLen = 0;
+		rLoc = 3577;
+		rType = 0;
+		vrLen = 918;
+		vrLoc = 4688;
+	};
+	8B6C0FFB0D582BA200DC1EF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B0BE3670D4EA94F00EA81A2 /* SyncProtocol.h */;
+		name = "SyncProtocol.h: 29";
+		rLen = 200;
+		rLoc = 1317;
+		rType = 0;
+		vrLen = 1043;
+		vrLoc = 547;
+	};
+	8B6C0FFC0D582BA200DC1EF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
+		name = "SyncController.m: 74";
+		rLen = 0;
+		rLoc = 3577;
+		rType = 0;
+		vrLen = 863;
+		vrLoc = 4743;
+	};
+	8B6C0FFE0D58320A00DC1EF2 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
+		name = "SyncController.m: 56";
+		rLen = 0;
+		rLoc = 2148;
+		rType = 0;
+		vrLen = 1873;
+		vrLoc = 1113;
 	};
 	8B7BDEC40D0FDEB2008F9F94 /* RunUnitTests */ = {
 		isa = PBXFileReference;

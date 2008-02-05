@@ -27,12 +27,15 @@
    Class protocolClass;
    
    [super init];
+   NSLog(@"Attempting to initialize with a valid XML document.");
    
    // Start by verifying that this is an etssimulation document
    if (![[[xmlDoc rootElement] name] isEqualToString:@"etssimulation"]) {
       NSLog(@"The document passed is not a valid ETS Simulation document!");
       return nil;
    } // end-if
+   
+   NSLog(@"Finding the networks:");
    
    // Find the 'networks' element, and read each 'network' element entry
    arr = [xmlDoc nodesForXPath:@"/etssimulation/networks/network" error:&err];
@@ -42,9 +45,12 @@
                                                  andCost:[[[elem attributeForName:@"cost"] objectValue] doubleValue]
                                          andTransferRate:[[[elem attributeForName:@"xferrate"] objectValue] doubleValue]]
                    forKey: [[elem attributeForName:@"name"] stringValue]];
+      NSLog(@"   - Got network %@ with cost %@ and transfer rate of %@", [[elem attributeForName:@"name"] stringValue], [[elem attributeForName:@"cost"] stringValue], [[elem attributeForName:@"xferrate"] stringValue]);
    } // end-for
    
    // Find the 'locations' element, and read each 'location' element entry
+   
+   NSLog(@"Finding the locations:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/locations/location" error:&err];
    locations = [NSMutableDictionary dictionaryWithCapacity:[arr count]];
    for(NSXMLElement *elem in arr) {
