@@ -98,4 +98,8 @@
    alarmListeners = [NSMutableDictionary dictionary];   
 } // end-method
 
+- (void)reset {
+   time = 0;
+} // end-method
+
 @end

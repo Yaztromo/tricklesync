@@ -50,4 +50,6 @@
 
 - (void)run;
 
+- (void)reset;
+
 @end

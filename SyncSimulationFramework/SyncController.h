@@ -51,6 +51,7 @@
 - (id)initWithXMLDocument:(NSXMLDocument *)xmlDoc;
 - (id)initWithXMLFile:(NSString *)filename;
 
-- (void)startSimulation;
-
+- (void)startSimulatedDay;
+- (void)resetSimulationForNextDay;
+- (void)runSimulationFor:(unsigned int)days;
 @end

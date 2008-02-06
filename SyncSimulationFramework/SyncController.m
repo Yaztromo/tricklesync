@@ -186,8 +186,21 @@
    } // end-if
 } // end-constructor
 
-- (void)startSimulation {
+- (void)startSimulatedDay {
    [timer run];
-} // end-constructor
+} // end-method
+
+- (void)resetSimulationForNextDay {
+   [timer reset];
+   [user resetLocationToStart];
+} // end-method
+
+- (void)runSimulationFor:(unsigned int)days {
+   int i;
+   for(i=0;i<days;i++) {
+      [self resetSimulationForNextDay];
+      [self startSimulatedDay];
+   } // end-for
+} // end-method
 
 @end

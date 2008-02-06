@@ -68,5 +68,8 @@
    } // end-if
 } // end-method
 
+- (void)resetLocationToStart {
+   currentLocation = 0;
+} // end-method
 
 @end

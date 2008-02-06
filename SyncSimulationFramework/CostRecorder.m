@@ -46,4 +46,11 @@
    etherialCost+=value;
 } // end-method
 
+- (CostRecorder *)averageCostOver:(unsigned int)days {
+   CostRecorder *ret = [[CostRecorder alloc] init];
+   [ret incrementRealCostBy:realCost/days];
+   [ret incrementEtherialCostBy:etherialCost/days];
+   return ret;
+} // end-method
+
 @end

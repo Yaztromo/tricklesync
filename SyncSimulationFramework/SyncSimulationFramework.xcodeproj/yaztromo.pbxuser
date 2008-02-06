@@ -563,14 +563,14 @@
 	};
 	089C1667FE841158C02AAC07 /* English */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 403}}";
-			sepNavSelRange = "{93, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 401}}";
+			sepNavSelRange = "{96, 0}";
 			sepNavVisRange = "{0, 96}";
 		};
 	};
 	32DBCF5E0370ADEE00C91783 /* SyncSimulationFramework_Prefix.pch */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {929, 399}}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 401}}";
 			sepNavSelRange = "{178, 0}";
 			sepNavVisRange = "{0, 178}";
 		};
@@ -652,15 +652,15 @@
 	8B0BE3650D4EA86F00EA81A2 /* SyncSimulationFramework.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 560}}";
-			sepNavSelRange = "{1192, 347}";
-			sepNavVisRange = "{625, 941}";
+			sepNavSelRange = "{1566, 0}";
+			sepNavVisRange = "{0, 1320}";
 		};
 	};
 	8B0BE3670D4EA94F00EA81A2 /* SyncProtocol.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 588}}";
-			sepNavSelRange = "{1419, 41}";
-			sepNavVisRange = "{468, 1130}";
+			sepNavSelRange = "{1314, 0}";
+			sepNavVisRange = "{729, 940}";
 		};
 	};
 	8B0BE39C0D4FC2B300EA81A2 /* PBXTextBookmark */ = {
@@ -685,16 +685,16 @@
 	};
 	8B3A156C0D57D60A0009380A /* SyncController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 770}}";
-			sepNavSelRange = "{0, 1189}";
-			sepNavVisRange = "{0, 1324}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 812}}";
+			sepNavSelRange = "{2125, 0}";
+			sepNavVisRange = "{1297, 915}";
 		};
 	};
 	8B3A156D0D57D60A0009380A /* SyncController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 2814}}";
-			sepNavSelRange = "{1191, 0}";
-			sepNavVisRange = "{0, 1253}";
+			sepNavIntBoundsRect = "{{0, 0}, {2204, 3094}}";
+			sepNavSelRange = "{9188, 0}";
+			sepNavVisRange = "{8438, 791}";
 		};
 	};
 	8B3A15750D57E69A0009380A /* PBXTextBookmark */ = {
@@ -702,7 +702,7 @@
 		comments = "error: syntax error before '(' token";
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		rLen = 0;
-		rLoc = 54;
+		rLoc = 55;
 		rType = 1;
 	};
 	8B3A15760D57E69A0009380A /* PBXTextBookmark */ = {
@@ -720,7 +720,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 23";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 623;
 		vrLoc = 221;
@@ -738,7 +738,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 23";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 623;
 		vrLoc = 221;
@@ -748,7 +748,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 65";
 		rLen = 0;
-		rLoc = 8937;
+		rLoc = 9223;
 		rType = 0;
 		vrLen = 245;
 		vrLoc = 1650;
@@ -758,7 +758,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 65";
 		rLen = 0;
-		rLoc = 8937;
+		rLoc = 9223;
 		rType = 0;
 		vrLen = 478;
 		vrLoc = 1390;
@@ -768,7 +768,7 @@
 		comments = "error: syntax error before '(' token";
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		rLen = 0;
-		rLoc = 54;
+		rLoc = 55;
 		rType = 1;
 	};
 	8B3A15800D57E6EC0009380A /* PBXTextBookmark */ = {
@@ -776,7 +776,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 65";
 		rLen = 0;
-		rLoc = 8937;
+		rLoc = 9223;
 		rType = 0;
 		vrLen = 478;
 		vrLoc = 1390;
@@ -786,7 +786,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 34";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 588;
 		vrLoc = 508;
@@ -796,7 +796,7 @@
 		comments = "error: syntax error before '(' token";
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		rLen = 0;
-		rLoc = 54;
+		rLoc = 55;
 		rType = 1;
 	};
 	8B3A15860D57E7200009380A /* PBXTextBookmark */ = {
@@ -1083,7 +1083,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 18";
-		rLen = 123;
+		rLen = 204;
 		rLoc = 2003;
 		rType = 0;
 		vrLen = 823;
@@ -1094,7 +1094,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 16";
 		rLen = 0;
-		rLoc = 8937;
+		rLoc = 9223;
 		rType = 0;
 		vrLen = 401;
 		vrLoc = 0;
@@ -1114,7 +1114,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 18";
 		rLen = 0;
-		rLoc = 8937;
+		rLoc = 9223;
 		rType = 0;
 		vrLen = 449;
 		vrLoc = 0;
@@ -1134,7 +1134,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 22";
 		rLen = 0;
-		rLoc = 8937;
+		rLoc = 9223;
 		rType = 0;
 		vrLen = 782;
 		vrLoc = 98;
@@ -1144,7 +1144,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 27";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 849;
 		vrLoc = 0;
@@ -1154,7 +1154,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 31";
 		rLen = 0;
-		rLoc = 8937;
+		rLoc = 9223;
 		rType = 0;
 		vrLen = 941;
 		vrLoc = 301;
@@ -1174,7 +1174,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 15";
 		rLen = 0;
-		rLoc = 8937;
+		rLoc = 9223;
 		rType = 0;
 		vrLen = 415;
 		vrLoc = 0;
@@ -1184,7 +1184,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 27";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 849;
 		vrLoc = 0;
@@ -1194,7 +1194,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 18";
 		rLen = 0;
-		rLoc = 8937;
+		rLoc = 9223;
 		rType = 0;
 		vrLen = 415;
 		vrLoc = 0;
@@ -1243,7 +1243,7 @@
 		isa = PBXTextBookmark;
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 1";
-		rLen = 2131;
+		rLen = 2212;
 		rLoc = 0;
 		rType = 0;
 		vrLen = 884;
@@ -1254,7 +1254,7 @@
 		comments = "error: syntax error before '(' token";
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		rLen = 0;
-		rLoc = 54;
+		rLoc = 55;
 		rType = 1;
 	};
 	8B3A15B70D57E74E0009380A /* PBXTextBookmark */ = {
@@ -1272,7 +1272,7 @@
 		comments = "error: syntax error before '(' token";
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		rLen = 1;
-		rLoc = 54;
+		rLoc = 55;
 		rType = 1;
 	};
 	8B3A15BE0D57E7E90009380A /* PBXTextBookmark */ = {
@@ -1280,7 +1280,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 35";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 588;
 		vrLoc = 508;
@@ -1290,7 +1290,7 @@
 		comments = "error: syntax error before '(' token";
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		rLen = 1;
-		rLoc = 54;
+		rLoc = 55;
 		rType = 1;
 	};
 	8B3A15C10D57E8030009380A /* PBXTextBookmark */ = {
@@ -1298,7 +1298,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 34";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 351;
 		vrLoc = 157;
@@ -1308,7 +1308,7 @@
 		comments = "error: syntax error before '(' token";
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		rLen = 1;
-		rLoc = 54;
+		rLoc = 55;
 		rType = 1;
 	};
 	8B3A15C60D57E91E0009380A /* PBXTextBookmark */ = {
@@ -1316,7 +1316,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 35";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 557;
 		vrLoc = 542;
@@ -1326,7 +1326,7 @@
 		comments = "error: syntax error before '(' token";
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		rLen = 1;
-		rLoc = 54;
+		rLoc = 55;
 		rType = 1;
 	};
 	8B3A16470D57E9E10009380A /* PBXTextBookmark */ = {
@@ -1334,7 +1334,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 34";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 577;
 		vrLoc = 469;
@@ -1344,7 +1344,7 @@
 		comments = "error: syntax error before '(' token";
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		rLen = 0;
-		rLoc = 54;
+		rLoc = 55;
 		rType = 1;
 	};
 	8B3A164C0D57EA4E0009380A /* PBXTextBookmark */ = {
@@ -1352,7 +1352,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 36";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 625;
 		vrLoc = 469;
@@ -1362,7 +1362,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 39";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 625;
 		vrLoc = 443;
@@ -1380,7 +1380,7 @@
 		fRef = 8B3A156C0D57D60A0009380A /* SyncController.h */;
 		name = "SyncController.h: 39";
 		rLen = 0;
-		rLoc = 2125;
+		rLoc = 2206;
 		rType = 0;
 		vrLen = 625;
 		vrLoc = 443;
@@ -1407,60 +1407,60 @@
 	};
 	8B6041690D42DFFE00927ECA /* User.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 798}}";
-			sepNavSelRange = "{975, 0}";
-			sepNavVisRange = "{1285, 925}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 826}}";
+			sepNavSelRange = "{2205, 29}";
+			sepNavVisRange = "{1285, 951}";
 			sepNavWindowFrame = "{{85, 152}, {1115, 600}}";
 		};
 	};
 	8B60416A0D42DFFE00927ECA /* User.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 966}}";
-			sepNavSelRange = "{1740, 0}";
-			sepNavVisRange = "{976, 937}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 1064}}";
+			sepNavSelRange = "{2745, 0}";
+			sepNavVisRange = "{1913, 839}";
 			sepNavWindowFrame = "{{72, 105}, {1115, 600}}";
 		};
 	};
 	8B60416E0D42E09A00927ECA /* LocationVector.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 644}}";
-			sepNavSelRange = "{1190, 0}";
-			sepNavVisRange = "{900, 1003}";
+			sepNavSelRange = "{1794, 0}";
+			sepNavVisRange = "{0, 1387}";
 		};
 	};
 	8B60416F0D42E09A00927ECA /* LocationVector.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 560}}";
-			sepNavSelRange = "{1190, 0}";
+			sepNavSelRange = "{1264, 0}";
 			sepNavVisRange = "{0, 1275}";
 		};
 	};
 	8B6041A70D4317F200927ECA /* ServerDatabase.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 728}}";
-			sepNavSelRange = "{1327, 0}";
-			sepNavVisRange = "{1190, 755}";
+			sepNavSelRange = "{1364, 0}";
+			sepNavVisRange = "{0, 1328}";
 		};
 	};
 	8B6041A80D4317F200927ECA /* ServerDatabase.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 1022}}";
-			sepNavSelRange = "{1190, 0}";
-			sepNavVisRange = "{1270, 1048}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 1106}}";
+			sepNavSelRange = "{2929, 0}";
+			sepNavVisRange = "{0, 1270}";
 		};
 	};
 	8B6041AC0D43182300927ECA /* MobileDatabase.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 784}}";
-			sepNavSelRange = "{1190, 0}";
-			sepNavVisRange = "{1237, 702}";
+			sepNavSelRange = "{1583, 0}";
+			sepNavVisRange = "{0, 1311}";
 		};
 	};
 	8B6041AD0D43182300927ECA /* MobileDatabase.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 1050}}";
-			sepNavSelRange = "{1190, 0}";
-			sepNavVisRange = "{803, 894}";
+			sepNavSelRange = "{2862, 0}";
+			sepNavVisRange = "{803, 893}";
 		};
 	};
 	8B6042010D433A2B00927ECA /* PBXTextBookmark */ = {
@@ -2096,7 +2096,7 @@
 		rLen = 0;
 		rLoc = 1353;
 		rType = 0;
-		vrLen = 777;
+		vrLen = 755;
 		vrLoc = 1190;
 	};
 	8B6C0F970D58067E00DC1EF2 /* PBXTextBookmark */ = {
@@ -2559,7 +2559,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 518}}";
 			sepNavSelRange = "{1067, 0}";
-			sepNavVisRange = "{300, 851}";
+			sepNavVisRange = "{287, 864}";
 		};
 	};
 	8B6C100A0D591DAB00DC1EF2 /* SyncControllerTests.h */ = {
@@ -2573,7 +2573,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {997, 546}}";
 			sepNavSelRange = "{1408, 72}";
-			sepNavVisRange = "{1190, 322}";
+			sepNavVisRange = "{1112, 400}";
 		};
 	};
 	8B6C337F0D592111003A7D8E /* PBXTextBookmark */ = {
@@ -2800,7 +2800,7 @@
 		path = "/Users/yaztromo/Development/Expedient Trickle Sync/trunk/SyncSimulationFramework/SyncSimulationFramework.xcodeproj/project.pbxproj";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1250, 8288}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1250, 9142}}";
 			sepNavSelRange = "{36134, 0}";
 			sepNavVisRange = "{0, 3290}";
 		};
@@ -3378,9 +3378,9 @@
 	};
 	8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 698}}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 602}}";
 			sepNavSelRange = "{1190, 0}";
-			sepNavVisRange = "{0, 1365}";
+			sepNavVisRange = "{0, 1324}";
 		};
 	};
 	8B6C33EB0D595BC3003A7D8E /* PBXTextBookmark */ = {
@@ -3755,6 +3755,11 @@
 		name = RunUnitTests;
 		path = /Developer/Tools/RunUnitTests;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {846, 5068}}";
+			sepNavSelRange = "{9904, 1}";
+			sepNavVisRange = "{9421, 923}";
+		};
 	};
 	8B7BDF070D1089D3008F9F94 /* Unit Test */ = {
 		activeExec = 0;
@@ -3818,7 +3823,7 @@
 					chosenTableWidths = (
 						76.000000,
 						45.000000,
-						66.454102,
+						56.454102,
 						22.000000,
 					);
 				};
@@ -3832,8 +3837,8 @@
 						_percentageOfCollapsedView = 0;
 						isCollapsed = yes;
 						sizes = (
-							"{{0, 0}, {727, 177}}",
-							"{{732, 0}, {383, 177}}",
+							"{{0, 0}, {589, 179}}",
+							"{{594, 0}, {311, 179}}",
 						);
 					};
 					diagramSplitGeometry = {
@@ -3842,8 +3847,8 @@
 						_percentageOfCollapsedView = 0;
 						isCollapsed = yes;
 						sizes = (
-							"{{0, 0}, {1115, 179}}",
-							"{{0, 184}, {1115, 408}}",
+							"{{0, 0}, {905, 179}}",
+							"{{0, 184}, {905, 232}}",
 						);
 					};
 					tableSplitGeometry = {
@@ -3852,8 +3857,8 @@
 						_percentageOfCollapsedView = 0;
 						isCollapsed = yes;
 						sizes = (
-							"{{0, 0}, {237, 177}}",
-							"{{242, 0}, {485, 177}}",
+							"{{0, 0}, {191, 179}}",
+							"{{196, 0}, {391, 179}}",
 						);
 					};
 				};
@@ -3914,7 +3919,7 @@
 						122.000000,
 						61.000000,
 						87.000000,
-						136.000000,
+						44.000000,
 						22.000000,
 					);
 					chosenTableWidthsRT = (
@@ -3927,7 +3932,7 @@
 					);
 				};
 				"xdesign model browser state key - shown/hidden" = 1;
-				"xdesign model diagram view visible rect key" = "{{-1, 0}, {1100, 393}}";
+				"xdesign model diagram view visible rect key" = "{{-1, 0}, {890, 217}}";
 			};
 			sepNavWindowFrame = "{{15, 68}, {1115, 705}}";
 		};
@@ -3935,13 +3940,13 @@
 	8B854FC50D0B6A84000F949A /* TimerProtocols.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 448}}";
-			sepNavSelRange = "{1190, 0}";
+			sepNavSelRange = "{1335, 0}";
 			sepNavVisRange = "{0, 1298}";
 		};
 	};
 	8B854FC80D0B6B62000F949A /* Network.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 644}}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 588}}";
 			sepNavSelRange = "{0, 1191}";
 			sepNavVisRange = "{0, 1320}";
 		};
@@ -3950,26 +3955,26 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {992, 798}}";
 			sepNavSelRange = "{1441, 0}";
-			sepNavVisRange = "{1262, 679}";
+			sepNavVisRange = "{1237, 704}";
 		};
 	};
 	8B854FDC0D0B715E000F949A /* Location.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 672}}";
-			sepNavSelRange = "{1190, 0}";
+			sepNavSelRange = "{1369, 0}";
 			sepNavVisRange = "{976, 967}";
 		};
 	};
 	8B854FDD0D0B715E000F949A /* Location.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 1022}}";
-			sepNavSelRange = "{1190, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 910}}";
+			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 1299}";
 		};
 	};
 	8B854FF10D0B7313000F949A /* Unit Test Target-Info.plist */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {929, 399}}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 401}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 624}";
 		};
@@ -4088,38 +4093,38 @@
 	};
 	8B8550430D0B908E000F949A /* Record.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 882}}";
-			sepNavSelRange = "{1190, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 812}}";
+			sepNavSelRange = "{1247, 0}";
 			sepNavVisRange = "{0, 1288}";
 		};
 	};
 	8B8550460D0B94BB000F949A /* Database.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 686}}";
-			sepNavSelRange = "{1190, 0}";
-			sepNavVisRange = "{1052, 769}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1298}";
 			sepNavWindowFrame = "{{92, 132}, {1115, 600}}";
 		};
 	};
 	8B8550470D0B94BB000F949A /* Database.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 1176}}";
-			sepNavSelRange = "{896, 0}";
-			sepNavVisRange = "{78, 1218}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 1134}}";
+			sepNavSelRange = "{2000, 0}";
+			sepNavVisRange = "{0, 1295}";
 			sepNavWindowFrame = "{{84, 87}, {1115, 600}}";
 		};
 	};
 	8B8550610D0BABAC000F949A /* GaussianGenerator.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 588}}";
-			sepNavSelRange = "{1190, 0}";
-			sepNavVisRange = "{729, 876}";
+			sepNavSelRange = "{1321, 278}";
+			sepNavVisRange = "{0, 1290}";
 		};
 	};
 	8B8550620D0BABAC000F949A /* GaussianGenerator.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 1134}}";
-			sepNavSelRange = "{1190, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 1078}}";
+			sepNavSelRange = "{2195, 0}";
 			sepNavVisRange = "{0, 1295}";
 			sepNavWindowFrame = "{{15, 68}, {1115, 705}}";
 		};
@@ -4994,16 +4999,16 @@
 	};
 	8BD4AC330D4514B50053A40F /* TimeController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 756}}";
-			sepNavSelRange = "{1190, 0}";
-			sepNavVisRange = "{650, 1266}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 784}}";
+			sepNavSelRange = "{2136, 0}";
+			sepNavVisRange = "{1216, 922}";
 		};
 	};
 	8BD4AC340D4514B50053A40F /* TimeController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 1428}}";
-			sepNavSelRange = "{3138, 0}";
-			sepNavVisRange = "{1221, 873}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 1484}}";
+			sepNavSelRange = "{3405, 0}";
+			sepNavVisRange = "{2738, 690}";
 		};
 	};
 	8BD4AC510D4684720053A40F /* PBXTextBookmark */ = {
@@ -5019,14 +5024,14 @@
 	8BEF58AF0D0E8CE10023C0ED /* ProbabilityController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 700}}";
-			sepNavSelRange = "{1190, 0}";
-			sepNavVisRange = "{1112, 849}";
+			sepNavSelRange = "{1419, 0}";
+			sepNavVisRange = "{0, 1316}";
 		};
 	};
 	8BEF58B00D0E8CE10023C0ED /* ProbabilityController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 1148}}";
-			sepNavSelRange = "{1190, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 1162}}";
+			sepNavSelRange = "{1521, 0}";
 			sepNavVisRange = "{0, 1291}";
 		};
 	};
@@ -5103,14 +5108,14 @@
 	8BEF59500D0E98D30023C0ED /* CostRecorder.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 588}}";
-			sepNavSelRange = "{1190, 0}";
-			sepNavVisRange = "{650, 905}";
+			sepNavSelRange = "{1426, 19}";
+			sepNavVisRange = "{0, 1275}";
 		};
 	};
 	8BEF59510D0E98D30023C0ED /* CostRecorder.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 700}}";
-			sepNavSelRange = "{1190, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 616}}";
+			sepNavSelRange = "{1218, 0}";
 			sepNavVisRange = "{0, 1270}";
 		};
 	};
@@ -5119,7 +5124,7 @@
 	};
 	8DC2EF5A0486A6940098B216 /* Info.plist */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {929, 399}}";
+			sepNavIntBoundsRect = "{{0, 0}, {846, 401}}";
 			sepNavSelRange = "{490, 0}";
 			sepNavVisRange = "{0, 787}";
 		};

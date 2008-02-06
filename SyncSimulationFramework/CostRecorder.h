@@ -37,5 +37,5 @@
 - (id)init;
 - (void)incrementRealCostBy:(double)value;
 - (void)incrementEtherialCostBy:(double)value;
-
+- (CostRecorder *)averageCostOver:(unsigned int)days;
 @end

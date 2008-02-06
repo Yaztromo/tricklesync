@@ -53,4 +53,6 @@
 // An alarm handler for switching locations
 - (void)activateAlarm:(int)time;
 
+- (void)resetLocationToStart;
+
 @end
