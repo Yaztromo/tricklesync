@@ -213,7 +213,7 @@
    end=CFAbsoluteTimeGetCurrent();
    
    CFGregorianUnits units = CFAbsoluteTimeGetDifferenceAsGregorianUnits (end, start, NULL, (kCFGregorianUnitsHours | kCFGregorianUnitsMinutes | kCFGregorianUnitsSeconds));
-   NSLog(@"Simulation run covering %d days completed in %02d:%02d:%02.4f with an average cost function %@.", days, units.hours, units.minutes, units.seconds, [cost averageCostOver:days]);
+   NSLog(@"Simulation run covering %d days completed in %02d:%02d:%07.4f with an average cost function %@.", days, units.hours, units.minutes, units.seconds, [cost averageCostOver:days]);
 } // end-method
 
 @end
