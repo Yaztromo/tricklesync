@@ -197,10 +197,15 @@
 
 - (void)runSimulationFor:(unsigned int)days {
    int i;
+   CFAbsoluteTime end, start=CFAbsoluteTimeGetCurrent();
    for(i=0;i<days;i++) {
       [self resetSimulationForNextDay];
       [self startSimulatedDay];
    } // end-for
+   end=CFAbsoluteTimeGetCurrent();
+   
+   CFGregorianUnits units = CFAbsoluteTimeGetDifferenceAsGregorianUnits (end, start, NULL, (kCFGregorianUnitsHours | kCFGregorianUnitsMinutes | kCFGregorianUnitsSeconds));
+   NSLog(@"Simulation run covering %d days completed in %2d:%2d:%f with an average cost function %@.", days, units.hours, units.minutes, units.seconds, [cost averageCostOver:days]);
 } // end-method
 
 @end
