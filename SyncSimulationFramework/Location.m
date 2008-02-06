@@ -69,4 +69,8 @@ andDatabaseModificationsPerHour:(int)modRate {
    return ret;
 } // end-method
 
+- (NSString *)description {
+   return locationName;
+} // end-method
+
 @end

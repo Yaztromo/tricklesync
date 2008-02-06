@@ -138,6 +138,9 @@
    // Initialize the tick listeners
    [timer addTickListener:[user handheldDB]];
    [timer addTickListener:sdb];
+   for(LocationVector *locV in locationVects) {
+      [timer addAlarmListener:user withFireTime:[locV entryTime]];
+   } // end-for
    
    // Find the syncprotocol element
    NSLog(@"Finding the sync protocol:");

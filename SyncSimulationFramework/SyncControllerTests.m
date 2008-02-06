@@ -35,7 +35,7 @@
    STAssertNotNil(sc, @"The SyncController initializer returned nil!");
    
    // Run the simulation
-   [sc runSimulationFor:365];
+   [sc runSimulationFor:1];
 } // end-unit-test-method
 
 @end

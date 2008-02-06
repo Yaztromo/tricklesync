@@ -63,9 +63,7 @@
 // An alarm handler for switching locations
 - (void)activateAlarm:(int)time {
    // We switch to the next location when the alarm goes off, if one exists.
-   if([locations count]>currentLocation+1) {
-      currentLocation++;
-   } // end-if
+   [self setLocationWithTime:time];
 } // end-method
 
 - (void)resetLocationToStart {

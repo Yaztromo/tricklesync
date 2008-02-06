@@ -41,4 +41,8 @@
    return time==entryTime;
 } // end-method
 
+- (NSString *)description {
+   return [location description];
+} // end-method
+
 @end

@@ -23,7 +23,7 @@
 	</locations>
 
 	<userschedule>
-		<entry locname="locname1" time="3600"/>
+		<entry locname="locname1" time="0"/>
 		<entry locname="locname2" time="7200"/>
 		<entry locname="locname3" time="15000"/>
 	</userschedule>
