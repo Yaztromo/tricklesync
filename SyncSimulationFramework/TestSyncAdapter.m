@@ -21,21 +21,26 @@
 //
 // --------------------------------------------------------------------------
 
+#import "TestSyncAdapter.h"
 
-#import "User.h"
-#import "TimerProtocols.h"
-#import "ServerDatabase.h"
-#import "TimeController.h"
-#import "CostRecorder.h"
 
-@protocol SyncProtocol <SimulationTickProtocol, SimulationAlarmProtocol>
+@implementation TestSyncAdapter
 -  (id)initWithUser:(User *)u
  withServerDatabase:(ServerDatabase *)sd
  withTimeController:(TimeController *)tc
    withCostRecorder:(CostRecorder *)cr
-  andWithProperties:(NSXMLElement *)syncProtocolElement;
+  andWithProperties:(NSXMLElement *)syncProtocolElement {
+   [super init];
+   NSLog(@"Constructed the Test Sync Adapter!");
+   return self;
+} // end-constructor
 
-- (void)activateAlarm:(int)time;
-- (void)activateTick:(int)time;
+- (void)activateAlarm:(int)time {
+   NSLog(@"An alarm occurred in the Test Sync Adapter at time %d.", time);
+} // end-method
+
+- (void)activateTick:(int)time {
+   NSLog(@"A tick occurred in the Test Sync Adapter at time %d.", time);
+} // end-method
 
 @end

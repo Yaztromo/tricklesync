@@ -21,14 +21,15 @@
 //
 // --------------------------------------------------------------------------
 
-
-#import "User.h"
-#import "TimerProtocols.h"
+#import <Cocoa/Cocoa.h>
+#import "SyncProtocol.h"
 #import "ServerDatabase.h"
 #import "TimeController.h"
 #import "CostRecorder.h"
 
-@protocol SyncProtocol <SimulationTickProtocol, SimulationAlarmProtocol>
+@interface TestSyncAdapter : NSObject <SyncProtocol> {
+
+}
 -  (id)initWithUser:(User *)u
  withServerDatabase:(ServerDatabase *)sd
  withTimeController:(TimeController *)tc

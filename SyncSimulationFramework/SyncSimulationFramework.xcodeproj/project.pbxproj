@@ -27,6 +27,7 @@
 		8B6041B00D43182300927ECA /* MobileDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6041AD0D43182300927ECA /* MobileDatabase.m */; };
 		8B6C10080D591B5B00DC1EF2 /* sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8B6C10070D591B5B00DC1EF2 /* sample.xml */; };
 		8B6C100C0D591DAB00DC1EF2 /* SyncControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C100B0D591DAB00DC1EF2 /* SyncControllerTests.m */; };
+		8B6C33EA0D595BB1003A7D8E /* TestSyncAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */; };
 		8B7BDF0D0D108A3F008F9F94 /* NetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B85500D0D0B74DD000F949A /* NetworkTest.m */; };
 		8B7BDF0E0D108A3F008F9F94 /* DistributionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550B30D0BC0A9000F949A /* DistributionsTest.m */; };
 		8B7BDF0F0D108A3F008F9F94 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8551650D0CD958000F949A /* DatabaseTests.m */; };
@@ -82,6 +83,8 @@
 		8B6C10070D591B5B00DC1EF2 /* sample.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample.xml; sourceTree = "<group>"; };
 		8B6C100A0D591DAB00DC1EF2 /* SyncControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncControllerTests.h; sourceTree = "<group>"; };
 		8B6C100B0D591DAB00DC1EF2 /* SyncControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncControllerTests.m; sourceTree = "<group>"; };
+		8B6C33E80D595BB1003A7D8E /* TestSyncAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSyncAdapter.h; sourceTree = "<group>"; };
+		8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSyncAdapter.m; sourceTree = "<group>"; };
 		8B7BDF080D1089D3008F9F94 /* Unit Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Test.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7BDF090D1089D3008F9F94 /* Unit Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Test-Info.plist"; sourceTree = "<group>"; };
 		8B854FC30D0B6A0C000F949A /* SyncSimulationFramework.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = SyncSimulationFramework.xcclassmodel; sourceTree = "<group>"; };
@@ -260,6 +263,8 @@
 				8B0BE28E0D483EB700EA81A2 /* TimeControllerTests.m */,
 				8B6C100A0D591DAB00DC1EF2 /* SyncControllerTests.h */,
 				8B6C100B0D591DAB00DC1EF2 /* SyncControllerTests.m */,
+				8B6C33E80D595BB1003A7D8E /* TestSyncAdapter.h */,
+				8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */,
 			);
 			name = Tests;
 			sourceTree = "<group>";
@@ -410,6 +415,7 @@
 				8B0BE2910D483EB700EA81A2 /* TimeControllerTests.m in Sources */,
 				8B3A15700D57D60A0009380A /* SyncController.m in Sources */,
 				8B6C100C0D591DAB00DC1EF2 /* SyncControllerTests.m in Sources */,
+				8B6C33EA0D595BB1003A7D8E /* TestSyncAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
