@@ -3,7 +3,7 @@
 	0867D690FE84028FC02AAC07 /* Project object */ = {
 		activeArchitecture = i386;
 		activeBuildConfigurationName = Debug;
-		activeTarget = 8B7BDF070D1089D3008F9F94 /* Unit Test */;
+		activeTarget = 8DC2EF4F0486A6940098B216 /* SyncSimulationFramework */;
 		addToTargets = (
 			8B7BDF070D1089D3008F9F94 /* Unit Test */,
 		);
@@ -2800,8 +2800,8 @@
 		path = "/Users/yaztromo/Development/Expedient Trickle Sync/trunk/SyncSimulationFramework/SyncSimulationFramework.xcodeproj/project.pbxproj";
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1250, 9142}}";
-			sepNavSelRange = "{35440, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {1250, 8288}}";
+			sepNavSelRange = "{36134, 0}";
 			sepNavVisRange = "{0, 3290}";
 		};
 	};
