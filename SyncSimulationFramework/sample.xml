@@ -8,15 +8,15 @@
 	</networks>
 
 	<locations>
-		<location name="locname1" expectedsyncs="1.0" expectedaccesses="1.0">
+		<location name="locname1" expectedsyncs="5.0" expectedaccesses="15.0">
 			<localnet>netname1</localnet>
 			<localnet>netname4</localnet>
 		</location>
-		<location name="locname2" expectedsyncs="2.0" expectedaccesses="2.0">
+		<location name="locname2" expectedsyncs="5.0" expectedaccesses="20.0">
 			<localnet>netname2</localnet>
 			<localnet>netname3</localnet>
 		</location>
-		<location name="locname3" expectedsyncs="3.0" expectedaccesses="3.0">
+		<location name="locname3" expectedsyncs="5.0" expectedaccesses="15.0">
 			<localnet>netname3</localnet>
 			<localnet>netname4</localnet>
 		</location>
@@ -28,7 +28,7 @@
 		<entry locname="locname3" time="15000"/>
 	</userschedule>
 
-	<database numrecords="5000" arrivalrate="15.0" interval="3600" maxarrivals="5"/>
+	<database numrecords="100" arrivalrate="50.0" interval="3600" maxarrivals="5"/>
 
 	<syncprotocol name="TestSyncAdapter">
 		<!-- ...protocol specific nodes go here... -->

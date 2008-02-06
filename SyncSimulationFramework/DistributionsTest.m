@@ -39,6 +39,7 @@
    double g;
    for(i=0;i<1000000;i++) {
       g = [d nextGaussian];
+      //NSLog(@"Calculated gaussian value %f with probability %f", g, [GaussianGenerator calculateNormalProbabilityWith:g]);
       if (g<smallest) smallest = g;
       if (g>largest) largest = g;
       STAssertTrue(g>-10, @"Generated bad Gaussian: %f", g);

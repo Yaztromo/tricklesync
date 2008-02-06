@@ -57,12 +57,13 @@ againstServerDatabase:(Database *)sdb {
 - (void)activateTick:(int)time {
    int record;
    // Check to see if the user has accessed a record during this tick.
+   //NSLog(@"Checking if user viewed a record during this tick...");
    if ([[user getCurrentLocation] mobileDatabaseModificationRate] >= [rand getNextRandom]) {
       // We need to access a record somewhere.  Select one using a random number in a Guassian distribution.
-      record = (int)([rand nextGaussian]*[self getRecordCount]);
+      record = (int)([GaussianGenerator calculateNormalProbabilityWith:[rand nextGaussian]]*[self getRecordCount]);
 
       // Did the user access out-of-date data?  Check what the record version is on the server and verify.
-      if ([[serverDB getRecordWithID:record] recordID] > [[self getRecordWithID:record] recordID]) {
+      if ([[serverDB getRecordWithID:record] recordVersion] > [[self getRecordWithID:record] recordVersion]) {
          // The user accessed out-of-date information.  Increment the ethereal cost by one.
          [cost incrementEtherialCostBy:[cost etherealCostFactor]];
       } // end-if

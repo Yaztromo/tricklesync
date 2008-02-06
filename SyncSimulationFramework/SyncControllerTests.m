@@ -33,6 +33,9 @@
    sc = [[SyncController alloc] initWithXMLFile:@"sample.xml"];
    
    STAssertNotNil(sc, @"The SyncController initializer returned nil!");
+   
+   // Run the simulation
+   [sc runSimulationFor:365];
 } // end-unit-test-method
 
 @end

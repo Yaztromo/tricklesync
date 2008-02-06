@@ -123,8 +123,8 @@
    dbSize = [[[[arr objectAtIndex:0] attributeForName:@"numrecords"] stringValue] intValue];
    NSLog(@"   - Found database entry with record count %d, arrival rate %f, interval %d, and max arrivals %d.", dbSize, [[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] stringValue] doubleValue], [[[[arr objectAtIndex:0] attributeForName:@"interval"] stringValue] intValue], [[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] stringValue] intValue]);
    sdb = [[ServerDatabase alloc] initWithRecordCount:dbSize
-                                     withArrivalRate:[[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] stringValue] doubleValue] 
-                                        withInterval:[[[[arr objectAtIndex:0] attributeForName:@"interval"] stringValue] intValue]
+                                     withArrivalRate:[[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] stringValue] doubleValue]/[[[[arr objectAtIndex:0] attributeForName:@"interval"] stringValue] intValue]
+                                        withInterval:1
                                       andMaxArrivals:[[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] stringValue] intValue]];
    
    // Create the cost and user objects
@@ -134,6 +134,10 @@
                              withCostRecorder:cost
                         againstServerDatabase:sdb];
    timer = [[TimeController alloc] init];
+
+   // Initialize the tick listeners
+   [timer addTickListener:[user handheldDB]];
+   [timer addTickListener:sdb];
    
    // Find the syncprotocol element
    NSLog(@"Finding the sync protocol:");
@@ -198,6 +202,7 @@
 - (void)runSimulationFor:(unsigned int)days {
    int i;
    CFAbsoluteTime end, start=CFAbsoluteTimeGetCurrent();
+   
    for(i=0;i<days;i++) {
       [self resetSimulationForNextDay];
       [self startSimulatedDay];
@@ -205,7 +210,7 @@
    end=CFAbsoluteTimeGetCurrent();
    
    CFGregorianUnits units = CFAbsoluteTimeGetDifferenceAsGregorianUnits (end, start, NULL, (kCFGregorianUnitsHours | kCFGregorianUnitsMinutes | kCFGregorianUnitsSeconds));
-   NSLog(@"Simulation run covering %d days completed in %2d:%2d:%f with an average cost function %@.", days, units.hours, units.minutes, units.seconds, [cost averageCostOver:days]);
+   NSLog(@"Simulation run covering %d days completed in %02d:%02d:%02.4f with an average cost function %@.", days, units.hours, units.minutes, units.seconds, [cost averageCostOver:days]);
 } // end-method
 
 @end
