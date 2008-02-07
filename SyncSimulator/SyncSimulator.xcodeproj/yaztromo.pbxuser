@@ -1,10 +1,13 @@
 // !$*UTF8*$!
 {
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeArchitecture = i386;
+		activeArchitecture = ppc64;
 		activeBuildConfigurationName = Release;
 		activeExecutable = 8B6C34CB0D5AB771003A7D8E /* SyncSimulator */;
 		activeTarget = 8D1107260486CEB800E47090 /* SyncSimulator */;
+		addToTargets = (
+			8D1107260486CEB800E47090 /* SyncSimulator */,
+		);
 		codeSenseManager = 8B6C34CF0D5AB794003A7D8E /* Code sense */;
 		executables = (
 			8B6C34CB0D5AB771003A7D8E /* SyncSimulator */,
@@ -15,9 +18,9 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					454,
+					243,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
@@ -32,8 +35,32 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 224049009;
-			PBXWorkspaceStateSaveDate = 224049009;
+			PBXConfiguration.PBXFileTableDataSource3.XCSCMDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					20,
+					219,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_SCM_ColumnID,
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 224050329;
+			PBXWorkspaceStateSaveDate = 224050329;
 		};
 		sourceControlManager = 8B6C34CE0D5AB794003A7D8E /* Source Control */;
 		userBuildSettings = {
@@ -67,6 +94,7 @@
 		fallbackIsa = XCSourceControlManager;
 		isSCMEnabled = 0;
 		scmConfiguration = {
+			repositoryName = "Expedient Trickle Sync";
 		};
 	};
 	8B6C34CF0D5AB794003A7D8E /* Code sense */ = {
