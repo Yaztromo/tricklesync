@@ -205,7 +205,8 @@
    [user resetLocationToStart];
 } // end-method
 
-- (void)runSimulationFor:(unsigned int)days {
+- (void)runSimulationFor:(unsigned int)days
+            withCallback:(id<SimulationCallbackProtocol>)callback {
    int i;
    CFAbsoluteTime end, start=CFAbsoluteTimeGetCurrent();
    percentComplete = 0.0;
@@ -213,7 +214,8 @@
    for(i=0;i<days;i++) {
       [self resetSimulationForNextDay];
       [self startSimulatedDay];
-      percentComplete = (double)i/(double)days;
+      percentComplete = (double)i/(double)days * 100.0;
+      if (callback!=nil) [callback setPercentCompleted:percentComplete];
    } // end-for
    end=CFAbsoluteTimeGetCurrent();
    

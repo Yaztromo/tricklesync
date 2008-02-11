@@ -35,6 +35,7 @@
 #import "User.h"
 #import "TimeController.h"
 #import "SyncProtocol.h"
+#import "SimulationCallbackProtocol.h"
 
 @interface SyncController : NSObject {
    User * user;                  // Holds a handle to the synchronization user
@@ -55,5 +56,6 @@
 
 - (void)startSimulatedDay;
 - (void)resetSimulationForNextDay;
-- (void)runSimulationFor:(unsigned int)days;
+- (void)runSimulationFor:(unsigned int)days
+            withCallback:(id<SimulationCallbackProtocol>)callback;
 @end

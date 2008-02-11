@@ -10,5 +10,5 @@
 #include <Carbon/Carbon.h>
 
 @protocol SimulationCallbackProtocol
-- (void)setPercentCompleted:(int)value;
+- (void)setPercentCompleted:(double)value;
 @end
