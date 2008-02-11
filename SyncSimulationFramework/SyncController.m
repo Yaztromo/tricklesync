@@ -201,8 +201,12 @@
 } // end-method
 
 - (void)resetSimulationForNextDay {
+   // Hint for Garbage collector
+   NSGarbageCollector *collector = [NSGarbageCollector defaultCollector];
+   [collector collectIfNeeded];
+
    [timer reset];
-   [user resetLocationToStart];
+   [user resetLocationToStart];   
 } // end-method
 
 - (void)runSimulationFor:(unsigned int)days
@@ -218,6 +222,7 @@
       if (callback!=nil) [callback setPercentCompleted:percentComplete];
    } // end-for
    end=CFAbsoluteTimeGetCurrent();
+   [callback setPercentCompleted:100.0];
    
    CFGregorianUnits units = CFAbsoluteTimeGetDifferenceAsGregorianUnits (end, start, NULL, (kCFGregorianUnitsHours | kCFGregorianUnitsMinutes | kCFGregorianUnitsSeconds));
    NSLog(@"Simulation run covering %d days completed in %02d:%02d:%07.4f with an average cost function %@.", days, units.hours, units.minutes, units.seconds, [cost averageCostOver:days]);

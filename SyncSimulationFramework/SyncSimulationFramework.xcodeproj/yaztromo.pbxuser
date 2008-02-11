@@ -295,6 +295,8 @@
 			8B3DA6760D604DAA00D58E8A /* PBXTextBookmark */ = 8B3DA6760D604DAA00D58E8A /* PBXTextBookmark */;
 			8B3DA6770D604DAA00D58E8A /* PBXTextBookmark */ = 8B3DA6770D604DAA00D58E8A /* PBXTextBookmark */;
 			8B3DA6780D604DAA00D58E8A /* PBXTextBookmark */ = 8B3DA6780D604DAA00D58E8A /* PBXTextBookmark */;
+			8B3DA6910D604F1D00D58E8A /* PBXTextBookmark */ = 8B3DA6910D604F1D00D58E8A /* PBXTextBookmark */;
+			8B3DA6920D604F1D00D58E8A /* PBXTextBookmark */ = 8B3DA6920D604F1D00D58E8A /* PBXTextBookmark */;
 			8B6C341C0D59CF81003A7D8E = 8B6C341C0D59CF81003A7D8E /* PBXTextBookmark */;
 			8B6C341D0D59CF81003A7D8E = 8B6C341D0D59CF81003A7D8E /* PBXTextBookmark */;
 			8B6C34200D59CF81003A7D8E = 8B6C34200D59CF81003A7D8E /* PBXTextBookmark */;
@@ -462,9 +464,9 @@
 	};
 	8B3A156D0D57D60A0009380A /* SyncController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1130, 3514}}";
-			sepNavSelRange = "{10210, 0}";
-			sepNavVisRange = "{8376, 848}";
+			sepNavIntBoundsRect = "{{0, 0}, {1292, 3472}}";
+			sepNavSelRange = "{9870, 0}";
+			sepNavVisRange = "{9180, 1077}";
 		};
 	};
 	8B3DA44F0D5FCDE300D58E8A /* PBXTextBookmark */ = {
@@ -775,7 +777,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 216";
 		rLen = 0;
-		rLoc = 9778;
+		rLoc = 9921;
 		rType = 0;
 		vrLen = 911;
 		vrLoc = 9158;
@@ -1772,7 +1774,7 @@
 		comments = "warning: '-setPercentComplete:' not found in protocol(s)";
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		rLen = 1;
-		rLoc = 217;
+		rLoc = 221;
 		rType = 1;
 	};
 	8B3DA6280D60405400D58E8A /* PBXTextBookmark */ = {
@@ -1790,7 +1792,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 218";
 		rLen = 0;
-		rLoc = 9777;
+		rLoc = 9920;
 		rType = 0;
 		vrLen = 752;
 		vrLoc = 9456;
@@ -1830,7 +1832,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 218";
 		rLen = 0;
-		rLoc = 9778;
+		rLoc = 9921;
 		rType = 0;
 		vrLen = 1602;
 		vrLoc = 3372;
@@ -1880,7 +1882,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 218";
 		rLen = 0;
-		rLoc = 9778;
+		rLoc = 9921;
 		rType = 0;
 		vrLen = 1602;
 		vrLoc = 3372;
@@ -1900,7 +1902,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 217";
 		rLen = 0;
-		rLoc = 9704;
+		rLoc = 9847;
 		rType = 0;
 		vrLen = 1036;
 		vrLoc = 9180;
@@ -1920,7 +1922,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 225";
 		rLen = 0;
-		rLoc = 10210;
+		rLoc = 10394;
 		rType = 0;
 		vrLen = 1036;
 		vrLoc = 9180;
@@ -1930,7 +1932,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 225";
 		rLen = 0;
-		rLoc = 10210;
+		rLoc = 10394;
 		rType = 0;
 		vrLen = 1036;
 		vrLoc = 9180;
@@ -1950,10 +1952,30 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 225";
 		rLen = 0;
-		rLoc = 10210;
+		rLoc = 10394;
 		rType = 0;
 		vrLen = 848;
 		vrLoc = 8376;
+	};
+	8B3DA6910D604F1D00D58E8A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
+		name = "SyncController.m: 225";
+		rLen = 0;
+		rLoc = 10394;
+		rType = 0;
+		vrLen = 848;
+		vrLoc = 8376;
+	};
+	8B3DA6920D604F1D00D58E8A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
+		name = "SyncController.m: 221";
+		rLen = 0;
+		rLoc = 10013;
+		rType = 0;
+		vrLen = 1077;
+		vrLoc = 9180;
 	};
 	8B6041690D42DFFE00927ECA /* User.h */ = {
 		uiCtxt = {
@@ -2533,7 +2555,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 203";
 		rLen = 0;
-		rLoc = 9553;
+		rLoc = 9696;
 		rType = 0;
 		vrLen = 1729;
 		vrLoc = 5761;
@@ -3143,7 +3165,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 212";
 		rLen = 0;
-		rLoc = 9794;
+		rLoc = 9937;
 		rType = 0;
 		vrLen = 1493;
 		vrLoc = 1539;
