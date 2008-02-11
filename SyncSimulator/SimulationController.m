@@ -8,6 +8,8 @@
 - (id)init {
    [super init];
    syncController = nil;
+   disabledGrey = [NSColor colorWithDeviceWhite:76.0/256.0 alpha:1.0];
+   enabledBlack = [NSColor blackColor];
    return self;
 } // end-constructor
 
@@ -25,23 +27,51 @@
    } // end-if
    
    if (syncController!=nil) {
-      // Enable all the disabled Step 2 controls
+      // Disable the Step 1 controls
+      [openButton setEnabled:FALSE];
+      [step1Header setTextColor:disabledGrey];
+      [step1Description setTextColor:disabledGrey];
+
+      // Enable all the disabled Step 2 and 3 controls
       [daysField setEnabled:TRUE];
       [stepper setEnabled:TRUE];
       [startButton setEnabled:TRUE];
-      [openButton setEnabled:FALSE];
+      [step2Header setTextColor:enabledBlack];
+      [step2Description setTextColor:enabledBlack];
+      
+      [step3Header setTextColor:enabledBlack];
+      [step3Description setTextColor:enabledBlack];
+      [step3ProgressDescription setTextColor:enabledBlack];
    } // end-if
 } // end-method
 
 - (IBAction)startSimulation:(id)sender {
+   // Disable Step 2
+   [step2Header setTextColor:disabledGrey];
+   [step2Description setTextColor:disabledGrey];   
    [startButton setEnabled:FALSE];
+   [step2Header displayIfNeeded];
+   [step2Description displayIfNeeded];
+   [startButton displayIfNeeded];
+
    [progressBar setUsesThreadedAnimation:TRUE];
    
-   // Start the sumulator
+   // Start the simulator
    [syncController runSimulationFor:[daysField intValue] withCallback:self];
+
+   // Disable all the Step 3 controls, and enable the step 4 controls
+   [step3Header setTextColor:disabledGrey];
+   [step3Description setTextColor:disabledGrey];
+   [step3ProgressDescription setTextColor:disabledGrey];
+   
+   [step4Header setTextColor:enabledBlack];
+   [step4Description setTextColor:enabledBlack];
+   [resultBox setTextColor:enabledBlack];
    
    // Set the results
    [resultBox setEnabled:TRUE];
+   
+   NSBeep();
    [resultBox setStringValue:[[[syncController cost] averageCostOver:[daysField intValue]] description]];
 } // end-method
 
