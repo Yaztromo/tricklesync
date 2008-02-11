@@ -28,6 +28,8 @@
 #import "TimeController.h"
 #import "CostRecorder.h"
 
+@class User;
+
 @protocol SyncProtocol <SimulationTickProtocol, SimulationAlarmProtocol>
 -  (id)initWithUser:(User *)u
  withServerDatabase:(ServerDatabase *)sd

@@ -54,7 +54,7 @@
 } // end-method
 
 - (NSString *)description {
-   return [NSString stringWithFormat:@"y=%fx+%f", etherialCost, realCost];
+   return [NSString stringWithFormat:@"y=%.3fx+%.3f", etherialCost, realCost];
 } // end-method
 
 @end

@@ -41,11 +41,13 @@
    TimeController *timer;        // Holds a handle to the time controller
    CostRecorder *cost;           // Holds a handle to the cost recorder
    id<SyncProtocol> protocol;    // Holds a handle to the sync protocol
+   double percentComplete;
 }
 @property(readonly) User * user;
 @property(readonly) TimeController *timer;
 @property(readonly) CostRecorder *cost;
-@property(readonly) id<SyncProtocol> protocol; 
+@property(readonly) id<SyncProtocol> protocol;
+@property(readonly) double percentComplete;
 
 
 - (id)initWithXMLDocument:(NSXMLDocument *)xmlDoc;

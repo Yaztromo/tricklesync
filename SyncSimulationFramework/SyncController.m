@@ -31,6 +31,7 @@
 @synthesize timer;
 @synthesize cost;
 @synthesize protocol;
+@synthesize percentComplete;
 
 - (id)initWithXMLDocument:(NSXMLDocument *)xmlDoc {
    NSArray *arr, *temp;
@@ -171,6 +172,8 @@
    } // end-if
    
    NSLog(@"Done!");
+   
+   percentComplete = 0.0;
    return self;
 } // end-constructor
 
@@ -205,10 +208,12 @@
 - (void)runSimulationFor:(unsigned int)days {
    int i;
    CFAbsoluteTime end, start=CFAbsoluteTimeGetCurrent();
+   percentComplete = 0.0;
    
    for(i=0;i<days;i++) {
       [self resetSimulationForNextDay];
       [self startSimulatedDay];
+      percentComplete = (double)i/(double)days;
    } // end-for
    end=CFAbsoluteTimeGetCurrent();
    
