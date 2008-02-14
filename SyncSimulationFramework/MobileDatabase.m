@@ -65,7 +65,7 @@ againstServerDatabase:(Database *)sdb {
       // Did the user access out-of-date data?  Check what the record version is on the server and verify.
       if ([[serverDB getRecordWithID:record] recordVersion] > [[self getRecordWithID:record] recordVersion]) {
          // The user accessed out-of-date information.  Increment the ethereal cost by one.
-         [cost incrementEtherialCostBy:[cost etherealCostFactor]];
+         [cost incrementEtherialCostBy:[[serverDB getRecordWithID:record] recordVersion]-[[self getRecordWithID:record] recordVersion]];
       } // end-if
    } // end-if
 } // end-method
