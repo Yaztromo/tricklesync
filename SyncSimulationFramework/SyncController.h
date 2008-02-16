@@ -36,6 +36,7 @@
 #import "TimeController.h"
 #import "SyncProtocol.h"
 #import "SimulationCallbackProtocol.h"
+#import "SyncLogicController.h"
 
 @interface SyncController : NSObject {
    User * user;                  // Holds a handle to the synchronization user
@@ -43,13 +44,14 @@
    CostRecorder *cost;           // Holds a handle to the cost recorder
    id<SyncProtocol> protocol;    // Holds a handle to the sync protocol
    double percentComplete;
+   SyncLogicController *syncLogic;
 }
 @property(readonly) User * user;
 @property(readonly) TimeController *timer;
 @property(readonly) CostRecorder *cost;
 @property(readonly) id<SyncProtocol> protocol;
 @property(readonly) double percentComplete;
-
+@property(readonly) SyncLogicController *syncLogic;
 
 - (id)initWithXMLDocument:(NSXMLDocument *)xmlDoc;
 - (id)initWithXMLFile:(NSString *)filename;

@@ -30,11 +30,8 @@
 @interface TestSyncAdapter : NSObject <SyncProtocol> {
 
 }
--  (id)initWithUser:(User *)u
- withServerDatabase:(ServerDatabase *)sd
- withTimeController:(TimeController *)tc
-   withCostRecorder:(CostRecorder *)cr
-  andWithProperties:(NSXMLElement *)syncProtocolElement;
+-  (id)initWithController:(SyncLogicController *)controller
+        andWithProperties:(NSXMLElement *)syncProtocolElement;
 
 - (void)activateAlarm:(int)time;
 - (void)activateTick:(int)time;

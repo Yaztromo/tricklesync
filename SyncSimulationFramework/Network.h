@@ -23,23 +23,30 @@
 
 
 #import <Cocoa/Cocoa.h>
+#import "Record.h"
 
 // A class that represents a network object.
 @interface Network : NSObject {
    NSString *networkName;
    double costPerByte;     // Expressed in cents per byte
    double transferRate;    // Expressed in bytes per second
+   double probabilityOfLostConnection;
 }
 @property(readonly) NSString *networkName;
 @property(readonly) double costPerByte;
 @property(readonly) double transferRate;
+@property(readonly) double probabilityOfLostConnection;
 
 - (id)initWithName:(NSString *)name
            andCost:(double)cost
-   andTransferRate:(double)rate;
+   andTransferRate:(double)rate
+andProbabilityOfLostConnection:(double)prob;
 
-- (int)costToTransfer:(int)bytes;
-- (int)timeToTransfer:(int)bytes;
+- (double)costToTransfer:(int)bytes;
+- (double)timeToTransfer:(int)bytes;
+- (double)costToTransferRecord:(Record *)r;
+- (double)timeToTransferRecord:(Record *)r;
+
 - (NSString *)description;
 
 @end

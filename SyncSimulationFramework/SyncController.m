@@ -32,6 +32,8 @@
 @synthesize cost;
 @synthesize protocol;
 @synthesize percentComplete;
+@synthesize syncLogic;
+
 
 - (id)initWithXMLDocument:(NSXMLDocument *)xmlDoc {
    NSArray *arr, *temp;
@@ -65,9 +67,10 @@
    for(NSXMLElement *elem in arr) {
       [networks setObject: [[Network alloc] initWithName:[[elem attributeForName:@"name"] stringValue] 
                                                  andCost:[[[elem attributeForName:@"cost"] stringValue] doubleValue]
-                                         andTransferRate:[[[elem attributeForName:@"xferrate"] stringValue] doubleValue]]
+                                         andTransferRate:[[[elem attributeForName:@"xferrate"] stringValue] doubleValue]
+                          andProbabilityOfLostConnection:[[[elem attributeForName:@"expecteddisocnnectsperhour"] stringValue] doubleValue]/3600.0]
                    forKey: [[elem attributeForName:@"name"] stringValue]];
-      NSLog(@"   - Got network %@ with cost %@ and transfer rate of %@", [[elem attributeForName:@"name"] stringValue], [[elem attributeForName:@"cost"] stringValue], [[elem attributeForName:@"xferrate"] stringValue]);
+      NSLog(@"   - Got network %@ with cost %@ and transfer rate of %@, and P(lostConnection) %@", [[elem attributeForName:@"name"] stringValue], [[elem attributeForName:@"cost"] stringValue], [[elem attributeForName:@"xferrate"] stringValue], [elem attributeForName:@"expecteddisocnnectsperhour"]);
    } // end-for
    
    // Find the 'locations' element, and read each 'location' element entry
@@ -159,13 +162,15 @@
       NSLog(@"We were unable to find the sync protocol with class name %@!", protocolName);
       return nil;
    } // end-if   
-   
-   protocol = [[protocolClass alloc] initWithUser:user
-                               withServerDatabase:sdb
-                               withTimeController:timer
-                                 withCostRecorder:cost
-                                andWithProperties:[arr objectAtIndex:0]];   
 
+   syncLogic = [[SyncLogicController alloc] initWithUser:user
+                                      withServerDatabase:sdb
+                                      withTimeController:timer
+                                        withCostRecorder:cost];
+   
+   protocol = [[protocolClass alloc] initWithController:syncLogic
+                                      andWithProperties:[arr objectAtIndex:0]];
+      
    if(protocol==nil) {
       NSLog(@"We were unable to instantiate the specified sync protocol!");
       return nil;

@@ -42,4 +42,6 @@ usingDistribution:(GaussianGenerator *)dist;
 
 - (void)updateRecord;
 
+- (void)updateRecordToRevision:(int)ver;
+
 @end

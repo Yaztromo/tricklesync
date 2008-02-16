@@ -59,4 +59,8 @@ usingDistribution:(GaussianGenerator *)dist {
    return [[Record allocWithZone:zone] initWithID:recordID withSize:recordSizeInBytes withVersion:recordVersion];
 } // end-method
 
+- (void)updateRecordToRevision:(int)ver {
+   recordVersion = ver;
+} // end-method
+
 @end

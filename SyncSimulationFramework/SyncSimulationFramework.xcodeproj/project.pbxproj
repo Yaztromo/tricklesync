@@ -52,6 +52,8 @@
 		8B85504B0D0B94EA000F949A /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550430D0B908E000F949A /* Record.m */; };
 		8B8550630D0BABAC000F949A /* GaussianGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8550610D0BABAC000F949A /* GaussianGenerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8550640D0BABAC000F949A /* GaussianGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550620D0BABAC000F949A /* GaussianGenerator.m */; };
+		8BD22F2D0D677CAE00BE46C7 /* SyncLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BD22F2B0D677CAD00BE46C7 /* SyncLogicController.h */; };
+		8BD22F2E0D677CAE00BE46C7 /* SyncLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD22F2C0D677CAE00BE46C7 /* SyncLogicController.m */; };
 		8BD4AC350D4514B50053A40F /* TimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4AC340D4514B50053A40F /* TimeController.m */; };
 		8BD4AC360D4514B50053A40F /* TimeController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BD4AC330D4514B50053A40F /* TimeController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8BD4AC370D4514B50053A40F /* TimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4AC340D4514B50053A40F /* TimeController.m */; };
@@ -110,6 +112,8 @@
 		8B8550B30D0BC0A9000F949A /* DistributionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistributionsTest.m; sourceTree = "<group>"; };
 		8B8551640D0CD958000F949A /* DatabaseTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseTests.h; sourceTree = "<group>"; };
 		8B8551650D0CD958000F949A /* DatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTests.m; sourceTree = "<group>"; };
+		8BD22F2B0D677CAD00BE46C7 /* SyncLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncLogicController.h; sourceTree = "<group>"; };
+		8BD22F2C0D677CAE00BE46C7 /* SyncLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncLogicController.m; sourceTree = "<group>"; };
 		8BD4AC330D4514B50053A40F /* TimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeController.h; sourceTree = "<group>"; };
 		8BD4AC340D4514B50053A40F /* TimeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeController.m; sourceTree = "<group>"; };
 		8BEF58AF0D0E8CE10023C0ED /* ProbabilityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProbabilityController.h; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				8BD4AC340D4514B50053A40F /* TimeController.m */,
 				8B0BE3650D4EA86F00EA81A2 /* SyncSimulationFramework.h */,
 				8B0BE3670D4EA94F00EA81A2 /* SyncProtocol.h */,
+				8BD22F2B0D677CAD00BE46C7 /* SyncLogicController.h */,
+				8BD22F2C0D677CAE00BE46C7 /* SyncLogicController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -299,6 +305,7 @@
 				8B0BE3680D4EA94F00EA81A2 /* SyncProtocol.h in Headers */,
 				8B3A156E0D57D60A0009380A /* SyncController.h in Headers */,
 				8B3DA6130D603E3100D58E8A /* SimulationCallbackProtocol.h in Headers */,
+				8BD22F2D0D677CAE00BE46C7 /* SyncLogicController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +451,7 @@
 				8B6041B00D43182300927ECA /* MobileDatabase.m in Sources */,
 				8BD4AC370D4514B50053A40F /* TimeController.m in Sources */,
 				8B3A156F0D57D60A0009380A /* SyncController.m in Sources */,
+				8BD22F2E0D677CAE00BE46C7 /* SyncLogicController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

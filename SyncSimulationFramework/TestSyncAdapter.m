@@ -25,11 +25,8 @@
 
 
 @implementation TestSyncAdapter
--  (id)initWithUser:(User *)u
- withServerDatabase:(ServerDatabase *)sd
- withTimeController:(TimeController *)tc
-   withCostRecorder:(CostRecorder *)cr
-  andWithProperties:(NSXMLElement *)syncProtocolElement {
+-  (id)initWithController:(SyncLogicController *)controller
+        andWithProperties:(NSXMLElement *)syncProtocolElement {
    [super init];
    NSLog(@"Constructed the Test Sync Adapter!");
    return self;

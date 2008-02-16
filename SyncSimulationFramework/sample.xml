@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <etssimulation>
 	<networks>
-		<network name="netname1" cost="1.0" xferrate="1.0"/>
-		<network name="netname2" cost="2.0" xferrate="2.0"/>
-		<network name="netname3" cost="3.0" xferrate="3.0"/>
-		<network name="netname4" cost="4.0" xferrate="4.0"/>
+		<network name="netname1" cost="1.0" xferrate="1.0" expecteddisocnnectsperhour="0.0"/>
+		<network name="netname2" cost="2.0" xferrate="2.0" expecteddisocnnectsperhour="0.0"/>
+		<network name="netname3" cost="3.0" xferrate="3.0" expecteddisocnnectsperhour="0.0"/>
+		<network name="netname4" cost="4.0" xferrate="4.0" expecteddisocnnectsperhour="0.0"/>
 	</networks>
 
 	<locations>

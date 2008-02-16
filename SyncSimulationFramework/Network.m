@@ -28,25 +28,37 @@
 @synthesize networkName;
 @synthesize costPerByte;
 @synthesize transferRate;
+@synthesize probabilityOfLostConnection;
 
 - (id)initWithName:(NSString *)name
            andCost:(double)cost
-   andTransferRate:(double)rate {
-   
+   andTransferRate:(double)rate
+andProbabilityOfLostConnection:(double)prob {
+
    [super init];
    
    networkName = name;
    costPerByte = cost;
    transferRate = rate;
+   probabilityOfLostConnection = prob;
+
    return self;
 } // end-initializer
 
-- (int)costToTransfer:(int)bytes {
-   return (int)(bytes*costPerByte);
+- (double)costToTransfer:(int)bytes {
+   return bytes*costPerByte;
 } // end-method
 
-- (int)timeToTransfer:(int)bytes {
-   return (int)(bytes*transferRate);
+- (double)timeToTransfer:(int)bytes {
+   return bytes*transferRate;
+} // end-method
+
+- (double)costToTransferRecord:(Record *)r {
+   return [self costToTransfer:[r recordSizeInBytes]];
+} // end-method
+
+- (double)timeToTransferRecord:(Record *)r {
+   return [self timeToTransfer:[r recordSizeInBytes]];   
 } // end-method
 
 - (NSString *)description {
