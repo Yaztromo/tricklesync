@@ -29,12 +29,14 @@
 @synthesize realCost;
 @synthesize etherialCost;
 @synthesize etherealCostFactor;
+@synthesize kilobytesTransferred;
 
 - (id)init {
    [super init];
    realCost = 0.0;
    etherialCost = 0.0;
    etherealCostFactor = 1.0;
+   kilobytesTransferred = 0.0;
    return self;
 } // end-initializer
 
@@ -50,11 +52,19 @@
    CostRecorder *ret = [[CostRecorder alloc] init];
    [ret incrementRealCostBy:realCost/days];
    [ret incrementEtherialCostBy:etherialCost/days];
+   [ret incrementDataTransferredBy:kilobytesTransferred/days];
    return ret;
+} // end-method
+
+- (void)incrementDataTransferredBy:(double)value {
+   kilobytesTransferred+=value;
 } // end-method
 
 - (NSString *)description {
    return [NSString stringWithFormat:@"y=%.3fx+%.3f", etherialCost, realCost];
 } // end-method
 
+- (double)getKilobytesTransferred {
+   return kilobytesTransferred;
+} // end-method
 @end

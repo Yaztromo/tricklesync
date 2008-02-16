@@ -29,13 +29,16 @@
    double realCost;
    double etherialCost;
    double etherealCostFactor;
+   double kilobytesTransferred;
 }
 @property(readonly) double realCost;
 @property(readonly) double etherialCost;
 @property double etherealCostFactor;
+@property(readonly) double kilobytesTransferred;
 
 - (id)init;
 - (void)incrementRealCostBy:(double)value;
 - (void)incrementEtherialCostBy:(double)value;
+- (void)incrementDataTransferredBy:(double)value;
 - (CostRecorder *)averageCostOver:(unsigned int)days;
 @end
