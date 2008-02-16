@@ -16,6 +16,8 @@
 
    IBOutlet NSTextField *step3ProgressDescription;
    IBOutlet NSTextField *resultBox;
+   IBOutlet NSTextField *dataResultDescription;
+   IBOutlet NSTextField *dataResultBox;
 
    IBOutlet NSTextField *daysField;
    IBOutlet NSStepper *stepper;

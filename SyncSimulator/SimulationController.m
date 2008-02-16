@@ -46,6 +46,8 @@
 } // end-method
 
 - (IBAction)startSimulation:(id)sender {
+   CostRecorder *cost;
+
    // Disable Step 2
    [step2Header setTextColor:disabledGrey];
    [step2Description setTextColor:disabledGrey];   
@@ -67,12 +69,16 @@
    [step4Header setTextColor:enabledBlack];
    [step4Description setTextColor:enabledBlack];
    [resultBox setTextColor:enabledBlack];
+   [dataResultDescription setTextColor:enabledBlack];
+   [dataResultBox setTextColor:enabledBlack];
    
    // Set the results
    [resultBox setEnabled:TRUE];
    
    NSBeep();
-   [resultBox setStringValue:[[[syncController cost] averageCostOver:[daysField intValue]] description]];
+   cost = [[syncController cost] averageCostOver:[daysField intValue]];
+   [resultBox setStringValue:[cost description]];
+   [dataResultBox setStringValue:[NSString stringWithFormat:@"%0.3f KB", [cost kilobytesTransferred]]];
 } // end-method
 
 - (void)setPercentCompleted:(double)value {
