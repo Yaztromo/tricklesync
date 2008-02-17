@@ -52,7 +52,7 @@
 		8B85504B0D0B94EA000F949A /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550430D0B908E000F949A /* Record.m */; };
 		8B8550630D0BABAC000F949A /* GaussianGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8550610D0BABAC000F949A /* GaussianGenerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8550640D0BABAC000F949A /* GaussianGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550620D0BABAC000F949A /* GaussianGenerator.m */; };
-		8BD22F2D0D677CAE00BE46C7 /* SyncLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BD22F2B0D677CAD00BE46C7 /* SyncLogicController.h */; };
+		8BD22F2D0D677CAE00BE46C7 /* SyncLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BD22F2B0D677CAD00BE46C7 /* SyncLogicController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8BD22F2E0D677CAE00BE46C7 /* SyncLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD22F2C0D677CAE00BE46C7 /* SyncLogicController.m */; };
 		8BD4AC350D4514B50053A40F /* TimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4AC340D4514B50053A40F /* TimeController.m */; };
 		8BD4AC360D4514B50053A40F /* TimeController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BD4AC330D4514B50053A40F /* TimeController.h */; settings = {ATTRIBUTES = (Public, ); }; };
