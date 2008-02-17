@@ -116,6 +116,12 @@
 			8BD22F060D66AF5C00BE46C7 /* PBXTextBookmark */ = 8BD22F060D66AF5C00BE46C7 /* PBXTextBookmark */;
 			8BD22F1E0D66AF8100BE46C7 /* PBXTextBookmark */ = 8BD22F1E0D66AF8100BE46C7 /* PBXTextBookmark */;
 			8BD22F200D66AFD500BE46C7 /* PBXTextBookmark */ = 8BD22F200D66AFD500BE46C7 /* PBXTextBookmark */;
+			8BD22F290D66D49C00BE46C7 /* PBXTextBookmark */ = 8BD22F290D66D49C00BE46C7 /* PBXTextBookmark */;
+			8BD22F6F0D67A2A200BE46C7 /* PBXTextBookmark */ = 8BD22F6F0D67A2A200BE46C7 /* PBXTextBookmark */;
+			8BD22F700D67A2A200BE46C7 /* PBXTextBookmark */ = 8BD22F700D67A2A200BE46C7 /* PBXTextBookmark */;
+			8BD22F720D67A2A200BE46C7 /* PBXTextBookmark */ = 8BD22F720D67A2A200BE46C7 /* PBXTextBookmark */;
+			8BD22F730D67A2A200BE46C7 /* PBXTextBookmark */ = 8BD22F730D67A2A200BE46C7 /* PBXTextBookmark */;
+			8BD22F770D67A2BA00BE46C7 /* PBXTextBookmark */ = 8BD22F770D67A2BA00BE46C7 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 8B6C34CE0D5AB794003A7D8E /* Source Control */;
 		userBuildSettings = {
@@ -138,8 +144,8 @@
 	8B3DA4F10D6027F100D58E8A /* SimulationController.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {893, 1260}}";
-			sepNavSelRange = "{2681, 0}";
-			sepNavVisRange = "{1803, 1072}";
+			sepNavSelRange = "{2421, 0}";
+			sepNavVisRange = "{1660, 1193}";
 			sepNavWindowFrame = "{{38, 174}, {800, 578}}";
 		};
 	};
@@ -435,6 +441,81 @@
 		rType = 0;
 		vrLen = 1072;
 		vrLoc = 1803;
+	};
+	8BD22F290D66D49C00BE46C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B3DA4F10D6027F100D58E8A /* SimulationController.m */;
+		name = "SimulationController.m: 74";
+		rLen = 0;
+		rLoc = 2421;
+		rType = 0;
+		vrLen = 1072;
+		vrLoc = 1803;
+	};
+	8BD22F6F0D67A2A200BE46C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B3DA4F10D6027F100D58E8A /* SimulationController.m */;
+		name = "SimulationController.m: 81";
+		rLen = 0;
+		rLoc = 2695;
+		rType = 0;
+		vrLen = 457;
+		vrLoc = 2418;
+	};
+	8BD22F700D67A2A200BE46C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "error: SyncLogicController.h: No such file or directory";
+		fRef = 8BD22F710D67A2A200BE46C7 /* SyncProtocol.h */;
+		rLen = 1;
+		rLoc = 29;
+		rType = 1;
+	};
+	8BD22F710D67A2A200BE46C7 /* SyncProtocol.h */ = {
+		isa = PBXFileReference;
+		name = SyncProtocol.h;
+		path = "/Users/yaztromo/Development/Expedient Trickle Sync/trunk/SyncSimulator/../SyncSimulationFramework/build/Release/SyncSimulationFramework.framework/Headers/SyncProtocol.h";
+		sourceTree = "<absolute>";
+	};
+	8BD22F720D67A2A200BE46C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B3DA4F10D6027F100D58E8A /* SimulationController.m */;
+		name = "SimulationController.m: 81";
+		rLen = 0;
+		rLoc = 2695;
+		rType = 0;
+		vrLen = 457;
+		vrLoc = 2418;
+	};
+	8BD22F730D67A2A200BE46C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8BD22F740D67A2A200BE46C7 /* SyncProtocol.h */;
+		name = "SyncProtocol.h: 30";
+		rLen = 32;
+		rLoc = 1315;
+		rType = 0;
+		vrLen = 506;
+		vrLoc = 1052;
+	};
+	8BD22F740D67A2A200BE46C7 /* SyncProtocol.h */ = {
+		isa = PBXFileReference;
+		name = SyncProtocol.h;
+		path = "/Users/yaztromo/Development/Expedient Trickle Sync/trunk/SyncSimulator/../SyncSimulationFramework/build/Release/SyncSimulationFramework.framework/Headers/SyncProtocol.h";
+		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1045, 588}}";
+			sepNavSelRange = "{1315, 32}";
+			sepNavVisRange = "{1052, 506}";
+		};
+	};
+	8BD22F770D67A2BA00BE46C7 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B3DA4F10D6027F100D58E8A /* SimulationController.m */;
+		name = "SimulationController.m: 74";
+		rLen = 0;
+		rLoc = 2421;
+		rType = 0;
+		vrLen = 1193;
+		vrLoc = 1660;
 	};
 	8D1107260486CEB800E47090 /* SyncSimulator */ = {
 		activeExec = 0;
