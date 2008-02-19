@@ -143,9 +143,9 @@
 	};
 	8B3DA4F10D6027F100D58E8A /* SimulationController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {893, 1260}}";
-			sepNavSelRange = "{2421, 0}";
-			sepNavVisRange = "{1660, 1193}";
+			sepNavIntBoundsRect = "{{0, 0}, {893, 1316}}";
+			sepNavSelRange = "{2443, 0}";
+			sepNavVisRange = "{0, 968}";
 			sepNavWindowFrame = "{{38, 174}, {800, 578}}";
 		};
 	};
