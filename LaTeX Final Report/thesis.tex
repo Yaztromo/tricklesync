@@ -1,0 +1,210 @@
+%\documentclass[11pt,draft]{uvic}
+%\documentclass[12pt,draft]{uvic}
+%\documentclass[12pt]{uvic}
+\documentclass[12pt]{uvic}
+%%% thesis.tex USING uvic.cls
+%%%
+%%% Options: draft => eps files shown as box with filename inside
+%%%          10, 11, or 12pt => base font
+%%%
+%%% Michael Roth, 2001
+
+%%% algorithm float
+\usepackage{float}
+\usepackage{subfloat}
+\newfloat{algo}{ht}{loa}[section]
+\floatname{algo}{Algorithm}
+\usepackage{color}
+
+%%% FOR SPACING (choose one)
+\usepackage{setspace}
+%\onehalfspacing
+%\singlespacing
+\doublespacing
+
+%%% FONTS
+
+\usepackage{type1cm}
+\usepackage{courier}
+\usepackage{mathrsfs}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+%%% FOR \citet and \citep
+
+\usepackage{natbib}
+%\usepackage{agu04}
+\bibpunct{(}{)}{,}{a}{}{,} 
+
+%%% FOR EXTENDED MATH
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+%%% FOR MODIFYING CHAPTER, SECTION STYLES
+
+\usepackage{soul}
+%\usepackage[nobottomtitles,compact]{titlesec}
+%\usepackage[bf,small]{titlesec}
+\usepackage[small,compact,raggedright]{titlesec}
+%\usepackage{titlesec}
+
+% \titleformat{\chapter}[display]
+% {\normalfont\Large\bfseries}{{\thechapter}}{1em}{}
+% \titlespacing*{\chapter}{0pt}{*1}{*2}
+% %
+% \titleformat{\section}
+% {\normalfont\large\bfseries}{\thesection}{1em}{}
+% %
+% \titleformat{\paragraph}[runin]
+% {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+% %
+% \titleformat{\subparagraph}[runin]
+% {\normalfont\normalsize}{\thesubparagraph}{1em}{\ul}
+
+% |\titleformat{\section}|\\
+% |    {\LARGE\titlefont}|\\
+% |    {\thesection}|\\
+% |    {.66em}|\\
+% |    {\ul}|\\
+% \end{example}
+
+%%% FOR MODIFYING CAPTION STYLES
+
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[font=small,labelfont=bf]{caption}
+% \renewcommand{\captionlabelfont}{\normalfont\bfseries}
+% \renewcommand{\captionfont}{\normalfont}
+% \setlength{\captionmargin}{12pt}
+
+%%% YOUR OWN DEFINTIONS AND NEW COMMANDS (defs.sty)
+
+\usepackage{defs}
+
+%%% FOR LOADING IN TEXT FILES (APPENDICES)
+%\usepackage{moreverb}
+
+\usepackage{cancel}
+
+%
+% \makeatletter
+% \def\input@path{{chapter1}{chapter2}}
+% \makeatother
+\makeatletter
+\def\input@path{{data/}}
+\graphicspath{{images/}}
+\makeatother
+
+%%% TITLE, AUTHOR, etc.
+
+% \title{Fekete and Lebesgue Triangular Spectral Elements and Lagrangian
+% Voronoi Diagrams}
+\title{Optimizing Synchronization Cost for Mobile Devices using Expedient Trickle Sync}
+\renewcommand{\titlestyle}{\large\bfseries}
+\thesistype{Project}
+\author{Brad J. BARCLAY}
+\renewcommand{\authorstyle}{\large\bfseries}
+\prevdegree{B.Sc., Brock University, 1999}
+\degree{Master of Science}
+\renewcommand{\degreestyle}{\large\bfseries}
+\department{Computer Science Department}
+\supervisor{Dr.\ Jens.\ WEBER}
+\committeemember{Dr.\ Jens.\ WEBER, Supervisor %
+(Computer Science Department)}
+\committeemember{Dr.\ N.\ Obody, Member % 
+(School of Stuff)}
+\committeemember{Dr.\ W.\ Ho, Member % 
+(School of Stuff)}
+% \committeemember{Dr.\ M.\ Artian, Outside Member %
+% (Department of Far Far Away)}
+% in case you need two or more lines for that external, use tabular ...
+%\committeemember{Dr. ?.\ ???????, External Examiner %
+%(Institute of ?????????)}
+% \committeemember{\begin{tabular}{c} 
+% Dr.\ M. Foreman, External Examiner\\
+% (Institute of Stuff Sciences, University of ???)
+% \end{tabular}}
+\copyrightyear{2008}
+\copyrightpagedate{\today}
+
+%%%
+
+\pagestyle{plain}
+
+%%%
+
+%%%
+\begin{document}
+
+%%% Uncomment the following to see a graphic of the page layout
+%\layout
+
+%%% GENERATE TITLEPAGE
+
+\pagenumbering{roman}
+\maketitlepage
+\makesupervisorycommittee
+
+%%% ABSTRACT
+
+\include{abstract}
+
+%%%
+
+%%% GENERATE TABLES AND LISTS
+
+\maketableofcontents
+\makelistoftables
+\makelistoffigures
+%\makelistofalgorithms
+%\include{symbols}
+
+%%% ACKNOWLEDGEMENTS
+
+\include{ack}
+
+%%% LOAD CHAPTER FILES
+
+\afterpage{\pagenumbering{arabic}}
+%%%\include{intro}
+\include{chap1}
+\include{chap2}
+\include{chap3}
+\include{chap4}
+%\include{chap5}
+%\include{chap6}
+\include{concl}
+%%%\input{notes.txt}
+
+% etc.
+
+%%% GENERATE BIBLIOGRAPHY
+%%% 1st argument is .bst file (bibliography format)
+%%% Note:  you may want to use the command "latex makebst" to
+%%% generate your own special bibliography format
+%%% 2nd argument is .bib file (bibliography database)
+%%% Note:  you may have multiple .bib files {file1,file2,etc}
+
+%\makebibliography{plainnat}{thesis}
+\makebibliography{IEEEbib}{thesis}
+
+%%% LOAD APPENDICES
+
+\appendix
+\include{appendix_a}
+%\include{app_lebesgue}
+%\include{rand_fekete}
+%\include{gradhess}
+
+% etc.
+
+%%% GENERATE BACK MATTER
+
+%\include{vita}
+%\makewithholdpage{\the\withholdpagedate}
+\makecopyrightpage{\the\copyrightpagedate}
+
+\end{document}
+
+%%% END
