@@ -79,7 +79,15 @@
 % \setlength{\captionmargin}{12pt}
 
 %%% USE URL FORMATTING PACKAGE
-\usepackage{url}%% Define a new 'leo' style for the package that will use a smaller font.\makeatletter\def\url@leostyle{%  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}\makeatother%% Now actually use the newly defined style.\urlstyle{leostyle}
+\usepackage{url}
+
+%% Define a new 'leo' style for the package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leostyle}
 
 %%% YOUR OWN DEFINTIONS AND NEW COMMANDS (defs.sty)
 
@@ -115,10 +123,10 @@
 \supervisor{Dr.\ Jens.\ WEBER}
 \committeemember{Dr.\ Jens.\ WEBER, Supervisor %
 (Computer Science Department)}
-\committeemember{Dr.\ N.\ Obody, Member % 
-(School of Stuff)}
-\committeemember{Dr.\ W.\ Ho, Member % 
-(School of Stuff)}
+\committeemember{Dr.\ Bill.\ WADGE, Member % 
+(Computer Science Department)}
+\committeemember{Dr.\ Kui.\ WU, Member % 
+(Computer Science Department)}
 % \committeemember{Dr.\ M.\ Artian, Outside Member %
 % (Department of Far Far Away)}
 % in case you need two or more lines for that external, use tabular ...
@@ -175,7 +183,7 @@
 \include{chap2}
 \include{chap3}
 \include{chap4}
-%\include{chap5}
+\include{chap5}
 %\include{chap6}
 \include{concl}
 %%%\input{notes.txt}
