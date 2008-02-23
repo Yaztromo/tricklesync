@@ -23,17 +23,24 @@
 
 
 #import "LocationVector.h"
+#import "ProbabilityController.h"
 
 
 @implementation LocationVector
 @synthesize entryTime;
 @synthesize location;
+@synthesize syncRequestArrivalRate;
+@synthesize mobileDatabaseModificationRate;
 
 - (id)initEntryTime:(int)time
-        forLocation:(Location *)loc {
+        forLocation:(Location *)loc 
+andExpectedSyncsPerHour:(int)syncRate 
+andDatabaseModificationsPerHour:(int)modRate {
    [super init];
    entryTime = time;
    location = loc;
+   syncRequestArrivalRate = [ProbabilityController bernoulliProbabilityPerSecondFromEventsPerHour:syncRate];
+   mobileDatabaseModificationRate = [ProbabilityController bernoulliProbabilityPerSecondFromEventsPerHour:modRate];
    return self;
 } // end-method
 

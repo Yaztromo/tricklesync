@@ -28,6 +28,7 @@
 #import "Location.h"
 #import "CostRecorder.h"
 #import "TimerProtocols.h"
+#import "LocationVector.h"
 
 @class MobileDatabase;
 
@@ -45,7 +46,7 @@
            withCostRecorder:(CostRecorder *)cr
       againstServerDatabase:(Database *)sdb;
 
-- (Location *)getCurrentLocation;
+- (LocationVector *)getCurrentLocation;
 
 // This method will return TRUE if the location was updated, false otherwise.
 - (BOOL)setLocationWithTime:(unsigned int)time;

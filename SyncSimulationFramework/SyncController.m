@@ -54,6 +54,8 @@
       return nil;
    } // end-if
    
+   // ........................................................................................
+   
    NSLog(@"Finding the networks:");
    
    // Find the 'networks' element, and read each 'network' element entry
@@ -72,6 +74,8 @@
                    forKey: [[elem attributeForName:@"name"] stringValue]];
       NSLog(@"   - Got network %@ with cost %@ and transfer rate of %@, and P(lostConnection) %@", [[elem attributeForName:@"name"] stringValue], [[elem attributeForName:@"cost"] stringValue], [[elem attributeForName:@"xferrate"] stringValue], [elem attributeForName:@"expecteddisocnnectsperhour"]);
    } // end-for
+   
+   // ........................................................................................
    
    // Find the 'locations' element, and read each 'location' element entry
    
@@ -94,11 +98,11 @@
       
       NSLog(@"   - Got location with name %@ and networks %@ and expected syncs %@ and modrate %@", [[elem attributeForName:@"name"] stringValue], nets, [[elem attributeForName:@"expectedsyncs"] stringValue], [[elem attributeForName:@"expectedaccesses"] stringValue]);
       [locations setObject: [[Location alloc] initWithName:[[elem attributeForName:@"name"] stringValue]
-                                               andNetworks:nets 
-                                   andExpectedSyncsPerHour:[[[elem attributeForName:@"expectedsyncs"] stringValue] intValue]
-                           andDatabaseModificationsPerHour:[[[elem attributeForName:@"expectedaccesses"] stringValue] intValue]]
+                                               andNetworks:nets]
                     forKey:[[elem attributeForName:@"name"] stringValue]];
    } // end-for
+   
+   // ........................................................................................
    
    // Find the 'userschedule' element and read each 'entry' element entry
    NSLog(@"Finding the location change events:");
@@ -112,8 +116,13 @@
    for(NSXMLElement *elem in arr) {
       NSLog(@"   - Found event at time %d for location %@", [[[elem attributeForName:@"time"] stringValue] intValue], [[elem attributeForName:@"locname"] stringValue]);
       [locationVects addObject: [[LocationVector alloc] initEntryTime:[[[elem attributeForName:@"time"] stringValue] intValue]
-                                                          forLocation:[locations objectForKey:[[elem attributeForName:@"locname"] stringValue]]]];
+                                                          forLocation:[locations objectForKey:[[elem attributeForName:@"locname"] stringValue]]
+                                              andExpectedSyncsPerHour:[[[elem attributeForName:@"expectedsyncs"] stringValue] intValue]
+                                      andDatabaseModificationsPerHour:[[[elem attributeForName:@"expectedaccesses"] stringValue] intValue]]];
+
        } // end-for
+   
+   // ........................................................................................
    
    // Find the database element
    // 	<database numrecords="1" arrivalrate="1.0" interval="1.0" maxarrivals="1.0"/>
@@ -131,6 +140,8 @@
                                         withInterval:1
                                       andMaxArrivals:[[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] stringValue] intValue]];
    
+   // ........................................................................................
+   
    // Create the cost and user objects
    cost = [[CostRecorder alloc] init];
    user = [[User alloc] initUserWithLocations:locationVects
@@ -139,12 +150,16 @@
                         againstServerDatabase:sdb];
    timer = [[TimeController alloc] init];
 
+   // ........................................................................................
+   
    // Initialize the tick listeners
    [timer addTickListener:[user handheldDB]];
    [timer addTickListener:sdb];
    for(LocationVector *locV in locationVects) {
       [timer addAlarmListener:user withFireTime:[locV entryTime]];
    } // end-for
+   
+   // ........................................................................................
    
    // Find the syncprotocol element
    NSLog(@"Finding the sync protocol:");
@@ -163,6 +178,8 @@
       return nil;
    } // end-if   
 
+   // ........................................................................................
+   
    syncLogic = [[SyncLogicController alloc] initWithUser:user
                                       withServerDatabase:sdb
                                       withTimeController:timer

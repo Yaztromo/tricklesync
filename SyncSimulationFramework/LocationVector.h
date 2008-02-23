@@ -33,12 +33,18 @@
 @interface LocationVector : NSObject {
    unsigned int entryTime;    // The time we enter this location, expressed in seconds from 0000.
    Location *location;        // The location we enter at the specified time.
+   double syncRequestArrivalRate;         // as expected number of synchronizations per second
+   double mobileDatabaseModificationRate; // as probability of record modification per second
 }
 @property(readonly) unsigned int entryTime;
 @property(readonly) Location *location;
+@property(readonly) double syncRequestArrivalRate;
+@property(readonly) double mobileDatabaseModificationRate;
 
 - (id)initEntryTime:(int)time
-        forLocation:(Location *)loc;
+        forLocation:(Location *)loc
+andExpectedSyncsPerHour:(int)syncRate
+andDatabaseModificationsPerHour:(int)modRate;
 
 - (BOOL)doEntryForTime:(int)time;
 

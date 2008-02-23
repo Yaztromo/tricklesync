@@ -41,8 +41,8 @@
    return self;
 } // end-constructor
 
-- (Location *)getCurrentLocation {
-   return [(LocationVector *)[locations objectAtIndex:currentLocation] location];
+- (LocationVector *)getCurrentLocation {
+   return (LocationVector *)[locations objectAtIndex:currentLocation];
 } // end-method
 
 - (BOOL)setLocationWithTime:(unsigned int)time {

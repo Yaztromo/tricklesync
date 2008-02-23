@@ -28,18 +28,12 @@
 @implementation Location
 @synthesize locationName;
 @synthesize networks;
-@synthesize syncRequestArrivalRate;
-@synthesize mobileDatabaseModificationRate;
 
 - (id)initWithName:(NSString *)name
-       andNetworks:(NSArray *)nets
-   andExpectedSyncsPerHour:(int)syncRate 
-andDatabaseModificationsPerHour:(int)modRate {
+       andNetworks:(NSArray *)nets {
    [super init];
    locationName = name;
    networks = [NSArray arrayWithArray:nets];
-   syncRequestArrivalRate = [ProbabilityController bernoulliProbabilityPerSecondFromEventsPerHour:syncRate];
-   mobileDatabaseModificationRate = [ProbabilityController bernoulliProbabilityPerSecondFromEventsPerHour:modRate];
    return self;
 } // end-initializer
 

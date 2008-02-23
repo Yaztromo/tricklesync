@@ -28,18 +28,12 @@
 @interface Location : NSObject {
    NSString *locationName;
    NSArray *networks;
-   double syncRequestArrivalRate;         // as expected number of synchronizations per second
-   double mobileDatabaseModificationRate; // as probability of record modification per second
 }
 @property(readonly) NSString *locationName;
 @property(readonly) NSArray *networks;
-@property(readonly) double syncRequestArrivalRate;
-@property(readonly) double mobileDatabaseModificationRate;
 
 - (id)initWithName:(NSString *)name
-       andNetworks:(NSArray *)nets
-   andExpectedSyncsPerHour:(int)syncRate
-   andDatabaseModificationsPerHour:(int)modRate;
+       andNetworks:(NSArray *)nets;
 
 - (Network *)getLeastExpensiveNetwork;
 - (Network *)getFastestNetwork;
