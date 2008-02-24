@@ -8,6 +8,8 @@ The purpose of the simulation environment is to provide a consistent mechanism f
 
 In this chapter, we'll explore the environmental elements being simulated, the mathematical models used to drive the simulation, how the simulation logic is controlled, the protocol used to communicate with synchronization adaptors, along with a discussion of the functionality of the three synchronization protocols developed to compare the ETS protocols effectiveness against.
 
+The simulation itself runs at a resolution of one-second intervals.  We define a \emph{tick} to be a simulated one second interval within the simulation.
+
 \section{Simulated Elements}
 
 The goal of the simulation environment is to evaluate the overall cost of a synchronization algorithm by following a model user through a series of days as they synchronize their wireless mobile device through a programmed series of locations.  Within each location there may be a variety of network types available, each with their own cost structure and data transfer rates.  These elements will each be presented in this section.
@@ -16,7 +18,7 @@ The goal of the simulation environment is to evaluate the overall cost of a sync
 
 As we are evaluating the synchronization costs related to wireless mobile devices, we require some form of network transport for the transmission of synchronization data and metadata within our simulation environment.  These are expressed as a series of network objects, one per network which our sample user may intersect during the simulated day.
 
-The networks each have three primary attributes inside the simulation:  their transfer rate expressed as bytes per second, the cost associated with each byte transferred, and the probability per second that the connection can be lost.  Each of these elements is an important part of the simulation execution, as they permit the simulation to determine the duration of a series of network operations, their related monetary cost, and at which probability a connection may be lost during a synchronization session.
+The networks each have three primary attributes inside the simulation:  their transfer rate expressed as bytes per second ($N_{rate}$), the cost associated with each byte transferred ($N_{cost}$), and the probability per second that the connection can be lost ($P_{connection lost}$).  Each of these elements is an important part of the simulation execution, as they permit the simulation to determine the duration of a series of network operations, their related monetary cost, and at which probability a connection may be lost during a synchronization session.
 
 \subsection{Locations}
 
@@ -26,29 +28,39 @@ A location is a specific geo-physical region that the user may be within during 
 
 Locales build upon the physical locations by layering atop them temporal information; thus a locale is a location along with a time in which that location is entered.  This is used to permit the simulation to change from one location to the next during the duration of the simulated day.
 
-Along with the time in which a location is entered, the locale also provides information on both the frequency of synchronization, and the number of expected mobile database accesses.  These are described internally as the expected number of synchronizations per second, and the expected number of accesses per second.  Note that we typically do not expect a user to make multiple synchronization requests nor to have multiple database accesses within a a single second; as such these values are expected to be represented by small positive fractions.
+Along with the time in which a location is entered ($L_{entry}$), the locale also provides information on both the frequency of synchronization ($L_{sync frequency}$), and the number of expected mobile database accesses ($L_{expected accesses}$).  These are described internally as the expected number of synchronizations per second, and the expected number of accesses per second.  Note that we typically do not expect a user to make multiple synchronization requests nor to have multiple database accesses within a a single second; as such these values are expected to be represented by small positive fractions.
 
-Through the use of locale objects, we can permit the user to enter the same physical location at different times of day, with different mobile device usage patterns.  For example, a user who telecommutes from home and who uses their mobile device frequently during the normal work day may have a high expected database accesses value during business hours, but would have an exceedingly low expected database accesses at night while asleep.  In such a case the location is static, but the users usage patterns change.  Thus, the relationship between locations and locales is 1:N.
+Through the use of locale objects, we can permit the user to enter the same physical location at different times of day, with different mobile device usage patterns.  For example, a user who telecommutes from home and who uses their mobile device frequently during the normal work day may have a high expected database accesses value during business hours, but would have an exceedingly low expected database accesses at night while asleep.  In such a case the location is static, but the users usage patterns change.  Thus, the relationship between locations and locales is 1:N.  As the days are simulated from time 00:00:00 until time 23:59:59, the first defined locale is automatically entered at 00:00:00, and the last defined local persists until 23:59:59.
 
 \subsection{Records}
 
-A record is the smallest unit of data exchanged during the synchronization process, and represents a logical unit of compound information.  For the purposes of the simulation, we do not actually model the record or its data, but instead simply maintain a record identification number, size, and revision number.  The identification number is used as a matching mechanism between a record stored in the mobile database and a record stored within the server database.  The size is used for calculating how long it will take to transfer the record, as well as how much its transfer will cost.  Finally, the revision number is used as a mechanism for comparing matching records within the mobile and server databases to determine differences between the records.
+A record is the smallest unit of data exchanged during the synchronization process, and represents a logical unit of compound information.  For the purposes of the simulation, we do not actually model the record or its data, but instead simply maintain a record identification number, size, and revision number.  The identification number ($R_{ID}$) is used as a matching mechanism between a record stored in the mobile database and a record stored within the server database.  The size ($R_{size}$) is used for calculating how long it will take to transfer the record, as well as how much its transfer will cost.  Finally, the revision number ($R_{revision}$) is used as a mechanism for comparing matching records within the mobile and server databases to determine differences between the records.
 
 The revision number is of particular importance, as it is used in two different contexts within the simulation environment.  Firstly, it is used during a mobile database access by the simulated user to assess whether to increment the intangible cost factor which relates to the use of out-of-date information; if the revision number of the mobile database record $M_k$ is less than that of the matching record on the server database $S_k$, the intangible cost factor is incremented by the difference $S_k - M_k$.  Secondly, it is used to provide the synchronization protocol implementation with a list of records requiring synchronization, returning the set of all records with identification number $k$ where $S_k > M_k$.
 
-\subsection{Databases}
+While it is possible for the record size to be specified manually, the record size is typically assigned during the simulations set-up stage randomly based on a Gaussian distribution (\ref{gaussian}).  In this way the records can be generated with varying sizes, with a pre-set mean and variance.
 
+Records also have an implicit probability of access by the user of the mobile device.  The simulation assumes that records are not evenly used, but that instead certain records are accessed more frequently than others.  This is intended to model typical real-world experience with databases.  While this probability is not stored within the record itself, it is based on a records ID number and the total number of records within the database containing it.  This will be discussed further in sub-section \ref{databases}.
 
+\subsection{Databases}\label{databases}
+
+A database is a logical collection of records.  For the sake of the simulation environment, databases are always of a fixed size.  The system maintains two separate simulated databases, one for the server, and one for the mobile device.  Ideally, for the intangible cost of synchronization to be zero, these two databases should be identical at all times.  However, in the typical situation, it is expected that these two databases will in fact differ for the bulk of the simulation run.
+
+The server database $S$ maintains an expected number of modification arrivals per second and a maximum number of simultaneous modification arrivals.  Using a Poisson Process (\ref{poisson}), a series of probabilities are calculated between $0$ and $S_{max arrivals}$ inclusive, using the expected number of modifications.  During every simulated second, a random value is selected and compared against this series of probabilities to determine how many records should be modified during the current simulation time.  Once a number $v$ between $0$ and $S_{max arrivals}$ has been selected based on the calculated probabilities, $v$ records within the database are selected for modification.  These $v$ records are selected at random using a Gaussian distribution (\ref{gaussian}), such that the record with ID $S_{max}/2$ has the highest probability of selection, and the records with ID $0$ and $S_{max}$ have a very low probability of selection, with all other values having a probability falling upon a Gaussian curve.  Once each record to be modified has been identified, its revision number $R_{revision}$ is incremented by one.
+
+The mobile database $M$ handles whether or not the user has viewed a record during each one second interval in the simulation, based upon the expected mobile database accesses value stored in the current locale object.  During every tick, we choose a random number $n$ and compare it to the expected mobile database access rate per second in $L_{expected accesses}$.  If $L_{expected accesses} >= n$, an access has occurred.  We then determine which record has been accessed during this interval in a manner identical to that of how we determine which record to modify in the server database $S$, using a Gaussian distribution.  In this way the most-modfied records on the server are also the most frequently accessed records on the mobile database.  Unlike the server database, however, mobile database accesses are limited to one per tick, and as such form a Bernoulli Process (\ref{bernoulli}).
 
 \subsection{User}
+
+Tying the above simulated elements together is the user object ($U$).  Only a single simulated user exists within a simulation run, and they persist throughout every simulated day.  The user object maintains the list of locales available to the user, and manages the transition between one locale and another during the simulated day.  As such, the user object maintains a 1:N relationship with the locale objects.  The user object also contains the single instance of the mobile database, and as such has a 1:1 relationship with the mobile database object.
 
 \section{Models}
 
 Talk about the mathematical models.
 
-\subsection{Gaussian Distribution}
-\subsection{Bernoulli Process}
-\subsection{Poisson Process}
+\subsection{Gaussian Distribution}\label{gaussian}
+\subsection{Bernoulli Process}\label{bernoulli}
+\subsection{Poisson Process}\label{poisson}
 
 \section{Controllers}
 
