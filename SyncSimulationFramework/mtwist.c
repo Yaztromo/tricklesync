@@ -1,7 +1,7 @@
-#ifndef lint
+/* #ifndef lint
 static char Rcs_Id[] =
     "$Id: mtwist.c,v 1.20 2007/10/26 07:21:06 geoff Exp $";
-#endif
+#endif */
 
 /*
  * C library functions for generating pseudorandom numbers using the
