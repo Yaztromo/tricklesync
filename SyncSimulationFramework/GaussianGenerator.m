@@ -25,13 +25,16 @@
 #import "GaussianGenerator.h"
 #include <stdlib.h>
 #include <math.h>
+#include <mtwist.h>
+
 
 @implementation GaussianGenerator
 - (id)initWithSeed:(unsigned long)seed {
    [super init];
    haveNextNextGaussian = FALSE;
    nextNextGaussian = 0.0;
-   srand48(seed);
+   //srand48(seed);
+   mt_goodseed();
    return self;
 } // end-initializer
 
@@ -40,19 +43,31 @@
 } // end-initilizer
 
 - (double)getNextRandom {
-   return drand48();
+   //return drand48();
+   return mt_ldrand();
 } // end-initializer
 
 - (double)nextGaussian {
-   double v1, v2, s;
+   double v1, v2, s, r1, r2;
 
    if (haveNextNextGaussian) {
       haveNextNextGaussian = FALSE;
       return nextNextGaussian;
    } else {
       do { 
-         v1 = 2 * [self getNextRandom] - 1;   // between -1.0 and 1.0
-         v2 = 2 * [self getNextRandom] - 1;   // between -1.0 and 1.0
+         r1 = [self getNextRandom];
+         r2 = [self getNextRandom];
+         
+         if (r1<-1.0 || r1>1.0) {
+            NSLog(@"The algorithm returned a value for R1 of %.8lf", r1);
+         } // end-if
+         
+         if (r2<-1.0 || r2>1.0) {
+            NSLog(@"The algorithm returned a value for R2 of %.8lf", r2);
+         } // end-if
+         
+         v1 = 2 * r1 - 1;   // between -1.0 and 1.0
+         v2 = 2 * r2 - 1;   // between -1.0 and 1.0
          s = v1 * v1 + v2 * v2;
       } while (s >= 1 || s == 0);
       double multiplier = sqrt(-2 * log(s)/s);

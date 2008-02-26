@@ -24,6 +24,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+#define MT_MACHINE_BITS 64
 
 @interface GaussianGenerator : NSObject {
    BOOL haveNextNextGaussian;

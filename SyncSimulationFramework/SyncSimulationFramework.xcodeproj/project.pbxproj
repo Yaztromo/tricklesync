@@ -31,6 +31,8 @@
 		8B6C10080D591B5B00DC1EF2 /* sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8B6C10070D591B5B00DC1EF2 /* sample.xml */; };
 		8B6C100C0D591DAB00DC1EF2 /* SyncControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C100B0D591DAB00DC1EF2 /* SyncControllerTests.m */; };
 		8B6C33EA0D595BB1003A7D8E /* TestSyncAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */; };
+		8B7B3DB70D7403FD00B486DF /* mtwist.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B7B3DB30D7403FD00B486DF /* mtwist.h */; };
+		8B7B3DB80D7403FD00B486DF /* mtwist.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B3DB40D7403FD00B486DF /* mtwist.c */; };
 		8B7BDF0D0D108A3F008F9F94 /* NetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B85500D0D0B74DD000F949A /* NetworkTest.m */; };
 		8B7BDF0E0D108A3F008F9F94 /* DistributionsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550B30D0BC0A9000F949A /* DistributionsTest.m */; };
 		8B7BDF0F0D108A3F008F9F94 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8551650D0CD958000F949A /* DatabaseTests.m */; };
@@ -91,6 +93,8 @@
 		8B6C100B0D591DAB00DC1EF2 /* SyncControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncControllerTests.m; sourceTree = "<group>"; };
 		8B6C33E80D595BB1003A7D8E /* TestSyncAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSyncAdapter.h; sourceTree = "<group>"; };
 		8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSyncAdapter.m; sourceTree = "<group>"; };
+		8B7B3DB30D7403FD00B486DF /* mtwist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtwist.h; sourceTree = "<group>"; };
+		8B7B3DB40D7403FD00B486DF /* mtwist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mtwist.c; sourceTree = "<group>"; };
 		8B7BDF080D1089D3008F9F94 /* Unit Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unit Test.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7BDF090D1089D3008F9F94 /* Unit Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Unit Test-Info.plist"; sourceTree = "<group>"; };
 		8B854FC30D0B6A0C000F949A /* SyncSimulationFramework.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = SyncSimulationFramework.xcclassmodel; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 		0867D691FE84028FC02AAC07 /* SyncSimulationFramework */ = {
 			isa = PBXGroup;
 			children = (
+				8B7B3DB10D74013100B486DF /* Mersenne Twister */,
 				8B854FE20D0B71FA000F949A /* Tests */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
@@ -262,6 +267,15 @@
 			name = "Test Data";
 			sourceTree = "<group>";
 		};
+		8B7B3DB10D74013100B486DF /* Mersenne Twister */ = {
+			isa = PBXGroup;
+			children = (
+				8B7B3DB30D7403FD00B486DF /* mtwist.h */,
+				8B7B3DB40D7403FD00B486DF /* mtwist.c */,
+			);
+			name = "Mersenne Twister";
+			sourceTree = "<group>";
+		};
 		8B854FE20D0B71FA000F949A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +320,7 @@
 				8B3A156E0D57D60A0009380A /* SyncController.h in Headers */,
 				8B3DA6130D603E3100D58E8A /* SimulationCallbackProtocol.h in Headers */,
 				8BD22F2D0D677CAE00BE46C7 /* SyncLogicController.h in Headers */,
+				8B7B3DB70D7403FD00B486DF /* mtwist.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +467,7 @@
 				8BD4AC370D4514B50053A40F /* TimeController.m in Sources */,
 				8B3A156F0D57D60A0009380A /* SyncController.m in Sources */,
 				8BD22F2E0D677CAE00BE46C7 /* SyncLogicController.m in Sources */,
+				8B7B3DB80D7403FD00B486DF /* mtwist.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,10 +510,7 @@
 		1DEB91AF08733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc64,
-					x86_64,
-				);
+				ARCHS = x86_64;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
