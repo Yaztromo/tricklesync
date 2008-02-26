@@ -8,24 +8,24 @@
 	</networks>
 
 	<locations>
-		<location name="locname1" expectedsyncs="5.0" expectedaccesses="15.0">
+		<location name="locname1">
 			<localnet>netname1</localnet>
 			<localnet>netname4</localnet>
 		</location>
-		<location name="locname2" expectedsyncs="5.0" expectedaccesses="20.0">
+		<location name="locname2">
 			<localnet>netname2</localnet>
 			<localnet>netname3</localnet>
 		</location>
-		<location name="locname3" expectedsyncs="5.0" expectedaccesses="15.0">
+		<location name="locname3">
 			<localnet>netname3</localnet>
 			<localnet>netname4</localnet>
 		</location>
 	</locations>
 
 	<userschedule>
-		<entry locname="locname1" time="0"/>
-		<entry locname="locname2" time="7200"/>
-		<entry locname="locname3" time="15000"/>
+		<entry locname="locname1" time="0" expectedsyncs="5.0" expectedaccesses="15.0"/>
+		<entry locname="locname2" time="7200" expectedsyncs="5.0" expectedaccesses="20.0"/>
+		<entry locname="locname3" time="15000" expectedsyncs="5.0" expectedaccesses="15.0"/>
 	</userschedule>
 
 	<database numrecords="100" arrivalrate="50.0" interval="3600" maxarrivals="5"/>

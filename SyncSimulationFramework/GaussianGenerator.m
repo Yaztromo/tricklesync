@@ -31,7 +31,7 @@
    [super init];
    haveNextNextGaussian = FALSE;
    nextNextGaussian = 0.0;
-   srandom(seed);
+   srand48(seed);
    return self;
 } // end-initializer
 
@@ -40,7 +40,7 @@
 } // end-initilizer
 
 - (double)getNextRandom {
-   return random()/(double)0x7FFFFFFF;
+   return drand48();
 } // end-initializer
 
 - (double)nextGaussian {
