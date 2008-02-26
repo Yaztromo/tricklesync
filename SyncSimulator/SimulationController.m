@@ -52,9 +52,13 @@
    [step2Header setTextColor:disabledGrey];
    [step2Description setTextColor:disabledGrey];   
    [startButton setEnabled:FALSE];
+   [daysField setEnabled:FALSE];
+   [stepper setEnabled:FALSE];
    [step2Header displayIfNeeded];
    [step2Description displayIfNeeded];
    [startButton displayIfNeeded];
+   [daysField displayIfNeeded];
+   [stepper displayIfNeeded];
 
    [progressBar setUsesThreadedAnimation:TRUE];
    
