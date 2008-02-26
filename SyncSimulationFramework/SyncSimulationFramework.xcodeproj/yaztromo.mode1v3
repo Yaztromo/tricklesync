@@ -278,11 +278,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>56</integer>
+									<integer>7</integer>
+									<integer>5</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 429}, {269, 591}}</string>
+							<string>{{0, 11}, {269, 591}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -314,12 +316,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>mtwist.c</string>
+								<string>SyncController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,11 +331,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>mtwist.c</string>
+										<string>SyncController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>8B7B3E500D7413CD00B486DF</string>
+										<string>8B7B3E640D74167A00B486DF</string>
 										<key>history</key>
 										<array>
 											<string>8B6C34200D59CF81003A7D8E</string>
@@ -375,12 +379,12 @@
 											<string>8B031EF30D737CDD00BB85D5</string>
 											<string>8B4808EF0D73C160004297F2</string>
 											<string>8B4808F00D73C160004297F2</string>
-											<string>8B7B3D970D73FC5200B486DF</string>
 											<string>8B7B3DD20D74065F00B486DF</string>
 											<string>8B7B3E280D740D0000B486DF</string>
 											<string>8B7B3E420D74123500B486DF</string>
 											<string>8B7B3E4D0D7413CD00B486DF</string>
-											<string>8B7B3E4E0D7413CD00B486DF</string>
+											<string>8B7B3E610D74167A00B486DF</string>
+											<string>8B7B3E620D74167A00B486DF</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -442,6 +446,7 @@
 											<string>8B7B3E2A0D740D0000B486DF</string>
 											<string>8B7B3E440D74123500B486DF</string>
 											<string>8B7B3E4F0D7413CD00B486DF</string>
+											<string>8B7B3E630D74167A00B486DF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -463,8 +468,6 @@
 							<string>433pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

@@ -96,7 +96,7 @@
          [nets addObject:[networks objectForKey:[elem2 stringValue]]];
       } // end-for
       
-      NSLog(@"   - Got location with name %@ and networks %@ and expected syncs %@ and modrate %@", [[elem attributeForName:@"name"] stringValue], nets, [[elem attributeForName:@"expectedsyncs"] stringValue], [[elem attributeForName:@"expectedaccesses"] stringValue]);
+      NSLog(@"   - Got location with name %@ and networks %@", [[elem attributeForName:@"name"] stringValue], nets);
       [locations setObject: [[Location alloc] initWithName:[[elem attributeForName:@"name"] stringValue]
                                                andNetworks:nets]
                     forKey:[[elem attributeForName:@"name"] stringValue]];
