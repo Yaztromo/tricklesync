@@ -38,3 +38,4 @@
 #import <SyncSimulationFramework/SyncProtocol.h>
 #import <SyncSimulationFramework/SyncController.h>
 #import <SyncSimulationFramework/SimulationCallbackProtocol.h>
+#import <SyncSimulationFramework/Degree2Poly.h>

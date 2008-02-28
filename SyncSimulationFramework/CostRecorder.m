@@ -28,14 +28,12 @@
 @implementation CostRecorder
 @synthesize realCost;
 @synthesize etherialCost;
-@synthesize etherealCostFactor;
 @synthesize kilobytesTransferred;
 
 - (id)init {
    [super init];
    realCost = 0.0;
    etherialCost = 0.0;
-   etherealCostFactor = 1.0;
    kilobytesTransferred = 0.0;
    return self;
 } // end-initializer
@@ -67,4 +65,33 @@
 - (double)getKilobytesTransferred {
    return kilobytesTransferred;
 } // end-method
+
++ (CostRecorder *)subtractWithValueA:(CostRecorder *)opA
+                           andValueB:(CostRecorder *)opB {
+   CostRecorder *ret = [[CostRecorder alloc] init];
+   ret.realCost = opA.realCost - opB.realCost;
+   ret.etherialCost = opA.etherialCost - opB.etherialCost;
+   ret.kilobytesTransferred = opA.kilobytesTransferred - opB.kilobytesTransferred;
+   return ret;
+} // end-static-method
+
+- (id)copyWithZone:(NSZone *)zone {
+   CostRecorder *ret = [[CostRecorder allocWithZone:zone] init];
+   ret.realCost = realCost;
+   ret.etherialCost = etherialCost;
+   ret.kilobytesTransferred = kilobytesTransferred;
+   return ret;
+} // end-method
+
+- (void)add:(CostRecorder *)value {
+   realCost+=value.realCost;
+   etherialCost+=value.etherialCost;
+} // end-method
+
+- (CostRecorder *)subtract:(CostRecorder *)value {
+   realCost-=value.realCost;
+   etherialCost-=value.etherialCost;
+   return self;
+} // end-method
+
 @end

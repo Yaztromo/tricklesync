@@ -33,7 +33,8 @@
 @synthesize protocol;
 @synthesize percentComplete;
 @synthesize syncLogic;
-
+@synthesize mean;
+@synthesize S;
 
 - (id)initWithXMLDocument:(NSXMLDocument *)xmlDoc {
    NSArray *arr, *temp;
@@ -193,6 +194,9 @@
       return nil;
    } // end-if
    
+   mean = [[CostRecorder alloc] init];
+   S = [[Degree2Poly alloc] init];
+   
    NSLog(@"Done!");
    
    percentComplete = 0.0;
@@ -228,12 +232,15 @@
    [collector collectIfNeeded];
 
    [timer reset];
-   [user resetLocationToStart];   
+   [user resetLocationToStart];
+   
+   yesterday = [cost copy];
 } // end-method
 
 - (void)runSimulationFor:(unsigned int)days
             withCallback:(id<SimulationCallbackProtocol>)callback {
    int i;
+   CostRecorder *today, *delta;
    CFAbsoluteTime end, start=CFAbsoluteTimeGetCurrent();
    percentComplete = 0.0;
    
@@ -241,13 +248,25 @@
       [self resetSimulationForNextDay];
       [self startSimulatedDay];
       percentComplete = (double)i/(double)days * 100.0;
+      
+      // Calculate todays cost
+      today = [CostRecorder subtractWithValueA:cost andValueB:yesterday];
+      
+      // Update the mean, and S
+      delta = [CostRecorder subtractWithValueA:today andValueB:mean];
+      [mean add:[delta averageCostOver:i+1]];
+      [S add:[Degree2Poly multiplyCostRecorder:delta withCostRecorder:[today subtract:mean]]];
+      
       if (callback!=nil) [callback setPercentCompleted:percentComplete];
    } // end-for
+   
+   [S divide:days-1];
+   
    end=CFAbsoluteTimeGetCurrent();
    [callback setPercentCompleted:100.0];
    
    CFGregorianUnits units = CFAbsoluteTimeGetDifferenceAsGregorianUnits (end, start, NULL, (kCFGregorianUnitsHours | kCFGregorianUnitsMinutes | kCFGregorianUnitsSeconds));
-   NSLog(@"Simulation run covering %d days completed in %02d:%02d:%07.4f with an average cost function %@.", days, units.hours, units.minutes, units.seconds, [cost averageCostOver:days]);
+   NSLog(@"Simulation run covering %d days completed in %02d:%02d:%07.4f with an average cost function %@ (%@), and variance function %@.", days, units.hours, units.minutes, units.seconds, [cost averageCostOver:days], mean, S);
 } // end-method
 
 @end

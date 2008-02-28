@@ -37,6 +37,7 @@
 #import "SyncProtocol.h"
 #import "SimulationCallbackProtocol.h"
 #import "SyncLogicController.h"
+#import "Degree2Poly.h"
 
 @interface SyncController : NSObject {
    User * user;                  // Holds a handle to the synchronization user
@@ -45,6 +46,9 @@
    id<SyncProtocol> protocol;    // Holds a handle to the sync protocol
    double percentComplete;
    SyncLogicController *syncLogic;
+   CostRecorder *yesterday;      // To store the previous days total cost
+   CostRecorder *mean;           // Holds the calculated running average cost
+   Degree2Poly *S;               // Holds the running StdDev value
 }
 @property(readonly) User * user;
 @property(readonly) TimeController *timer;
@@ -52,6 +56,8 @@
 @property(readonly) id<SyncProtocol> protocol;
 @property(readonly) double percentComplete;
 @property(readonly) SyncLogicController *syncLogic;
+@property(readonly) CostRecorder *mean;
+@property(readonly) Degree2Poly *S;
 
 - (id)initWithXMLDocument:(NSXMLDocument *)xmlDoc;
 - (id)initWithXMLFile:(NSString *)filename;

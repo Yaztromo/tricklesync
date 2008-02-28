@@ -25,20 +25,24 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface CostRecorder : NSObject {
+@interface CostRecorder : NSObject <NSCopying> {
    double realCost;
    double etherialCost;
-   double etherealCostFactor;
    double kilobytesTransferred;
 }
-@property(readonly) double realCost;
-@property(readonly) double etherialCost;
-@property double etherealCostFactor;
-@property(readonly) double kilobytesTransferred;
+@property double realCost;
+@property double etherialCost;
+@property double kilobytesTransferred;
 
 - (id)init;
 - (void)incrementRealCostBy:(double)value;
 - (void)incrementEtherialCostBy:(double)value;
 - (void)incrementDataTransferredBy:(double)value;
 - (CostRecorder *)averageCostOver:(unsigned int)days;
+- (void)add:(CostRecorder *)value;
+- (CostRecorder *)subtract:(CostRecorder *)value;
+
++ (CostRecorder *)subtractWithValueA:(CostRecorder *)opA
+                           andValueB:(CostRecorder *)opB;
+
 @end
