@@ -75,6 +75,8 @@
    [resultBox setTextColor:enabledBlack];
    [dataResultDescription setTextColor:enabledBlack];
    [dataResultBox setTextColor:enabledBlack];
+   [step4VarianceLabel setTextColor:enabledBlack];
+   [step4Variance setTextColor:enabledBlack];
    
    // Set the results
    [resultBox setEnabled:TRUE];
@@ -82,6 +84,7 @@
    NSBeep();
    cost = [[syncController cost] averageCostOver:[daysField intValue]];
    [resultBox setStringValue:[cost description]];
+   [step4Variance setStringValue:[syncController.S description]];
    [dataResultBox setStringValue:[NSString stringWithFormat:@"%0.3f KB", [cost kilobytesTransferred]]];
 } // end-method
 

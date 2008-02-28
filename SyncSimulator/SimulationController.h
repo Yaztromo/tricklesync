@@ -25,6 +25,9 @@
    IBOutlet NSButton *startButton;
    IBOutlet NSButton *openButton;
    
+   IBOutlet NSTextField *step4VarianceLabel;
+   IBOutlet NSTextField *step4Variance;
+   
    NSColor *disabledGrey;
    NSColor *enabledBlack;
 }
