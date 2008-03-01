@@ -662,9 +662,9 @@
 	};
 	8B3A156C0D57D60A0009380A /* SyncController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 980}}";
+			sepNavIntBoundsRect = "{{0, 0}, {928, 980}}";
 			sepNavSelRange = "{2513, 35}";
-			sepNavVisRange = "{1447, 1199}";
+			sepNavVisRange = "{1430, 1216}";
 		};
 	};
 	8B3A156D0D57D60A0009380A /* SyncController.m */ = {
@@ -890,7 +890,7 @@
 	};
 	8B3DA5F90D603A1900D58E8A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 8B6C33E80D595BB1003A7D8E /* NullSyncAdapter.h */;
+		fRef = 8B6C33E80D595BB1003A7D8E /* NullSyncAdaptor.h */;
 		name = "TestSyncAdapter.h: 16";
 		rLen = 0;
 		rLoc = 896;
@@ -1084,18 +1084,18 @@
 			sepNavVisRange = "{729, 840}";
 		};
 	};
-	8B6C33E80D595BB1003A7D8E /* NullSyncAdapter.h */ = {
+	8B6C33E80D595BB1003A7D8E /* NullSyncAdaptor.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {928, 560}}";
 			sepNavSelRange = "{1501, 0}";
 			sepNavVisRange = "{625, 948}";
 		};
 	};
-	8B6C33E90D595BB1003A7D8E /* NullSyncAdapter.m */ = {
+	8B6C33E90D595BB1003A7D8E /* NullSyncAdaptor.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 616}}";
+			sepNavIntBoundsRect = "{{0, 0}, {928, 616}}";
 			sepNavSelRange = "{1253, 0}";
-			sepNavVisRange = "{880, 855}";
+			sepNavVisRange = "{650, 1079}";
 		};
 	};
 	8B6C34200D59CF81003A7D8E /* PBXTextBookmark */ = {
@@ -1220,7 +1220,7 @@
 	};
 	8B6C347A0D59E60F003A7D8E /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 8B6C33E90D595BB1003A7D8E /* NullSyncAdapter.m */;
+		fRef = 8B6C33E90D595BB1003A7D8E /* NullSyncAdaptor.m */;
 		name = "TestSyncAdapter.m: 34";
 		rLen = 0;
 		rLoc = 1442;
@@ -4200,7 +4200,7 @@
 	};
 	8BD22F810D67A2BA00BE46C7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 8B6C33E80D595BB1003A7D8E /* NullSyncAdapter.h */;
+		fRef = 8B6C33E80D595BB1003A7D8E /* NullSyncAdaptor.h */;
 		name = "TestSyncAdapter.h: 35";
 		rLen = 0;
 		rLoc = 1501;
@@ -4210,7 +4210,7 @@
 	};
 	8BD22F820D67A2BA00BE46C7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 8B6C33E90D595BB1003A7D8E /* NullSyncAdapter.m */;
+		fRef = 8B6C33E90D595BB1003A7D8E /* NullSyncAdaptor.m */;
 		name = "TestSyncAdapter.m: 28";
 		rLen = 0;
 		rLoc = 1253;
