@@ -302,6 +302,9 @@
 		8B8832D70D7A11B500A4E4C6 /* Synchronization Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				8B8832E70D7A137C00A4E4C6 /* ETS Synchronizer */,
+				8B8832E60D7A135E00A4E4C6 /* Fast Synchronizer */,
+				8B8832E50D7A133E00A4E4C6 /* Random Synchronizer */,
 				8B8832D80D7A11EC00A4E4C6 /* Null Synchronizer */,
 			);
 			name = "Synchronization Protocols";
@@ -314,6 +317,27 @@
 				8B6C33E90D595BB1003A7D8E /* NullSyncAdaptor.m */,
 			);
 			name = "Null Synchronizer";
+			sourceTree = "<group>";
+		};
+		8B8832E50D7A133E00A4E4C6 /* Random Synchronizer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Random Synchronizer";
+			sourceTree = "<group>";
+		};
+		8B8832E60D7A135E00A4E4C6 /* Fast Synchronizer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Fast Synchronizer";
+			sourceTree = "<group>";
+		};
+		8B8832E70D7A137C00A4E4C6 /* ETS Synchronizer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "ETS Synchronizer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
