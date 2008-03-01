@@ -27,7 +27,7 @@
 #import "TimeController.h"
 #import "CostRecorder.h"
 
-@interface TestSyncAdapter : NSObject <SyncProtocol> {
+@interface NullSyncAdaptor : NSObject <SyncProtocol> {
 
 }
 -  (id)initWithController:(SyncLogicController *)controller

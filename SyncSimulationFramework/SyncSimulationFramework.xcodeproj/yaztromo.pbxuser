@@ -537,7 +537,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 124";
 		rLen = 0;
-		rLoc = 5923;
+		rLoc = 5928;
 		rType = 0;
 		vrLen = 1725;
 		vrLoc = 4867;
@@ -669,9 +669,9 @@
 	};
 	8B3A156D0D57D60A0009380A /* SyncController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2204, 3822}}";
-			sepNavSelRange = "{12003, 0}";
-			sepNavVisRange = "{10856, 1173}";
+			sepNavIntBoundsRect = "{{0, 0}, {1370, 4102}}";
+			sepNavSelRange = "{12140, 0}";
+			sepNavVisRange = "{10887, 1253}";
 		};
 	};
 	8B3DA45E0D5FD3F100D58E8A /* PBXTextBookmark */ = {
@@ -890,12 +890,12 @@
 	};
 	8B3DA5F90D603A1900D58E8A /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 8B6C33E80D595BB1003A7D8E /* TestSyncAdapter.h */;
+		fRef = 8B6C33E80D595BB1003A7D8E /* NullSyncAdapter.h */;
 		name = "TestSyncAdapter.h: 16";
 		rLen = 0;
 		rLoc = 896;
 		rType = 0;
-		vrLen = 1027;
+		vrLen = 948;
 		vrLoc = 625;
 	};
 	8B3DA6120D603E3100D58E8A /* SimulationCallbackProtocol.h */ = {
@@ -1065,9 +1065,9 @@
 	};
 	8B6C10070D591B5B00DC1EF2 /* sample.xml */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 518}}";
+			sepNavIntBoundsRect = "{{0, 0}, {928, 518}}";
 			sepNavSelRange = "{431, 0}";
-			sepNavVisRange = "{432, 850}";
+			sepNavVisRange = "{419, 863}";
 		};
 	};
 	8B6C100A0D591DAB00DC1EF2 /* SyncControllerTests.h */ = {
@@ -1084,14 +1084,14 @@
 			sepNavVisRange = "{729, 840}";
 		};
 	};
-	8B6C33E80D595BB1003A7D8E /* TestSyncAdapter.h */ = {
+	8B6C33E80D595BB1003A7D8E /* NullSyncAdapter.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 560}}";
+			sepNavIntBoundsRect = "{{0, 0}, {928, 560}}";
 			sepNavSelRange = "{1501, 0}";
-			sepNavVisRange = "{647, 926}";
+			sepNavVisRange = "{625, 948}";
 		};
 	};
-	8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */ = {
+	8B6C33E90D595BB1003A7D8E /* NullSyncAdapter.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {846, 616}}";
 			sepNavSelRange = "{1253, 0}";
@@ -1220,12 +1220,12 @@
 	};
 	8B6C347A0D59E60F003A7D8E /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */;
+		fRef = 8B6C33E90D595BB1003A7D8E /* NullSyncAdapter.m */;
 		name = "TestSyncAdapter.m: 34";
 		rLen = 0;
 		rLoc = 1442;
 		rType = 0;
-		vrLen = 844;
+		vrLen = 759;
 		vrLoc = 976;
 	};
 	8B6C347B0D59E60F003A7D8E /* PBXTextBookmark */ = {
@@ -1273,7 +1273,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 203";
 		rLen = 0;
-		rLoc = 10886;
+		rLoc = 10891;
 		rType = 0;
 		vrLen = 1729;
 		vrLoc = 5761;
@@ -1501,7 +1501,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 124";
 		rLen = 0;
-		rLoc = 5923;
+		rLoc = 5928;
 		rType = 0;
 		vrLen = 1632;
 		vrLoc = 4867;
@@ -1551,7 +1551,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 124";
 		rLen = 0;
-		rLoc = 5923;
+		rLoc = 5928;
 		rType = 0;
 		vrLen = 1632;
 		vrLoc = 4867;
@@ -2235,7 +2235,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 124";
 		rLen = 0;
-		rLoc = 5923;
+		rLoc = 5928;
 		rType = 0;
 		vrLen = 1632;
 		vrLoc = 4867;
@@ -2255,7 +2255,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 99";
 		rLen = 0;
-		rLoc = 4266;
+		rLoc = 4271;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 9296;
@@ -2303,7 +2303,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 99";
 		rLen = 0;
-		rLoc = 4266;
+		rLoc = 4271;
 		rType = 0;
 		vrLen = 903;
 		vrLoc = 9296;
@@ -2311,7 +2311,7 @@
 	8B7B3E860D76928200B486DF /* Degree2Poly.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {928, 546}}";
-			sepNavSelRange = "{299, 0}";
+			sepNavSelRange = "{405, 0}";
 			sepNavVisRange = "{0, 621}";
 		};
 	};
@@ -2457,7 +2457,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 233";
 		rLen = 0;
-		rLoc = 10615;
+		rLoc = 10620;
 		rType = 0;
 		vrLen = 734;
 		vrLoc = 10040;
@@ -2467,7 +2467,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 212";
 		rLen = 0;
-		rLoc = 10108;
+		rLoc = 10113;
 		rType = 0;
 		vrLen = 1253;
 		vrLoc = 0;
@@ -2737,7 +2737,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 225";
 		rLen = 33;
-		rLoc = 10370;
+		rLoc = 10375;
 		rType = 0;
 		vrLen = 1160;
 		vrLoc = 10276;
@@ -2757,7 +2757,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 246";
 		rLen = 0;
-		rLoc = 11400;
+		rLoc = 11511;
 		rType = 0;
 		vrLen = 1154;
 		vrLoc = 10313;
@@ -2857,7 +2857,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 233";
 		rLen = 0;
-		rLoc = 10615;
+		rLoc = 10620;
 		rType = 0;
 		vrLen = 774;
 		vrLoc = 10040;
@@ -2897,7 +2897,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 233";
 		rLen = 0;
-		rLoc = 10615;
+		rLoc = 10620;
 		rType = 0;
 		vrLen = 734;
 		vrLoc = 10040;
@@ -2917,7 +2917,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 248";
 		rLen = 0;
-		rLoc = 11400;
+		rLoc = 11511;
 		rType = 0;
 		vrLen = 1060;
 		vrLoc = 10452;
@@ -2947,7 +2947,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 253";
 		rLen = 25;
-		rLoc = 11276;
+		rLoc = 11387;
 		rType = 0;
 		vrLen = 928;
 		vrLoc = 10453;
@@ -2957,7 +2957,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 249";
 		rLen = 0;
-		rLoc = 11105;
+		rLoc = 11110;
 		rType = 0;
 		vrLen = 946;
 		vrLoc = 10453;
@@ -2977,7 +2977,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 253";
 		rLen = 25;
-		rLoc = 11276;
+		rLoc = 11387;
 		rType = 0;
 		vrLen = 928;
 		vrLoc = 10453;
@@ -3017,7 +3017,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 253";
 		rLen = 25;
-		rLoc = 11276;
+		rLoc = 11387;
 		rType = 0;
 		vrLen = 928;
 		vrLoc = 10453;
@@ -3047,7 +3047,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 254";
 		rLen = 0;
-		rLoc = 11397;
+		rLoc = 11508;
 		rType = 0;
 		vrLen = 908;
 		vrLoc = 10453;
@@ -3057,7 +3057,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 254";
 		rLen = 0;
-		rLoc = 11397;
+		rLoc = 11508;
 		rType = 0;
 		vrLen = 908;
 		vrLoc = 10453;
@@ -3087,7 +3087,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 254";
 		rLen = 0;
-		rLoc = 11397;
+		rLoc = 11508;
 		rType = 0;
 		vrLen = 908;
 		vrLoc = 10453;
@@ -3137,7 +3137,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 255";
 		rLen = 0;
-		rLoc = 11400;
+		rLoc = 11511;
 		rType = 0;
 		vrLen = 1306;
 		vrLoc = 10551;
@@ -3157,7 +3157,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 255";
 		rLen = 0;
-		rLoc = 11400;
+		rLoc = 11511;
 		rType = 0;
 		vrLen = 1306;
 		vrLoc = 10551;
@@ -3217,7 +3217,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 255";
 		rLen = 0;
-		rLoc = 11400;
+		rLoc = 11511;
 		rType = 0;
 		vrLen = 1306;
 		vrLoc = 10551;
@@ -3237,7 +3237,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 259";
 		rLen = 0;
-		rLoc = 11522;
+		rLoc = 11633;
 		rType = 0;
 		vrLen = 1208;
 		vrLoc = 10664;
@@ -3383,7 +3383,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 259";
 		rLen = 0;
-		rLoc = 11522;
+		rLoc = 11633;
 		rType = 0;
 		vrLen = 1226;
 		vrLoc = 10664;
@@ -3393,7 +3393,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 259";
 		rLen = 0;
-		rLoc = 11522;
+		rLoc = 11633;
 		rType = 0;
 		vrLen = 1226;
 		vrLoc = 10664;
@@ -3463,7 +3463,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 265";
 		rLen = 0;
-		rLoc = 11779;
+		rLoc = 11890;
 		rType = 0;
 		vrLen = 1162;
 		vrLoc = 10763;
@@ -3513,7 +3513,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 196";
 		rLen = 0;
-		rLoc = 9537;
+		rLoc = 9542;
 		rType = 0;
 		vrLen = 976;
 		vrLoc = 8649;
@@ -3523,7 +3523,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 196";
 		rLen = 0;
-		rLoc = 9537;
+		rLoc = 9542;
 		rType = 0;
 		vrLen = 941;
 		vrLoc = 8649;
@@ -3543,7 +3543,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 196";
 		rLen = 0;
-		rLoc = 9537;
+		rLoc = 9542;
 		rType = 0;
 		vrLen = 976;
 		vrLoc = 8649;
@@ -3583,7 +3583,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 197";
 		rLen = 0;
-		rLoc = 9537;
+		rLoc = 9542;
 		rType = 0;
 		vrLen = 1018;
 		vrLoc = 8597;
@@ -3623,7 +3623,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 262";
 		rLen = 0;
-		rLoc = 11522;
+		rLoc = 11633;
 		rType = 0;
 		vrLen = 1255;
 		vrLoc = 10742;
@@ -3633,7 +3633,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 239";
 		rLen = 109;
-		rLoc = 10645;
+		rLoc = 10650;
 		rType = 0;
 		vrLen = 979;
 		vrLoc = 10613;
@@ -3663,7 +3663,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 262";
 		rLen = 0;
-		rLoc = 11522;
+		rLoc = 11633;
 		rType = 0;
 		vrLen = 1255;
 		vrLoc = 10742;
@@ -3683,7 +3683,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 269";
 		rLen = 0;
-		rLoc = 12003;
+		rLoc = 12114;
 		rType = 0;
 		vrLen = 1173;
 		vrLoc = 10856;
@@ -3693,7 +3693,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 269";
 		rLen = 0;
-		rLoc = 12003;
+		rLoc = 12114;
 		rType = 0;
 		vrLen = 1173;
 		vrLoc = 10856;
@@ -3733,7 +3733,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SyncController.m */;
 		name = "SyncController.m: 269";
 		rLen = 0;
-		rLoc = 12003;
+		rLoc = 12114;
 		rType = 0;
 		vrLen = 1173;
 		vrLoc = 10856;
@@ -3963,16 +3963,16 @@
 	};
 	8B854FC80D0B6B62000F949A /* Network.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {846, 742}}";
+			sepNavIntBoundsRect = "{{0, 0}, {928, 742}}";
 			sepNavSelRange = "{1973, 0}";
-			sepNavVisRange = "{900, 1043}";
+			sepNavVisRange = "{1191, 830}";
 		};
 	};
 	8B854FC90D0B6B62000F949A /* Network.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {992, 1006}}";
+			sepNavIntBoundsRect = "{{0, 0}, {992, 966}}";
 			sepNavSelRange = "{1987, 0}";
-			sepNavVisRange = "{1649, 643}";
+			sepNavVisRange = "{976, 733}";
 		};
 	};
 	8B854FDC0D0B715E000F949A /* Location.h */ = {
@@ -4200,7 +4200,7 @@
 	};
 	8BD22F810D67A2BA00BE46C7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 8B6C33E80D595BB1003A7D8E /* TestSyncAdapter.h */;
+		fRef = 8B6C33E80D595BB1003A7D8E /* NullSyncAdapter.h */;
 		name = "TestSyncAdapter.h: 35";
 		rLen = 0;
 		rLoc = 1501;
@@ -4210,7 +4210,7 @@
 	};
 	8BD22F820D67A2BA00BE46C7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */;
+		fRef = 8B6C33E90D595BB1003A7D8E /* NullSyncAdapter.m */;
 		name = "TestSyncAdapter.m: 28";
 		rLen = 0;
 		rLoc = 1253;

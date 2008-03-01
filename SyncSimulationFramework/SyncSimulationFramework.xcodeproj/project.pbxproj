@@ -13,8 +13,8 @@
 		8B3A156E0D57D60A0009380A /* SyncController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B3A156C0D57D60A0009380A /* SyncController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B3A156F0D57D60A0009380A /* SyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3A156D0D57D60A0009380A /* SyncController.m */; };
 		8B3A15700D57D60A0009380A /* SyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3A156D0D57D60A0009380A /* SyncController.m */; };
-		8B3DA5B90D6039E800D58E8A /* TestSyncAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B6C33E80D595BB1003A7D8E /* TestSyncAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B3DA5BA0D6039F800D58E8A /* TestSyncAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */; };
+		8B3DA5B90D6039E800D58E8A /* NullSyncAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B6C33E80D595BB1003A7D8E /* NullSyncAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B3DA5BA0D6039F800D58E8A /* NullSyncAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C33E90D595BB1003A7D8E /* NullSyncAdapter.m */; };
 		8B3DA6130D603E3100D58E8A /* SimulationCallbackProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B3DA6120D603E3100D58E8A /* SimulationCallbackProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B60416B0D42DFFE00927ECA /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B6041690D42DFFE00927ECA /* User.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B60416C0D42DFFE00927ECA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B60416A0D42DFFE00927ECA /* User.m */; };
@@ -30,7 +30,7 @@
 		8B6041B00D43182300927ECA /* MobileDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6041AD0D43182300927ECA /* MobileDatabase.m */; };
 		8B6C10080D591B5B00DC1EF2 /* sample.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8B6C10070D591B5B00DC1EF2 /* sample.xml */; };
 		8B6C100C0D591DAB00DC1EF2 /* SyncControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C100B0D591DAB00DC1EF2 /* SyncControllerTests.m */; };
-		8B6C33EA0D595BB1003A7D8E /* TestSyncAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */; };
+		8B6C33EA0D595BB1003A7D8E /* NullSyncAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C33E90D595BB1003A7D8E /* NullSyncAdapter.m */; };
 		8B7B3DB70D7403FD00B486DF /* mtwist.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B7B3DB30D7403FD00B486DF /* mtwist.h */; };
 		8B7B3DB80D7403FD00B486DF /* mtwist.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B7B3DB40D7403FD00B486DF /* mtwist.c */; };
 		8B7B3E880D76928200B486DF /* Degree2Poly.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B7B3E860D76928200B486DF /* Degree2Poly.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -93,8 +93,8 @@
 		8B6C10070D591B5B00DC1EF2 /* sample.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sample.xml; sourceTree = "<group>"; };
 		8B6C100A0D591DAB00DC1EF2 /* SyncControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncControllerTests.h; sourceTree = "<group>"; };
 		8B6C100B0D591DAB00DC1EF2 /* SyncControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncControllerTests.m; sourceTree = "<group>"; };
-		8B6C33E80D595BB1003A7D8E /* TestSyncAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestSyncAdapter.h; sourceTree = "<group>"; };
-		8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestSyncAdapter.m; sourceTree = "<group>"; };
+		8B6C33E80D595BB1003A7D8E /* NullSyncAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NullSyncAdapter.h; sourceTree = "<group>"; };
+		8B6C33E90D595BB1003A7D8E /* NullSyncAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSyncAdapter.m; sourceTree = "<group>"; };
 		8B7B3DB30D7403FD00B486DF /* mtwist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mtwist.h; sourceTree = "<group>"; };
 		8B7B3DB40D7403FD00B486DF /* mtwist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mtwist.c; sourceTree = "<group>"; };
 		8B7B3E860D76928200B486DF /* Degree2Poly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Degree2Poly.h; sourceTree = "<group>"; };
@@ -164,6 +164,7 @@
 		0867D691FE84028FC02AAC07 /* SyncSimulationFramework */ = {
 			isa = PBXGroup;
 			children = (
+				8B8832D70D7A11B500A4E4C6 /* Synchronization Protocols */,
 				8B854FE20D0B71FA000F949A /* Tests */,
 				8B7B3DB10D74013100B486DF /* Mersenne Twister */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
@@ -200,8 +201,6 @@
 			children = (
 				8B3A156C0D57D60A0009380A /* SyncController.h */,
 				8B3A156D0D57D60A0009380A /* SyncController.m */,
-				8B6C33E80D595BB1003A7D8E /* TestSyncAdapter.h */,
-				8B6C33E90D595BB1003A7D8E /* TestSyncAdapter.m */,
 				8B6041AC0D43182300927ECA /* MobileDatabase.h */,
 				8B6041AD0D43182300927ECA /* MobileDatabase.m */,
 				8B6041A70D4317F200927ECA /* ServerDatabase.h */,
@@ -300,6 +299,23 @@
 			name = Tests;
 			sourceTree = "<group>";
 		};
+		8B8832D70D7A11B500A4E4C6 /* Synchronization Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8B8832D80D7A11EC00A4E4C6 /* Null Synchronizer */,
+			);
+			name = "Synchronization Protocols";
+			sourceTree = "<group>";
+		};
+		8B8832D80D7A11EC00A4E4C6 /* Null Synchronizer */ = {
+			isa = PBXGroup;
+			children = (
+				8B6C33E80D595BB1003A7D8E /* NullSyncAdapter.h */,
+				8B6C33E90D595BB1003A7D8E /* NullSyncAdapter.m */,
+			);
+			name = "Null Synchronizer";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -308,7 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B85504A0D0B94D6000F949A /* Record.h in Headers */,
-				8B3DA5B90D6039E800D58E8A /* TestSyncAdapter.h in Headers */,
+				8B3DA5B90D6039E800D58E8A /* NullSyncAdapter.h in Headers */,
 				8B854FC60D0B6A84000F949A /* TimerProtocols.h in Headers */,
 				8B854FCA0D0B6B62000F949A /* Network.h in Headers */,
 				8B854FDE0D0B715E000F949A /* Location.h in Headers */,
@@ -451,7 +467,7 @@
 				8B0BE2910D483EB700EA81A2 /* TimeControllerTests.m in Sources */,
 				8B3A15700D57D60A0009380A /* SyncController.m in Sources */,
 				8B6C100C0D591DAB00DC1EF2 /* SyncControllerTests.m in Sources */,
-				8B6C33EA0D595BB1003A7D8E /* TestSyncAdapter.m in Sources */,
+				8B6C33EA0D595BB1003A7D8E /* NullSyncAdapter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,7 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B854FCB0D0B6B62000F949A /* Network.m in Sources */,
-				8B3DA5BA0D6039F800D58E8A /* TestSyncAdapter.m in Sources */,
+				8B3DA5BA0D6039F800D58E8A /* NullSyncAdapter.m in Sources */,
 				8B854FDF0D0B715E000F949A /* Location.m in Sources */,
 				8B8550490D0B94BB000F949A /* Database.m in Sources */,
 				8B85504B0D0B94EA000F949A /* Record.m in Sources */,

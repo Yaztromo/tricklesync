@@ -21,10 +21,10 @@
 //
 // --------------------------------------------------------------------------
 
-#import "TestSyncAdapter.h"
+#import "NullSyncAdaptor.h"
 
 
-@implementation TestSyncAdapter
+@implementation NullSyncAdaptor
 -  (id)initWithController:(SyncLogicController *)controller
         andWithProperties:(NSXMLElement *)syncProtocolElement {
    [super init];

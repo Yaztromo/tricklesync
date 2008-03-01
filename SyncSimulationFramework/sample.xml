@@ -30,7 +30,7 @@
 
 	<database numrecords="100" arrivalrate="50.0" interval="3600" maxarrivals="5"/>
 
-	<syncprotocol name="TestSyncAdapter">
+	<syncprotocol name="NullSyncAdaptor">
 		<!-- ...protocol specific nodes go here... -->
 	</syncprotocol>
 </etssimulation>
