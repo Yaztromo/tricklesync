@@ -70,7 +70,7 @@
    for(NSXMLElement *elem in arr) {
       [networks setObject: [[Network alloc] initWithName:[[elem attributeForName:@"name"] stringValue] 
                                                  andCost:[[[elem attributeForName:@"cost"] stringValue] doubleValue]
-                                         andTransferRate:[[[elem attributeForName:@"xferrate"] stringValue] doubleValue]
+                                         andTransferRate:[[[elem attributeForName:@"xferrate"] stringValue] doubleValue]*1024
                           andProbabilityOfLostConnection:[[[elem attributeForName:@"expecteddisocnnectsperhour"] stringValue] doubleValue]/3600.0]
                    forKey: [[elem attributeForName:@"name"] stringValue]];
       NSLog(@"   - Got network %@ with cost %@ and transfer rate of %@, and P(lostConnection) %@", [[elem attributeForName:@"name"] stringValue], [[elem attributeForName:@"cost"] stringValue], [[elem attributeForName:@"xferrate"] stringValue], [elem attributeForName:@"expecteddisocnnectsperhour"]);
@@ -251,6 +251,7 @@
       
       // Calculate todays cost
       today = [CostRecorder subtractWithValueA:cost andValueB:yesterday];
+      NSLog(@"The results for day n = %d is %@ (total = %@, yesterday = %@)", i, today, cost, yesterday);
       
       // Update the mean, and S
       delta = [CostRecorder subtractWithValueA:today andValueB:mean];
