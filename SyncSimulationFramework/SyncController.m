@@ -118,8 +118,8 @@
       NSLog(@"   - Found event at time %d for location %@", [[[elem attributeForName:@"time"] stringValue] intValue], [[elem attributeForName:@"locname"] stringValue]);
       [locationVects addObject: [[LocationVector alloc] initEntryTime:[[[elem attributeForName:@"time"] stringValue] intValue]
                                                           forLocation:[locations objectForKey:[[elem attributeForName:@"locname"] stringValue]]
-                                              andExpectedSyncsPerHour:[[[elem attributeForName:@"expectedsyncs"] stringValue] intValue]
-                                      andDatabaseModificationsPerHour:[[[elem attributeForName:@"expectedaccesses"] stringValue] intValue]]];
+                                              andExpectedSyncsPerHour:[[[elem attributeForName:@"expectedsyncs"] stringValue] doubleValue]
+                                      andDatabaseModificationsPerHour:[[[elem attributeForName:@"expectedaccesses"] stringValue] doubleValue]]];
 
        } // end-for
    
@@ -251,7 +251,7 @@
       
       // Calculate todays cost
       today = [CostRecorder subtractWithValueA:cost andValueB:yesterday];
-      NSLog(@"The results for day n = %d is %@ (total = %@, yesterday = %@)", i, today, cost, yesterday);
+      // NSLog(@"The results for day n = %d is %@ (total = %@, yesterday = %@)", i, today, cost, yesterday);
       
       // Update the mean, and S
       delta = [CostRecorder subtractWithValueA:today andValueB:mean];

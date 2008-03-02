@@ -50,7 +50,7 @@ andProbabilityOfLostConnection:(double)prob {
 } // end-method
 
 - (double)timeToTransfer:(int)bytes {
-   return bytes*transferRate;
+   return ((double)bytes)*(1.0/transferRate);
 } // end-method
 
 - (double)costToTransferRecord:(Record *)r {

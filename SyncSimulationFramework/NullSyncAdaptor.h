@@ -26,6 +26,7 @@
 #import "ServerDatabase.h"
 #import "TimeController.h"
 #import "CostRecorder.h"
+#import "SyncLogicController.h"
 
 @interface NullSyncAdaptor : NSObject <SyncProtocol> {
 

@@ -58,7 +58,7 @@ againstServerDatabase:(Database *)sdb {
    int record;
    // Check to see if the user has accessed a record during this tick.
    //NSLog(@"Checking if user viewed a record during this tick...");
-   if ([[user getCurrentLocation] mobileDatabaseModificationRate] >= [rand getNextRandom]) {
+   if ([[user getCurrentLocation] mobileDatabaseAccessRate] >= [rand getNextRandom]) {
       // We need to access a record somewhere.  Select one using a random number in a Guassian distribution.
       record = (int)([GaussianGenerator calculateNormalProbabilityWith:[rand nextGaussian]]*[self getRecordCount]);
 

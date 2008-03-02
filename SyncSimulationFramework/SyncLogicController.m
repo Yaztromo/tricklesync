@@ -71,6 +71,9 @@
    // Calculate the cost of synchronizing this record and add it to the cost recorder object
    [costRecorder incrementRealCostBy:[currentNetwork costToTransferRecord:r]];
    
+   // Update the synchronized record so that it has the same revision number on both the handheld and the server
+   [[[user handheldDB] getRecordWithID:[r recordID]] updateRecordToRevision:[r recordVersion]];
+   
    // Return TRUE.
    return TRUE;
 } // end-method

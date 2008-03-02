@@ -33,7 +33,6 @@
    [super init];
    haveNextNextGaussian = FALSE;
    nextNextGaussian = 0.0;
-   //srand48(seed);
    mt_goodseed();
    return self;
 } // end-initializer
@@ -43,7 +42,6 @@
 } // end-initilizer
 
 - (double)getNextRandom {
-   //return drand48();
    return mt_ldrand();
 } // end-initializer
 

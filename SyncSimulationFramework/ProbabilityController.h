@@ -34,7 +34,7 @@
 @property(readonly) double arrivalRate;
 @property(readonly) unsigned int timeIntervalInSeconds;
 
-+ (double)bernoulliProbabilityPerSecondFromEventsPerHour:(int)ratePerHour;
++ (double)bernoulliProbabilityPerSecondFromEventsPerHour:(double)ratePerHour;
 + (double)factorial:(long)x;
 + (double)poissonProbabilityWithArrivalRate:(double)rate
                            withTimeInterval:(int)t

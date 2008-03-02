@@ -56,6 +56,8 @@
 		8B85504B0D0B94EA000F949A /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550430D0B908E000F949A /* Record.m */; };
 		8B8550630D0BABAC000F949A /* GaussianGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8550610D0BABAC000F949A /* GaussianGenerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8550640D0BABAC000F949A /* GaussianGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550620D0BABAC000F949A /* GaussianGenerator.m */; };
+		8B8833010D7B4DA200A4E4C6 /* RandomSyncAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8832FF0D7B4DA200A4E4C6 /* RandomSyncAdaptor.h */; };
+		8B8833020D7B4DA200A4E4C6 /* RandomSyncAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8833000D7B4DA200A4E4C6 /* RandomSyncAdaptor.m */; };
 		8BD22F2D0D677CAE00BE46C7 /* SyncLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BD22F2B0D677CAD00BE46C7 /* SyncLogicController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8BD22F2E0D677CAE00BE46C7 /* SyncLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD22F2C0D677CAE00BE46C7 /* SyncLogicController.m */; };
 		8BD4AC350D4514B50053A40F /* TimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4AC340D4514B50053A40F /* TimeController.m */; };
@@ -120,6 +122,8 @@
 		8B8550B30D0BC0A9000F949A /* DistributionsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistributionsTest.m; sourceTree = "<group>"; };
 		8B8551640D0CD958000F949A /* DatabaseTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseTests.h; sourceTree = "<group>"; };
 		8B8551650D0CD958000F949A /* DatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTests.m; sourceTree = "<group>"; };
+		8B8832FF0D7B4DA200A4E4C6 /* RandomSyncAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomSyncAdaptor.h; sourceTree = "<group>"; };
+		8B8833000D7B4DA200A4E4C6 /* RandomSyncAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomSyncAdaptor.m; sourceTree = "<group>"; };
 		8BD22F2B0D677CAD00BE46C7 /* SyncLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncLogicController.h; sourceTree = "<group>"; };
 		8BD22F2C0D677CAE00BE46C7 /* SyncLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncLogicController.m; sourceTree = "<group>"; };
 		8BD4AC330D4514B50053A40F /* TimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeController.h; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 			children = (
 				8B8832E70D7A137C00A4E4C6 /* ETS Synchronizer */,
 				8B8832E60D7A135E00A4E4C6 /* Fast Synchronizer */,
+				8B88331B0D7B4EF900A4E4C6 /* Slow Synchronizer */,
 				8B8832E50D7A133E00A4E4C6 /* Random Synchronizer */,
 				8B8832D80D7A11EC00A4E4C6 /* Null Synchronizer */,
 			);
@@ -322,6 +327,8 @@
 		8B8832E50D7A133E00A4E4C6 /* Random Synchronizer */ = {
 			isa = PBXGroup;
 			children = (
+				8B8832FF0D7B4DA200A4E4C6 /* RandomSyncAdaptor.h */,
+				8B8833000D7B4DA200A4E4C6 /* RandomSyncAdaptor.m */,
 			);
 			name = "Random Synchronizer";
 			sourceTree = "<group>";
@@ -338,6 +345,13 @@
 			children = (
 			);
 			name = "ETS Synchronizer";
+			sourceTree = "<group>";
+		};
+		8B88331B0D7B4EF900A4E4C6 /* Slow Synchronizer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Slow Synchronizer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +382,7 @@
 				8BD22F2D0D677CAE00BE46C7 /* SyncLogicController.h in Headers */,
 				8B7B3DB70D7403FD00B486DF /* mtwist.h in Headers */,
 				8B7B3E880D76928200B486DF /* Degree2Poly.h in Headers */,
+				8B8833010D7B4DA200A4E4C6 /* RandomSyncAdaptor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +531,7 @@
 				8BD22F2E0D677CAE00BE46C7 /* SyncLogicController.m in Sources */,
 				8B7B3DB80D7403FD00B486DF /* mtwist.c in Sources */,
 				8B7B3E890D76928200B486DF /* Degree2Poly.m in Sources */,
+				8B8833020D7B4DA200A4E4C6 /* RandomSyncAdaptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -27,6 +27,7 @@
 
 @implementation Database
 @synthesize databaseType;
+@synthesize records;
 
 - (id)initWithRecordCount:(int)count 
         andAsDatabaseType:(unsigned int)type {

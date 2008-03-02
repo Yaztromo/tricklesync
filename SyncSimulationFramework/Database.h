@@ -33,6 +33,7 @@
    unsigned int databaseType;
 }
 @property(readonly) unsigned int databaseType;
+@property(readonly) NSArray *records;
 
 - (id)initWithRecordCount:(int)count
         andAsDatabaseType:(unsigned int)type;

@@ -24,6 +24,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Location.h"
+#import "ProbabilityController.h"
 
 // A location vector is a combination of a location and a time.
 // This is useful, as we can be in a single location at multiple times during a day,
@@ -31,20 +32,20 @@
 // to another.
 
 @interface LocationVector : NSObject {
-   unsigned int entryTime;    // The time we enter this location, expressed in seconds from 0000.
-   Location *location;        // The location we enter at the specified time.
-   double syncRequestArrivalRate;         // as expected number of synchronizations per second
-   double mobileDatabaseModificationRate; // as probability of record modification per second
+   unsigned int entryTime;          // The time we enter this location, expressed in seconds from 0000.
+   Location *location;              // The location we enter at the specified time.
+   double syncRequestArrivalRate;   // as expected number of synchronizations per second
+   double mobileDatabaseAccessRate; // as probability of record access per second
 }
 @property(readonly) unsigned int entryTime;
 @property(readonly) Location *location;
 @property(readonly) double syncRequestArrivalRate;
-@property(readonly) double mobileDatabaseModificationRate;
+@property(readonly) double mobileDatabaseAccessRate;
 
 - (id)initEntryTime:(int)time
         forLocation:(Location *)loc
-andExpectedSyncsPerHour:(int)syncRate
-andDatabaseModificationsPerHour:(int)modRate;
+andExpectedSyncsPerHour:(double)syncRate
+andDatabaseModificationsPerHour:(double)modRate;
 
 - (BOOL)doEntryForTime:(int)time;
 

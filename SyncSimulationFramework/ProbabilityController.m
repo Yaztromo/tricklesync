@@ -29,7 +29,7 @@
 @synthesize arrivalRate;
 @synthesize timeIntervalInSeconds;
 
-+ (double)bernoulliProbabilityPerSecondFromEventsPerHour:(int)ratePerHour {
++ (double)bernoulliProbabilityPerSecondFromEventsPerHour:(double)ratePerHour {
    return ((double)ratePerHour)/3600.0;  // Divide the hourly rate by the number of seconds in an hour
 } // end-method
 
