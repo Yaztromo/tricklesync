@@ -58,6 +58,10 @@
 		8B8550640D0BABAC000F949A /* GaussianGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550620D0BABAC000F949A /* GaussianGenerator.m */; };
 		8B8833010D7B4DA200A4E4C6 /* RandomSyncAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8832FF0D7B4DA200A4E4C6 /* RandomSyncAdaptor.h */; };
 		8B8833020D7B4DA200A4E4C6 /* RandomSyncAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8833000D7B4DA200A4E4C6 /* RandomSyncAdaptor.m */; };
+		8B88345E0D7B785B00A4E4C6 /* SlowSyncAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B88345C0D7B785B00A4E4C6 /* SlowSyncAdaptor.h */; };
+		8B88345F0D7B785B00A4E4C6 /* SlowSyncAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B88345D0D7B785B00A4E4C6 /* SlowSyncAdaptor.m */; };
+		8B8834680D7B7BC600A4E4C6 /* FastSyncAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8834660D7B7BC600A4E4C6 /* FastSyncAdaptor.h */; };
+		8B8834690D7B7BC600A4E4C6 /* FastSyncAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8834670D7B7BC600A4E4C6 /* FastSyncAdaptor.m */; };
 		8BD22F2D0D677CAE00BE46C7 /* SyncLogicController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BD22F2B0D677CAD00BE46C7 /* SyncLogicController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8BD22F2E0D677CAE00BE46C7 /* SyncLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD22F2C0D677CAE00BE46C7 /* SyncLogicController.m */; };
 		8BD4AC350D4514B50053A40F /* TimeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BD4AC340D4514B50053A40F /* TimeController.m */; };
@@ -124,6 +128,10 @@
 		8B8551650D0CD958000F949A /* DatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTests.m; sourceTree = "<group>"; };
 		8B8832FF0D7B4DA200A4E4C6 /* RandomSyncAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomSyncAdaptor.h; sourceTree = "<group>"; };
 		8B8833000D7B4DA200A4E4C6 /* RandomSyncAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomSyncAdaptor.m; sourceTree = "<group>"; };
+		8B88345C0D7B785B00A4E4C6 /* SlowSyncAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlowSyncAdaptor.h; sourceTree = "<group>"; };
+		8B88345D0D7B785B00A4E4C6 /* SlowSyncAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlowSyncAdaptor.m; sourceTree = "<group>"; };
+		8B8834660D7B7BC600A4E4C6 /* FastSyncAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastSyncAdaptor.h; sourceTree = "<group>"; };
+		8B8834670D7B7BC600A4E4C6 /* FastSyncAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastSyncAdaptor.m; sourceTree = "<group>"; };
 		8BD22F2B0D677CAD00BE46C7 /* SyncLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncLogicController.h; sourceTree = "<group>"; };
 		8BD22F2C0D677CAE00BE46C7 /* SyncLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncLogicController.m; sourceTree = "<group>"; };
 		8BD4AC330D4514B50053A40F /* TimeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeController.h; sourceTree = "<group>"; };
@@ -336,6 +344,8 @@
 		8B8832E60D7A135E00A4E4C6 /* Fast Synchronizer */ = {
 			isa = PBXGroup;
 			children = (
+				8B8834660D7B7BC600A4E4C6 /* FastSyncAdaptor.h */,
+				8B8834670D7B7BC600A4E4C6 /* FastSyncAdaptor.m */,
 			);
 			name = "Fast Synchronizer";
 			sourceTree = "<group>";
@@ -350,6 +360,8 @@
 		8B88331B0D7B4EF900A4E4C6 /* Slow Synchronizer */ = {
 			isa = PBXGroup;
 			children = (
+				8B88345C0D7B785B00A4E4C6 /* SlowSyncAdaptor.h */,
+				8B88345D0D7B785B00A4E4C6 /* SlowSyncAdaptor.m */,
 			);
 			name = "Slow Synchronizer";
 			sourceTree = "<group>";
@@ -383,6 +395,8 @@
 				8B7B3DB70D7403FD00B486DF /* mtwist.h in Headers */,
 				8B7B3E880D76928200B486DF /* Degree2Poly.h in Headers */,
 				8B8833010D7B4DA200A4E4C6 /* RandomSyncAdaptor.h in Headers */,
+				8B88345E0D7B785B00A4E4C6 /* SlowSyncAdaptor.h in Headers */,
+				8B8834680D7B7BC600A4E4C6 /* FastSyncAdaptor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +546,8 @@
 				8B7B3DB80D7403FD00B486DF /* mtwist.c in Sources */,
 				8B7B3E890D76928200B486DF /* Degree2Poly.m in Sources */,
 				8B8833020D7B4DA200A4E4C6 /* RandomSyncAdaptor.m in Sources */,
+				8B88345F0D7B785B00A4E4C6 /* SlowSyncAdaptor.m in Sources */,
+				8B8834690D7B7BC600A4E4C6 /* FastSyncAdaptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

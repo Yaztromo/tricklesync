@@ -74,6 +74,9 @@
    // Update the synchronized record so that it has the same revision number on both the handheld and the server
    [[[user handheldDB] getRecordWithID:[r recordID]] updateRecordToRevision:[r recordVersion]];
    
+   // Add the amount of data transferred to the running total
+   [costRecorder incrementDataTransferredBy:r.recordSizeInBytes/1024.0];
+   
    // Return TRUE.
    return TRUE;
 } // end-method
