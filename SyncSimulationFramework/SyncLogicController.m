@@ -8,7 +8,6 @@
 
 #import "SyncLogicController.h"
 
-
 @implementation SyncLogicController
 
 @synthesize user;

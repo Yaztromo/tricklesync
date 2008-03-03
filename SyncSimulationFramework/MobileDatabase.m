@@ -34,11 +34,16 @@
                   forUser:(User *)usr 
          withCostRecorder:(CostRecorder *)cr 
     againstServerDatabase:(Database *)sdb {
+   
+   int i;
+   
    [super initWithRecordCount:count andAsDatabaseType:DATABASE_TYPE_MOBILE];
    user = usr;
    cost = cr;
    serverDB = sdb;
    rand = [[GaussianGenerator alloc] init];
+   for(i=0;i<count;i++) [[records objectAtIndex:i] setRecordSizeInBytes:[[sdb getRecordWithID:i] recordSizeInBytes]];
+   
    return self;
 } // end-constructor
 

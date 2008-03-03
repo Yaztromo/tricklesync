@@ -54,7 +54,7 @@
 } // end-static-method
 
 - (NSString *)description {
-   return [NSString stringWithFormat:@"y=%.3fx^2+%.3fx+%.3f", x_squared, x, constant];
+   return [NSString stringWithFormat:@"y=%.3fx^2%+.3fx%+.3f", x_squared, x, constant];
 } // end-method
 
 @end
