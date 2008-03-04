@@ -56,9 +56,17 @@ Tying the above simulated elements together is the user object ($U$).  Only a si
 
 \section{Models}
 
-Talk about the mathematical models.
+Manipulation of the simulated elements is governed by a series of mathematical models, which dictate the behaviour of the simulation process by ensuring the simulated elements remain within realistic bounds.  The models transform pseudo-random numbers into values within a defined range in order to simulate unknown information that falls within a known (or expected) set of bounds \ref{RefWorks:38, RefWorks:40}.  This section details these models as they are utilized within the simulation environment, along with the rationale for their selection.
+
+\subsection{Pseudo-Random Number Generation}\label{random_nums}
+
+A key ingredient to simulating discrete, random events is the reliable generation of random numeric values \ref{RefWorks:38}.  For simulation, it is generally desirable to generate values which are as close to uniformly distributed within the interval $(0, 1)$ as possible.  As it is impossible to generate random values using purely deterministic techniques \ref{RefWorks:38}, we must choose a pseudo-random number generator (PRNG) algorithm which produces uniformly distributed numeric values, with an extremely long period between repetitions.  Additionally, the pseudo-random number generation algorithm should produce random values very quickly, as an algorithm which requires a large number of instructions may cause our simulation to require significant runtime to arrive at a result, as a single simulation run may require tens of millions random numbers (indeed, based on experimentation a one year simulation can easily require in excess of 30 million random values).  Thus, a balance between the appearance of randomness, long period, equidistribution, and computational efficiency is the ideal trait of a pseudo-random number generator for use in our simulator \ref{wiki:mersenne_twister}.
+
+The PRNG selected for the simulation is the Mersenne Twister algorithm /ref{mersenne_twister}, as it meets all of these requirements.  It's period before values start to repeat themselves has been proven to be $2^19937-1$, has a very high order of equidistribution, passes numerous statistical tests for randomness, and is fast.  In testing during PRNG evaluation for the simulator, the LGPL Mersenne Twist implementation used \ref{mersenne_twist_code} was slightly more efficient than the Mac OS X built-in random number generators \typett{rand} and \typett{drand48}.  The fact that the efficiency is not worse than the platforms random number generator, coupled with its improved equidistribution and significantly longer period make it an excellent choice for discrete event simulation \ref{mersenne_twister}.
 
 \subsection{Gaussian Distribution}\label{gaussian}
+
+Characterizing the types of data that can be synchronized in a generalized manner is nearly impossible;  the types of information that are expected to be synchronized 
 
 
 \subsection{Bernoulli Process}\label{bernoulli}
