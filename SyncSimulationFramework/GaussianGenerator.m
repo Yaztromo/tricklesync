@@ -76,7 +76,6 @@
 } // end-method
 
 + (double)calculateNormalProbabilityWith:(double)x {
-   //return (1.0/sqrt(2*M_PI))*exp(-x*x/2);
    return 1.0/2.0*(1.0+erf(x/M_SQRT2));
 } // end-method
 

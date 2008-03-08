@@ -48,6 +48,8 @@
 usingDistribution:(GaussianGenerator *)dist {
    // Calculate the size
    int size=([dist nextGaussian]+10)*1024;      // Ramdom size based on a distribution
+   if (size<0) size=0;
+   
    return [self initWithID:idNum withSize:size withVersion:0];
 } // end-initializer
 

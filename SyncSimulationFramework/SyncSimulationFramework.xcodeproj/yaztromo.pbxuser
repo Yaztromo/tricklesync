@@ -2,7 +2,7 @@
 {
 	0867D690FE84028FC02AAC07 /* Project object */ = {
 		activeArchitecture = x86_64;
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeTarget = 8DC2EF4F0486A6940098B216 /* SyncSimulationFramework */;
 		addToTargets = (
 			8DC2EF4F0486A6940098B216 /* SyncSimulationFramework */,
@@ -151,6 +151,7 @@
 			8B031EC70D70E2A000BB85D5 = 8B031EC70D70E2A000BB85D5 /* PBXTextBookmark */;
 			8B031EF00D737CDD00BB85D5 = 8B031EF00D737CDD00BB85D5 /* PBXTextBookmark */;
 			8B0443650D7C96320035A331 /* PBXTextBookmark */ = 8B0443650D7C96320035A331 /* PBXTextBookmark */;
+			8B0443860D7C96790035A331 /* PBXTextBookmark */ = 8B0443860D7C96790035A331 /* PBXTextBookmark */;
 			8B2E8F040D7BA56D0030EA25 = 8B2E8F040D7BA56D0030EA25 /* PBXTextBookmark */;
 			8B2E8F070D7BA5840030EA25 = 8B2E8F070D7BA5840030EA25 /* PBXTextBookmark */;
 			8B2E8F080D7BA5840030EA25 = 8B2E8F080D7BA5840030EA25 /* PBXTextBookmark */;
@@ -324,6 +325,16 @@
 		vrLoc = 1191;
 	};
 	8B0443650D7C96320035A331 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8B88345D0D7B785B00A4E4C6 /* SlowSyncAdaptor.m */;
+		name = "SlowSyncAdaptor.m: 17";
+		rLen = 0;
+		rLoc = 397;
+		rType = 0;
+		vrLen = 886;
+		vrLoc = 25;
+	};
+	8B0443860D7C96790035A331 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 8B88345D0D7B785B00A4E4C6 /* SlowSyncAdaptor.m */;
 		name = "SlowSyncAdaptor.m: 17";
