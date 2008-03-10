@@ -47,7 +47,7 @@
 - (id)initWithID:(int)idNum 
 usingDistribution:(GaussianGenerator *)dist {
    // Calculate the size
-   int size=([dist nextGaussian]+10)*1024;      // Ramdom size based on a distribution
+   int size=[dist nextGaussianWithMean:10240.0 andDeviation:5120];      // Ramdom size based on a distribution
    if (size<0) size=0;
    
    return [self initWithID:idNum withSize:size withVersion:0];

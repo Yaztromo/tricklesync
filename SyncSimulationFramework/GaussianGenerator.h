@@ -34,6 +34,8 @@
 - (id)initWithSeed:(unsigned long)seed;
 - (id)init;
 - (double)nextGaussian;
+- (double)nextGaussianWithMean:(double)mean
+                  andDeviation:(double)stddev;
 - (double)getNextRandom;
 + (double)calculateNormalProbabilityWith:(double)x;
 + (double)calculateNormalProbabilityForValue:(unsigned int)x

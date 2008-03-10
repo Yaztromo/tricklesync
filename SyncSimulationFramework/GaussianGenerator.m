@@ -75,6 +75,11 @@
    }
 } // end-method
 
+- (double)nextGaussianWithMean:(double)mean
+                  andDeviation:(double)stddev {
+   return mean+stddev*[self nextGaussian];
+} // end-method
+
 + (double)calculateNormalProbabilityWith:(double)x {
    return 1.0/2.0*(1.0+erf(x/M_SQRT2));
 } // end-method
