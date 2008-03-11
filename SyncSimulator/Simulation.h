@@ -1,8 +1,8 @@
 #import <Cocoa/Cocoa.h>
 #import <SyncSimulationFramework/SyncSimulationFramework.h>
 
-@interface SimulationController : NSObject <SimulationCallbackProtocol> {
-   SyncController *syncController;
+@interface Simulation : NSObject <SimulationCallbackProtocol> {
+   SimulationController *syncController;
    
    IBOutlet NSTextField *step1Header;
    IBOutlet NSTextField *step2Header;
@@ -31,8 +31,7 @@
    NSColor *disabledGrey;
    NSColor *enabledBlack;
 }
-@property double progressCompleted;
-@property (retain) SyncController *syncController;
+@property (retain) SimulationController *syncController;
 
 - (IBAction)openFile:(id)sender;
 - (IBAction)startSimulation:(id)sender;

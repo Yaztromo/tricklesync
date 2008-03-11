@@ -1,8 +1,7 @@
-#import "SimulationController.h"
+#import "Simulation.h"
 
-@implementation SimulationController
+@implementation Simulation
 
-@synthesize progressCompleted;
 @synthesize syncController;
 
 - (id)init {
@@ -21,7 +20,7 @@
    [openPanel setAllowsMultipleSelection:FALSE];
    
    if ([openPanel runModalForTypes:types]==NSOKButton) {
-      syncController = [[SyncController alloc] initWithXMLFile:[openPanel filename]];
+      syncController = [[SimulationController alloc] initWithXMLFile:[openPanel filename]];
    } else {
       return;
    } // end-if
