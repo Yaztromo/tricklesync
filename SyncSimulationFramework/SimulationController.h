@@ -39,7 +39,7 @@
 #import "SyncLogicController.h"
 #import "Degree2Poly.h"
 
-@interface SyncController : NSObject {
+@interface SimulationController : NSObject {
    User * user;                  // Holds a handle to the synchronization user
    TimeController *timer;        // Holds a handle to the time controller
    CostRecorder *cost;           // Holds a handle to the cost recorder

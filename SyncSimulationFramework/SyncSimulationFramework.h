@@ -36,6 +36,6 @@
 #import <SyncSimulationFramework/User.h>
 #import <SyncSimulationFramework/TimeController.h>
 #import <SyncSimulationFramework/SyncProtocol.h>
-#import <SyncSimulationFramework/SyncController.h>
+#import <SyncSimulationFramework/SimulationController.h>
 #import <SyncSimulationFramework/SimulationCallbackProtocol.h>
 #import <SyncSimulationFramework/Degree2Poly.h>

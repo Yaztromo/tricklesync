@@ -22,17 +22,17 @@
 // --------------------------------------------------------------------------
 
 
-#import "SyncControllerTests.h"
-#import "SyncController.h"
+#import "SimulationControllerTests.h"
+#import "SimulationController.h"
 
-@implementation SyncControllerTests
+@implementation SimulationControllerTests
 
 - (void)testXMLParser {
-   SyncController *sc;
+   SimulationController *sc;
    
-   sc = [[SyncController alloc] initWithXMLFile:@"sample.xml"];
+   sc = [[SimulationController alloc] initWithXMLFile:@"sample.xml"];
    
-   STAssertNotNil(sc, @"The SyncController initializer returned nil!");
+   STAssertNotNil(sc, @"The SimulationController initializer returned nil!");
    
    // Run the simulation
    [sc runSimulationFor:1];

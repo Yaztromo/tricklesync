@@ -10,10 +10,10 @@
 		8B0BE2910D483EB700EA81A2 /* TimeControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE28E0D483EB700EA81A2 /* TimeControllerTests.m */; };
 		8B0BE3660D4EA86F00EA81A2 /* SyncSimulationFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0BE3650D4EA86F00EA81A2 /* SyncSimulationFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B0BE3680D4EA94F00EA81A2 /* SyncProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0BE3670D4EA94F00EA81A2 /* SyncProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B3A156E0D57D60A0009380A /* SyncController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B3A156C0D57D60A0009380A /* SyncController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8B3A156F0D57D60A0009380A /* SyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3A156D0D57D60A0009380A /* SyncController.m */; };
-		8B3A15700D57D60A0009380A /* SyncController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3A156D0D57D60A0009380A /* SyncController.m */; };
-		8B3DA5B90D6039E800D58E8A /* NullSyncAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B6C33E80D595BB1003A7D8E /* NullSyncAdaptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B3A156E0D57D60A0009380A /* SimulationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B3A156C0D57D60A0009380A /* SimulationController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B3A156F0D57D60A0009380A /* SimulationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3A156D0D57D60A0009380A /* SimulationController.m */; };
+		8B3A15700D57D60A0009380A /* SimulationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B3A156D0D57D60A0009380A /* SimulationController.m */; };
+		8B3DA5B90D6039E800D58E8A /* NullSyncAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B6C33E80D595BB1003A7D8E /* NullSyncAdaptor.h */; settings = {ATTRIBUTES = (); }; };
 		8B3DA5BA0D6039F800D58E8A /* NullSyncAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C33E90D595BB1003A7D8E /* NullSyncAdaptor.m */; };
 		8B3DA6130D603E3100D58E8A /* SimulationCallbackProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B3DA6120D603E3100D58E8A /* SimulationCallbackProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B60416B0D42DFFE00927ECA /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B6041690D42DFFE00927ECA /* User.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -56,7 +56,7 @@
 		8B85504B0D0B94EA000F949A /* Record.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550430D0B908E000F949A /* Record.m */; };
 		8B8550630D0BABAC000F949A /* GaussianGenerator.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8550610D0BABAC000F949A /* GaussianGenerator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8550640D0BABAC000F949A /* GaussianGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8550620D0BABAC000F949A /* GaussianGenerator.m */; };
-		8B8833010D7B4DA200A4E4C6 /* RandomSyncAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8832FF0D7B4DA200A4E4C6 /* RandomSyncAdaptor.h */; };
+		8B8833010D7B4DA200A4E4C6 /* RandomSyncAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B8832FF0D7B4DA200A4E4C6 /* RandomSyncAdaptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B8833020D7B4DA200A4E4C6 /* RandomSyncAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8833000D7B4DA200A4E4C6 /* RandomSyncAdaptor.m */; };
 		8B88345E0D7B785B00A4E4C6 /* SlowSyncAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B88345C0D7B785B00A4E4C6 /* SlowSyncAdaptor.h */; };
 		8B88345F0D7B785B00A4E4C6 /* SlowSyncAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B88345D0D7B785B00A4E4C6 /* SlowSyncAdaptor.m */; };
@@ -85,8 +85,8 @@
 		8B0BE28E0D483EB700EA81A2 /* TimeControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeControllerTests.m; sourceTree = "<group>"; };
 		8B0BE3650D4EA86F00EA81A2 /* SyncSimulationFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncSimulationFramework.h; sourceTree = "<group>"; };
 		8B0BE3670D4EA94F00EA81A2 /* SyncProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncProtocol.h; sourceTree = "<group>"; };
-		8B3A156C0D57D60A0009380A /* SyncController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncController.h; sourceTree = "<group>"; };
-		8B3A156D0D57D60A0009380A /* SyncController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncController.m; sourceTree = "<group>"; };
+		8B3A156C0D57D60A0009380A /* SimulationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationController.h; sourceTree = "<group>"; };
+		8B3A156D0D57D60A0009380A /* SimulationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationController.m; sourceTree = "<group>"; };
 		8B3DA6120D603E3100D58E8A /* SimulationCallbackProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationCallbackProtocol.h; sourceTree = "<group>"; };
 		8B6041690D42DFFE00927ECA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		8B60416A0D42DFFE00927ECA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
@@ -211,8 +211,8 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8B3A156C0D57D60A0009380A /* SyncController.h */,
-				8B3A156D0D57D60A0009380A /* SyncController.m */,
+				8B3A156C0D57D60A0009380A /* SimulationController.h */,
+				8B3A156D0D57D60A0009380A /* SimulationController.m */,
 				8B6041AC0D43182300927ECA /* MobileDatabase.h */,
 				8B6041AD0D43182300927ECA /* MobileDatabase.m */,
 				8B6041A70D4317F200927ECA /* ServerDatabase.h */,
@@ -389,7 +389,7 @@
 				8BD4AC360D4514B50053A40F /* TimeController.h in Headers */,
 				8B0BE3660D4EA86F00EA81A2 /* SyncSimulationFramework.h in Headers */,
 				8B0BE3680D4EA94F00EA81A2 /* SyncProtocol.h in Headers */,
-				8B3A156E0D57D60A0009380A /* SyncController.h in Headers */,
+				8B3A156E0D57D60A0009380A /* SimulationController.h in Headers */,
 				8B3DA6130D603E3100D58E8A /* SimulationCallbackProtocol.h in Headers */,
 				8BD22F2D0D677CAE00BE46C7 /* SyncLogicController.h in Headers */,
 				8B7B3DB70D7403FD00B486DF /* mtwist.h in Headers */,
@@ -518,7 +518,7 @@
 				8B6041AE0D43182300927ECA /* MobileDatabase.m in Sources */,
 				8BD4AC350D4514B50053A40F /* TimeController.m in Sources */,
 				8B0BE2910D483EB700EA81A2 /* TimeControllerTests.m in Sources */,
-				8B3A15700D57D60A0009380A /* SyncController.m in Sources */,
+				8B3A15700D57D60A0009380A /* SimulationController.m in Sources */,
 				8B6C100C0D591DAB00DC1EF2 /* SyncControllerTests.m in Sources */,
 				8B6C33EA0D595BB1003A7D8E /* NullSyncAdaptor.m in Sources */,
 			);
@@ -541,7 +541,7 @@
 				8B6041AB0D4317F200927ECA /* ServerDatabase.m in Sources */,
 				8B6041B00D43182300927ECA /* MobileDatabase.m in Sources */,
 				8BD4AC370D4514B50053A40F /* TimeController.m in Sources */,
-				8B3A156F0D57D60A0009380A /* SyncController.m in Sources */,
+				8B3A156F0D57D60A0009380A /* SimulationController.m in Sources */,
 				8BD22F2E0D677CAE00BE46C7 /* SyncLogicController.m in Sources */,
 				8B7B3DB80D7403FD00B486DF /* mtwist.c in Sources */,
 				8B7B3E890D76928200B486DF /* Degree2Poly.m in Sources */,

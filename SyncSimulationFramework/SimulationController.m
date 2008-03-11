@@ -22,10 +22,9 @@
 // --------------------------------------------------------------------------
 
 
-#import "SyncController.h"
+#import "SimulationController.h"
 
-
-@implementation SyncController
+@implementation SimulationController
 
 @synthesize user;
 @synthesize timer;

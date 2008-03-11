@@ -25,7 +25,7 @@
 #import <SenTestingKit/SenTestingKit.h>
 
 
-@interface SyncControllerTests : SenTestCase {
+@interface SimulationControllerTests : SenTestCase {
 }
 
 - (void)testXMLParser;
