@@ -150,7 +150,7 @@ Next, assuming the applications to be synchronized are designed with it in mind,
 
 Finally, in certain cases it may be possible to average differing numerical values to come up with a new value that is between the two claimed values.  While this sort of synchronization is of much more limited use, it is implemented in Cristian's clock synchronization algorithm \cite{RefWorks:37}. 
 
-\section{Determining what information to include in the update packet}
+\section{Determining what information to include in the update packet}\label{update_packet}
 In order to affect changes to a remote record once the differences have been determined and any conflicts have been resolved, the modified data needs to be sent across the communications line to the remote device.  Typically when synchronizing semi-connected devices, the more capable system (typically the synchronization host) takes care of these more computationally intensive operations (due to its greater available RAM, faster processing speed, and larger secondary storage facilities).  Once the system has determined the updates to be made on the remote device, it has to construct an update packet containing the new record information.
 
 As we typically wish to minimize the time required to synchronize the devices, it is highly desirable to minimize the data to be transmitted.  This is particularly so for semi-connected devices, as their network connectivity may at times incur a monetary cost from the amount of data transferred, the time taken to transfer the data, or both \cite{RefWorks:13, RefWorks:25}.  As such, minimizing the size of the update packets (along with minimizing the number of update packets) is highly desirable.

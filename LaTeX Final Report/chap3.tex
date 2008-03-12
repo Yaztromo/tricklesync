@@ -168,15 +168,26 @@ As the random variate $n$ used is uniformly distributed, over a large number of 
 
 \subsection{Slow Synchronizer}\label{slowsync}
 
-Talk about the "slow sync" synchronizer here, and discuss how it models the mechanism used by HotSync, ActiveSync, iSync, etc.
+The slow synchronizer simulates a set of real-world synchronization protocols, such as the Slow Sync mode of Palm Computing's HotSync Protocol \cite{RefWorks:1, RefWorks:2, RefWorks:24, RefWorks:31}.  It is designed to read every record from the handheld database during every synchronization, determine on the server-side if any differences occur, and if so update the record and send it back to the mobile device.  The slow sync algorithm is discussed further in \ref{id_mod_recs}.
+
+In the simulator implementation, the slow synchronizer algorithm transfers every record in the mobile database across the network, with every modified record transferred twice.  This mimics the real network transmission needs of slow sync style protocols, which transmit every record to the server, which then compares them against its database, and transmits back any records which have been modified.
+
+The slow synchronizer algorithm synchronizes at random based on the expected number of synchronizations per hour within each distinct locale.  This mimics the fact that slow sync based handhelds typically require the user to initiate the synchronization session.
 
 \subsection{Fast Synchronizer}\label{fastsync}
 
-Talk about the "fast sync" synchronizer here, and discuss how it models the mechanism used by HotSync, ActiveSync, iSync, etc.
+The fast synchronizer algorithm simulates another set of real-world algorithms, such as the Fast Sync mode of Palm Computing's HotSync Protocol \cite{RefWorks:2, RefWorks:22, RefWorks:31}, Apple's iSync \cite{RefWorks:33}, and others.  It is the most frequently used synchronization algorithm.  Like the slow synchronization algorithm, it synchronizes at random based on the expected number of synchronizations per hour within each distinct locale.  However, unlike the slow synchronizer algorithm, the fast synchronization algorithm is able to determine which records require synchronization, and only transmits the records which do across the network.  As such, the rate of synchronization should be identical to the slow synchronizer algorithm, however the actual data transferred should be significantly reduced, due to the fact that only a subset of the records are transmitted during each synchronization session.  The fast synchronization algorithm is discussed further in \ref{id_mod_recs}.
 
 \section{Limitations}
 
- - Synchronization is only in one direction.
- - No attention is paid to conflict resolution costs (conflict resolution is assumed to be free)
- - Packets are not compressed, and are assumed to be fully transferred.  There is no ability to encode only the record deltas to reduce the transfer size of individual records.  This can improve the cost savings of all the protocols (except null sync).
-  - Synchronization always resolves within one tick within the simulator (the sync doesn't run within simulator time)
+While the simulation environment is designed to closely detail the realities of mobile data synchronization, it is imperfect, facing a number of limitations.  However, it is felt that these limitations do not have a significant impact on the simulation results.  These limitations will be discusses herein.
+
+Firstly, all synchronization performed is unidirectional; in effect we're always updating the handheld device based on changes generated on the server, but never vice-versa.  However, as a bidirectional synchronization can be composed of two unidirectional synchronizations in opposing directions, and as this limitation affects all the simulated synchronization algorithms equally, it is felt that the impact on the results is negligible.  Indeed, assuming the server database's expected modifications per hour rate includes expected modifications from the simulated mobile device, the impact on the results will be virtually nil.
+
+Another issue in the simulation environment is that the cost associated with manual conflict resolution is complete ignored.  As the simulation environment doesn't simulate user-initiated changes to the mobile database, and as it contains no real data, no conflicts occur.  It can be argued that for databases where conflict resolution can be completed in a completely automated manner, however, that the cost of conflict management will be virtually nil, and thus can be easily ignored.
+
+No attention is paid in the cost calculation to mechanisms to reduce the amount of information transmitted in an update packet; the simulation assumes that the entire modified record is transmitted to the out-of-date database for synchronization.  While most existing synchronization algorithms do nothing to reduce this data size, the use of data compression and/or delta packets (as described in \ref{update_packet}) can be used to equally reduce the size of packets for any of the synchronization algorithms used (with the notable exception of the null synchronizer, as it lacks any synchronization facilities).  Thus, for the sake of comparison, data reduction methods can be safely ignored within the simulation.
+
+Finally, synchronization always resolves within a single simulation tick, even if it would normally take significantly longer to actually occur.  This should only be a significant issue when synchronizing very large amounts of data on very slow networks, while simultaneously having a significant expected number of synchronizations per unit time.  Synchronizations which occur within seconds of each other should have a significantly small enough probability so as not to affect the final results.  Additionally, these synchronizations can be conceptually moved to a different time within the locale; their results continue to be valid, and would have the same effect on the final result.
+
+None of these limitations are felt to have a significant impact on the final results; the end results continue to permit differing algorithms to be accurately compared to each other.  Removing these implementations would significantly impact the performance of the simulation, without impacting upon the results in a significant or meaningful way.  Thus it is felt that these limitations are sufficiently insignificant enough to have no real impact on the final results.
