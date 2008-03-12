@@ -65,13 +65,13 @@
    if ([rand getNextRandom]<probabilityOfLostSync) return FALSE;
    
    // Synchronize the records by updating the handheld record to match the version number of the server record
-   [r updateRecordToRevision:[[serverDatabase getRecordWithID:[r recordID]] recordVersion]];
+   // [r updateRecordToRevision:[[serverDatabase getRecordWithID:[r recordID]] recordVersion]];
    
    // Calculate the cost of synchronizing this record and add it to the cost recorder object
    [costRecorder incrementRealCostBy:[currentNetwork costToTransferRecord:r]];
    
    // Update the synchronized record so that it has the same revision number on both the handheld and the server
-   [[[user handheldDB] getRecordWithID:[r recordID]] updateRecordToRevision:[r recordVersion]];
+   [r updateRecordToRevision:[[serverDatabase getRecordWithID:[r recordID]] recordVersion]];
    
    // Add the amount of data transferred to the running total
    [costRecorder incrementDataTransferredBy:r.recordSizeInBytes/1024.0];

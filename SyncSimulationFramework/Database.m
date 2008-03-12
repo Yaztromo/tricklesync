@@ -70,7 +70,7 @@
    for(i=0;i<[records count];i++) {
       if ([db getRecordWithID:i].recordVersion > [self getRecordWithID:i].recordVersion) {
          // Add this element to our results
-         [results addObject:[db getRecordWithID:i]];
+         [results addObject:[self getRecordWithID:i]];
       } // end-if
    } // end-for
    return [NSArray arrayWithArray:results];

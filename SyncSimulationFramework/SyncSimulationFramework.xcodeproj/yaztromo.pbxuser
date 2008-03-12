@@ -690,7 +690,7 @@
 		fRef = 8BD22F2C0D677CAE00BE46C7 /* SyncLogicController.m */;
 		name = "SyncLogicController.m: 77";
 		rLen = 0;
-		rLoc = 2646;
+		rLoc = 2649;
 		rType = 0;
 		vrLen = 1409;
 		vrLoc = 1299;
@@ -710,7 +710,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SimulationController.m */;
 		name = "SyncController.m: 271";
 		rLen = 0;
-		rLoc = 12138;
+		rLoc = 12092;
 		rType = 0;
 		vrLen = 1256;
 		vrLoc = 10893;
@@ -750,7 +750,7 @@
 		fRef = 8BD22F2C0D677CAE00BE46C7 /* SyncLogicController.m */;
 		name = "SyncLogicController.m: 77";
 		rLen = 0;
-		rLoc = 2646;
+		rLoc = 2649;
 		rType = 0;
 		vrLen = 1409;
 		vrLoc = 1299;
@@ -759,14 +759,14 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {928, 980}}";
 			sepNavSelRange = "{1640, 0}";
-			sepNavVisRange = "{0, 1344}";
+			sepNavVisRange = "{1594, 1236}";
 		};
 	};
 	8B3A156D0D57D60A0009380A /* SimulationController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {928, 4004}}";
-			sepNavSelRange = "{1263, 0}";
-			sepNavVisRange = "{803, 851}";
+			sepNavIntBoundsRect = "{{0, 0}, {1370, 4046}}";
+			sepNavSelRange = "{10521, 0}";
+			sepNavVisRange = "{10246, 776}";
 		};
 	};
 	8B3DA45E0D5FD3F100D58E8A /* PBXTextBookmark */ = {
@@ -1069,8 +1069,8 @@
 	8B6041AD0D43182300927ECA /* MobileDatabase.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {928, 1106}}";
-			sepNavSelRange = "{1794, 0}";
-			sepNavVisRange = "{1286, 885}";
+			sepNavSelRange = "{2193, 30}";
+			sepNavVisRange = "{1837, 1359}";
 		};
 	};
 	8B6C10070D591B5B00DC1EF2 /* sample.xml */ = {
@@ -1098,7 +1098,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {928, 574}}";
 			sepNavSelRange = "{1534, 33}";
-			sepNavVisRange = "{650, 955}";
+			sepNavVisRange = "{625, 980}";
 		};
 	};
 	8B6C33E90D595BB1003A7D8E /* NullSyncAdaptor.m */ = {
@@ -1717,9 +1717,9 @@
 	};
 	8B8550470D0B94BB000F949A /* Database.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {928, 1302}}";
-			sepNavSelRange = "{2257, 0}";
-			sepNavVisRange = "{1317, 1039}";
+			sepNavIntBoundsRect = "{{0, 0}, {928, 1330}}";
+			sepNavSelRange = "{2789, 0}";
+			sepNavVisRange = "{2257, 852}";
 			sepNavWindowFrame = "{{84, 87}, {1115, 600}}";
 		};
 	};
@@ -1922,16 +1922,16 @@
 	};
 	8B88345C0D7B785B00A4E4C6 /* SlowSyncAdaptor.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {928, 406}}";
+			sepNavIntBoundsRect = "{{0, 0}, {928, 407}}";
 			sepNavSelRange = "{476, 0}";
 			sepNavVisRange = "{0, 674}";
 		};
 	};
 	8B88345D0D7B785B00A4E4C6 /* SlowSyncAdaptor.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {928, 686}}";
-			sepNavSelRange = "{397, 0}";
-			sepNavVisRange = "{25, 890}";
+			sepNavIntBoundsRect = "{{0, 0}, {928, 770}}";
+			sepNavSelRange = "{1310, 0}";
+			sepNavVisRange = "{622, 1048}";
 		};
 	};
 	8B8834660D7B7BC600A4E4C6 /* FastSyncAdaptor.h */ = {
@@ -2085,7 +2085,7 @@
 		fRef = 8B3A156D0D57D60A0009380A /* SimulationController.m */;
 		name = "SyncController.m: 252";
 		rLen = 0;
-		rLoc = 11068;
+		rLoc = 11022;
 		rType = 0;
 		vrLen = 1068;
 		vrLoc = 10575;
@@ -2093,15 +2093,15 @@
 	8BD22F2B0D677CAD00BE46C7 /* SyncLogicController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {928, 686}}";
-			sepNavSelRange = "{785, 0}";
-			sepNavVisRange = "{191, 889}";
+			sepNavSelRange = "{1344, 0}";
+			sepNavVisRange = "{394, 957}";
 		};
 	};
 	8BD22F2C0D677CAE00BE46C7 /* SyncLogicController.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {928, 1176}}";
-			sepNavSelRange = "{2646, 0}";
-			sepNavVisRange = "{1299, 1409}";
+			sepNavSelRange = "{2032, 0}";
+			sepNavVisRange = "{1234, 1471}";
 		};
 	};
 	8BD22F380D678FC300BE46C7 /* PBXTextBookmark */ = {
@@ -2166,7 +2166,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {928, 686}}";
 			sepNavSelRange = "{1342, 0}";
-			sepNavVisRange = "{1109, 747}";
+			sepNavVisRange = "{1052, 804}";
 		};
 	};
 	8BEF59510D0E98D30023C0ED /* CostRecorder.m */ = {

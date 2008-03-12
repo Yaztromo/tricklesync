@@ -25,6 +25,7 @@
 
 - (void)activateTick:(int)time {
    BOOL b;
+   NSArray *modifiedRecs;
    
    // Determine if we should synchronize during this tick.
    if ([[syncController.user getCurrentLocation] syncRequestArrivalRate]!=0.0 && 
@@ -33,10 +34,17 @@
       // Start the synchronization session, choosing the least expensive network currently available
       [syncController startSynchronizationSessionUsingNetwork:[[[syncController.user getCurrentLocation] location] getLeastExpensiveNetwork]];
       
+      // Get the modified records list, so we know which records to transmit twice
+      modifiedRecs = [syncController getModifiedRecordList];
+   
       // If so, synchronize all the records, one at a time
       for(Record *rec in syncController.user.handheldDB.records) {
          b = [syncController synchronizeRecord:rec];
          if (!b) break;
+         if ([modifiedRecs containsObject:rec]) {
+            b = [syncController synchronizeRecord:rec];
+            if (!b) break;
+         } // end-if
       } // end-for
       
       // Finalize the synchronization

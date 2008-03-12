@@ -227,8 +227,7 @@
 
 - (void)resetSimulationForNextDay {
    // Hint for Garbage collector
-   NSGarbageCollector *collector = [NSGarbageCollector defaultCollector];
-   [collector collectIfNeeded];
+   [[NSGarbageCollector defaultCollector] collectIfNeeded];
 
    [timer reset];
    [user resetLocationToStart];
