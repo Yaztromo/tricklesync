@@ -163,6 +163,7 @@
 			8BF93FB80D8617FD00C90162 /* PBXTextBookmark */ = 8BF93FB80D8617FD00C90162 /* PBXTextBookmark */;
 			8BF93FBB0D86182100C90162 /* PBXTextBookmark */ = 8BF93FBB0D86182100C90162 /* PBXTextBookmark */;
 			8BF93FC90D86183600C90162 /* PBXTextBookmark */ = 8BF93FC90D86183600C90162 /* PBXTextBookmark */;
+			8BF93FD10D878E3500C90162 /* PBXTextBookmark */ = 8BF93FD10D878E3500C90162 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 8B6C34CE0D5AB794003A7D8E /* Source Control */;
 		userBuildSettings = {
@@ -721,8 +722,8 @@
 		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {949, 560}}";
-			sepNavSelRange = "{1630, 0}";
-			sepNavVisRange = "{0, 1348}";
+			sepNavSelRange = "{879, 0}";
+			sepNavVisRange = "{0, 1361}";
 		};
 	};
 	8BF93FB30D8617F800C90162 /* PBXTextBookmark */ = {
@@ -791,6 +792,16 @@
 		rLoc = 1630;
 		rType = 0;
 		vrLen = 1348;
+		vrLoc = 0;
+	};
+	8BF93FD10D878E3500C90162 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8BF93FAE0D86178800C90162 /* SyncProtocol.h */;
+		name = "SyncProtocol.h: 15";
+		rLen = 0;
+		rLoc = 879;
+		rType = 0;
+		vrLen = 1361;
 		vrLoc = 0;
 	};
 	8D1107260486CEB800E47090 /* SyncSimulator */ = {
