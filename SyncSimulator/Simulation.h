@@ -11,6 +11,7 @@
 
    IBOutlet NSTextField *step1Description;
    IBOutlet NSTextField *step2Description;
+   IBOutlet NSTextField *step2DescriptionB;
    IBOutlet NSTextField *step3Description;
    IBOutlet NSTextField *step4Description;
 
@@ -20,7 +21,9 @@
    IBOutlet NSTextField *dataResultBox;
 
    IBOutlet NSTextField *daysField;
+   IBOutlet NSTextField *iterationsField;
    IBOutlet NSStepper *stepper;
+   IBOutlet NSStepper *stepperB;
    IBOutlet NSProgressIndicator *progressBar;
    IBOutlet NSButton *startButton;
    IBOutlet NSButton *openButton;
