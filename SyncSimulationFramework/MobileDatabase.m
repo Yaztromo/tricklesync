@@ -51,11 +51,14 @@
               forUser:(User *)usr 
      withCostRecorder:(CostRecorder *)cr
 againstServerDatabase:(Database *)sdb {
+   int i;
+   
    [super initWithRecords:recs andAsDatabaseType:DATABASE_TYPE_MOBILE];
    user = usr;
    cost = cr;
    serverDB = sdb;
    rand = [[GaussianGenerator alloc] init];
+   for(i=0;i<[recs count];i++) [[records objectAtIndex:i] setRecordSizeInBytes:[[sdb getRecordWithID:i] recordSizeInBytes]];
    return self;
 } // end-constructor
 
@@ -73,6 +76,15 @@ againstServerDatabase:(Database *)sdb {
          [cost incrementEtherialCostBy:[[serverDB getRecordWithID:record] recordVersion]-[[self getRecordWithID:record] recordVersion]];
       } // end-if
    } // end-if
+} // end-method
+
+- (void)reinitializeRecordsFromServerDB {
+   int i;
+   for(i=0;i<[records count];i++) {
+      [[records objectAtIndex:i] setRecordSizeInBytes:[[serverDB getRecordWithID:i] recordSizeInBytes]];
+      [[records objectAtIndex:i] setRecordVersion:0];
+   } // end-for
+   
 } // end-method
 
 @end

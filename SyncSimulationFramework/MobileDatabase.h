@@ -51,5 +51,6 @@
 againstServerDatabase:(Database *)sdb;
 
 - (void)activateTick:(int)time;
+- (void)reinitializeRecordsFromServerDB;
 
 @end

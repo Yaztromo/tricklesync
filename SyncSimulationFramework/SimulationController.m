@@ -207,7 +207,7 @@
    NSError *err=nil;
    NSURL *furl = [NSURL fileURLWithPath:filename];
    if (!furl) {
-      NSLog(@"Can't create an URL from file %@.", filename);
+      NSLog(@"Can't create a URL from file %@.", filename);
       return nil;
    }
    xmlDoc = [[NSXMLDocument alloc] initWithContentsOfURL:furl
@@ -236,36 +236,48 @@
 } // end-method
 
 - (void)runSimulationFor:(unsigned int)days
+          withIterations:(unsigned int)x
             withCallback:(id<SimulationCallbackProtocol>)callback {
-   int i;
+   int i, j, k=0;
    CostRecorder *today, *delta;
    CFAbsoluteTime end, start=CFAbsoluteTimeGetCurrent();
    percentComplete = 0.0;
-   
-   for(i=0;i<days;i++) {
-      [self resetSimulationForNextDay];
-      [self startSimulatedDay];
-      percentComplete = (double)i/(double)days * 100.0;
+
+   for(j=0;j<x;j++) {
+      for(i=0;i<days;i++) {
+         [self resetSimulationForNextDay];
+         [self startSimulatedDay];
+         k++;
+         percentComplete = (double)k /((double)days*x) * 100.0;
+         
+         // Calculate todays cost
+         today = [CostRecorder subtractWithValueA:cost andValueB:yesterday];
+         // NSLog(@"The results for day n = %d is %@ (total = %@, yesterday = %@)", i, today, cost, yesterday);
+         
+         // Update the mean, and S
+         delta = [CostRecorder subtractWithValueA:today andValueB:mean];
+         [mean add:[delta averageCostOver:k]];
+         [S add:[Degree2Poly multiplyCostRecorder:delta withCostRecorder:[today subtract:mean]]];
+         
+         if (callback!=nil) [callback setPercentCompleted:percentComplete];
+      } // end-for
       
-      // Calculate todays cost
-      today = [CostRecorder subtractWithValueA:cost andValueB:yesterday];
-      // NSLog(@"The results for day n = %d is %@ (total = %@, yesterday = %@)", i, today, cost, yesterday);
+      NSLog(@"######################### [ ITERATION %03d COMPLETE ] #########################", j+1);
+      // One iteration is complete.  Reset the databases and run the next iteation
+      // Firstly, reset the server database, and ensure that all objects which use it are updated to reflect the change
+      [syncLogic.serverDatabase generateNewRecordSet];
       
-      // Update the mean, and S
-      delta = [CostRecorder subtractWithValueA:today andValueB:mean];
-      [mean add:[delta averageCostOver:i+1]];
-      [S add:[Degree2Poly multiplyCostRecorder:delta withCostRecorder:[today subtract:mean]]];
-      
-      if (callback!=nil) [callback setPercentCompleted:percentComplete];
+      // Copy the changes into the mobile database
+      [user.handheldDB reinitializeRecordsFromServerDB];
    } // end-for
    
-   [S divide:days-1];
+   [S divide:k-1];
    
    end=CFAbsoluteTimeGetCurrent();
    [callback setPercentCompleted:100.0];
    
    CFGregorianUnits units = CFAbsoluteTimeGetDifferenceAsGregorianUnits (end, start, NULL, (kCFGregorianUnitsHours | kCFGregorianUnitsMinutes | kCFGregorianUnitsSeconds));
-   NSLog(@"Simulation run covering %d days completed in %02d:%02d:%07.4f with an average cost function %@ (%@), and variance function %@.", days, units.hours, units.minutes, units.seconds, [cost averageCostOver:days], mean, S);
+   NSLog(@"Simulation run covering %d days in %d iterations completed in %02d:%02d:%07.4f with an average cost function %@ (%@), and variance function %@.", days, x, units.hours, units.minutes, units.seconds, [cost averageCostOver:k], mean, S);
 } // end-method
 
 @end

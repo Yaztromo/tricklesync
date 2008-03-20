@@ -65,5 +65,6 @@
 - (void)startSimulatedDay;
 - (void)resetSimulationForNextDay;
 - (void)runSimulationFor:(unsigned int)days
+          withIterations:(unsigned int)x
             withCallback:(id<SimulationCallbackProtocol>)callback;
 @end

@@ -32,7 +32,6 @@
 - (id)initWithRecordCount:(int)count 
         andAsDatabaseType:(unsigned int)type {
    int i;
-   double size = 0.0, largest=0.0, smallest = 10000000.0;
    Record *r;
    
    [super init];
@@ -43,13 +42,7 @@
    for(i=0;i<count;i++) {
       r = [[Record alloc] initWithID:i usingDistribution:d];
       [tempArray addObject:r];
-      size+=r.recordSizeInBytes;
-      if(r.recordSizeInBytes>largest) largest = r.recordSizeInBytes;
-      if(r.recordSizeInBytes<smallest) smallest = r.recordSizeInBytes;
-      
    } // end-for
-   
-   NSLog(@"### The total database size is %lf, with largest size %lf and smallest %lf", size/1024.0, largest, smallest);
    
    // This is done to ensure the resulting array is immutable
    records = [NSArray arrayWithArray:tempArray];
@@ -91,6 +84,21 @@
    } // end-for
    
    return [[Database allocWithZone:zone] initWithRecords:recs andAsDatabaseType:databaseType];
+} // end-method
+
+- (void)generateNewRecordSet {
+   NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:[records count]];
+   GaussianGenerator *d = [[GaussianGenerator alloc] init];
+   Record *r;
+   int i;
+   
+   for(i=0;i<[records count];i++) {
+      r = [[Record alloc] initWithID:i usingDistribution:d];
+      [tempArray addObject:r];
+   } // end-for
+   
+   // This is done to ensure the resulting array is immutable
+   records = [NSArray arrayWithArray:tempArray];
 } // end-method
 
 @end

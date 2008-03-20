@@ -32,7 +32,7 @@
 }
 @property(readonly) int recordID;
 @property int recordSizeInBytes;
-@property(readonly) int recordVersion;
+@property int recordVersion;
 
 - (id)initWithID:(int)idNum
         withSize:(int)size;

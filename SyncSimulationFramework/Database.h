@@ -45,5 +45,6 @@
 - (NSArray *)compareAgainstDatabase:(Database *)db;
 - (Record *)getRecordWithID:(int)idNum;
 - (int)getRecordCount;
+- (void)generateNewRecordSet;
 
 @end
