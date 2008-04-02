@@ -45,7 +45,17 @@
 
 - (NSMutableArray *)getRecordsToSync:(NSArray *)outOfDateRecs {
    // TODO - implement the records to sync retreival system
-   return NULL;
+   // Run through all the records, and remove the ones which don't satisfy the cost equation.
+   NSMutableArray *records = [NSMutableArray arrayWithArray:outOfDateRecs];
+   for(Record *rec in records) {
+      if ([syncController costToTransfer:rec]>=(rec.probability * k 
+                                               * ([syncController getServerDBVersionForRecord:rec] - rec.recordVersion))) {
+         // Remove the record from the array
+         [records removeObject:rec];
+      } // end-if
+      
+   } // end-for
+   return records;
 } // end-method
 
 - (NSMutableArray *)orderRecordsByPriority:(NSMutableArray *)records {
