@@ -29,7 +29,7 @@
 #import "CostRecorder.h"
 #import "SyncLogicController.h"
 
-@class User;
+@class SyncLogicController;
 
 @protocol SyncProtocol <SimulationTickProtocol, SimulationAlarmProtocol>
 -  (id)initWithController:(SyncLogicController *)controller
@@ -37,5 +37,6 @@
 
 - (void)activateAlarm:(int)time;
 - (void)activateTick:(int)time;
+- (void)handheldRecordAccessCallback:(int)recordID;
 
 @end

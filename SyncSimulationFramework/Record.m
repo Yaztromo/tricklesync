@@ -24,33 +24,41 @@
 
 #import "Record.h"
 
+SEL recordComparisonSelector;
+
 @implementation Record
 @synthesize recordID;
 @synthesize recordSizeInBytes;
 @synthesize recordVersion;
+@synthesize totalRecords;
 
 - (id)initWithID:(int)idNum
         withSize:(int)size
-     withVersion:(int)version {
+     withVersion:(int)version
+withTotalRecords:(int)totalRecs {
    [super init];
    recordID = idNum;
    recordSizeInBytes = size;
    recordVersion = version;
+   totalRecords = totalRecs;
+   recordComparisonSelector = @selector(compareRecordProbabilities:);
    return self;
 } // end-initializer
 
 - (id)initWithID:(int)idNum
-        withSize:(int)size {
-   return [self initWithID:idNum withSize:size withVersion:0];
+        withSize:(int)size 
+withTotalRecords:(int)totalRecs {
+   return [self initWithID:idNum withSize:size withVersion:0 withTotalRecords:totalRecs];
 } // end-initializer
 
 - (id)initWithID:(int)idNum 
-usingDistribution:(GaussianGenerator *)dist {
+usingDistribution:(GaussianGenerator *)dist 
+withTotalRecords:(int)totalRecs {
    // Calculate the size
    int size=[dist nextGaussianWithMean:10240.0 andDeviation:5120];      // Ramdom size based on a distribution
    if (size<0) size=0;
    
-   return [self initWithID:idNum withSize:size withVersion:0];
+   return [self initWithID:idNum withSize:size withVersion:0 withTotalRecords:totalRecs];
 } // end-initializer
 
 - (void)updateRecord {
@@ -58,11 +66,22 @@ usingDistribution:(GaussianGenerator *)dist {
 } // end-initializer
 
 - (id)copyWithZone:(NSZone *)zone {
-   return [[Record allocWithZone:zone] initWithID:recordID withSize:recordSizeInBytes withVersion:recordVersion];
+   return [[Record allocWithZone:zone] initWithID:recordID withSize:recordSizeInBytes withVersion:recordVersion withTotalRecords:totalRecords];
 } // end-method
 
 - (void)updateRecordToRevision:(int)ver {
    recordVersion = ver;
+} // end-method
+
+- (int)compareRecordProbabilities:(Record *)rec {
+   int halfRec = totalRecords/2;
+   if(abs(recordID-halfRec)<(rec.recordID-halfRec)) return NSOrderedAscending;
+   if(abs(recordID-halfRec)>(rec.recordID-halfRec)) return NSOrderedDescending;
+   return NSOrderedSame;
+} // end-method
+
++ (SEL)getComparisonSelector {
+   return recordComparisonSelector;
 } // end-method
 
 @end

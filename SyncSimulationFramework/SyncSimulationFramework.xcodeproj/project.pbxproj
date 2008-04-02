@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B03EA1F0DA306E7009D39B3 /* ETSAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B03EA1D0DA306E7009D39B3 /* ETSAdaptor.h */; };
+		8B03EA200DA306E7009D39B3 /* ETSAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B03EA1E0DA306E7009D39B3 /* ETSAdaptor.m */; };
 		8B0BE2910D483EB700EA81A2 /* TimeControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE28E0D483EB700EA81A2 /* TimeControllerTests.m */; };
 		8B0BE3660D4EA86F00EA81A2 /* SyncSimulationFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0BE3650D4EA86F00EA81A2 /* SyncSimulationFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B0BE3680D4EA94F00EA81A2 /* SyncProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0BE3670D4EA94F00EA81A2 /* SyncProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -81,6 +83,8 @@
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF5E0370ADEE00C91783 /* SyncSimulationFramework_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncSimulationFramework_Prefix.pch; sourceTree = "<group>"; };
+		8B03EA1D0DA306E7009D39B3 /* ETSAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSAdaptor.h; sourceTree = "<group>"; };
+		8B03EA1E0DA306E7009D39B3 /* ETSAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSAdaptor.m; sourceTree = "<group>"; };
 		8B0BE28D0D483EB700EA81A2 /* TimeControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeControllerTests.h; sourceTree = "<group>"; };
 		8B0BE28E0D483EB700EA81A2 /* TimeControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeControllerTests.m; sourceTree = "<group>"; };
 		8B0BE3650D4EA86F00EA81A2 /* SyncSimulationFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncSimulationFramework.h; sourceTree = "<group>"; };
@@ -353,6 +357,8 @@
 		8B8832E70D7A137C00A4E4C6 /* ETS Synchronizer */ = {
 			isa = PBXGroup;
 			children = (
+				8B03EA1D0DA306E7009D39B3 /* ETSAdaptor.h */,
+				8B03EA1E0DA306E7009D39B3 /* ETSAdaptor.m */,
 			);
 			name = "ETS Synchronizer";
 			sourceTree = "<group>";
@@ -397,6 +403,7 @@
 				8B8833010D7B4DA200A4E4C6 /* RandomSyncAdaptor.h in Headers */,
 				8B88345E0D7B785B00A4E4C6 /* SlowSyncAdaptor.h in Headers */,
 				8B8834680D7B7BC600A4E4C6 /* FastSyncAdaptor.h in Headers */,
+				8B03EA1F0DA306E7009D39B3 /* ETSAdaptor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +555,7 @@
 				8B8833020D7B4DA200A4E4C6 /* RandomSyncAdaptor.m in Sources */,
 				8B88345F0D7B785B00A4E4C6 /* SlowSyncAdaptor.m in Sources */,
 				8B8834690D7B7BC600A4E4C6 /* FastSyncAdaptor.m in Sources */,
+				8B03EA200DA306E7009D39B3 /* ETSAdaptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

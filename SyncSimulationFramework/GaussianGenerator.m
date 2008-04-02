@@ -57,11 +57,11 @@
          r2 = [self getNextRandom];
          
          if (r1<-1.0 || r1>1.0) {
-            NSLog(@"The algorithm returned a value for R1 of %.8lf", r1);
+            //NSLog(@"The algorithm returned a value for R1 of %.8lf", r1);
          } // end-if
          
          if (r2<-1.0 || r2>1.0) {
-            NSLog(@"The algorithm returned a value for R2 of %.8lf", r2);
+            //NSLog(@"The algorithm returned a value for R2 of %.8lf", r2);
          } // end-if
          
          v1 = 2 * r1 - 1;   // between -1.0 and 1.0

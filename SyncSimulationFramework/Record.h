@@ -29,19 +29,26 @@
    int recordID;
    int recordSizeInBytes;
    int recordVersion;
+   int totalRecords;
 }
 @property(readonly) int recordID;
 @property int recordSizeInBytes;
 @property int recordVersion;
+@property int totalRecords;
 
 - (id)initWithID:(int)idNum
-        withSize:(int)size;
+        withSize:(int)size
+withTotalRecords:(int)totalRecs;
 
 - (id)initWithID:(int)idNum
-usingDistribution:(GaussianGenerator *)dist;
+usingDistribution:(GaussianGenerator *)dist
+withTotalRecords:(int)totalRecs;
 
 - (void)updateRecord;
 
 - (void)updateRecordToRevision:(int)ver;
+
+- (int)compareRecordProbabilities:(Record *)rec;
++ (SEL)getComparisonSelector;
 
 @end

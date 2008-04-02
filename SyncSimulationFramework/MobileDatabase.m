@@ -42,6 +42,7 @@
    cost = cr;
    serverDB = sdb;
    rand = [[GaussianGenerator alloc] init];
+   listener = nil;
    for(i=0;i<count;i++) [[records objectAtIndex:i] setRecordSizeInBytes:[[sdb getRecordWithID:i] recordSizeInBytes]];
    
    return self;
@@ -58,6 +59,7 @@ againstServerDatabase:(Database *)sdb {
    cost = cr;
    serverDB = sdb;
    rand = [[GaussianGenerator alloc] init];
+   listener = nil;
    for(i=0;i<[recs count];i++) [[records objectAtIndex:i] setRecordSizeInBytes:[[sdb getRecordWithID:i] recordSizeInBytes]];
    return self;
 } // end-constructor
@@ -75,6 +77,9 @@ againstServerDatabase:(Database *)sdb {
          // The user accessed out-of-date information.  Increment the ethereal cost by one.
          [cost incrementEtherialCostBy:[[serverDB getRecordWithID:record] recordVersion]-[[self getRecordWithID:record] recordVersion]];
       } // end-if
+      
+      // Alert the listener (if any) that a record has been accessed.
+      [listener handheldRecordAccessCallback:record];
    } // end-if
 } // end-method
 
@@ -84,7 +89,10 @@ againstServerDatabase:(Database *)sdb {
       [[records objectAtIndex:i] setRecordSizeInBytes:[[serverDB getRecordWithID:i] recordSizeInBytes]];
       [[records objectAtIndex:i] setRecordVersion:0];
    } // end-for
-   
+} // end-method
+
+- (void)registerAccessListener:(id<SyncProtocol>)newListener {
+   listener = newListener;
 } // end-method
 
 @end

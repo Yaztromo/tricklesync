@@ -21,27 +21,29 @@
 //
 // --------------------------------------------------------------------------
 
-#import "NullSyncAdaptor.h"
 
+#import <Cocoa/Cocoa.h>
+#import "SyncProtocol.h"
+#import "ServerDatabase.h"
+#import "TimeController.h"
+#import "CostRecorder.h"
+#import "SyncLogicController.h"
+#import "GaussianGenerator.h"
 
-@implementation NullSyncAdaptor
+#define DAY_DIVISIONS 96
+
+@interface ETSAdaptor : NSObject <SyncProtocol> {
+   SyncLogicController *syncController;
+   GaussianGenerator *rand;
+   unsigned int accessesArray[DAY_DIVISIONS];
+   unsigned int lastSyncTime;
+}
+
 -  (id)initWithController:(SyncLogicController *)controller
-        andWithProperties:(NSXMLElement *)syncProtocolElement {
-   [super init];
-   NSLog(@"Constructed the Test Sync Adapter!");
-   return self;
-} // end-constructor
+        andWithProperties:(NSXMLElement *)syncProtocolElement;
 
-- (void)activateAlarm:(int)time {
-   NSLog(@"An alarm occurred in the Test Sync Adapter at time %d.", time);
-} // end-method
-
-- (void)activateTick:(int)time {
-   NSLog(@"A tick occurred in the Test Sync Adapter at time %d.", time);
-} // end-method
-
-- (void)handheldRecordAccessCallback:(int)recordID {
-   // This adaptor doesn't require record access callbacks.
-} // end-method
+- (void)activateTick:(int)time;
+- (void)activateAlarm:(int)time;
+- (void)handheldRecordAccessCallback:(int)recordID;
 
 @end

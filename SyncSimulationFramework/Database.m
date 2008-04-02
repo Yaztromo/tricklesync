@@ -40,7 +40,7 @@
    GaussianGenerator *d = [[GaussianGenerator alloc] init];
    
    for(i=0;i<count;i++) {
-      r = [[Record alloc] initWithID:i usingDistribution:d];
+      r = [[Record alloc] initWithID:i usingDistribution:d withTotalRecords:count];
       [tempArray addObject:r];
    } // end-for
    
@@ -93,7 +93,7 @@
    int i;
    
    for(i=0;i<[records count];i++) {
-      r = [[Record alloc] initWithID:i usingDistribution:d];
+      r = [[Record alloc] initWithID:i usingDistribution:d withTotalRecords:[records count]];
       [tempArray addObject:r];
    } // end-for
    

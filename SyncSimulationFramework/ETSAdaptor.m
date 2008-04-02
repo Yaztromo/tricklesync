@@ -22,52 +22,56 @@
 // --------------------------------------------------------------------------
 
 
-#import "FastSyncAdaptor.h"
+#import "ETSAdaptor.h"
 
 
-@implementation FastSyncAdaptor
+@implementation ETSAdaptor
 -  (id)initWithController:(SyncLogicController *)controller
         andWithProperties:(NSXMLElement *)syncProtocolElement {
+   int i;
+   
    [super init];
-   syncController = controller;
-   rand = [[GaussianGenerator alloc] init];
    
-   // Register ourselves as a tick listener
-   [syncController.timeController addTickListener:self];
-   
-   // Nothing to parse for the XML
+   for(i=0;i<DAY_DIVISIONS;i++) accessesArray[i]=0;
+   lastSyncTime = -1;
+   [controller registerHandheldAccessListener:self];
+    
    return self;
 } // end-constructor
 
+- (void)handheldRecordAccessCallback:(int)recordID {
+   accessesArray[recordID/DAY_DIVISIONS]++;
+} // end-method
+
+- (NSMutableArray *)getRecordsToSync:(NSArray *)outOfDateRecs {
+   // TODO - implement the records to sync retreival system
+   return NULL;
+} // end-method
+
+- (NSMutableArray *)orderRecordsByPriority:(NSMutableArray *)records {
+   [records sortUsingSelector:[Record getComparisonSelector]];
+   return records;
+} // end-method
+
+- (BOOL)timeForNewSync:(unsigned int)currTime {
+   // TODO -- implement me!
+   return FALSE;
+} // end-method
+
 - (void)activateTick:(int)time {
-   BOOL b;
-   
-   // Determine if we should synchronize during this tick.
-   if ([[syncController.user getCurrentLocation] syncRequestArrivalRate]!=0.0 && 
-       [rand getNextRandom] < [[syncController.user getCurrentLocation] syncRequestArrivalRate]) {
-      
-      // Start the synchronization session, choosing the least expensive network currently available
+   NSMutableArray *records;
+   if ([self timeForNewSync:time]) {
       [syncController startSynchronizationSessionUsingNetwork:[syncController cheapestNetwork]];
-      
-      // If so, synchronize all the records, one at a time
-      for(Record *rec in [syncController getModifiedRecordList]) {
-         b = [syncController synchronizeRecord:rec];
-         if (!b) break;
+      records = [self orderRecordsByPriority:[self getRecordsToSync:[syncController getModifiedRecordList]]];
+      for(Record *rec in records) {
+         if(![syncController synchronizeRecord:rec]) break;
       } // end-for
-      
-      // Finalize the synchronization
       [syncController endSynchronizationSession];
-      
-      // Done!
    } // end-if
 } // end-method
 
 - (void)activateAlarm:(int)time {
-   // This adaptor doesn't process alarms, so do nothing.
-} // end-method
-
-- (void)handheldRecordAccessCallback:(int)recordID {
-   // This adaptor doesn't require record access callbacks.
+   // This adaptor currently isn't using alarms, but this might change in the future.
 } // end-method
 
 @end

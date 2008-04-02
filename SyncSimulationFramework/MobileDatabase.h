@@ -23,6 +23,7 @@
 
 
 #import <Cocoa/Cocoa.h>
+#import "SyncProtocol.h"
 #import "Database.h"
 #import "TimerProtocols.h"
 #import "GaussianGenerator.h"
@@ -30,12 +31,14 @@
 #import "CostRecorder.h"
 
 @class User;
+@protocol SyncProtocol;
 
 @interface MobileDatabase : Database <SimulationTickProtocol> {
    User *user;
    GaussianGenerator *rand;
    CostRecorder *cost;
    Database *serverDB;
+   id<SyncProtocol> listener;
 }
 @property(readonly) User *user;
 @property(readonly) GaussianGenerator *rand;
@@ -52,5 +55,5 @@ againstServerDatabase:(Database *)sdb;
 
 - (void)activateTick:(int)time;
 - (void)reinitializeRecordsFromServerDB;
-
+- (void)registerAccessListener:(id<SyncProtocol>)newListener;
 @end
