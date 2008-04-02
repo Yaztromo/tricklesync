@@ -31,6 +31,7 @@ SEL recordComparisonSelector;
 @synthesize recordSizeInBytes;
 @synthesize recordVersion;
 @synthesize totalRecords;
+@synthesize probability;
 
 - (id)initWithID:(int)idNum
         withSize:(int)size
@@ -41,6 +42,8 @@ withTotalRecords:(int)totalRecs {
    recordSizeInBytes = size;
    recordVersion = version;
    totalRecords = totalRecs;
+   probability = [GaussianGenerator calculateNormalProbabilityForValue:recordID inRangeWithMaximumValue:totalRecords];
+   //NSLog(@"Record %d has expected probability %0.8f", recordID, probability);
    recordComparisonSelector = @selector(compareRecordProbabilities:);
    return self;
 } // end-initializer

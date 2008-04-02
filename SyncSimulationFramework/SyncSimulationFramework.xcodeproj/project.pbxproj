@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8B03EA1F0DA306E7009D39B3 /* ETSAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B03EA1D0DA306E7009D39B3 /* ETSAdaptor.h */; };
 		8B03EA200DA306E7009D39B3 /* ETSAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B03EA1E0DA306E7009D39B3 /* ETSAdaptor.m */; };
+		8B03EB780DA36CA9009D39B3 /* ltqnorm.c in Sources */ = {isa = PBXBuildFile; fileRef = 8B03EB770DA36CA9009D39B3 /* ltqnorm.c */; };
+		8B03EB7D0DA36F96009D39B3 /* ltqnorm.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B03EB7C0DA36F96009D39B3 /* ltqnorm.h */; };
 		8B0BE2910D483EB700EA81A2 /* TimeControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0BE28E0D483EB700EA81A2 /* TimeControllerTests.m */; };
 		8B0BE3660D4EA86F00EA81A2 /* SyncSimulationFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0BE3650D4EA86F00EA81A2 /* SyncSimulationFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B0BE3680D4EA94F00EA81A2 /* SyncProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B0BE3670D4EA94F00EA81A2 /* SyncProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -85,6 +87,8 @@
 		32DBCF5E0370ADEE00C91783 /* SyncSimulationFramework_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncSimulationFramework_Prefix.pch; sourceTree = "<group>"; };
 		8B03EA1D0DA306E7009D39B3 /* ETSAdaptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETSAdaptor.h; sourceTree = "<group>"; };
 		8B03EA1E0DA306E7009D39B3 /* ETSAdaptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ETSAdaptor.m; sourceTree = "<group>"; };
+		8B03EB770DA36CA9009D39B3 /* ltqnorm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ltqnorm.c; sourceTree = "<group>"; };
+		8B03EB7C0DA36F96009D39B3 /* ltqnorm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ltqnorm.h; sourceTree = "<group>"; };
 		8B0BE28D0D483EB700EA81A2 /* TimeControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeControllerTests.h; sourceTree = "<group>"; };
 		8B0BE28E0D483EB700EA81A2 /* TimeControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeControllerTests.m; sourceTree = "<group>"; };
 		8B0BE3650D4EA86F00EA81A2 /* SyncSimulationFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyncSimulationFramework.h; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 		0867D691FE84028FC02AAC07 /* SyncSimulationFramework */ = {
 			isa = PBXGroup;
 			children = (
+				8B03EB3B0DA36C79009D39B3 /* Lower Tail Quantile */,
 				8B8832D70D7A11B500A4E4C6 /* Synchronization Protocols */,
 				8B854FE20D0B71FA000F949A /* Tests */,
 				8B7B3DB10D74013100B486DF /* Mersenne Twister */,
@@ -278,6 +283,15 @@
 				32DBCF5E0370ADEE00C91783 /* SyncSimulationFramework_Prefix.pch */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		8B03EB3B0DA36C79009D39B3 /* Lower Tail Quantile */ = {
+			isa = PBXGroup;
+			children = (
+				8B03EB7C0DA36F96009D39B3 /* ltqnorm.h */,
+				8B03EB770DA36CA9009D39B3 /* ltqnorm.c */,
+			);
+			name = "Lower Tail Quantile";
 			sourceTree = "<group>";
 		};
 		8B6C10010D591B0C00DC1EF2 /* Test Data */ = {
@@ -404,6 +418,7 @@
 				8B88345E0D7B785B00A4E4C6 /* SlowSyncAdaptor.h in Headers */,
 				8B8834680D7B7BC600A4E4C6 /* FastSyncAdaptor.h in Headers */,
 				8B03EA1F0DA306E7009D39B3 /* ETSAdaptor.h in Headers */,
+				8B03EB7D0DA36F96009D39B3 /* ltqnorm.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,6 +571,7 @@
 				8B88345F0D7B785B00A4E4C6 /* SlowSyncAdaptor.m in Sources */,
 				8B8834690D7B7BC600A4E4C6 /* FastSyncAdaptor.m in Sources */,
 				8B03EA200DA306E7009D39B3 /* ETSAdaptor.m in Sources */,
+				8B03EB780DA36CA9009D39B3 /* ltqnorm.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

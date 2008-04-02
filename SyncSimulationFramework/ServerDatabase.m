@@ -63,7 +63,7 @@
    for(i=0;i<sample;i++) {
       // For each modification, find a random Gaussian record and modify it.
       // We need to modify a record somewhere.  Select one using a random in a Guassian distribution.
-      record = (int)([GaussianGenerator calculateNormalProbabilityWith:[rand nextGaussian]]*[self getRecordCount]);
+      record = (int)([GaussianGenerator calculateCumulativeNormalProbabilityWith:[rand nextGaussian]]*[self getRecordCount]);
 
       // If the record goes off the beginning or the end of the database, update it to the beginning or end
       if (record<0) record = 0;

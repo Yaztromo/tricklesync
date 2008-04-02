@@ -70,7 +70,7 @@ againstServerDatabase:(Database *)sdb {
    //NSLog(@"Checking if user viewed a record during this tick...");
    if ([[user getCurrentLocation] mobileDatabaseAccessRate] >= [rand getNextRandom]) {
       // We need to access a record somewhere.  Select one using a random number in a Guassian distribution.
-      record = (int)([GaussianGenerator calculateNormalProbabilityWith:[rand nextGaussian]]*[self getRecordCount]);
+      record = (int)([GaussianGenerator calculateCumulativeNormalProbabilityWith:[rand nextGaussian]]*[self getRecordCount]);
 
       // Did the user access out-of-date data?  Check what the record version is on the server and verify.
       if ([[serverDB getRecordWithID:record] recordVersion] > [[self getRecordWithID:record] recordVersion]) {

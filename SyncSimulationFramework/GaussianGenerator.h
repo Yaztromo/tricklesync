@@ -37,8 +37,9 @@
 - (double)nextGaussianWithMean:(double)mean
                   andDeviation:(double)stddev;
 - (double)getNextRandom;
-+ (double)calculateNormalProbabilityWith:(double)x;
++ (double)calculateCumulativeNormalProbabilityWith:(double)x;
++ (double)calculateCumulativeNormalProbabilityForValue:(unsigned int)x
+                     inRangeWithMaximumValue:(unsigned int)max;
 + (double)calculateNormalProbabilityForValue:(unsigned int)x
                      inRangeWithMaximumValue:(unsigned int)max;
-
 @end

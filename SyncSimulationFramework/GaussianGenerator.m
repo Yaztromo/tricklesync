@@ -26,6 +26,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <mtwist.h>
+#include "ltqnorm.h"
 
 
 @implementation GaussianGenerator
@@ -80,19 +81,26 @@
    return mean+stddev*[self nextGaussian];
 } // end-method
 
-+ (double)calculateNormalProbabilityWith:(double)x {
++ (double)calculateCumulativeNormalProbabilityWith:(double)x {
    return 1.0/2.0*(1.0+erf(x/M_SQRT2));
+} // end-method
+
++ (double)calculateCumulativeNormalProbabilityForValue:(unsigned int)x
+                     inRangeWithMaximumValue:(unsigned int)max {
+   // First we need to scale the range down so that it fits within -5..+5.
+   //double value;
+   
+   //value = x - max/2;         // Puts the value into the range -(max/2)..+(max/2)
+   //value/=((double)max/10);   // Scales it down to within the range -5..+5 ((max/2)/5)
+   
+   //return [GaussianGenerator calculateNormalProbabilityWith:value];
+   return [GaussianGenerator calculateCumulativeNormalProbabilityWith:ltqnorm((double)x/(double)max)];
 } // end-method
 
 + (double)calculateNormalProbabilityForValue:(unsigned int)x
                      inRangeWithMaximumValue:(unsigned int)max {
-   // First we need to scale the range down so that it fits within -5..+5.
-   double value;
-   
-   value = x - max/2;         // Puts the value into the range -(max/2)..+(max/2)
-   value/=((double)max/10);   // Scales it down to within the range -5..+5 ((max/2)/5)
-   
-   return [GaussianGenerator calculateNormalProbabilityWith:value];
+   double x2 = ltqnorm((double)x/(double)max);
+   return (exp(-pow(x2, 2)/2))/(sqrt(2*M_PI));
 } // end-method
 
 @end

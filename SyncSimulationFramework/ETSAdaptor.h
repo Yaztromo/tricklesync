@@ -37,6 +37,7 @@
    GaussianGenerator *rand;
    unsigned int accessesArray[DAY_DIVISIONS];
    unsigned int lastSyncTime;
+   unsigned int k;
 }
 
 -  (id)initWithController:(SyncLogicController *)controller

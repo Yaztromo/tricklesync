@@ -30,11 +30,13 @@
    int recordSizeInBytes;
    int recordVersion;
    int totalRecords;
+   double probability;
 }
 @property(readonly) int recordID;
 @property int recordSizeInBytes;
 @property int recordVersion;
 @property int totalRecords;
+@property double probability;
 
 - (id)initWithID:(int)idNum
         withSize:(int)size
