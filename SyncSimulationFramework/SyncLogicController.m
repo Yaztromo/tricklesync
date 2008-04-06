@@ -59,6 +59,10 @@
 
 - (BOOL)startSynchronizationSessionUsingNetwork:(Network *)net {
    if(timeController.time<noSyncUntil) return FALSE;
+   
+   // This should be sufficient to ensure that if we sync near midnight, and the minimum next sync time
+   // is during the next day, that we don't sync.
+   if(timeController.time>82800 && noSyncUntil<3600) return FALSE;
    currentNetwork = net;
    synchronizing = TRUE;
    syncSessionTime = 0;

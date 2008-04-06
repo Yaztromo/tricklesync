@@ -231,8 +231,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -273,24 +271,19 @@
 								<string>0867D691FE84028FC02AAC07</string>
 								<string>8B8832D70D7A11B500A4E4C6</string>
 								<string>8B8832E70D7A137C00A4E4C6</string>
-								<string>8B8832E60D7A135E00A4E4C6</string>
-								<string>8B88331B0D7B4EF900A4E4C6</string>
-								<string>8B8832E50D7A133E00A4E4C6</string>
-								<string>8B8832D80D7A11EC00A4E4C6</string>
 								<string>08FB77AEFE84172EC02AAC07</string>
 								<string>1C37FBAC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>17</integer>
-									<integer>15</integer>
-									<integer>2</integer>
+									<integer>44</integer>
+									<integer>12</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {269, 594}}</string>
+							<string>{{0, 409}, {269, 594}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -322,12 +315,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>NullSyncAdaptor.m</string>
+								<string>SyncLogicController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -335,11 +330,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>NullSyncAdaptor.m</string>
+										<string>SyncLogicController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>8B0F188E0DA881510036C083</string>
+										<string>8B0F18A10DA8C0F90036C083</string>
 										<key>history</key>
 										<array>
 											<string>8B6C34690D59E60F003A7D8E</string>
@@ -395,13 +390,13 @@
 											<string>8B0F18640DA881510036C083</string>
 											<string>8B0F18650DA881510036C083</string>
 											<string>8B0F18660DA881510036C083</string>
-											<string>8B0F18670DA881510036C083</string>
-											<string>8B0F18680DA881510036C083</string>
 											<string>8B0F18690DA881510036C083</string>
 											<string>8B0F186A0DA881510036C083</string>
 											<string>8B0F186B0DA881510036C083</string>
 											<string>8B0F186C0DA881510036C083</string>
-											<string>8B0F186D0DA881510036C083</string>
+											<string>8B0F189B0DA8C0F90036C083</string>
+											<string>8B0F189C0DA8C0F90036C083</string>
+											<string>8B0F189D0DA8C0F90036C083</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -495,6 +490,9 @@
 											<string>8B0F188B0DA881510036C083</string>
 											<string>8B0F188C0DA881510036C083</string>
 											<string>8B0F188D0DA881510036C083</string>
+											<string>8B0F189E0DA8C0F90036C083</string>
+											<string>8B0F189F0DA8C0F90036C083</string>
+											<string>8B0F18A00DA8C0F90036C083</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
