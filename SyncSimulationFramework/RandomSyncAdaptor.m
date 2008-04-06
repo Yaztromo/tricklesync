@@ -51,7 +51,7 @@
       // Pick a random network k from all currently available networks.
       k = [rand getNextRandom] * ([[[[syncController.user getCurrentLocation] location] networks] count]-1);
       
-      [syncController startSynchronizationSessionUsingNetwork:[[[[syncController.user getCurrentLocation] location] networks] objectAtIndex:k]];
+      if(![syncController startSynchronizationSessionUsingNetwork:[[[[syncController.user getCurrentLocation] location] networks] objectAtIndex:k]]) return;
       
       // Get a copy of all the records on the handheld
       recs = [NSMutableArray arrayWithArray:[[syncController.user handheldDB] records]];

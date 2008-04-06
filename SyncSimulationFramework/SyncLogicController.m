@@ -23,6 +23,7 @@
 
 
 #import "SyncLogicController.h"
+#include <math.h>
 
 @implementation SyncLogicController
 
@@ -46,6 +47,8 @@
    synchronizing = FALSE;
    currentNetwork = nil;
    rand = [[GaussianGenerator alloc] init];
+   noSyncUntil = -1;
+   syncSessionTime = 0;
    return self;
 } // end-constructor
 
@@ -54,14 +57,18 @@
    else return nil;
 } // end-method
 
-- (void)startSynchronizationSessionUsingNetwork:(Network *)net {
+- (BOOL)startSynchronizationSessionUsingNetwork:(Network *)net {
+   if(timeController.time<noSyncUntil) return FALSE;
    currentNetwork = net;
    synchronizing = TRUE;
+   syncSessionTime = 0;
+   return TRUE;
 } // end-method
 
 - (void)endSynchronizationSession {
    currentNetwork = nil;
    synchronizing = FALSE;
+   noSyncUntil = (timeController.time+(int)ceil(syncSessionTime))%86400;
 } // end-method
 
 - (BOOL)synchronizeRecord:(Record *)r {
@@ -78,7 +85,10 @@
    probabilityOfLostSync = [currentNetwork probabilityOfLostConnection] * syncTime;
    
    // Test whether we have lost the connection during the sync of this record -- if we do, return FALSE immediately.
-   if ([rand getNextRandom]<probabilityOfLostSync) return FALSE;
+   if ([rand getNextRandom]<probabilityOfLostSync) {
+      [self endSynchronizationSession];
+      return FALSE;
+   } // end-if
    
    // Synchronize the records by updating the handheld record to match the version number of the server record
    // [r updateRecordToRevision:[[serverDatabase getRecordWithID:[r recordID]] recordVersion]];
@@ -91,6 +101,9 @@
    
    // Add the amount of data transferred to the running total
    [costRecorder incrementDataTransferredBy:r.recordSizeInBytes/1024.0];
+   
+   // Add the time it took to sync this record to the session time
+   syncSessionTime += [currentNetwork timeToTransferRecord:r];
    
    // Return TRUE.
    return TRUE;

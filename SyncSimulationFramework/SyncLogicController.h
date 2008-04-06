@@ -43,6 +43,8 @@
    BOOL synchronizing;
    Network *currentNetwork;
    GaussianGenerator *rand;
+   int noSyncUntil;
+   int syncSessionTime;
 }
 @property(readonly) User *user;
 @property(readonly) ServerDatabase *serverDatabase;
@@ -59,7 +61,7 @@
 
 - (NSArray *)getModifiedRecordList;
 
-- (void)startSynchronizationSessionUsingNetwork:(Network *)net;
+- (BOOL)startSynchronizationSessionUsingNetwork:(Network *)net;
 - (void)endSynchronizationSession;
 
 // Returns TRUE if the record synchronized, FALSE if the connection was lost (or we lacked a connection in the first place).

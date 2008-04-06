@@ -82,7 +82,7 @@
 - (void)activateTick:(int)time {
    NSMutableArray *records;
    if ([self timeForNewSync:time]) {
-      [syncController startSynchronizationSessionUsingNetwork:[syncController cheapestNetwork]];
+      if (![syncController startSynchronizationSessionUsingNetwork:[syncController cheapestNetwork]]) return;
       records = [self orderRecordsByPriority:[self getRecordsToSync:[syncController getModifiedRecordList]]];
       for(Record *rec in records) {
          if(![syncController synchronizeRecord:rec]) break;

@@ -48,7 +48,7 @@
        [rand getNextRandom] < [[syncController.user getCurrentLocation] syncRequestArrivalRate]) {
    
       // Start the synchronization session, choosing the least expensive network currently available
-      [syncController startSynchronizationSessionUsingNetwork:[syncController cheapestNetwork]];
+      if(![syncController startSynchronizationSessionUsingNetwork:[syncController cheapestNetwork]]) return;
       
       // Get the modified records list, so we know which records to transmit twice
       modifiedRecs = [syncController getModifiedRecordList];

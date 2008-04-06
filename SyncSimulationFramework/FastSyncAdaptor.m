@@ -47,7 +47,7 @@
        [rand getNextRandom] < [[syncController.user getCurrentLocation] syncRequestArrivalRate]) {
       
       // Start the synchronization session, choosing the least expensive network currently available
-      [syncController startSynchronizationSessionUsingNetwork:[syncController cheapestNetwork]];
+      if(![syncController startSynchronizationSessionUsingNetwork:[syncController cheapestNetwork]]) return;
       
       // If so, synchronize all the records, one at a time
       for(Record *rec in [syncController getModifiedRecordList]) {
