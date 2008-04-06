@@ -27,10 +27,12 @@
 
 @implementation TimeController
 @synthesize time;
+@synthesize day;
 
 - (id)init {
    [super init];
    time = 0;
+   day = 0;
    tickListeners = [NSMutableArray array];
    alarmListeners = [NSMutableDictionary dictionary];
    return self;
@@ -40,6 +42,7 @@
       andWithAlarmListeners:(NSMutableDictionary *)alarms {
    [super init];
    time = 0;
+   day = 0;
    tickListeners = [NSMutableArray arrayWithArray:ticks];   
    alarmListeners = [NSMutableDictionary dictionaryWithDictionary:alarms];
    return self;
@@ -100,6 +103,7 @@
 
 - (void)reset {
    time = 0;
+   day++;
 } // end-method
 
 @end

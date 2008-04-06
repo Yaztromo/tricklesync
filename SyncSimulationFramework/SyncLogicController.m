@@ -47,7 +47,8 @@
    synchronizing = FALSE;
    currentNetwork = nil;
    rand = [[GaussianGenerator alloc] init];
-   noSyncUntil = -1;
+   noSyncUntilTime = -1;
+   noSyncUntilDay = -1;
    syncSessionTime = 0;
    return self;
 } // end-constructor
@@ -58,21 +59,26 @@
 } // end-method
 
 - (BOOL)startSynchronizationSessionUsingNetwork:(Network *)net {
-   if(timeController.time<noSyncUntil) return FALSE;
+   // Don't permit the sync if it's too close to a previous sync session
+   if((int)timeController.day<noSyncUntilDay && (int)timeController.time<noSyncUntilTime) return FALSE;
    
-   // This should be sufficient to ensure that if we sync near midnight, and the minimum next sync time
-   // is during the next day, that we don't sync.
-   if(timeController.time>82800 && noSyncUntil<3600) return FALSE;
    currentNetwork = net;
    synchronizing = TRUE;
    syncSessionTime = 0;
+   noSyncUntilTime = -1;
    return TRUE;
 } // end-method
 
 - (void)endSynchronizationSession {
    currentNetwork = nil;
    synchronizing = FALSE;
-   noSyncUntil = (timeController.time+(int)ceil(syncSessionTime))%86400;
+   noSyncUntilTime = timeController.time+(int)ceil(syncSessionTime);
+   if (noSyncUntilTime>=86400) {
+      noSyncUntilDay = timeController.day+1;
+      noSyncUntilTime %=86400;
+   } else {
+      noSyncUntilDay = timeController.day;
+   } // end-if
 } // end-method
 
 - (BOOL)synchronizeRecord:(Record *)r {

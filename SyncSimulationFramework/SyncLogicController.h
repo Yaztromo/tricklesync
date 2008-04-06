@@ -43,8 +43,9 @@
    BOOL synchronizing;
    Network *currentNetwork;
    GaussianGenerator *rand;
-   int noSyncUntil;
-   int syncSessionTime;
+   int noSyncUntilTime;
+   int noSyncUntilDay;
+   double syncSessionTime;
 }
 @property(readonly) User *user;
 @property(readonly) ServerDatabase *serverDatabase;

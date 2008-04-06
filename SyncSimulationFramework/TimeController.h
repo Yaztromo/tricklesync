@@ -29,12 +29,14 @@
 
 @interface TimeController : NSObject {
    unsigned int time;
+   unsigned int day;
    NSMutableArray *tickListeners;         // A simple array of objects that need to be alerted during every tick.
    NSMutableDictionary *alarmListeners;   // An array of items that need to be alerted at a specific time.
                                           // Note that this is a dictionary of arrays, to permit more than one
                                           // class to have an alarm at the same time.
 }
 @property(readonly) unsigned int time;
+@property(readonly) unsigned int day;
 
 - (id)init;
 
