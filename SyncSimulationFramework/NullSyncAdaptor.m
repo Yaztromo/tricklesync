@@ -40,7 +40,7 @@
    NSLog(@"A tick occurred in the Test Sync Adapter at time %d.", time);
 } // end-method
 
-- (void)handheldRecordAccessCallback:(int)recordID {
+- (void)handheldRecordAccessCallback:(int)recordID atTime:(int)t {
    // This adaptor doesn't require record access callbacks.
 } // end-method
 

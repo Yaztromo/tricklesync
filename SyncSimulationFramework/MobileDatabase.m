@@ -79,7 +79,7 @@ againstServerDatabase:(Database *)sdb {
       } // end-if
       
       // Alert the listener (if any) that a record has been accessed.
-      [listener handheldRecordAccessCallback:record];
+      [listener handheldRecordAccessCallback:record atTime:time];
    } // end-if
 } // end-method
 

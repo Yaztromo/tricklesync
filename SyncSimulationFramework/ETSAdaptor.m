@@ -32,15 +32,23 @@
    
    [super init];
    
-   for(i=0;i<DAY_DIVISIONS;i++) accessesArray[i]=0;
+   for(i=0;i<DAY_DIVISIONS;i++) {
+      accessesArray[i]=0;
+      syncsArray[i]=FALSE;
+   } // end-if
    lastSyncTime = -1;
    [controller registerHandheldAccessListener:self];
-    
+   [controller.timeController addAlarmListener:self withFireTime:0];
+   
    return self;
 } // end-constructor
 
-- (void)handheldRecordAccessCallback:(int)recordID {
-   accessesArray[recordID/DAY_DIVISIONS]++;
+- (int)divisionIndexForTime:(int)time {
+   return time/(86400/DAY_DIVISIONS);
+} // end-method
+
+- (void)handheldRecordAccessCallback:(int)recordID atTime:(int)t {
+   accessesArray[[self divisionIndexForTime:t]]++;
 } // end-method
 
 - (NSMutableArray *)getRecordsToSync:(NSArray *)outOfDateRecs {
@@ -64,6 +72,9 @@
 } // end-method
 
 - (BOOL)timeForNewSync:(unsigned int)currTime {
+   // If we've already synchronized during this interval, don't do so again.
+   if (syncsArray[[self divisionIndexForTime:currTime]]) return FALSE;
+   
    // TODO -- implement me!
    return FALSE;
 } // end-method
@@ -81,7 +92,12 @@
 } // end-method
 
 - (void)activateAlarm:(int)time {
-   // This adaptor currently isn't using alarms, but this might change in the future.
+   int i;
+   if (time==0) { // Midnight
+      for(i=0;i<DAY_DIVISIONS;i++) {
+         syncsArray[i]=FALSE;
+      } // end-if
+   } // end-if
 } // end-method
 
 @end

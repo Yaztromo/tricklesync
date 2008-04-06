@@ -37,6 +37,7 @@
 
 - (void)activateAlarm:(int)time;
 - (void)activateTick:(int)time;
-- (void)handheldRecordAccessCallback:(int)recordID;
+- (void)handheldRecordAccessCallback:(int)recordID
+                              atTime:(int)t;
 
 @end

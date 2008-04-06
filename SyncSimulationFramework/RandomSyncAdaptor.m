@@ -94,7 +94,7 @@
    // This adaptor doesn't process alarms, so do nothing.
 } // end-method
 
-- (void)handheldRecordAccessCallback:(int)recordID {
+- (void)handheldRecordAccessCallback:(int)recordID atTime:(int)t {
    // This adaptor doesn't require record access callbacks.
 } // end-method
 

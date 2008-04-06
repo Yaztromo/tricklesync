@@ -36,6 +36,7 @@
    SyncLogicController *syncController;
    GaussianGenerator *rand;
    unsigned int accessesArray[DAY_DIVISIONS];
+   BOOL syncsArray[DAY_DIVISIONS];
    unsigned int lastSyncTime;
    unsigned int k;
 }
@@ -45,6 +46,6 @@
 
 - (void)activateTick:(int)time;
 - (void)activateAlarm:(int)time;
-- (void)handheldRecordAccessCallback:(int)recordID;
+- (void)handheldRecordAccessCallback:(int)recordID atTime:(int)t;
 
 @end
