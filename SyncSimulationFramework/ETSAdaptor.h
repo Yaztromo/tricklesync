@@ -31,14 +31,18 @@
 #import "GaussianGenerator.h"
 
 #define DAY_DIVISIONS 96
+#define SYNC_TRACKING_DAYS 7
+#define DAY_DIVISION_DURATION SECONDS_PER_DAY/DAY_DIVISIONS
 
 @interface ETSAdaptor : NSObject <SyncProtocol> {
    SyncLogicController *syncController;
    GaussianGenerator *rand;
-   unsigned int accessesArray[DAY_DIVISIONS];
+   unsigned short currentDivisionAccesses;
+   unsigned short accessesArray[SYNC_TRACKING_DAYS][DAY_DIVISIONS];
    BOOL syncsArray[DAY_DIVISIONS];
    unsigned int lastSyncTime;
-   unsigned int k;
+   unsigned int lastAccessTime;
+   double k;
 }
 
 -  (id)initWithController:(SyncLogicController *)controller

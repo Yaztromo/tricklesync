@@ -25,7 +25,7 @@
 #import <Cocoa/Cocoa.h>
 #import "TimerProtocols.h"
 
-#define SECONDS_PER_DAY 24*60*60
+#define SECONDS_PER_DAY 86400
 
 @interface TimeController : NSObject {
    unsigned int time;

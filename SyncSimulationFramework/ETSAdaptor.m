@@ -28,27 +28,43 @@
 @implementation ETSAdaptor
 -  (id)initWithController:(SyncLogicController *)controller
         andWithProperties:(NSXMLElement *)syncProtocolElement {
-   int i;
+   int i, j;
    
    [super init];
    
-   for(i=0;i<DAY_DIVISIONS;i++) {
-      accessesArray[i]=0;
-      syncsArray[i]=FALSE;
-   } // end-if
+   for(i=0;i<DAY_DIVISIONS;i++) syncsArray[i]=FALSE;
+   
+   for(j=0;j<SYNC_TRACKING_DAYS;j++) {
+      for(i=0;i<DAY_DIVISIONS;i++) {
+         accessesArray[j][i]=0;
+      } // end-for
+   } // end-for
+   
    lastSyncTime = -1;
    [controller registerHandheldAccessListener:self];
    [controller.timeController addAlarmListener:self withFireTime:0];
+   currentDivisionAccesses = 0;
+   
+   // Add the alarm listeners for the end-of-division maintenence
+   for(i=0;i<SECONDS_PER_DAY;i+=DAY_DIVISION_DURATION) {
+      [controller.timeController addAlarmListener:self withFireTime:i];
+   } // end-for
+   
+   syncController = controller;
+       
+   // Lastly, we should parse out the value for k from the XML properties
+   k = [[[syncProtocolElement attributeForName:@"k"] stringValue] doubleValue];
+   NSLog(@"*** k = %0.4f", k);
    
    return self;
 } // end-constructor
 
 - (int)divisionIndexForTime:(int)time {
-   return time/(86400/DAY_DIVISIONS);
+   return time/(SECONDS_PER_DAY/DAY_DIVISIONS);
 } // end-method
 
 - (void)handheldRecordAccessCallback:(int)recordID atTime:(int)t {
-   accessesArray[[self divisionIndexForTime:t]]++;
+   currentDivisionAccesses++;
 } // end-method
 
 - (NSMutableArray *)getRecordsToSync:(NSArray *)outOfDateRecs {
@@ -88,6 +104,8 @@
          if(![syncController synchronizeRecord:rec]) break;
       } // end-for
       [syncController endSynchronizationSession];
+      lastSyncTime = syncController.timeController.day *SECONDS_PER_DAY + syncController.timeController.time;
+      syncsArray[[self divisionIndexForTime:time]] = TRUE;
    } // end-if
 } // end-method
 
@@ -97,6 +115,20 @@
       for(i=0;i<DAY_DIVISIONS;i++) {
          syncsArray[i]=FALSE;
       } // end-if
+   } // end-if
+   
+   if (time%DAY_DIVISION_DURATION==0) {
+      // End of division maintenence -- move the currentDivisionAccesses into the current position in the array, and then set it back to zero
+      // for the next division
+      if (time==0) {
+         // We need to do this maintenence for the last division of the previous day, if there is one
+         if (syncController.timeController.day!=0) {
+            accessesArray[(syncController.timeController.day-1)%SYNC_TRACKING_DAYS][[self divisionIndexForTime:SECONDS_PER_DAY-1]]=currentDivisionAccesses;
+         } // end-if
+      } else {
+         accessesArray[syncController.timeController.day%SYNC_TRACKING_DAYS][[self divisionIndexForTime:time-1]]=currentDivisionAccesses;
+      } // end-if
+      currentDivisionAccesses = 0;
    } // end-if
 } // end-method
 
