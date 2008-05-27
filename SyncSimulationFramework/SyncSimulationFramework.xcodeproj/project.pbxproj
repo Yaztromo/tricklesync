@@ -20,6 +20,8 @@
 		8B3DA5B90D6039E800D58E8A /* NullSyncAdaptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B6C33E80D595BB1003A7D8E /* NullSyncAdaptor.h */; settings = {ATTRIBUTES = (); }; };
 		8B3DA5BA0D6039F800D58E8A /* NullSyncAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6C33E90D595BB1003A7D8E /* NullSyncAdaptor.m */; };
 		8B3DA6130D603E3100D58E8A /* SimulationCallbackProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B3DA6120D603E3100D58E8A /* SimulationCallbackProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8B4AF78A0DEBAC9B008C08D5 /* ThresholdPoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B4AF7880DEBAC9B008C08D5 /* ThresholdPoint.h */; };
+		8B4AF78B0DEBAC9B008C08D5 /* ThresholdPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4AF7890DEBAC9B008C08D5 /* ThresholdPoint.m */; };
 		8B60416B0D42DFFE00927ECA /* User.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B6041690D42DFFE00927ECA /* User.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B60416C0D42DFFE00927ECA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B60416A0D42DFFE00927ECA /* User.m */; };
 		8B60416D0D42DFFE00927ECA /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B60416A0D42DFFE00927ECA /* User.m */; };
@@ -96,6 +98,8 @@
 		8B3A156C0D57D60A0009380A /* SimulationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationController.h; sourceTree = "<group>"; };
 		8B3A156D0D57D60A0009380A /* SimulationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimulationController.m; sourceTree = "<group>"; };
 		8B3DA6120D603E3100D58E8A /* SimulationCallbackProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimulationCallbackProtocol.h; sourceTree = "<group>"; };
+		8B4AF7880DEBAC9B008C08D5 /* ThresholdPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThresholdPoint.h; sourceTree = "<group>"; };
+		8B4AF7890DEBAC9B008C08D5 /* ThresholdPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThresholdPoint.m; sourceTree = "<group>"; };
 		8B6041690D42DFFE00927ECA /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		8B60416A0D42DFFE00927ECA /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		8B60416E0D42E09A00927ECA /* LocationVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationVector.h; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 			children = (
 				8B03EA1D0DA306E7009D39B3 /* ETSAdaptor.h */,
 				8B03EA1E0DA306E7009D39B3 /* ETSAdaptor.m */,
+				8B4AF7880DEBAC9B008C08D5 /* ThresholdPoint.h */,
+				8B4AF7890DEBAC9B008C08D5 /* ThresholdPoint.m */,
 			);
 			name = "ETS Synchronizer";
 			sourceTree = "<group>";
@@ -419,6 +425,7 @@
 				8B8834680D7B7BC600A4E4C6 /* FastSyncAdaptor.h in Headers */,
 				8B03EA1F0DA306E7009D39B3 /* ETSAdaptor.h in Headers */,
 				8B03EB7D0DA36F96009D39B3 /* ltqnorm.h in Headers */,
+				8B4AF78A0DEBAC9B008C08D5 /* ThresholdPoint.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +579,7 @@
 				8B8834690D7B7BC600A4E4C6 /* FastSyncAdaptor.m in Sources */,
 				8B03EA200DA306E7009D39B3 /* ETSAdaptor.m in Sources */,
 				8B03EB780DA36CA9009D39B3 /* ltqnorm.c in Sources */,
+				8B4AF78B0DEBAC9B008C08D5 /* ThresholdPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

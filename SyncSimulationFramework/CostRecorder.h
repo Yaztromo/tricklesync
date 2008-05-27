@@ -45,4 +45,6 @@
 + (CostRecorder *)subtractWithValueA:(CostRecorder *)opA
                            andValueB:(CostRecorder *)opB;
 
+- (double)evaluateWith:(double)k;
+
 @end

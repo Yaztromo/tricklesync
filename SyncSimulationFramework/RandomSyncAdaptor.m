@@ -98,4 +98,8 @@
    // This adaptor doesn't require record access callbacks.
 } // end-method
 
+- (void)resetProtocolData {
+   // This adaptor doesn't require resetting.
+} // end-method
+
 @end

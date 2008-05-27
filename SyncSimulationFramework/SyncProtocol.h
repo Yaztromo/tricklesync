@@ -39,5 +39,6 @@
 - (void)activateTick:(int)time;
 - (void)handheldRecordAccessCallback:(int)recordID
                               atTime:(int)t;
+- (void)resetProtocolData;
 
 @end

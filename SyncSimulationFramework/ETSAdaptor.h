@@ -29,20 +29,37 @@
 #import "CostRecorder.h"
 #import "SyncLogicController.h"
 #import "GaussianGenerator.h"
+#import "ThresholdPoint.h"
+//#import <float.h>
 
 #define DAY_DIVISIONS 96
 #define SYNC_TRACKING_DAYS 7
-#define DAY_DIVISION_DURATION SECONDS_PER_DAY/DAY_DIVISIONS
+#define DAY_DIVISION_DURATION (SECONDS_PER_DAY/DAY_DIVISIONS)
+#define T_UPPER 800000000000000.0
+//#define T_UPPER (DBL_MAX/2.0)
+#define T_LOWER 0.0
 
 @interface ETSAdaptor : NSObject <SyncProtocol> {
    SyncLogicController *syncController;
-   GaussianGenerator *rand;
+   
    unsigned short currentDivisionAccesses;
    unsigned short accessesArray[SYNC_TRACKING_DAYS][DAY_DIVISIONS];
    BOOL syncsArray[DAY_DIVISIONS];
    unsigned int lastSyncTime;
    unsigned int lastAccessTime;
-   double k;
+   double k;   // The estimated cost of using an out-of-date record
+   
+   ThresholdPoint *currentThreshold;
+   ThresholdPoint *upperThreshold;
+   ThresholdPoint *lowerThreshold;
+   unsigned int state;  // A value from [-1..2], where:
+                        //    -1 - flag to signify the first run
+                        //     0 - flag to signify that we need to evaluate new upper and lower points based on the previous upper/lower results,
+                        //         and then run the best of the previous three runs (current, upper, lower)
+                        //     1 - flag to signify that we should run the next upper threshold test value
+                        //     2 - flag to specify that we should run the next lower threshold test value
+   CostRecorder *previousDaysCost;
+   unsigned int syncCount;
 }
 
 -  (id)initWithController:(SyncLogicController *)controller
@@ -51,5 +68,6 @@
 - (void)activateTick:(int)time;
 - (void)activateAlarm:(int)time;
 - (void)handheldRecordAccessCallback:(int)recordID atTime:(int)t;
+- (void)resetProtocolData;
 
 @end
