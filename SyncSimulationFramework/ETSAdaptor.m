@@ -59,12 +59,12 @@
    upperThreshold = [currentThreshold getNewUpperThreshold];
    lowerThreshold = [currentThreshold getNewLowerThreshold];
    state = 0;
-   NSLog(@"Initial Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
+   //NSLog(@"Initial Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
    syncCount = 0;
    
    // Lastly, we should parse out the value for k from the XML properties
    k = [[[syncProtocolElement attributeForName:@"k"] stringValue] doubleValue];
-   NSLog(@"*** k = %0.4f", k);
+   //NSLog(@"*** k = %0.4f", k);
    
    return self;
 } // end-constructor
@@ -195,7 +195,7 @@
       } // end-if
 
       // Get the cost of the just ended day (if day > 0) and copy it to the just tested threshold
-      NSLog(@"We synchronized %d times today.", syncCount);
+      //NSLog(@"We synchronized %d times today.", syncCount);
       syncCount = 0;
       
       if (syncController.timeController.day % 3 == 0) {
@@ -238,31 +238,31 @@
                Tlowercost = [lowerThreshold.cost evaluateWith:k]/3.0;
                Tcurrcost  = [currentThreshold.cost evaluateWith:k]/3.0;
                
-               NSLog(@"Upper Cost = %0.8f, Lower Cost = %0.8f, Current Cost = %0.8f", Tuppercost, Tlowercost, Tcurrcost);
-               NSLog(@"Upper Cost = %@, , Lower Cost = %@, Current Cost = %@", upperThreshold.cost, lowerThreshold.cost, currentThreshold.cost);
+               //NSLog(@"Upper Cost = %0.8f, Lower Cost = %0.8f, Current Cost = %0.8f", Tuppercost, Tlowercost, Tcurrcost);
+               //NSLog(@"Upper Cost = %@, , Lower Cost = %@, Current Cost = %@", upperThreshold.cost, lowerThreshold.cost, currentThreshold.cost);
                
                if (Tuppercost < Tcurrcost && Tuppercost < Tlowercost) {
                   // The upper value is lowest
-                  NSLog(@"Selecting upper boundry");
+                  //NSLog(@"Selecting upper boundry");
                   currentThreshold = upperThreshold;
                   upperThreshold = [currentThreshold getNewUpperThreshold];
                   lowerThreshold = [currentThreshold getNewLowerThreshold];
                } else if (Tlowercost <= Tcurrcost && Tlowercost <= Tuppercost) {
                   // The lower value is the lowest
-                  NSLog(@"Selecting lower boundry");
+                  //NSLog(@"Selecting lower boundry");
                   currentThreshold = lowerThreshold;
                   upperThreshold = [currentThreshold getNewUpperThreshold];
                   lowerThreshold = [currentThreshold getNewLowerThreshold];
                } else {
                   // Tcurrcost must be the lowest.  We'll stick with it, but should scale upper and lower
                   // accordingly so we don't keep testing the same points
-                  NSLog(@"Maintaining current boundry");
+                  //NSLog(@"Maintaining current boundry");
                   [currentThreshold reduceBoundsByTenPercent];
                   upperThreshold = [currentThreshold getNewUpperThreshold];
                   lowerThreshold = [currentThreshold getNewLowerThreshold];
                } // end-if
                
-               NSLog(@"New Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
+               //NSLog(@"New Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
                break;
                
             default:
@@ -308,7 +308,7 @@
    upperThreshold = [currentThreshold getNewUpperThreshold];
    lowerThreshold = [currentThreshold getNewLowerThreshold];
    state = 0;
-   NSLog(@"Initial Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
+   //NSLog(@"Initial Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
    syncCount = 0;   
 } // end-method
 

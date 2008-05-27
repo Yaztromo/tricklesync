@@ -46,7 +46,7 @@
    Class protocolClass;
    
    [super init];
-   NSLog(@"Attempting to initialize with a valid XML document.");
+   //NSLog(@"Attempting to initialize with a valid XML document.");
    
    // Start by verifying that this is an etssimulation document
    if (![[[xmlDoc rootElement] name] isEqualToString:@"etssimulation"]) {
@@ -56,7 +56,7 @@
    
    // ........................................................................................
    
-   NSLog(@"Finding the networks:");
+   //NSLog(@"Finding the networks:");
    
    // Find the 'networks' element, and read each 'network' element entry
    arr = [xmlDoc nodesForXPath:@"/etssimulation/networks/network" error:&err];
@@ -72,14 +72,14 @@
                                          andTransferRate:[[[elem attributeForName:@"xferrate"] stringValue] doubleValue]*1024
                           andProbabilityOfLostConnection:[[[elem attributeForName:@"expecteddisocnnectsperhour"] stringValue] doubleValue]/3600.0]
                    forKey: [[elem attributeForName:@"name"] stringValue]];
-      NSLog(@"   - Got network %@ with cost %@ and transfer rate of %@, and P(lostConnection) %@", [[elem attributeForName:@"name"] stringValue], [[elem attributeForName:@"cost"] stringValue], [[elem attributeForName:@"xferrate"] stringValue], [elem attributeForName:@"expecteddisocnnectsperhour"]);
+      //NSLog(@"   - Got network %@ with cost %@ and transfer rate of %@, and P(lostConnection) %@", [[elem attributeForName:@"name"] stringValue], [[elem attributeForName:@"cost"] stringValue], [[elem attributeForName:@"xferrate"] stringValue], [elem attributeForName:@"expecteddisocnnectsperhour"]);
    } // end-for
    
    // ........................................................................................
    
    // Find the 'locations' element, and read each 'location' element entry
    
-   NSLog(@"Finding the locations:");
+   //NSLog(@"Finding the locations:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/locations/location" error:&err];
    if (arr==nil) {
       NSLog(@"We were unable to find any locations/location elements!");
@@ -96,7 +96,7 @@
          [nets addObject:[networks objectForKey:[elem2 stringValue]]];
       } // end-for
       
-      NSLog(@"   - Got location with name %@ and networks %@", [[elem attributeForName:@"name"] stringValue], nets);
+      //NSLog(@"   - Got location with name %@ and networks %@", [[elem attributeForName:@"name"] stringValue], nets);
       [locations setObject: [[Location alloc] initWithName:[[elem attributeForName:@"name"] stringValue]
                                                andNetworks:nets]
                     forKey:[[elem attributeForName:@"name"] stringValue]];
@@ -105,7 +105,7 @@
    // ........................................................................................
    
    // Find the 'userschedule' element and read each 'entry' element entry
-   NSLog(@"Finding the location change events:");
+   //NSLog(@"Finding the location change events:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/userschedule/entry" error:&err];
    if (arr==nil) {
       NSLog(@"We were unable to find any userschedule/entry elements!");
@@ -114,7 +114,7 @@
    
    locationVects = [NSMutableArray arrayWithCapacity:[arr count]];
    for(NSXMLElement *elem in arr) {
-      NSLog(@"   - Found event at time %d for location %@", [[[elem attributeForName:@"time"] stringValue] intValue], [[elem attributeForName:@"locname"] stringValue]);
+      //NSLog(@"   - Found event at time %d for location %@", [[[elem attributeForName:@"time"] stringValue] intValue], [[elem attributeForName:@"locname"] stringValue]);
       [locationVects addObject: [[LocationVector alloc] initEntryTime:[[[elem attributeForName:@"time"] stringValue] intValue]
                                                           forLocation:[locations objectForKey:[[elem attributeForName:@"locname"] stringValue]]
                                               andExpectedSyncsPerHour:[[[elem attributeForName:@"expectedsyncs"] stringValue] doubleValue]
@@ -126,7 +126,7 @@
    
    // Find the database element
    // 	<database numrecords="1" arrivalrate="1.0" interval="1.0" maxarrivals="1.0"/>
-   NSLog(@"Finding the database element:");
+   //NSLog(@"Finding the database element:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/database" error:&err];
    if (arr==nil) {
       NSLog(@"We were unable to find the database element!");
@@ -134,7 +134,7 @@
    } // end-if   
    
    dbSize = [[[[arr objectAtIndex:0] attributeForName:@"numrecords"] stringValue] intValue];
-   NSLog(@"   - Found database entry with record count %d, arrival rate %f, interval %d, and max arrivals %d.", dbSize, [[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] stringValue] doubleValue], [[[[arr objectAtIndex:0] attributeForName:@"interval"] stringValue] intValue], [[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] stringValue] intValue]);
+   //NSLog(@"   - Found database entry with record count %d, arrival rate %f, interval %d, and max arrivals %d.", dbSize, [[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] stringValue] doubleValue], [[[[arr objectAtIndex:0] attributeForName:@"interval"] stringValue] intValue], [[[[arr objectAtIndex:0] attributeForName:@"maxarrivals"] stringValue] intValue]);
    sdb = [[ServerDatabase alloc] initWithRecordCount:dbSize
                                      withArrivalRate:[[[[arr objectAtIndex:0] attributeForName:@"arrivalrate"] stringValue] doubleValue]/[[[[arr objectAtIndex:0] attributeForName:@"interval"] stringValue] intValue]
                                         withInterval:1
@@ -162,7 +162,7 @@
    // ........................................................................................
    
    // Find the syncprotocol element
-   NSLog(@"Finding the sync protocol:");
+   //NSLog(@"Finding the sync protocol:");
    arr = [xmlDoc nodesForXPath:@"/etssimulation/syncprotocol" error:&err];
    if (arr==nil) {
       NSLog(@"We were unable to find the syncprotocol element!");
@@ -170,7 +170,7 @@
    } // end-if
    
    protocolName = [[[arr objectAtIndex:0] attributeForName:@"name"] stringValue];
-   NSLog(@"   - Got sync protocol name: %@", protocolName);
+   //NSLog(@"   - Got sync protocol name: %@", protocolName);
    
    protocolClass = NSClassFromString(protocolName);
    if (protocolClass==nil) {
@@ -196,7 +196,7 @@
    mean = [[CostRecorder alloc] init];
    S = [[Degree2Poly alloc] init];
    
-   NSLog(@"Done!");
+   //NSLog(@"Done!");
    
    percentComplete = 0.0;
    return self;
@@ -269,6 +269,9 @@
       
       // Copy the changes into the mobile database
       [user.handheldDB reinitializeRecordsFromServerDB];
+      
+      // Reset the protocol for th next run.
+      [protocol resetProtocolData];
    } // end-for
    
    [S divide:k-1];

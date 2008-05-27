@@ -40,9 +40,9 @@ andDatabaseModificationsPerHour:(double)modRate {
    entryTime = time;
    location = loc;
    syncRequestArrivalRate = [ProbabilityController bernoulliProbabilityPerSecondFromEventsPerHour:syncRate];
-   NSLog(@"$$$ The expected arrival rate is now %.12lf (was %.12lf)", syncRequestArrivalRate, syncRate);
+   //NSLog(@"$$$ The expected arrival rate is now %.12lf (was %.12lf)", syncRequestArrivalRate, syncRate);
    mobileDatabaseAccessRate = [ProbabilityController bernoulliProbabilityPerSecondFromEventsPerHour:modRate];
-   NSLog(@"$$$ The expected access rate is now %.12lf", mobileDatabaseAccessRate);
+   //NSLog(@"$$$ The expected access rate is now %.12lf", mobileDatabaseAccessRate);
    return self;
 } // end-method
 
