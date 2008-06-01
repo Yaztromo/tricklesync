@@ -71,6 +71,7 @@
 - (void)registerHandheldAccessListener:(id<SyncProtocol>)listener;
 - (Network *)fastestNetwork;
 - (Network *)cheapestNetwork;
+- (Network *)mostExpensiveNetwork;
 - (double)costToTransfer:(Record *)rec;
 - (unsigned int)getServerDBVersionForRecord:(Record *)r;
 

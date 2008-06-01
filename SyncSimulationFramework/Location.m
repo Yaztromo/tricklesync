@@ -50,6 +50,19 @@
    return least;
 } // end-method
 
+- (Network *)getMostExpensiveNetwork {
+   Network *most = nil;
+   
+   for(Network *net in networks) {
+      if (most == nil) most = net;
+      else if ([net costPerByte] > [most costPerByte]) {
+         most = net;
+      } // end-if
+   } // end-for
+   
+   return most;   
+} // end-method
+
 - (Network *)getFastestNetwork {
    Network *ret = nil;
    

@@ -131,6 +131,10 @@
    return [[[user getCurrentLocation] location] getLeastExpensiveNetwork];
 } // end-method
 
+- (Network *)mostExpensiveNetwork {
+   return [[[user getCurrentLocation] location] getMostExpensiveNetwork];
+} // end-method
+
 - (double)costToTransfer:(Record *)rec {
    return [currentNetwork costToTransferRecord:rec];
 } // end-method

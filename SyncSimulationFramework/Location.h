@@ -36,6 +36,7 @@
        andNetworks:(NSArray *)nets;
 
 - (Network *)getLeastExpensiveNetwork;
+- (Network *)getMostExpensiveNetwork;
 - (Network *)getFastestNetwork;
 
 @end

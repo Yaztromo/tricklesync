@@ -43,7 +43,6 @@
    lastSyncTime = -1;
    [controller registerHandheldAccessListener:self];
    [controller.timeController addTickListener:self];
-   //[controller.timeController addAlarmListener:self withFireTime:0];
    currentDivisionAccesses = 0;
    
    // Add the alarm listeners for the end-of-division maintenence
@@ -54,13 +53,16 @@
    syncController = controller;
    previousDaysCost = [controller.costRecorder copy];
        
+   // Find the most expensive network available
+   
    // Set the threshold point values to some reasonable starting value
    currentThreshold = [[ThresholdPoint alloc] initWithUpperBound:T_UPPER andWithLowerBound:T_LOWER andWithValue:T_UPPER];
    upperThreshold = [currentThreshold getNewUpperThreshold];
    lowerThreshold = [currentThreshold getNewLowerThreshold];
-   state = 0;
+   state = -1;
    //NSLog(@"Initial Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
    syncCount = 0;
+   mostExpensiveNetwork = nil;
    
    // Lastly, we should parse out the value for k from the XML properties
    k = [[[syncProtocolElement attributeForName:@"k"] stringValue] doubleValue];
@@ -120,6 +122,7 @@
    } // end-if
    
    switch(state) {
+      case -1:    // Just fall through to the case for state == 0
       case 0:     testPoint = currentThreshold;
                   break;
       case 1:     testPoint = upperThreshold;
@@ -134,7 +137,7 @@
            +2.0/15.0*[self probabilityOfUseAtTime:t+3*DAY_DIVISION_DURATION]
            +1.0/15.0*[self probabilityOfUseAtTime:t+4*DAY_DIVISION_DURATION])
            *((syncController.timeController.day *SECONDS_PER_DAY + t) - lastSyncTime))
-          /[[syncController cheapestNetwork] costPerByte]) > testPoint.currentValue;
+          /[[syncController cheapestNetwork] costPerByte]) >= testPoint.currentValue;
    
 /*   if(ret) {
       // We're going to synchronize -- let's dump out the individual values for verification
@@ -187,8 +190,9 @@
 
 - (void)activateAlarm:(int)time {
    int i;
-   double Tuppercost, Tlowercost, Tcurrcost;
+   double Tuppercost, Tlowercost, Tcurrcost, Tlow;
    if (time==0) { // Midnight
+      //NSLog(@" ##### Starting Day #%d (state == %d)", syncController.timeController.day, state);
       // Reset the synchronization array
       for(i=0;i<DAY_DIVISIONS;i++) {
          syncsArray[i]=FALSE;
@@ -198,9 +202,23 @@
       //NSLog(@"We synchronized %d times today.", syncCount);
       syncCount = 0;
       
-      if (syncController.timeController.day % 3 == 0) {
-         switch(state) {
-            case 0:
+      switch(state) {
+         case -1:
+            state = 0;
+            break;
+            
+         case 0:
+            if (syncController.timeController.day == 2) {
+               // When we get here, we should update the thresholds and move into state 0 again.
+               Tlow = 3600.0/[mostExpensiveNetwork costPerByte];
+               //NSLog(@"The cost per byte on the most expensive network is %@, with Tlow being assigned the value %0.4f.", mostExpensiveNetwork, Tlow);
+               currentThreshold = [[ThresholdPoint alloc] initWithUpperBound:Tlow andWithLowerBound:T_LOWER andWithValue:Tlow];
+               upperThreshold = [currentThreshold getNewUpperThreshold];
+               lowerThreshold = [currentThreshold getNewLowerThreshold];
+               //NSLog(@"New initial Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
+               previousDaysCost = [syncController.costRecorder copy];
+               state = 0;
+            } else {
                // When we get here, we have just finished running the current bound.
                state = 1;
                //NSLog(@"===== State is now %d on day %d", state, syncController.timeController.day);
@@ -209,67 +227,75 @@
                //NSLog(@"Current threshold cost is now %@", currentThreshold.cost);
                previousDaysCost = [syncController.costRecorder copy];
                //NSLog(@"Previous Days cost is now %@", previousDaysCost);
-               break;
-               
-            case 1:
-               // We get here when we have just completed testing the upper bound.
-               state = 2;
-               //NSLog(@"===== State is now %d on day %d", state, syncController.timeController.day);
-               //NSLog(@"Subtracting costs: (%@, %@)", syncController.costRecorder, previousDaysCost);
-               upperThreshold.cost = [CostRecorder subtractWithValueA:syncController.costRecorder andValueB:previousDaysCost];
-               //NSLog(@"Upper threshold cost is now %@", upperThreshold.cost);
-               previousDaysCost = [syncController.costRecorder copy];
-               //NSLog(@"Previous Days cost is now %@", previousDaysCost);
-               break;
-               
-            case 2:
-               // We get here whenever we're just finished running the lower threshold.  We need to compare the costs and generate
-               // new current, upper, and lower thresholds based on the results.
-               state = 0;
-               //NSLog(@"===== State is now %d on day %d", state, syncController.timeController.day);
+            } // end-if
+            break;
+            
+         case 1:
+            // We get here when we have just completed testing the upper bound.
+            state = 2;
+            //NSLog(@"===== State is now %d on day %d", state, syncController.timeController.day);
+            //NSLog(@"Subtracting costs: (%@, %@)", syncController.costRecorder, previousDaysCost);
+            upperThreshold.cost = [CostRecorder subtractWithValueA:syncController.costRecorder andValueB:previousDaysCost];
+            //NSLog(@"Upper threshold cost is now %@", upperThreshold.cost);
+            previousDaysCost = [syncController.costRecorder copy];
+            //NSLog(@"Previous Days cost is now %@", previousDaysCost);
+            break;
+            
+         case 2:
+            // We get here whenever we're just finished running the lower threshold.  We need to compare the costs and generate
+            // new current, upper, and lower thresholds based on the results.
+            state = 0;
+            //NSLog(@"===== State is now %d on day %d", state, syncController.timeController.day);
 
-               //NSLog(@"Subtracting costs: (%@, %@)", syncController.costRecorder, previousDaysCost);
-               lowerThreshold.cost = [CostRecorder subtractWithValueA:syncController.costRecorder andValueB:previousDaysCost];
-               //NSLog(@"Lower threshold cost is now %@", lowerThreshold.cost);
-               previousDaysCost = [syncController.costRecorder copy];
-               //NSLog(@"Previous Days cost is now %@", previousDaysCost);
-               
-               Tuppercost = [upperThreshold.cost evaluateWith:k]/3.0;
-               Tlowercost = [lowerThreshold.cost evaluateWith:k]/3.0;
-               Tcurrcost  = [currentThreshold.cost evaluateWith:k]/3.0;
-               
-               //NSLog(@"Upper Cost = %0.8f, Lower Cost = %0.8f, Current Cost = %0.8f", Tuppercost, Tlowercost, Tcurrcost);
-               //NSLog(@"Upper Cost = %@, , Lower Cost = %@, Current Cost = %@", upperThreshold.cost, lowerThreshold.cost, currentThreshold.cost);
-               
-               if (Tuppercost < Tcurrcost && Tuppercost < Tlowercost) {
-                  // The upper value is lowest
-                  //NSLog(@"Selecting upper boundry");
-                  currentThreshold = upperThreshold;
-                  upperThreshold = [currentThreshold getNewUpperThreshold];
-                  lowerThreshold = [currentThreshold getNewLowerThreshold];
-               } else if (Tlowercost <= Tcurrcost && Tlowercost <= Tuppercost) {
-                  // The lower value is the lowest
-                  //NSLog(@"Selecting lower boundry");
-                  currentThreshold = lowerThreshold;
-                  upperThreshold = [currentThreshold getNewUpperThreshold];
-                  lowerThreshold = [currentThreshold getNewLowerThreshold];
-               } else {
-                  // Tcurrcost must be the lowest.  We'll stick with it, but should scale upper and lower
-                  // accordingly so we don't keep testing the same points
-                  //NSLog(@"Maintaining current boundry");
-                  [currentThreshold reduceBoundsByTenPercent];
-                  upperThreshold = [currentThreshold getNewUpperThreshold];
-                  lowerThreshold = [currentThreshold getNewLowerThreshold];
-               } // end-if
-               
-               //NSLog(@"New Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
-               break;
-               
-            default:
-               // We should never get here!
-               NSLog(@"*** Got to default case when it shouldn't be possible.  state = %d", state);
-         } // end-switch
-      } // end-if
+            //NSLog(@"Subtracting costs: (%@, %@)", syncController.costRecorder, previousDaysCost);
+            lowerThreshold.cost = [CostRecorder subtractWithValueA:syncController.costRecorder andValueB:previousDaysCost];
+            //NSLog(@"Lower threshold cost is now %@", lowerThreshold.cost);
+            previousDaysCost = [syncController.costRecorder copy];
+            //NSLog(@"Previous Days cost is now %@", previousDaysCost);
+            
+            Tuppercost = [upperThreshold.cost evaluateWith:k]/3.0;
+            Tlowercost = [lowerThreshold.cost evaluateWith:k]/3.0;
+            Tcurrcost  = [currentThreshold.cost evaluateWith:k]/3.0;
+            
+            //NSLog(@"Upper Cost = %0.8f, Lower Cost = %0.8f, Current Cost = %0.8f", Tuppercost, Tlowercost, Tcurrcost);
+            //NSLog(@"Upper Cost = %@, , Lower Cost = %@, Current Cost = %@", upperThreshold.cost, lowerThreshold.cost, currentThreshold.cost);
+            
+            
+            if (upperThreshold.cost.realCost == 0.0 && lowerThreshold.cost.realCost == 0.0 && currentThreshold.cost.realCost == 0.0) {
+               // The thresholds are so high that none of the test is synchronizing anything, so we'll short-circuit the
+               // run and select the lower boundry.
+               NSLog(@"Selecting lower boundry due to lack of synchronization");
+               currentThreshold = lowerThreshold;
+               upperThreshold = [currentThreshold getNewUpperThreshold];
+               lowerThreshold = [currentThreshold getNewLowerThreshold];
+            } else if (Tuppercost < Tcurrcost && Tuppercost < Tlowercost) {
+               // The upper value is lowest
+               //NSLog(@"Selecting upper boundry");
+               currentThreshold = upperThreshold;
+               upperThreshold = [currentThreshold getNewUpperThreshold];
+               lowerThreshold = [currentThreshold getNewLowerThreshold];
+            } else if (Tlowercost <= Tcurrcost && Tlowercost <= Tuppercost) {
+               // The lower value is the lowest
+               //NSLog(@"Selecting lower boundry");
+               currentThreshold = lowerThreshold;
+               upperThreshold = [currentThreshold getNewUpperThreshold];
+               lowerThreshold = [currentThreshold getNewLowerThreshold];
+            } else {
+               // Tcurrcost must be the lowest.  We'll stick with it, but should scale upper and lower
+               // accordingly so we don't keep testing the same points
+               //NSLog(@"Maintaining current boundry");
+               [currentThreshold reduceBoundsByTenPercent];
+               upperThreshold = [currentThreshold getNewUpperThreshold];
+               lowerThreshold = [currentThreshold getNewLowerThreshold];
+            } // end-if
+            
+            //NSLog(@"New Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
+            break;
+            
+         default:
+            // We should never get here!
+            NSLog(@"*** Got to default case when it shouldn't be possible.  state = %d", state);
+      } // end-switch
    } // end-if
    
    if (time%DAY_DIVISION_DURATION==0) {
@@ -284,6 +310,16 @@
          accessesArray[syncController.timeController.day%SYNC_TRACKING_DAYS][[self divisionIndexForTime:time-1]]=currentDivisionAccesses;
       } // end-if
       currentDivisionAccesses = 0;
+      
+      // Test to see if the most expensive network in the current locale is higher than the most recently
+      // tested network.  Otherwise, fall through to case 0.
+      if (mostExpensiveNetwork == nil) {
+         mostExpensiveNetwork = [syncController mostExpensiveNetwork];
+         //NSLog(@"The most expensive network is now: %@", mostExpensiveNetwork);
+      } else if ([[syncController mostExpensiveNetwork] costPerByte] > [mostExpensiveNetwork costPerByte]) {
+         mostExpensiveNetwork = [syncController mostExpensiveNetwork];
+         //NSLog(@"The most expensive network is now: %@", mostExpensiveNetwork);
+      } // end-if
    } // end-if
 } // end-method
 

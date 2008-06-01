@@ -30,13 +30,12 @@
 #import "SyncLogicController.h"
 #import "GaussianGenerator.h"
 #import "ThresholdPoint.h"
-//#import <float.h>
+#import "Network.h"
 
 #define DAY_DIVISIONS 96
 #define SYNC_TRACKING_DAYS 7
 #define DAY_DIVISION_DURATION (SECONDS_PER_DAY/DAY_DIVISIONS)
 #define T_UPPER 800000000000000.0
-//#define T_UPPER (DBL_MAX/2.0)
 #define T_LOWER 0.0
 
 @interface ETSAdaptor : NSObject <SyncProtocol> {
@@ -53,13 +52,14 @@
    ThresholdPoint *upperThreshold;
    ThresholdPoint *lowerThreshold;
    unsigned int state;  // A value from [-1..2], where:
-                        //    -1 - flag to signify the first run
-                        //     0 - flag to signify that we need to evaluate new upper and lower points based on the previous upper/lower results,
-                        //         and then run the best of the previous three runs (current, upper, lower)
-                        //     1 - flag to signify that we should run the next upper threshold test value
-                        //     2 - flag to specify that we should run the next lower threshold test value
+                        //    -1 - flag to signify that this is the very first day, use to scan for most expensive network.
+                        //     0 - flag to signify that we should run the next middle threshold test value
+                        //     1 - flag to specify that we should run the next upper threshold test value
+                        //     2 - flag to signify that we need to evaluate new middle, upper, and lower points based on the previous 
+                        //         upper/lower/middle results, and then run the best of the previous three runs (current, upper, lower),
    CostRecorder *previousDaysCost;
    unsigned int syncCount;
+   Network *mostExpensiveNetwork;
 }
 
 -  (id)initWithController:(SyncLogicController *)controller

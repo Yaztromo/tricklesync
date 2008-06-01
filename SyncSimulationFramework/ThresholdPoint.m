@@ -35,7 +35,7 @@
    
    // First calculate the new upper bound.
    // If we're within epsilon of the upper bound, double the current and upper boundries.
-   if (currentValue + THRESHOLD_EPSILON >= upperBound) {
+   if (currentValue >= upperBound) {
    //if (currentValue == upperBound) {
       ret.upperBound = 200.0*currentValue;
       ret.currentValue = 200.0*currentValue;
@@ -55,7 +55,7 @@
 - (ThresholdPoint *)getNewLowerThreshold {
    ThresholdPoint *ret = [[ThresholdPoint alloc] init];
    
-   if (currentValue - THRESHOLD_EPSILON <= lowerBound) {
+   if (currentValue <= lowerBound) {
       ret.lowerBound = lowerBound/2.0;
    } else {
       ret.lowerBound = lowerBound;
