@@ -210,7 +210,7 @@
          case 0:
             if (syncController.timeController.day == 2) {
                // When we get here, we should update the thresholds and move into state 0 again.
-               Tlow = 3600.0/[mostExpensiveNetwork costPerByte];
+               Tlow = (DAY_DIVISION_DURATION * 4.0)/[mostExpensiveNetwork costPerByte];
                //NSLog(@"The cost per byte on the most expensive network is %@, with Tlow being assigned the value %0.4f.", mostExpensiveNetwork, Tlow);
                currentThreshold = [[ThresholdPoint alloc] initWithUpperBound:Tlow andWithLowerBound:T_LOWER andWithValue:Tlow];
                upperThreshold = [currentThreshold getNewUpperThreshold];
