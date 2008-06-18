@@ -112,6 +112,34 @@
    return (double)res/(double)SYNC_TRACKING_DAYS;
 } // end-method
 
+- (double)diminishingProbabilityWithStartingTime:(unsigned int)t {
+/*   int i;
+   double ret = 0.0;
+   for(i=1;i<=16;i++) {
+      ret += ((1<<(16-i)) * [self probabilityOfUseAtTime:t+i*DAY_DIVISION_DURATION])/65535.0;
+   } // end-for
+*/
+   double ret =   32768.0/65535.0*[self probabilityOfUseAtTime:t+1*DAY_DIVISION_DURATION]
+                 +16384.0/65535.0*[self probabilityOfUseAtTime:t+2*DAY_DIVISION_DURATION]
+                 + 8192.0/65535.0*[self probabilityOfUseAtTime:t+3*DAY_DIVISION_DURATION]
+                 + 4096.0/65535.0*[self probabilityOfUseAtTime:t+4*DAY_DIVISION_DURATION]
+                 + 2048.0/65535.0*[self probabilityOfUseAtTime:t+5*DAY_DIVISION_DURATION]
+                 + 1024.0/65535.0*[self probabilityOfUseAtTime:t+6*DAY_DIVISION_DURATION]
+                 +  512.0/65535.0*[self probabilityOfUseAtTime:t+7*DAY_DIVISION_DURATION]
+                 +  256.0/65535.0*[self probabilityOfUseAtTime:t+8*DAY_DIVISION_DURATION]
+                 +  128.0/65535.0*[self probabilityOfUseAtTime:t+9*DAY_DIVISION_DURATION]
+                 +   64.0/65535.0*[self probabilityOfUseAtTime:t+10*DAY_DIVISION_DURATION]
+                 +   32.0/65535.0*[self probabilityOfUseAtTime:t+11*DAY_DIVISION_DURATION]
+                 +   16.0/65535.0*[self probabilityOfUseAtTime:t+12*DAY_DIVISION_DURATION]
+                 +    8.0/65535.0*[self probabilityOfUseAtTime:t+13*DAY_DIVISION_DURATION]
+                 +    4.0/65535.0*[self probabilityOfUseAtTime:t+14*DAY_DIVISION_DURATION]
+                 +    2.0/65535.0*[self probabilityOfUseAtTime:t+15*DAY_DIVISION_DURATION]
+                 +    1.0/65535.0*[self probabilityOfUseAtTime:t+16*DAY_DIVISION_DURATION];
+ 
+   //if (ret!=0.0) NSLog(@"The diminishing probability for time %d is: %0.4f", t, ret);
+   return ret;
+} // end-method
+
 - (BOOL)timeForNewSync:(unsigned int)t {
    ThresholdPoint *testPoint;
    BOOL ret = FALSE;
@@ -132,36 +160,30 @@
       default:    NSLog(@"Error in state.  State = %d", state);
    } // end-switch
    
+   /*
    ret = (((8.0/15.0*[self probabilityOfUseAtTime:t+1*DAY_DIVISION_DURATION]
            +4.0/15.0*[self probabilityOfUseAtTime:t+2*DAY_DIVISION_DURATION]
            +2.0/15.0*[self probabilityOfUseAtTime:t+3*DAY_DIVISION_DURATION]
            +1.0/15.0*[self probabilityOfUseAtTime:t+4*DAY_DIVISION_DURATION])
            *((syncController.timeController.day *SECONDS_PER_DAY + t) - lastSyncTime))
           /[[syncController cheapestNetwork] costPerByte]) >= testPoint.currentValue;
-   
-/*   if(ret) {
+   */
+   ret = (([self diminishingProbabilityWithStartingTime:t]
+           *((syncController.timeController.day *SECONDS_PER_DAY + t) - lastSyncTime))
+          /[[syncController cheapestNetwork] costPerByte]) >= testPoint.currentValue;
+
+/*   if(ret && [[syncController cheapestNetwork] costPerByte] >=0.000048828125) {
+      NSLog(@"%d> %@", t, [syncController cheapestNetwork]);
       // We're going to synchronize -- let's dump out the individual values for verification
-      NSLog(@"((%0.3f + %0.3f + %0.3f + %0.3f) * %d) / %0.3f",    (8.0/15.0*[self probabilityOfUseAtTime:t+1*DAY_DIVISION_DURATION]),
-                                                                  (4.0/15.0*[self probabilityOfUseAtTime:t+2*DAY_DIVISION_DURATION]),
-                                                                  (2.0/15.0*[self probabilityOfUseAtTime:t+3*DAY_DIVISION_DURATION]),
-                                                                  (1.0/15.0*[self probabilityOfUseAtTime:t+4*DAY_DIVISION_DURATION]),
+      NSLog(@"((%0.3f) * %d) / %0.3f",    [self diminishingProbabilityWithStartingTime:t],
                                                                   ((syncController.timeController.day *SECONDS_PER_DAY + t) - lastSyncTime),
                                                                   [[syncController cheapestNetwork] costPerByte]);
-      NSLog(@"   = %0.3f / %0.3f",     (8.0/15.0*[self probabilityOfUseAtTime:t+1*DAY_DIVISION_DURATION]) +
-                                       (4.0/15.0*[self probabilityOfUseAtTime:t+2*DAY_DIVISION_DURATION]) +
-                                       (2.0/15.0*[self probabilityOfUseAtTime:t+3*DAY_DIVISION_DURATION]) +
-                                       (1.0/15.0*[self probabilityOfUseAtTime:t+4*DAY_DIVISION_DURATION]) +
-                                       ((syncController.timeController.day *SECONDS_PER_DAY + t) - lastSyncTime),
-                                       [[syncController cheapestNetwork] costPerByte]);
-      NSLog(@"   = %0.3f", (((8.0/15.0*[self probabilityOfUseAtTime:t+1*DAY_DIVISION_DURATION]
-                             +4.0/15.0*[self probabilityOfUseAtTime:t+2*DAY_DIVISION_DURATION]
-                             +2.0/15.0*[self probabilityOfUseAtTime:t+3*DAY_DIVISION_DURATION]
-                             +1.0/15.0*[self probabilityOfUseAtTime:t+4*DAY_DIVISION_DURATION])*((syncController.timeController.day *SECONDS_PER_DAY + t) - lastSyncTime))
-                            /[[syncController cheapestNetwork] costPerByte]));
-      
+      NSLog(@"   = %0.3f", (([self diminishingProbabilityWithStartingTime:t]*((syncController.timeController.day *SECONDS_PER_DAY + t) - lastSyncTime))
+                            /[[syncController cheapestNetwork] costPerByte]));      
                                                             
    } // end-if
-*/
+ */
+
    
    return ret;
 } // end-method
@@ -170,7 +192,8 @@
    NSMutableArray *records;
    BOOL flag = TRUE;
    if ([self timeForNewSync:time]) {
-      //NSLog(@"Synchronizing at time %d", time);
+      //NSLog(@"Synchronizing at time %d using network %@", time, [syncController cheapestNetwork]);
+      
       if (![syncController startSynchronizationSessionUsingNetwork:[syncController cheapestNetwork]]) return;
       syncCount++;
       records = [self orderRecordsByPriority:[self getRecordsToSync:[syncController getModifiedRecordList]]];
@@ -190,7 +213,7 @@
 
 - (void)activateAlarm:(int)time {
    int i;
-   double Tuppercost, Tlowercost, Tcurrcost, Tlow;
+   double Tuppercost, Tlowercost, Tcurrcost, Tlow, Thigh;
    if (time==0) { // Midnight
       //NSLog(@" ##### Starting Day #%d (state == %d)", syncController.timeController.day, state);
       // Reset the synchronization array
@@ -205,18 +228,22 @@
       switch(state) {
          case -1:
             state = 0;
+            previousDaysCost = [syncController.costRecorder copy];
+            //NSLog(@"Previous Days cost is now %@", previousDaysCost);            
             break;
             
          case 0:
             if (syncController.timeController.day == 2) {
                // When we get here, we should update the thresholds and move into state 0 again.
                Tlow = (DAY_DIVISION_DURATION * 4.0)/[mostExpensiveNetwork costPerByte];
+               Thigh = (DAY_DIVISION_DURATION * 4.0 * 12.0)/[mostExpensiveNetwork costPerByte];
                //NSLog(@"The cost per byte on the most expensive network is %@, with Tlow being assigned the value %0.4f.", mostExpensiveNetwork, Tlow);
-               currentThreshold = [[ThresholdPoint alloc] initWithUpperBound:Tlow andWithLowerBound:T_LOWER andWithValue:Tlow];
+               currentThreshold = [[ThresholdPoint alloc] initWithUpperBound:Thigh andWithLowerBound:T_LOWER andWithValue:Tlow];
                upperThreshold = [currentThreshold getNewUpperThreshold];
                lowerThreshold = [currentThreshold getNewLowerThreshold];
                //NSLog(@"New initial Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
                previousDaysCost = [syncController.costRecorder copy];
+               //NSLog(@"Previous Days cost is now %@", previousDaysCost);
                state = 0;
             } else {
                // When we get here, we have just finished running the current bound.
@@ -253,9 +280,9 @@
             previousDaysCost = [syncController.costRecorder copy];
             //NSLog(@"Previous Days cost is now %@", previousDaysCost);
             
-            Tuppercost = [upperThreshold.cost evaluateWith:k]/3.0;
-            Tlowercost = [lowerThreshold.cost evaluateWith:k]/3.0;
-            Tcurrcost  = [currentThreshold.cost evaluateWith:k]/3.0;
+            Tuppercost = [upperThreshold.cost evaluateWith:k];
+            Tlowercost = [lowerThreshold.cost evaluateWith:k];
+            Tcurrcost  = [currentThreshold.cost evaluateWith:k];
             
             //NSLog(@"Upper Cost = %0.8f, Lower Cost = %0.8f, Current Cost = %0.8f", Tuppercost, Tlowercost, Tcurrcost);
             //NSLog(@"Upper Cost = %@, , Lower Cost = %@, Current Cost = %@", upperThreshold.cost, lowerThreshold.cost, currentThreshold.cost);
@@ -264,7 +291,7 @@
             if (upperThreshold.cost.realCost == 0.0 && lowerThreshold.cost.realCost == 0.0 && currentThreshold.cost.realCost == 0.0) {
                // The thresholds are so high that none of the test is synchronizing anything, so we'll short-circuit the
                // run and select the lower boundry.
-               NSLog(@"Selecting lower boundry due to lack of synchronization");
+               //NSLog(@"Selecting lower boundry due to lack of synchronization");
                currentThreshold = lowerThreshold;
                upperThreshold = [currentThreshold getNewUpperThreshold];
                lowerThreshold = [currentThreshold getNewLowerThreshold];
