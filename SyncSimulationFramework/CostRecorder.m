@@ -39,10 +39,12 @@
 } // end-initializer
 
 - (void)incrementRealCostBy:(double)value {
+   //NSLog(@"$$$ Incrementing real cost by: %0.8f", value);
    realCost+=value;
 } // end-method
 
 - (void)incrementEtherialCostBy:(double)value {
+   //NSLog(@"$$$ Incrementing etherial cost by: %0.8f", value);
    etherialCost+=value;
 } // end-method
 

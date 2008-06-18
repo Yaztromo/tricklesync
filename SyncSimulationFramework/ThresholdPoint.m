@@ -34,13 +34,15 @@
    ThresholdPoint *ret = [[ThresholdPoint alloc] init];
    
    // First calculate the new upper bound.
-   // If we're within epsilon of the upper bound, double the current and upper boundries.
+   // If we're greater than or exactly equal to the upper bound, double.
    if (currentValue >= upperBound) {
-   //if (currentValue == upperBound) {
-      ret.upperBound = 200.0*currentValue;
-      ret.currentValue = 200.0*currentValue;
+      ret.upperBound = 2.0*currentValue;
+      ret.currentValue = 2.0*currentValue;
+   } else if (upperBound - currentValue <= THRESHOLD_EPSILON) {
+      // If however the current value is within epsilon less than the upper bound, do nothing
+      return [self copy];
    } else {
-      // Otherwise, maintain the existing upper bound
+      // Otherwise, maintain the existing upper bound, and increase the current value
       ret.upperBound = upperBound;
       ret.currentValue = (upperBound + currentValue)/2.0;
    } // end-if
@@ -55,8 +57,12 @@
 - (ThresholdPoint *)getNewLowerThreshold {
    ThresholdPoint *ret = [[ThresholdPoint alloc] init];
    
+   // If the current value is less than or equal to the lower bound, decrease the lower bound by half.
    if (currentValue <= lowerBound) {
       ret.lowerBound = lowerBound/2.0;
+   } else if (currentValue-lowerBound <= THRESHOLD_EPSILON) {
+      // If we're within the epsilon, simply return without change
+      return [self copy];
    } else {
       ret.lowerBound = lowerBound;
    } // end-if
@@ -68,14 +74,21 @@
 } // end-method
 
 - (void)reduceBoundsByTenPercent {
-   double val = (upperBound - lowerBound)/10.0;
+   double val;
+   
+   // It's not worth reducing the bounds if we're already within the epsilon value.
+   if (upperBound-lowerBound <= THRESHOLD_EPSILON) return;
+   val = (upperBound - lowerBound)/10.0;
    lowerBound+=val;
    upperBound-=val;
-   if (lowerBound<0) lowerBound = 0;
 } // end-method
 
 - (NSString *)description {
    return [NSString stringWithFormat:@"Current = %0.2f, Upper Bound = %0.2f, Lower Bound =%0.2f", currentValue, upperBound, lowerBound];
+} // end-method
+
+- (id)copyWithZone:(NSZone *)zone {
+   return [[ThresholdPoint allocWithZone:zone] initWithUpperBound:self.upperBound andWithLowerBound:self.lowerBound andWithValue:currentValue];
 } // end-method
 
 @end

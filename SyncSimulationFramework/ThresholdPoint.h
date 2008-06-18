@@ -13,7 +13,7 @@
 
 @class ThresholdPoint;
 
-@interface ThresholdPoint : NSObject {
+@interface ThresholdPoint : NSObject <NSCopying> {
    double upperBound;
    double lowerBound;
    double currentValue;
