@@ -18,16 +18,18 @@ The mechanism selected for the ETS algorithm to use is to combine the above ment
 
 In specific, given a value $n$ representing the number of time intervals to look ahead into, the probability function $P(x)$ which generates the probability that the user will access a record on the mobile device during the fixed-size interval of the day $x$, $\Delta t$ is the time since the last synchronization session, and $C_{byte_{net}}$ is the cost of transferring one byte of data on the selected network, then we define the function $G$ as:
 \begin{equation}
-G(x) =  \frac{\Bigg(\displaystyle{\sum_{i=1}^n \frac{2^{n-i} * P(x+i)}{2^n-1}}\Bigg)* \Delta t}{C_{byte_{net}}}
-\end{equation}\label{threshold_function}
+G(x) =  \frac{\Bigg(\displaystyle{\sum_{i=1}^n \frac{2^{n-i} * P(x+i)}{2^n-1}}\Bigg)* \Delta t}{C_{byte_{net}}} \label{threshold_function}
+\end{equation}
+
 Note that in the function $G$ we evaluate the mobile device record access probabilities of the next $n$ time intervals, with each subsequent interval having half the influence of its immediately preceding interval.  In the default implementation, the intervals are 15 minutes in length, and the next 16 intervals are considered; thus the probability calculation takes into consideration the next four hours worth of usage.  The rationale for using such a long period of time is in order to ensure that the probability factor is significantly less likely to be equal to exactly $0$, as when it does the numerator in function $G$ will become zero, and even when within a virtually free network we will fail to synchronize.  By considering a lengthy span of time, if we're in a sufficiently inexpensive network we can synchronize even if the device won't be used for up to the next 4 hours, and we can better avoid a situation that could frequently occur with smaller values of $n$ where we avoid synchronizing because the numerator of $G$ is zero while in an inexpensive network, but a short time later while in an expensive network we are forced to synchronize because the time since the last synchronization is very high (due to the lack of synchronization in the previous intervals).  This is particularly noticeable in user models where the device goes unused for lengthy periods of time (such as while the user is asleep at night), as with a small value of $n$ we may avoid synchronizing all night, only to be forced to synchronize as soon as the probability of access becomes non-zero due to the large $\Delta t$ factor.
 
 Calculation of the interval probabilities is based upon a table maintained by the ETS algorithm, which stores the number of record accesses for each time interval in the day, for each of the last seven days.  In order to keep computation simple, the quantity of records accessed within each interval is not considered, only whether or not \emph{any} record was accessed during the interval; the probability algorithm is interested only in the probability of a record being accessed each day during the specified interval, and not how many were accessed during each interval.  Thus, an interval $x_a$ which has accesses in the seven preceding days of $\{1, 1, 1, 1, 1, 1, 1\}$ would have $P(x_a) = 1.0$, whereas an interval $x_b$ which has access counts in the seven preceding days $\{7, 0, 0, 0, 0, 0, 0\}$ would have $P(x_b) =  \frac{1}{7}$.  Using only the last seven days of access information permits the system to adapt within a one week interval to changing record access habits by the user.
 
 Given function \ref{threshold_function}, and given a function $I$ which returns the fixed-sized time interval containing a specific instant of time $t$, we can determine whether or not to synchronize by evaluating the following inequality:
 \begin{equation}
-G(I(t)) > T
-\end{equation}\label{threshold_inequality}
+G(I(t)) > T \label{threshold_inequality}
+\end{equation}
+
 This inequality is evaluated every second during the day to determine whether or not synchronization needs to occur.  Given a sufficiently low probability, a sufficiently low time since the last synchronization, a sufficiently high network transfer cost, or any combination of these three attributes, synchronization will not occur during the interval.  Given a sufficiently high probability, long time since the last synchronization, or low network transfer cost, or any combination of the three, synchronization will occur.
 
 It should be noted that synchronization when the network transfer cost is low presents certain potential problems.  As the data transfer cost for a given network approaches zero, synchronization will always occur (assuming the probability summation is non-zero), and the time since the last synchronization ($\Delta t$) would always be equal to 1 second (as we would synchronize during every interval due to the minor cost impact synchronization would have in a "free network" environment).  ETS prevents a divide-by-zero situation simply by avoiding it altogether -- even a "free" network is assumed to have some minor cost for the electrical power to perform the transfer, however for a mobile device synchronizing during every 1s interval while in a "free" network zone is most likely impossible, and would be a significant battery drain.  As such, the ETS algorithm prevents this situation from occurring by only permitting one synchronization during each fixed sized interval $x$ so as to prevent an unreasonable use of resources by the data synchronization subsystem.
@@ -44,37 +46,57 @@ Learning the optimal threshold value is difficult, as both raising and lowering 
 \caption{How modifying the threshold could negatively impact cost.}\label{threshold_options}
 \end{figure}
 
-In order to determine whether cost improvements would occur when the threshold is increased, decreased, or by staying at the current threshold point, the ETS algorithm tests three different threshold points, within a range consisting of an \emph{upper point}, a \emph{lower point}, and \emph{midpoint}.
+In order to determine whether cost improvements would occur when the threshold is increased, decreased, or by staying at the current threshold point, the ETS algorithm tests three different threshold points, within a range consisting of an \emph{upper point}, a \emph{lower point}, and \emph{midpoint}.  During intervening days, these three points are used for synchronization, and the cost of their use recorded.  After analyzing the cost associated with each of these three points, one is selected to become the new midpoint, and new upper and lower bounds are computed.
 
-The threshold evaluation subsystem is composed of two algorithms:  finding suitable threshold initialization values, and updating the threshold.
+The threshold evaluation subsystem is composed of two main algorithms:  finding suitable initial threshold values, and computing new threshold values.
 
 \subsubsection{Threshold Initialization}
 
-\begin{equation}
-T_{init} = \frac{3600}{max(C_{byte_{net}})}
-\end{equation}\label{threshold_init}
+In order to be effective, the threshold computation algorithm requires some reasonable initial values for the upper point, lower point, and midpoint.  In particular, if all three initial values are too high, such that none will ever permit synchronization to occur, it becomes difficult to make any progress.  Likewise, if the values are too low, we may synchronize during every interval for each of the values, again impeding progress.  In both of these examples, the cost of synchronization for each becomes more dependent on random usage patterns, and we risk making a poor decision which will impact the cost in a negative manner.  See subsection \ref{threshold_problems} for a more in-depth discussion of these and other potential threshold problems.
 
+Selecting initial seed values for the threshold points is performed as a two-step process.  In the first step, during the first day of device use, a reasonable fixed threshold is used, as presented in equation \ref{threshold_init}.  In addition, during the first day of use the device watches for and records the cost per byte of the most expensive network encountered.
 \begin{equation}
-T_{upper} = \frac{43200}{max(C_{byte_{net}})}
+T_{init} = 8 * 10^{14} \label{threshold_init}
 \end{equation}
 
+Once the cost per byte of the most expensive network has been determined at the end of the first day, we can compute a reasonable threshold midpoint.  The function used to compute the initial midpoint is presented in equation \ref{threshold_init_midpoint}.  This equation is a reduction of equation \ref{threshold_function}, where the probability summation is equal to $1.0$, and $\Delta t$ is equal to one hour, expressed in seconds.
 \begin{equation}
-T_{lower} = 0.0
+T_{midpoint} = \frac{3600}{max(C_{byte_{net}})} \label{threshold_init_midpoint}
 \end{equation}
 
+Using this initial midpoint, we'll only synchronize using the most expensive network if the probability summation times the interval since the last synchronization is equal to 3600, with the prototype case being where the probability summation is $1.0$ and the interval since the last synchronization is one hour.
 
-\subsubsection{Updating the Threshold}
+Next, the algorithm computes the initial upper bound point, using equation \ref{threshold_init_upper}, which is the midpoint between a reduction of equation \ref{threshold_function}, where the probability summation is equal to $1.0$ and $\Delta t$ is equal to twelve hours (expressed in seconds), and the value of $T_{midpoint}$ from equation \ref{threshold_init_midpoint}.
+\begin{equation}
+T_{upper} = \frac{\frac{43200}{max(C_{byte_{net}})} - T_{midpoint}}{2} \label{threshold_init_upper}
+\end{equation}
+
+Finally, we compute the initial lower bound, using equation \ref{threshold_init_lower}, which is simply the midpoint between $T_{midpoint}$ from equation \ref{threshold_init_midpoint}, and zero, as presented in equation \ref{threshold_init_lower}.
+\begin{equation}
+T_{lower} = \frac{T_{midpoint}}{2} \label{threshold_init_lower}
+\end{equation}
+
+The computation of these initial values helps to ensure that we seed the threshold evaluation algorithm with values where synchronization will occur at a reasonable frequency.  Each of these three points will be evaluated by using them for synchronization on a subsequent day; after all three points have been evaluated, they can be fed into the new threshold computation algorithm to come up with new threshold values based on their performance.
+
+\subsubsection{Computing New Threshold Values}
 
 *** More stuff goes here
 
-\subsection{Problems with Thresholding}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=\textwidth]{Figures/Threshold_Point_Evaluation}
+\caption[An example of a series of threshold evaluations]{An example of a series of threshold evaluations.  In the first evaluation, the upper point was found to be most cost effective, leading to the point set at $x=2$.  Next, the lower bound of this second set was selected, leading to the point set in $x=3$.  The midpoint at this third set was found least expensive, resulting in the point set at $x=4$.  Finally, the upper range in this fourth set was found to be least expensive, leading to the point set at x=5.}\label{threshold_point_evaluations}
+\end{figure}
 
-*** Talk about problematic patterns here, and how we deal with them
 
- - Local maxima ("W" figure)
- - C, H, L are equivalent
- - Out of sync range
- - Not guaranteed to find absolute minima
+
+\subsection{Problems with Thresholding}\label{threshold_problems}
+
+*** Talk about problematic patterns here, and how we deal with them \\
+ - Local maxima ("W" figure) \\
+ - C, H, L are equivalent \\
+ - Out of sync range \\
+ - Not guaranteed to find absolute minima \\
 
 \section{Determining which network to synchronize via}
 
@@ -86,13 +108,13 @@ Once a synchronization session has been initiated, the ETS protocol must decide 
 
 Given the set of records needing synchronization $R$, with size $|R| = n$ and individual records $r_i \in R$, where $i$ is the records index value in the set of records to be synchronized, the function $C$ that calculates the cost of transferring a record via the selected network, the function $P$ which calculates the probability that a record will be accessed by the user, the function $V$ which calculates the version number of a given record on a given device (where $s$ is the server and $h$ is the mobile device), the constant $k$ denoting the expected cost of using out-of-date information, and decision variables $x_i \in \{0, 1\}$, the expected cost $XC$ of the synchronization can be expressed as:
 \begin{equation}
-XC = \sum_{i=1}^n C(r_i)x_i+P(r_i)\overline{x_i}\cdot(V(r_{i_s})-V(r_{i_h}))\cdot k
-\end{equation}\label{expected_sync_cost}
+XC = \sum_{i=1}^n C(r_i)x_i+P(r_i)\overline{x_i}\cdot(V(r_{i_s})-V(r_{i_h}))\cdot k \label{expected_sync_cost}
+\end{equation}
 
 Thus the goal of the record selection sub-algorithm is to minimize $XP$ by solving for all $x_i$.  This can be done by testing the following equality for each $r_i$ requiring synchronization, and evaluating the corresponding $x_i = 1$ when it holds true:
 \begin{equation}
-C(r_i) < P(r_i)\cdot(V(r_{i_s})-V(r_{i_h}))\cdot k
-\end{equation}\label{sync_cost_inequality}
+C(r_i) < P(r_i)\cdot(V(r_{i_s})-V(r_{i_h}))\cdot k \label{sync_cost_inequality}
+\end{equation}
 
 In essence, we are directly comparing the cost of synchronizing the records, versus the expected cost of not synchronizing the record.  If the real network cost of synchronizing the record is higher than the cost of not having the record available, the ETS algorithm will not synchronize it during this session.  If the real cost of synchronizing the record is lower than the cost of not having the record available, the record will be synchronized.
 
