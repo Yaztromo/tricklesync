@@ -140,13 +140,6 @@ An example of this algorithm running is graphed in figure \ref{threshold_point_e
 
 \subsection{Problems with Thresholding}\label{threshold_problems}
 
-%*** Talk about problematic patterns here, and how we deal with them
-% - Out of sync range
-% - C, H, L are equivalent
-% - Local maxima ("W" figure)
-% - Random events can negatively impact cost for an otherwise good threshold point
-% - Not guaranteed to find absolute minima
-
 Thresholding can lead to a variety of potential issues which can negatively impact the overall algorithm.  While care has been taken to design the algorithm in such a way as to minimize these issues, they are real possibilities, and a suitably crafted user pattern could certainly lead to problems.  This subsection lists some of these issues, along with how the ETS algorithm attempts to mitigate or solve them.
 
 \paragraph{The threshold set points result in equal costs}
@@ -155,6 +148,8 @@ In the event that in evaluating $T_{upper}$, $T_{midpoint}$, and $T_{lower}$ the
 If the range between $T_{lower}$ and $T_{upper}$ is large, no progress will be made, as the midpoints between both $T_{lower}$ and $T_{midpoint}$, and $T_{midpoint}$ and $T_{upper}$ are equally poor candidates.  
 
 % How can we fix this situation?
+% Idea:  if the cost of all points is within some small percentage of each other, select the midpoint but 
+% increase the upper by 10%, and decrease the lower by 10%.
 
 \begin{figure}[!htb]
 \centering
@@ -165,6 +160,29 @@ If the range between $T_{lower}$ and $T_{upper}$ is large, no progress will be m
 \paragraph{Threshold Points are all out-of-range}
 A special case of the previous issue occurs when the selected initial threshold set points are all of such a high value that it is impossible to ever meet any of the threshold points within a single day.  In this case, the cost of using the algorithm becomes equal to the cost of simply never synchronizing at all, which is a highly undesirable trait.  The ETS algorithm avoids this scenario by calculating reasonable initial values for $T_{upper}$, $T_{midpoint}$, and $T_{lower}$ as documented above.
 
+\paragraph{Mid-point lands on a local maxima less than the high and low points}
+
+% W-figure
+
+\begin{figure}[!htb]
+\centering
+\includegraphics{Figures/Threshold_Evaluation-W_Graph}
+\caption[An example where the midpoint lands on a local maxima]{An example where the midpoint lands on a local maxima.  In this case, while the midpoint is a better choice than either the upper or lower points, it would improve the cost profile by moving either up or down.  Note that in this graph the vertical axis indicates cost, while the horizontal axis indicates threshold values.}\label{threshold_problem_b}
+\end{figure}
+
+\paragraph{Random events can negatively impact cost for an otherwise good threshold point}
+
+% Discuss the problems of random usage events affecting the cost here
+
+\paragraph{Not guaranteed to find the global minima}
+
+% Discuss why we don't guarantee finding the absolute cheapest solution here
+
+\begin{figure}[!htb]
+\centering
+\includegraphics{Figures/Threshold_Evaluation-Local-Minima}
+\caption[An example demonstrating narrow and broad minima]{An example demonstrating narrow and broad local minima.  In this situation, the algorithm is more likely to fall into the broad but shallow local minima, as we can get into it through more threshold points, whereas the global minimum has a sharper drop, making it easier for the algorithm to miss completely.  Note that in this graph the vertical axis indicates cost, while the horizontal axis indicates threshold values.}\label{threshold_problem_c}
+\end{figure}
 
 \section{Determining which network to synchronize via}
 
