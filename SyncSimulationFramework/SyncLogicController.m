@@ -59,8 +59,8 @@
 } // end-method
 
 - (BOOL)startSynchronizationSessionUsingNetwork:(Network *)net {
-   // Don't permit the sync if it's too close to a previous sync session
-   if((int)timeController.day<noSyncUntilDay && (int)timeController.time<noSyncUntilTime) return FALSE;
+   // Don't permit the sync if it's too close to a previous sync session, or if the network is nil.
+   if(((int)timeController.day<noSyncUntilDay && (int)timeController.time<noSyncUntilTime) || net==nil) return FALSE;
    
    currentNetwork = net;
    synchronizing = TRUE;

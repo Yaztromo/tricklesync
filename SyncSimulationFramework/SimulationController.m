@@ -170,7 +170,7 @@
    } // end-if
    
    protocolName = [[[arr objectAtIndex:0] attributeForName:@"name"] stringValue];
-   //NSLog(@"   - Got sync protocol name: %@", protocolName);
+   NSLog(@"Synchronizing using protocol: %@", protocolName);
    
    protocolClass = NSClassFromString(protocolName);
    if (protocolClass==nil) {

@@ -37,6 +37,7 @@
 #define DAY_DIVISION_DURATION (SECONDS_PER_DAY/DAY_DIVISIONS)
 #define T_UPPER 800000000000000.0
 #define T_LOWER 0.0
+//#define DEBUG_OUTPUT
 
 @interface ETSAdaptor : NSObject <SyncProtocol> {
    SyncLogicController *syncController;

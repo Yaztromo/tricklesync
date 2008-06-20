@@ -213,7 +213,7 @@
 
 - (void)activateAlarm:(int)time {
    int i;
-   double Tuppercost, Tlowercost, Tcurrcost, Tlow, Thigh;
+   double Tuppercost, Tlowercost, Tcurrcost, Tlow, Thigh, Tmid;
    if (time==0) { // Midnight
       //NSLog(@" ##### Starting Day #%d (state == %d)", syncController.timeController.day, state);
       // Reset the synchronization array
@@ -235,13 +235,16 @@
          case 0:
             if (syncController.timeController.day == 2) {
                // When we get here, we should update the thresholds and move into state 0 again.
-               Tlow = (DAY_DIVISION_DURATION * 4.0)/[mostExpensiveNetwork costPerByte];
+               Tmid = (DAY_DIVISION_DURATION * 4.0)/[mostExpensiveNetwork costPerByte];
                Thigh = (DAY_DIVISION_DURATION * 4.0 * 12.0)/[mostExpensiveNetwork costPerByte];
+               Tlow = (DAY_DIVISION_DURATION)/[mostExpensiveNetwork costPerByte];
                //NSLog(@"The cost per byte on the most expensive network is %@, with Tlow being assigned the value %0.4f.", mostExpensiveNetwork, Tlow);
-               currentThreshold = [[ThresholdPoint alloc] initWithUpperBound:Thigh andWithLowerBound:T_LOWER andWithValue:Tlow];
+               currentThreshold = [[ThresholdPoint alloc] initWithUpperBound:Thigh andWithLowerBound:Tlow andWithValue:Tmid];
                upperThreshold = [currentThreshold getNewUpperThreshold];
                lowerThreshold = [currentThreshold getNewLowerThreshold];
-               //NSLog(@"New initial Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
+#ifdef DEBUG_OUTPUT
+               NSLog(@"New initial Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
+#endif               
                previousDaysCost = [syncController.costRecorder copy];
                //NSLog(@"Previous Days cost is now %@", previousDaysCost);
                state = 0;
@@ -284,39 +287,50 @@
             Tlowercost = [lowerThreshold.cost evaluateWith:k];
             Tcurrcost  = [currentThreshold.cost evaluateWith:k];
             
-            //NSLog(@"Upper Cost = %0.8f, Lower Cost = %0.8f, Current Cost = %0.8f", Tuppercost, Tlowercost, Tcurrcost);
+#ifdef DEBUG_OUTPUT
+            NSLog(@"Upper Cost = %0.8f, Lower Cost = %0.8f, Current Cost = %0.8f", Tuppercost, Tlowercost, Tcurrcost);
             //NSLog(@"Upper Cost = %@, , Lower Cost = %@, Current Cost = %@", upperThreshold.cost, lowerThreshold.cost, currentThreshold.cost);
-            
+#endif            
             
             if (upperThreshold.cost.realCost == 0.0 && lowerThreshold.cost.realCost == 0.0 && currentThreshold.cost.realCost == 0.0) {
                // The thresholds are so high that none of the test is synchronizing anything, so we'll short-circuit the
                // run and select the lower boundry.
-               //NSLog(@"Selecting lower boundry due to lack of synchronization");
+#ifdef DEBUG_OUTPUT
+               NSLog(@"Selecting lower boundry due to lack of synchronization");
+#endif
                currentThreshold = lowerThreshold;
                upperThreshold = [currentThreshold getNewUpperThreshold];
                lowerThreshold = [currentThreshold getNewLowerThreshold];
             } else if (Tuppercost < Tcurrcost && Tuppercost < Tlowercost) {
                // The upper value is lowest
-               //NSLog(@"Selecting upper boundry");
+#ifdef DEBUG_OUTPUT
+               NSLog(@"Selecting upper boundry");
+#endif
                currentThreshold = upperThreshold;
                upperThreshold = [currentThreshold getNewUpperThreshold];
                lowerThreshold = [currentThreshold getNewLowerThreshold];
             } else if (Tlowercost <= Tcurrcost && Tlowercost <= Tuppercost) {
                // The lower value is the lowest
-               //NSLog(@"Selecting lower boundry");
+#ifdef DEBUG_OUTPUT
+               NSLog(@"Selecting lower boundry");
+#endif
                currentThreshold = lowerThreshold;
                upperThreshold = [currentThreshold getNewUpperThreshold];
                lowerThreshold = [currentThreshold getNewLowerThreshold];
             } else {
                // Tcurrcost must be the lowest.  We'll stick with it, but should scale upper and lower
                // accordingly so we don't keep testing the same points
-               //NSLog(@"Maintaining current boundry");
+#ifdef DEBUG_OUTPUT
+               NSLog(@"Maintaining current boundry");
+#endif
                [currentThreshold reduceBoundsByTenPercent];
                upperThreshold = [currentThreshold getNewUpperThreshold];
                lowerThreshold = [currentThreshold getNewLowerThreshold];
             } // end-if
             
-            //NSLog(@"New Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
+#ifdef DEBUG_OUTPUT
+            NSLog(@"New Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
+#endif
             break;
             
          default:
