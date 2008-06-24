@@ -82,7 +82,9 @@ The computation of these initial values helps to ensure that we seed the thresho
 
 While the initial threshold set should result in a system that synchronizes at various points through the users day, it is doubtful that it is optimal.  As such, after testing each set of thresholds points, their real-use cost is analyzed, a decision is made as to what the new threshold point set values should be, and the entire process is repeated.
 
-To evaluate the threshold points, they are simply compared to each other.  If $T_{upper}$ is found to have resulted in the lowest cost, we increase $T_{midpoint}$.  If $T_{midpoint}$ is found to have resulted in the lowest cost, we maintain $T_{midpoint}$ as is, and if $T_{lower}$ is found to have resulted in the lowest cost, we decrease the value of $T_{midpoint}$.  In the event that the cost of two or more of $\{T_{upper}, T_{midpoint}\}$ are found to be equal to $T_{lower}$, and that this cost value represents the lowest cost, we always decrease the value of $T_{midpoint}$.  The rationale for this is, all other things being equal, that if we can synchronize more frequently for the same (or lower) cost, the end result will be a positive result for the user, as we'll be able to communicate more information at an equal or lower cost.
+Computing the threshold point cost for a given point $T_a$ involves running the ETS algorithm for one day, with $T_a$ as the threshold value.  The cost equation for the day, as presented in equation \ref{lineareq} is computed, and is evaluated for $x = k$, where $k$ is an estimated average cost per out-of-date record usage as input by the user.  The resulting value is the \emph{threshold point cost}.
+
+To evaluate the threshold points, their costs are simply compared to each other.  If $T_{upper}$ is found to have resulted in the lowest cost, we increase $T_{midpoint}$.  If $T_{midpoint}$ is found to have resulted in the lowest cost, we maintain $T_{midpoint}$ as is, and if $T_{lower}$ is found to have resulted in the lowest cost, we decrease the value of $T_{midpoint}$.  In the event that the cost of two or more of $\{T_{upper}, T_{midpoint}\}$ are found to be equal to $T_{lower}$, and that this cost value represents the lowest cost, we always decrease the value of $T_{midpoint}$.  The rationale for this is, all other things being equal, that if we can synchronize more frequently for the same (or lower) cost, the end result will be a positive result for the user, as we'll be able to communicate more information at an equal or lower cost.
 
 The specific functions for increasing, decreasing, or maintaining the value of $T_{midpoint}$ are detailed in the following paragraphs.  It should be noted that prior to modifying the threshold point set, the inequality in \ref{upper_lower_within_epsilon} is evaluated.  If the inequality is true, no action is taken.  This is done to prevent an eventual convergence of $T_{upper}$, $T_{midpoint}$, and $T_{lower}$ due to a large number of divisions against ever smaller differences between these values.
 
@@ -182,16 +184,36 @@ The ETS algorithm removes this issue by ensuring that whenever $T_{midpoint}$ is
 
 \paragraph{Random events can negatively impact cost for an otherwise good threshold point}
 
-% Discuss the problems of random usage events affecting the cost here
+The entire cost evaluation for the ETS algorithm is governed by the assumption that the cost evaluated for a threshold point on any given day represents the typical cost for synchronization on that day.  However, random events in the users behaviour, such as accessing more out-of-date records on one day rather than another can result in skewed cost results for a given day, which may result in the threshold selection algorithm selecting what could be, on average, a worse cost threshold point.  Figure \ref{threshold_problem_c} illustrates this problem.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics{Figures/Threshold_Atypical_Case}
+\caption[An example where a random use event causes a cost spike]{An example where a random use event causes a cost spike.  In this case, when evaluating the cost of the lower bound, the cost for a specific day is $L_1$, whereas in the average case, it would otherwise by $L_T$.  Because of this, the midpoint is selected as less expensive, leading us to a slightly higher cost region.  Note that in this graph the vertical axis indicates cost, while the horizontal axis indicates threshold values.}\label{threshold_problem_c}
+\end{figure}
+
+Resolving this issue is difficult, as it is impossible to know at runtime whether a cost result for a given threshold point is the typical case or not.  While it may be tempting to average the cost values by running the same threshold point for multiple days and then averaging the cost results, this solution can be very costly to the end user when we're testing what are very obviously poor threshold points multiple times.  In addition, how many times we need to re-run the test in order to average out a single poor result is highly dependant upon the value of $k$ as input into the threshold point cost function.
+
+Possibly a better solution would be to evaluate each threshold point for $j$ days, selecting the median cost value as the threshold point cost.  This has the benefit of tending towards a more realistic value for each given threshold point, but once again has the disadvantage of bumping up the early cost of using the algorithm, as even obviously poor costing days will be run for $j$ days, increasing their negative effect on overall cost of use.
+
+In practice, it appears that the ETS algorithm's existing threshold management algorithms are able to sufficiently deal with this situation.  While a potentially good candidate may initially be avoided due to a random event causing a spike in the cost, the algorithm in the long run should tend back down towards this point if it does indeed indicate a cost benefit.  In figure \ref{threshold_problem_c} for example, we'll select the midpoint, reduce the threshold set magnitude by 20\%, and assuming no other random spikes in the future, we'll tend back down towards $L_T$ as we "slide" down the slope of the graph.  As such, mechanisms to better mitigate this problem are left to future research.
 
 \paragraph{Not guaranteed to find the global minima}
 
-% Discuss why we don't guarantee finding the absolute cheapest solution here
+It should be stressed that the ETS algorithm is not designed to find the threshold value which exhibits the absolute minimum cost.  In practice, the range of threshold values which permit synchronization can easily surpass $1.0 * 10^{308}$ (the order of magnitude for a 64-bit floating point number, as is used in the current implementation of the algorithm).  Mathematically, as the cost per byte of transfer on the current network approaches $0$, the cost will approach infinity, as expressed in equation \ref{threshold_limit_eqn}.
+
+\begin{equation}
+\displaystyle{\lim_{C_{byte_{net}} \rightarrow 0} \frac{\Bigg(\displaystyle{\sum_{i=1}^n \frac{2^{n-i} * P(x+i)}{2^n-1}}\Bigg)* \Delta t}{C_{byte_{net}}} = \infty\label{threshold_limit_eqn}}
+\end{equation}
+
+Due to this fact, the ETS algorithm doesn't guarantee that it will find the absolute minimal cost threshold point, but instead attempts to find a suitable local minima through what is effectively a binary search of the overall threshold space.  While this point may not be globally minimal, it is felt that the approach taken in the ETS algorithm both runs within a reasonable amount of time, and produces a result that will be generally better than existing ad-hoc mechanisms, such as relying on user-initiated synchronization, or synchronizing after every fixed unit of time.
+
+Figure \ref{threshold_problem_d} demonstrates an example threshold value graph  with both a local minimum and an absolute minimum.  Because the local minimum traverses significantly more threshold point values than the global minimum point, the probability of the ETS algorithm falling into this region as minimal is higher than for the global minimum, which only exists within a relatively narrow range of threshold points, and is surrounded by high-cost areas on either side.
 
 \begin{figure}[!htb]
 \centering
 \includegraphics{Figures/Threshold_Evaluation-Local-Minima}
-\caption[An example demonstrating narrow and broad minima]{An example demonstrating narrow and broad local minima.  In this situation, the algorithm is more likely to fall into the broad but shallow local minima, as we can get into it through more threshold points, whereas the global minimum has a sharper drop, making it easier for the algorithm to miss completely.  Note that in this graph the vertical axis indicates cost, while the horizontal axis indicates threshold values.}\label{threshold_problem_c}
+\caption[An example demonstrating narrow and broad minima]{An example demonstrating narrow and broad local minima.  In this situation, the algorithm is more likely to fall into the broad but shallow local minima, as we can get into it through more threshold points, whereas the global minimum has a sharper drop, making it easier for the algorithm to miss completely.  Note that in this graph the vertical axis indicates cost, while the horizontal axis indicates threshold values.}\label{threshold_problem_d}
 \end{figure}
 
 \section{Determining which network to synchronize via}
@@ -224,5 +246,6 @@ Finally, as its last step prior to exchanging records between the server and the
 
 \section{Comments}
 
-% Add final comments on the ETS algorithm here
+It is felt that the ETS algorithm as presented represents a computationally effective way of reducing the overall cost factors involved with synchronizing handheld devices using an optimistic replication model.  By using the simulation environment detailed in Chapter \ref{simulation_chapter}, Chapter \ref{results_chapter} will detail the experimental results of the ETS algorithm, compared alongside the other algorithms described in Chapter \ref{simulation_chapter}.
 
+In this chapter, we presented a number of graphs displaying possible computed threshold point costs versus threshold point values.  As part of this conclusion, it should be noted that no such graphs have in fact been computed.  The reason for this is demonstrated in part by by the result of equation \ref{threshold_limit_eqn}; the range of values that require evaluation is massive; even evaluating only even $n$ points for some reasonable value of $n$ would be a significant undertaking.  There was insufficient time or computational power available at the time this research was conducted to compute such a graph for a fixed day, however computing such a graph, given a sufficiently large distributed computing infrastructure and a modified version of the simulation engine as described in chapter \ref{simulation_chapter} could generate such a representational graph.  Generating such graphs for a variety of user models would be very useful in evaluating the overall effectiveness of the ETS algorithm, and would be useful in better determining the overall problem space the algorithm attempts to optimize.  The generation of such graphs is thus left for, and is highly recommended as a future research topic in this field of study.
