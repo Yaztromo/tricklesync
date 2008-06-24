@@ -50,7 +50,7 @@ In order to determine whether cost improvements would occur when the threshold i
 
 The threshold evaluation subsystem is composed of two main algorithms:  finding suitable initial threshold values, and computing new threshold values.
 
-\subsubsection{Threshold Initialization}
+\subsubsection{Threshold Initialization}\label{threshold_initialization}
 
 In order to be effective, the threshold computation algorithm requires some reasonable initial values for the upper point, lower point, and midpoint.  In particular, if all three initial values are too high, such that none will ever permit synchronization to occur, it becomes difficult to make any progress.  Likewise, if the values are too low, we may synchronize during every interval for each of the values, again impeding progress.  In both of these examples, the cost of synchronization for each becomes more dependent on random usage patterns, and we risk making a poor decision which will impact the cost in a negative manner.  See subsection \ref{threshold_problems} for a more in-depth discussion of these and other potential threshold problems.
 
@@ -78,7 +78,7 @@ T_{lower} = \frac{T_{midpoint} - \displaystyle\frac{900}{max(C_{byte_{net}})}}{2
 
 The computation of these initial values helps to ensure that we seed the threshold evaluation algorithm with values where synchronization will occur at a reasonable frequency.  Each of these three points will be evaluated by using them for synchronization on a subsequent day; after all three points have been evaluated, they can be fed into the new threshold computation algorithm to come up with new threshold values based on their performance.
 
-\subsubsection{Computing New Threshold Values}
+\subsubsection{Computing New Threshold Values}\label{threshold_computation}
 
 While the initial threshold set should result in a system that synchronizes at various points through the users day, it is doubtful that it is optimal.  As such, after testing each set of thresholds points, their real-use cost is analyzed, a decision is made as to what the new threshold point set values should be, and the entire process is repeated.
 
@@ -143,13 +143,22 @@ An example of this algorithm running is graphed in figure \ref{threshold_point_e
 Thresholding can lead to a variety of potential issues which can negatively impact the overall algorithm.  While care has been taken to design the algorithm in such a way as to minimize these issues, they are real possibilities, and a suitably crafted user pattern could certainly lead to problems.  This subsection lists some of these issues, along with how the ETS algorithm attempts to mitigate or solve them.
 
 \paragraph{The threshold set points result in equal costs}
-In the event that in evaluating $T_{upper}$, $T_{midpoint}$, and $T_{lower}$ their associated costs are equal, it becomes difficult to make a decision as how to react.  When this situation occurs, it may indicate that we're on a plateau, but with no way to evaluate this fact.  This may not be a significant problem when the range between $T_{lower}$ and $T_{upper}$ is very small; indeed, this situation ideally eventually occurs, as it indicates we've found a local minima.  However, if the range is still large (bigger that $\epsilon$), we have no way of knowing whether it's because the plateau is a suitable minima, or if it's in fact closer to a maxima.  Figure \ref{threshold_problem_a} illustrates this problem.
+In the event that in evaluating $T_{upper}$, $T_{midpoint}$, and $T_{lower}$ their associated costs are equal, it becomes difficult to make a decision as how to react.  When this situation occurs, it may indicate that we're on a plateau, but with no way to evaluate this fact.  This may not be a significant problem when the range between $T_{lower}$ and $T_{upper}$ is very small; indeed, this situation ideally eventually occurs, as it indicates we've found a local minima.  However, if the range is still large (bigger than $\epsilon$), we have no way of knowing whether it's because the plateau is a suitable minima, or if it's in fact closer to a maxima.  Figure \ref{threshold_problem_a1} illustrates this problem.
 
-If the range between $T_{lower}$ and $T_{upper}$ is large, no progress will be made, as the midpoints between both $T_{lower}$ and $T_{midpoint}$, and $T_{midpoint}$ and $T_{upper}$ are equally poor candidates.  
+If the range between $T_{lower}$ and $T_{upper}$ is large, and we are on a plateau, no progress will be made, as the midpoints between both $T_{lower}$ and $T_{midpoint}$, and $T_{midpoint}$ and $T_{upper}$ are equally poor candidates.  
 
-% How can we fix this situation?
-% Idea:  if the cost of all points is within some small percentage of each other, select the midpoint but 
-% increase the upper by 10%, and decrease the lower by 10%.
+\begin{figure}[!htb]
+\centering
+\includegraphics{Figures/Threshold_Equal_Points_Issue}
+\caption[Two possible ways to have equal cost points without making progress]{Two possible ways to have equal cost points without making progress.  In situation (a), while it is impossible to make any progress, we're already at a local minima.  In situation (b) however, further progress could be made, however given the knowledge of only the three points cost values, it is impossible to determine in which direction to progress.  Additionally, it's impossible given just the three point values to determine if we're in situation (a) or (b).  Note that in this graph the vertical axis indicates cost, while the horizontal axis indicates threshold values.}\label{threshold_problem_a1}
+\end{figure}
+
+The current implementation of the ETS algorithm attempts to minimize this situation by computing reasonable initial threshold bounds.  It is believed that situations as depicted in (b) in figure \ref{threshold_problem_a1} only tend to occur at the two most extreme ends of the overall threshold range; that is, when the set of threshold evaluation points is close to $0$, or when the set of threshold evaluation points are all outside the range where synchronization is possible (i.e., when there are no possible values for equation \ref{threshold_function} which could cause $G(x)$ to surpass any of $T_{lower}$, $T_{midpoint}$, or $T_{upper}$).
+
+In any case where the three threshold points are found to be equal, the ETS algorithm always selects the lower range as the new threshold range, as more frequent synchronization at no additional cost is always assumed to be a positive outcome.
+
+\paragraph{Threshold Points are all out-of-range}
+A special case of the previous issue occurs when the selected initial threshold set points are all of such a high value that it is impossible to ever meet any of the threshold points within a single day.  In this case, the cost of using the algorithm becomes equal to the cost of simply never synchronizing at all, which is a highly undesirable trait.  The ETS algorithm avoids this scenario by calculating reasonable initial values for $T_{upper}$, $T_{midpoint}$, and $T_{lower}$ as documented above.  Figure \ref{threshold_problem_a} illustrates this problem.
 
 \begin{figure}[!htb]
 \centering
@@ -157,18 +166,19 @@ If the range between $T_{lower}$ and $T_{upper}$ is large, no progress will be m
 \caption[An example of all three points in the threshold set having equal cost]{An example of all three points in the threshold set having equal cost.  In this case, the lower, middle, and upper points all have equal cost, making is difficult to make a decision as to how to evaluate the next set of points, as all values within the range are equally poor.  Note that in this graph the vertical axis indicates cost, while the horizontal axis indicates threshold values.}\label{threshold_problem_a}
 \end{figure}
 
-\paragraph{Threshold Points are all out-of-range}
-A special case of the previous issue occurs when the selected initial threshold set points are all of such a high value that it is impossible to ever meet any of the threshold points within a single day.  In this case, the cost of using the algorithm becomes equal to the cost of simply never synchronizing at all, which is a highly undesirable trait.  The ETS algorithm avoids this scenario by calculating reasonable initial values for $T_{upper}$, $T_{midpoint}$, and $T_{lower}$ as documented above.
+By ensuring that the initial maximum and minimum points within the threshold are within the synchronizing range (as described in \ref{threshold_initialization} above), we ensure that all the threshold values are within a suitable initial use range, avoiding this problem altogether.
 
 \paragraph{Mid-point lands on a local maxima less than the high and low points}
 
-% W-figure
+If $T_{upper}$ and $T_{lower}$ are found to have a higher cost than $T_{midpoint}$, there is no guarantee that $T_{midpoint}$ is the lowest cost point within the current threshold range.  Any point between $T_{lower}$ and $T_{midpoint}$, or between $T_{midpoint}$ and $T_{upper}$ may have a lower cost associated with it than $T_{midpoint}$ does.  This situation is shown in figure \ref{threshold_problem_b}.  Given a simple selection algorithm that selects $T_{midpoint}$ without modifying $T_{upper}$ or $T_{lower}$ would prevent us from finding a potentially more minimal point between these ranges.
 
 \begin{figure}[!htb]
 \centering
 \includegraphics{Figures/Threshold_Evaluation-W_Graph}
 \caption[An example where the midpoint lands on a local maxima]{An example where the midpoint lands on a local maxima.  In this case, while the midpoint is a better choice than either the upper or lower points, it would improve the cost profile by moving either up or down.  Note that in this graph the vertical axis indicates cost, while the horizontal axis indicates threshold values.}\label{threshold_problem_b}
 \end{figure}
+
+The ETS algorithm removes this issue by ensuring that whenever $T_{midpoint}$ is selected as the minimal cost point, that $T_{lower}$ is increased by 10\% of the difference between $T_{upper}$ and $T_{lower}$, while $T_{upper}$ is decreased by this same amount, as described in equations \ref{threshold_diminish_upper} and \ref{threshold_enhance_lower}.  In this way, we continue to select $T_{midpoint}$ as the new threshold, but we decrease the range of the threshold set by 20\%, causing us to potentially eventually find a new minima within the range. 
 
 \paragraph{Random events can negatively impact cost for an otherwise good threshold point}
 
@@ -214,5 +224,5 @@ Finally, as its last step prior to exchanging records between the server and the
 
 \section{Comments}
 
-*** Add final comments on the ETS algorithm here ***
+% Add final comments on the ETS algorithm here
 
