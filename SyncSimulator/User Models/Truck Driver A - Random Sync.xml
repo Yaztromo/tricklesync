@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etssimulation>
+	<networks>
+		<network name="GPRS" cost="0.000048828125" xferrate="57.0" expecteddisocnnectsperhour="0.1"/>
+		<network name="WiFi" cost="0.000000000001" xferrate="49000.0" expecteddisocnnectsperhour="0.01"/>
+		<network name="CommercialWiFi" cost="0.000001" xferrate="49000" expecteddisocnnectsperhour="0.01"/>
+	</networks>
+
+	<locations>
+		<location name="road">
+			<localnet>GPRS</localnet>
+		</location>
+		<location name="office">
+			<localnet>GPRS</localnet>
+			<localnet>WiFi</localnet>
+		</location>
+		<location name="truckstop">
+			<localnet>GPRS</localnet>
+			<localnet>CommercialWiFi</localnet>
+		</location>
+	</locations>
+
+	<userschedule>
+		<entry locname="office" time="0" expectedsyncs="1.0" expectedaccesses="0.00001"/>
+		<entry locname="road" time="32400" expectedsyncs="1.0" expectedaccesses="10.0"/>
+		<entry locname="truckstop" time="43200" expectedsyncs="1.0" expectedaccesses="2.0"/>
+		<entry locname="road" time="46800" expectedsyncs="1.0" expectedaccesses="10.0"/>
+		<entry locname="office" time="61200" expectedsyncs="1.0" expectedaccesses="0.00001"/>
+	</userschedule>
+
+	<database numrecords="2000" arrivalrate="20.0" interval="3600" maxarrivals="5"/>
+
+	<syncprotocol name="RandomSyncAdaptor">
+		<!-- ...protocol specific nodes go here... -->
+	</syncprotocol>
+</etssimulation>

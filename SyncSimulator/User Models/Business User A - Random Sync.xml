@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etssimulation>
+	<networks>
+		<network name="GPRS" cost="0.000048828125" xferrate="57.0" expecteddisocnnectsperhour="0.1"/>
+		<network name="WiFi" cost="0.000000000001" xferrate="49000.0" expecteddisocnnectsperhour="0.01"/>
+		<network name="CommercialWiFi" cost="0.000001" xferrate="49000" expecteddisocnnectsperhour="0.01"/>
+	</networks>
+
+	<locations>
+		<location name="home">
+			<localnet>GPRS</localnet>
+			<localnet>WiFi</localnet>
+		</location>
+		<location name="car">
+			<localnet>GPRS</localnet>
+		</location>
+		<location name="office">
+			<localnet>GPRS</localnet>
+			<localnet>WiFi</localnet>
+		</location>
+		<location name="lunch">
+			<localnet>GPRS</localnet>
+			<localnet>CommercialWiFi</localnet>
+		</location>
+	</locations>
+
+	<userschedule>
+		<entry locname="home" time="0" expectedsyncs="0.0" expectedaccesses="0.00001"/>
+		<entry locname="home" time="25200" expectedsyncs="0.1" expectedaccesses="0.2"/>		
+		<entry locname="car" time="28800" expectedsyncs="0.0" expectedaccesses="0.00001"/>
+		<entry locname="office" time="32400" expectedsyncs="0.25" expectedaccesses="10.0"/>
+		<entry locname="lunch" time="43200" expectedsyncs="0.1" expectedaccesses="2.0"/>
+		<entry locname="office" time="46800" expectedsyncs="0.25" expectedaccesses="10.0"/>
+		<entry locname="car" time="61200" expectedsyncs="0.0" expectedaccesses="0.00001"/>
+		<entry locname="home" time="64800" expectedsyncs="0.1" expectedaccesses="0.5"/>		
+		<entry locname="home" time="79200" expectedsyncs="0.0" expectedaccesses="0.00001"/>				
+	</userschedule>
+
+	<database numrecords="5000" arrivalrate="40.0" interval="3600" maxarrivals="10"/>
+
+	<syncprotocol name="RandomSyncAdaptor">
+		<!-- ...protocol specific nodes go here... -->
+	</syncprotocol>
+</etssimulation>

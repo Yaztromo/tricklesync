@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etssimulation>
+	<networks>
+		<network name="GPRS" cost="0.000048828125" xferrate="57.0" expecteddisocnnectsperhour="0.1"/>
+	</networks>
+
+	<locations>
+		<location name="home">
+			<localnet>GPRS</localnet>
+		</location>
+	</locations>
+
+	<userschedule>
+		<entry locname="home" time="0" expectedsyncs="0.166666666666667"" expectedaccesses="5"/>
+	</userschedule>
+
+	<database numrecords="5000" arrivalrate="50.0" interval="3600" maxarrivals="10"/>
+
+	<syncprotocol name="NullSyncAdaptor">
+		<!-- ...protocol specific nodes go here... -->
+	</syncprotocol>
+</etssimulation>
