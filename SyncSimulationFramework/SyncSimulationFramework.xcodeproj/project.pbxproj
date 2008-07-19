@@ -152,6 +152,7 @@
 		8BEF58B00D0E8CE10023C0ED /* ProbabilityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProbabilityController.m; sourceTree = "<group>"; };
 		8BEF59500D0E98D30023C0ED /* CostRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostRecorder.h; sourceTree = "<group>"; };
 		8BEF59510D0E98D30023C0ED /* CostRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CostRecorder.m; sourceTree = "<group>"; };
+		8BF8FCAC0E2EF3FF00802640 /* SyncSimulationFramework.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = SyncSimulationFramework.xcclassmodel; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* SyncSimulationFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SyncSimulationFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -199,6 +200,7 @@
 				034768DFFF38A50411DB9C8B /* Products */,
 				8B854FF10D0B7313000F949A /* Unit Test Target-Info.plist */,
 				8B7BDF090D1089D3008F9F94 /* Unit Test-Info.plist */,
+				8BF8FCAC0E2EF3FF00802640 /* SyncSimulationFramework.xcclassmodel */,
 			);
 			name = SyncSimulationFramework;
 			sourceTree = "<group>";

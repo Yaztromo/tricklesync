@@ -262,7 +262,7 @@
          if (callback!=nil) [callback setPercentCompleted:percentComplete];
       } // end-for
       
-      NSLog(@"######################### [ ITERATION %03d COMPLETE ] #########################", j+1);
+      //NSLog(@"######################### [ ITERATION %03d COMPLETE ] #########################", j+1);
       // One iteration is complete.  Reset the databases and run the next iteation
       // Firstly, reset the server database, and ensure that all objects which use it are updated to reflect the change
       [syncLogic.serverDatabase generateNewRecordSet];
