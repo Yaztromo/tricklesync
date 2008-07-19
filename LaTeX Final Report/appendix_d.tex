@@ -1,106 +1,173 @@
 \chapter{Raw Result Data}\label{rawresults}
 
-The following table contains the raw result data for the simulations runs.  Each simulation ran for 3650 simulated days.
+The following table contains the raw result data for the simulations runs.  Each simulation ran for 365 simulated days, and was repeated 250 times.
 
-% NULL SYNCHRONIZER
-
-\begin{table}[htdp]
-\begin{center}
-\begin{tabular}{|r|l|}
-\hline
-\multicolumn{2}{|c|}{\textbf{Null Synchronizer}} \\
-\hline
-\textbf{Mean:} & $26085.425x+0.000$ \\
-\hline
-\textbf{Variance:} &  $236121048x^2+0.000x+0.000$ \\
-\hline
-\textbf{Mean Data (KB/day):} &  $0.000$ \\
-\hline
-\end{tabular}
-\end{center}
-\caption{Ten year results for the Null Synchronizer}
-\label{nullsync:rawresults}
-\end{table}%
-
-% RANDOM SYNCHRONIZER
+% SIMPLE USER A
 
 \begin{table}[htdp]
 \begin{center}
-\begin{tabular}{|r|l|}
+\begin{tabular}{|c|l|l|l|}
 \hline
-\multicolumn{2}{|c|}{\textbf{Random Synchronizer}} \\
+\tiny\textbf{Protocol} &  \tiny\textbf{Cost} & \tiny\textbf{Variance} & \tiny\textbf{Data (KiB/day)} \\
 \hline
-\textbf{Mean:} & $17.207x+3042.280$ \\
+\tiny\textbf{Null Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
 \hline
-\textbf{Variance:} &  $2667.627x^2-20470.744x+5143467.689$ \\
+\tiny\textbf{Random Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
 \hline
-\textbf{Mean Data (KB/day):} &  $60845.593$ \\
+\tiny\textbf{Slow Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{Fast Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{ETS} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
 \hline
 \end{tabular}
 \end{center}
-\caption{Ten year results for the Random Synchronizer}
-\label{randomsync:rawresults}
-\end{table}%
+\caption{Raw Results for Simple User A}
+\label{simple_a:rawresults}
+\end{table}
 
-
-% SLOW SYNCHRONIZER
+% SIMPLE USER B
 
 \begin{table}[htdp]
 \begin{center}
-\begin{tabular}{|r|l|}
+\begin{tabular}{|c|l|l|l|}
 \hline
-\multicolumn{2}{|c|}{\textbf{Slow Synchronizer}} \\
+\tiny\textbf{Protocol} &  \tiny\textbf{Cost} & \tiny\textbf{Variance} & \tiny\textbf{Data (KiB/day)} \\
 \hline
-\textbf{Mean:} & $6.015x+5.423$ \\
+\tiny\textbf{Null Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
 \hline
-\textbf{Variance:} & $30.549x^2-20.902x+285.266$  \\
+\tiny\textbf{Random Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
 \hline
-\textbf{Mean Data (KB/day):} &   $127369.995$ \\
+\tiny\textbf{Slow Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{Fast Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{ETS} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
 \hline
 \end{tabular}
 \end{center}
-\caption{Ten year results for the Slow Synchronizer}
-\label{slowsync:rawresults}
-\end{table}%
+\caption{Raw Results for Simple User B}
+\label{simple_b:rawresults}
+\end{table}
 
-% FAST SYNCHRONIZER
+% BUSINESS USER A
 
 \begin{table}[htdp]
 \begin{center}
-\begin{tabular}{|r|l|}
+\begin{tabular}{|c|l|l|l|}
 \hline
-\multicolumn{2}{|c|}{\textbf{Fast Synchronizer}} \\
+\tiny\textbf{Protocol} &  \tiny\textbf{Cost} & \tiny\textbf{Variance} & \tiny\textbf{Data (KiB/day)} \\
 \hline
-\textbf{Mean:} & $6.097x+0.399$ \\
+\tiny\textbf{Null Sync} & \tiny$y=2601.496x+0.000 $ & \tiny$y=2379303.396x^2+0.000x+0.000 $ & \tiny$0.000$ \\
 \hline
-\textbf{Variance:} & $31.911x^2+0.012x+3.253$  \\
+\tiny\textbf{Random Sync} & \tiny$y=12.826x+2927.926 $ & \tiny$y=98.856x^2-17261.703x+4881234.606 $ & \tiny$58558.527$ \\
 \hline
-\textbf{Mean Data (KB/day):} &   $8865.586$ \\
+\tiny\textbf{Slow Sync} & \tiny$y=6.106x+5.534$ & \tiny$y=33.102x^2-22.533x+307.516$ & \tiny$126908.148$ \\
+\hline
+\tiny\textbf{Fast Sync} & \tiny$y=6.090x+0.388$ & \tiny$y=32.592x^2-0.073x+3.109$ & \tiny$8834.313$ \\
+\hline
+\tiny\textbf{ETS} & \tiny$y=0.635x+0.003$ & \tiny$y=23.978x^2-0.002x+0.023$ & \tiny$9464.485$ \\
 \hline
 \end{tabular}
 \end{center}
-\caption{Ten year results for the Fast Synchronizer}
-\label{fastsync:rawresults}
-\end{table}%
+\caption{Raw Results for Business User A}
+\label{business_a:rawresults}
+\end{table}
 
-% ETS SYNCHRONIZER
+% BUSINESS USER B
 
 \begin{table}[htdp]
 \begin{center}
-\begin{tabular}{|r|l|}
+\begin{tabular}{|c|l|l|l|}
 \hline
-\multicolumn{2}{|c|}{\textbf{Expedient Trickle Synchronizer}} \\
+\tiny\textbf{Protocol} &  \tiny\textbf{Cost} & \tiny\textbf{Variance} & \tiny\textbf{Data (KiB/day)} \\
 \hline
-\textbf{Mean:} & $y=mx+b$ \\
+\tiny\textbf{Null Sync} & \tiny$y=2601.320x+0.000$ & \tiny$y=2381818.359x^2+0.000x+0.000$ & \tiny$0.000$ \\
 \hline
-\textbf{Variance:} & $ax^2+bx+c$  \\
+\tiny\textbf{Random Sync} & \tiny$y=1.699x+29894.357$ & \tiny$y=26.540x^2-3684.460x+50087437.844$ & \tiny$597887.143$ \\
 \hline
-\textbf{Mean Data (KB/day):} &   $X$ \\
+\tiny\textbf{Slow Sync} & \tiny$y=0.598x+5056.932$ & \tiny$y=0.690x^2-266.979x+12509618.704$ & \tiny$1212665.057$ \\
+\hline
+\tiny\textbf{Fast Sync} & \tiny$y=0.593x+40.253$ & \tiny$y=0.682x^2-0.187x+1012.800$ & \tiny$9562.598$ \\
+\hline
+\tiny\textbf{ETS} & \tiny$y=0.635x+0.003$ & \tiny$y=23.978x^2-0.002x+0.023$ & \tiny$9464.485$ \\
 \hline
 \end{tabular}
 \end{center}
-\caption{Ten year results for the Expedient Trickle Synchronizer}
-\label{ets:rawresults}
-\end{table}%
+\caption{Raw Results for Business User B}
+\label{business_b:rawresults}
+\end{table}
+
+% SALESPERSON A
+
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|l|l|l|}
+\hline
+\tiny\textbf{Protocol} &  \tiny\textbf{Cost} & \tiny\textbf{Variance} & \tiny\textbf{Data (KiB/day)} \\
+\hline
+\tiny\textbf{Null Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{Random Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{Slow Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{Fast Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{ETS} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Raw Results for Mobile Salesperson A}
+\label{sales_a:rawresults}
+\end{table}
+
+% SALESPERSON B
+
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|l|l|l|}
+\hline
+\tiny\textbf{Protocol} &  \tiny\textbf{Cost} & \tiny\textbf{Variance} & \tiny\textbf{Data (KiB/day)} \\
+\hline
+\tiny\textbf{Null Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{Random Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{Slow Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{Fast Sync} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{ETS} & \tiny$y=mx+b$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Raw Results for Mobile Salesperson B}
+\label{sales_b:rawresults}
+\end{table}
+
+% TRUCK DRIVER A
+
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|l|l|l|}
+\hline
+\tiny\textbf{Protocol} &  \tiny\textbf{Cost} & \tiny\textbf{Variance} & \tiny\textbf{Data (KiB/day)} \\
+\hline
+\tiny\textbf{Null Sync} & \tiny$y=3153.244x+0.000$ & \tiny$y=ax^2 + bx + c$ & \tiny$0.000$ \\
+\hline
+\tiny\textbf{Random Sync} & \tiny$y=2.958x+12001.305$ & \tiny$y=91.026x^2-1845.995x+8008100.491$ & \tiny$240026.103$ \\
+\hline
+\tiny\textbf{Slow Sync} & \tiny$y=0.719x+7083.067$ & \tiny$y=0.855x^2-1116.741x+7033886.037$ & \tiny$485710.547$ \\
+\hline
+\tiny\textbf{Fast Sync} & \tiny$y=0.721x+69.802$ & \tiny$y=0.858x^2+0.635x+347.205$ & \tiny$4769.964$ \\
+\hline
+\tiny\textbf{ETS} & \tiny$y=4.623x+0.004$ & \tiny$y=95.158x^2-0.018x+0.030$ & \tiny$4349.304$ \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Raw Results for Truck Driver A}
+\label{trucker_a:rawresults}
+\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
