@@ -21,7 +21,7 @@ Common amongst the seven user models detailed below were the values selected the
 \begin{tabular}{|c|c|c|c|}
 \hline
 \textbf{Network} & \textbf{Transfer Rate} & \textbf{Cost} & \textbf{Disconnect Rate} \\
- & \textbf{(KiB/s)} & \textbf{(cents/B)} & \textbf{(disconnects/h)} \\
+ & \textbf{(KiB/s)} & \textbf{(\$/B)} & \textbf{(disconnects/h)} \\
 \hline
 WiFi & 49000.0 & 0.000000000001 & 0.01 \\
 \hline
@@ -39,7 +39,7 @@ GPRS & 57.0 & 0.000048828125 & 0.1 \\
 
 \subsubsection{Simple Users A and B}
 
-The first user model used to evaluate the simulated synchronization algorithms is a basic model entitled \emph{Simple User A}, where the user remains in one location for the entire 24 hours day, with only WiFi based networking available.  They have an expected synchronization rate of 4 synchronizations per day, with an expected number of mobile device record accesses set to five per hour.  Simple User A synchronizes against a database that has 5000 records in it, with an average of 50 record updates per hour.  The XML source defining this user is available in listing \ref{basic_a}.
+The first user model used to evaluate the simulated synchronization algorithms is a basic model entitled \emph{Simple User A}, where the user remains in one location for the entire 24 hours day, with only WiFi based networking available.  They have an expected synchronization rate of 4 synchronizations per day, with an expected number of mobile device record accesses set to five per hour.  Simple User A synchronizes against a database that has 5000 records in it, with an average of 50 record updates per hour.  For the purposes of the ETS algorithm, the estimated cost of using out-of-date information is estimated to be \$5.  The XML source defining this user is available in listing \ref{basic_a}.
 
 % Simple User A Properties
 \begin{table}[htdp]
@@ -108,7 +108,7 @@ The purpose of these two users is to establish using a simple baseline how each 
 
 \subsubsection{Business User A and B}
 
-The next model used to evaluate the synchronization algorithms is a more complex model, entitled \emph{Business User A}.  In this model, the user pursues a typical 09:00 - 17:00 work day, with a one hour lunch break, and a one hour commute between home and work.  Business User A uses a device which requires manual initiation of the synchronization process, and generally follows a corporate guideline which states that all users must synchronize once in the morning, and once in the afternoon.  The basic parameters for this model user are detailed in table \ref{business_a_properties}, with the networks available in each location listed in table \ref{business_a_networks}, and the database properties in table \ref{business_a_database}.  The XML source defining this user is available in listing \ref{business_a}.
+The next model used to evaluate the synchronization algorithms is a more complex model, entitled \emph{Business User A}.  In this model, the user pursues a typical 09:00 - 17:00 work day, with a one hour lunch break, and a one hour commute between home and work.  Business User A uses a device which requires manual initiation of the synchronization process, and generally follows a corporate guideline which states that all users must synchronize once in the morning, and once in the afternoon.  The basic parameters for this model user are detailed in table \ref{business_a_properties}, with the networks available in each location listed in table \ref{business_a_networks}, and the database properties in table \ref{business_a_database}.  For the purposes of the ETS algorithm, the estimated cost of using out-of-date information is estimated to be \$5.  The XML source defining this user is available in listing \ref{business_a}.
 
 % Business User A Properties
 \begin{table}[htdp]
@@ -318,7 +318,7 @@ Mobile Salesperson B is identical to Mobile Salesperson A, except that Mobile Sa
 
 \subsubsection{Truck Driver A}
 
-Truck Driver A presents a special example of a semi-connected mobile device, in that instead of a handheld unit, the truck contains a computer with an external antenna for connecting to different wireless networks.  As such, the truck is the semi-connected, mobile device.  In this model, the truck is of the type that does local deliveries during the day, and is typically driven through four locations:  the depot where it is parked at night, on the road doing deliveries throughout the morning, parked at a truck stop at lunch, back on the road for the afternoon, and back to the depot at the end of the work day.  In this scenario, the truck is configured to automatically synchronize on average once per hour.  The basic parameters for this model user are detailed in table \ref{trucker_a_properties}, with the networks available in each location listed in table \ref{trucker_a_networks}, and the database properties in table \ref{trucker_a_database}.  The XML source defining this user is available in listing \ref{trucker_a}.
+Truck Driver A presents a special example of a semi-connected mobile device, in that instead of a handheld unit, the truck contains a computer with an external antenna for connecting to different wireless networks.  As such, the truck is the semi-connected, mobile device.  In this model, the truck is of the type that does local deliveries during the day, and is typically driven through four locations:  the depot where it is parked at night, on the road doing deliveries throughout the morning, parked at a truck stop at lunch, back on the road for the afternoon, and back to the depot at the end of the work day.  In this scenario, the truck is configured to automatically synchronize on average once per hour.  The basic parameters for this model user are detailed in table \ref{trucker_a_properties}, with the networks available in each location listed in table \ref{trucker_a_networks}, and the database properties in table \ref{trucker_a_database}.  For the purposes of the ETS algorithm, the estimated cost of using out-of-date information is estimated to be \$250.  The XML source defining this user is available in listing \ref{trucker_a}.
 
 % Truck Driver A Properties
 \begin{table}[htdp]
@@ -386,6 +386,8 @@ Each user model is run through a single simulated day for an entire year (365 da
 
 The simulation maintains track of the cost of accessing out-of-date information on the handheld device, the cost of using network resources, as well as the total data transferred within the simulation session, as detailed in section \ref{cost_controller}.  The final average and variance are calculated on a day-to-day basis; that is the elements tracked within the Cost Controller are averaged at the end of the total simulation run by dividing the total accumulated cost and average data transferred values by 91250 (365 days per simulation run multiplied by 250 simulation runs), generating the final averaged results for the run.  The variance for the run is automatically tracked, as it is not reset between simulation sessions, using the algorithm described by Knuth in \cite{RefWorks:42} (section 4.2.2, formulas 15 and 16), as mentioned in \ref{simcontroller}.  We present the results of running each of the above described user models through the simulation environment for each of the synchronization protocols tested below.
 
+Note that for all the result sets below, while results for all five algorithms were computed for each user model, only the results for Slow Sync, Fast Sync, and the ETS algorithms are graphed.  This is due to the fact that both Null Sync and Random Sync had such a high cost associated with them that it was impossible to include them in a graph of reasonable size and resolution in this paper that could include both, while at the same time allowing use to differentiate between the other three algorithms.  As such, the ETS algorithm is graphically compared only to the Fast Sync and Slow Sync algorithms.  However, the raw results for all five algorithms for each of the seven user models evaluated are detailed in Appendix \ref{rawresults}.
+
 \subsection{Simple User A}
 
 %\begin{figure}[htb]
@@ -404,6 +406,10 @@ The simulation maintains track of the cost of accessing out-of-date information 
 
 \subsection{Business User A}
 
+Business User A shows very strong results in favour of the ETS algorithm, with the ETS algorithms cost equation resulting in both a lower result slope, and a lower y-intersection in the graph, signifying both a lower average network communication cost and fewer average out of date record accesses.  See figure \ref{business_a_results_graph}.  As expected, both the Fast Sync and Slow Sync algorithms have approximately the same slope, due to sharing the same average synchronization rate, however the Fast Sync algorithm does exhibit a lower network cost.  This is also to be expected, as the nature of the Fast Sync algorithm is to synchronize less data during each synchronization session.
+
+Interestingly, for Business User A the ETS algorithm synchronizes roughly 7\% more data on average than the Fast Sync algorithm, but does so at nearly 1/10th the cost.  See table \ref{business_a:rawresults} for the full results for Business User A.
+
 \begin{figure}[htb]
 \centering
 \includegraphics{Figures/Business_User_A}
@@ -411,6 +417,8 @@ The simulation maintains track of the cost of accessing out-of-date information 
 \end{figure}
 
 \subsection{Business User B}
+
+In contrast to Business User A, Business User B, who synchronizes once per hour when using the Fast Sync and Slow Sync algorithms, sees the ETS algorithm fare nearly equally to the performance of the other two algorithms in terms of the average number of out-of-date record accesses per day.  Where the ETS algorithm shines is in terms of average daily network cost, where it bests the Fast Sync algorithm by a factor of nearly 17500, with ETS on average costing less than half a cent per day, versus the Fast Sync algorithm costing an average of nearly \$70 per day.  
 
 \begin{figure}[htb]
 \centering
