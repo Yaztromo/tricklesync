@@ -10,7 +10,7 @@ In this chapter, we'll explore the environmental elements being simulated, the m
 
 The simulation itself runs at a resolution of one-second intervals.  We define a \emph{tick} to be a simulated one second interval within the simulation.
 
-\section{Simulated Elements}
+\section{Simulated Elements}\label{sim_elements}
 
 The goal of the simulation environment is to evaluate the overall cost of a synchronization algorithm by following a model user through a series of days as they\footnote{For the purposes of this paper, \emph{they} is used as a gender-neutral identifier for a single individual, as supported by references \cite{theyref3, theyref2, theyref1}.} synchronize their wireless mobile device through a programmed series of locations.  Within each location there may be a variety of network types available, each with their own cost structure and data transfer rates.  These elements will each be presented in this section.
 
@@ -124,7 +124,7 @@ Alarm events are used for simulated elements which desire an event to occur at a
 
 The time controller itself is only capable of executing a single simulated day.  For multi-day simulations, the time controller's \texttt{run} method is executed in sequence once per desired simulated day by the simulation controller, as discussed in subsection \ref{simcontroller}.
 
-\subsection{Cost Controller}
+\subsection{Cost Controller}\label{cost_controller}
 
 The entire purpose of the simulation environment is to generate a result; the value of this result is managed by and stored within the cost controller.  The cost controller for the simulation keeps track of the cost of accessing out-of-date information on the handheld device, the cost of using network resources, as well as the total data transferred within the simulation session.  These three values are stored as running totals during the duration of the simulation run, with the final results presented as the mean average result over the total number of simulated days.
 

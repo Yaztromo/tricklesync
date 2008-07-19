@@ -4,12 +4,440 @@
 
 \section{Introduction}  
 
-Discuss the results of the simulation here.
+Evaluation of the ETS algorithm was performed by running it, along with the four other algorithms discussed in \ref{protocols}, through the Simulation environment described in Chapter \ref{simulation_chapter}, against a series of user models which will be detailed in \ref{user_profile_data}.  In this chapter, we will detail the procedure and results of these experiments.
 
 \section{Experimental Data}\label{user_profile_data}
 
-Discuss the different user profiles here
+In order for the simulator to perform an experiment, we need to feed it two sets of information to control the simulation:  one set to specify the parameters within the simulation that model the simulated user and their environment, and one set to control the duration and number of iterations for which the simulation should be run to generate meaningful results.  In this section we denote the former set to be the \emph{user model}, and the latter the \emph{Experiment Parameters}.  Each is discussed in the subsections below.
+
+\subsection{User Models}
+
+In order to perform an experiment, the simulation environment needs a user model to provide the set of elements to be simulated, and their parameters (as discussed in section \ref{sim_elements}).  Due to the failure of the User Model Study (discussed in Chapter \ref{proposed_study}), a set of user models was invented.  This subsection details the parameters used for the seven user models that were simulated to evaluate the different protocols.
+
+Common amongst the seven user models detailed below were the values selected the represent the different wireless network types users are typically expected to intersect with during an average day, namely "free" WiFi access zones (such as are frequently available at home, at work, etc.), commercial WiFi access zones, and GPRS-based cellular networks.  The parameters for each are detailed in Table \ref{common_networks}.
+
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Network} & \textbf{Transfer Rate} & \textbf{Cost} & \textbf{Disconnect Rate} \\
+ & \textbf{(KiB/s)} & \textbf{(cents/B)} & \textbf{(disconnects/h)} \\
+\hline
+WiFi & 49000.0 & 0.000000000001 & 0.01 \\
+\hline
+Commercial WiFi & 49000.0 & 0.000001 & 0.01 \\
+\hline
+GPRS & 57.0 & 0.000048828125 & 0.1 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Common network properties used in the evaluated User Models}
+\label{common_networks}
+\end{table}
+
+% I should make some references here as to how I derived these values.
+
+\subsubsection{Simple Users A and B}
+
+The first user model used to evaluate the simulated synchronization algorithms is a basic model entitled \emph{Simple User A}, where the user remains in one location for the entire 24 hours day, with only WiFi based networking available.  They have an expected synchronization rate of 4 synchronizations per day, with an expected number of mobile device record accesses set to five per hour.  Simple User A synchronizes against a database that has 5000 records in it, with an average of 50 record updates per hour.  The XML source defining this user is available in listing \ref{basic_a}.
+
+% Simple User A Properties
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Location} & \textbf{Entry Time (s)} & \textbf{Expected Syncs/h} & \textbf{Expected Accesses/h} \\
+\hline
+Home & 0 & 0.166666666666667 & 5 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Basic Properties of Simple User A}
+\label{simple_a_properties}
+\end{table}
+
+% Simple User A Networks
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Location} & \textbf{Networks} \\
+\hline
+Home & WiFi \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Networks available to Simple User A by location}
+\label{simple_a_networks}
+\end{table}
+
+% Simple User A Database
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Records} &\textbf{Arrival Rate} &\textbf{Maximum Arrivals} \\
+ &\textbf{(per hour)} &\textbf{(per interval)} \\
+\hline
+5000 & 50 & 10 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Database properties for Simple User A}
+\label{simple_a_database}
+\end{table}
+
+\emph{Simple User B} is identical to Simple User A, however Simple User B only has access to a GPRS-based network.  The XML source defining this user is available in listing \ref{basic_b}.
+
+% Simple User B Networks
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Location} & \textbf{Networks} \\
+\hline
+Home & GPRS \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Networks available to Simple User B by location}
+\label{simple_b_networks}
+\end{table}
+
+The purpose of these two users is to establish using a simple baseline how each synchronization algorithm compares when used in an all-day, single network environment.
+
+\subsubsection{Business User A and B}
+
+The next model used to evaluate the synchronization algorithms is a more complex model, entitled \emph{Business User A}.  In this model, the user pursues a typical 09:00 - 17:00 work day, with a one hour lunch break, and a one hour commute between home and work.  Business User A uses a device which requires manual initiation of the synchronization process, and generally follows a corporate guideline which states that all users must synchronize once in the morning, and once in the afternoon.  The basic parameters for this model user are detailed in table \ref{business_a_properties}, with the networks available in each location listed in table \ref{business_a_networks}, and the database properties in table \ref{business_a_database}.  The XML source defining this user is available in listing \ref{business_a}.
+
+% Business User A Properties
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Location} & \textbf{Entry Time (s)} & \textbf{Expected Syncs/h} & \textbf{Expected Accesses/h} \\
+\hline
+Home & 0 & 0.0 & 0.00001 \\
+\hline
+Home & 25200 & 0.1 & 0.2 \\
+\hline
+Car & 28800 & 0.0 & 0.00001 \\
+\hline
+Office & 32400 & 0.25 & 10.0 \\
+\hline
+Lunch & 43200 & 0.1 & 2.0 \\
+\hline
+Office & 46800 & 0.25 & 10.0 \\
+\hline
+Car & 61200 & 0.0 & 0.00001 \\
+\hline
+Home & 64800 & 0.1 & 0.5 \\
+\hline
+Home & 79200 & 0.0 & 0.00001 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Basic Properties of Business User A}
+\label{business_a_properties}
+\end{table}
+
+% Business User A Networks
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Location} & \textbf{Networks} \\
+\hline
+Home & GPRS, WiFi \\
+\hline
+Car & GPRS \\
+\hline
+Office & GPRS, WiFi \\
+\hline
+Lunch & GPRS, Commercial WiFi \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Networks available to Business User A by location}
+\label{business_a_networks}
+\end{table}
+
+% Business User A Database
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Records} & \textbf{Arrival Rate} & \textbf{Maximum Arrivals} \\
+ & \textbf{(per hour)} & \textbf{(per interval)} \\
+\hline
+5000 & 40 & 10 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Database properties for Business User A}
+\label{business_a_database}
+\end{table}
+
+Business User B is identical to Business User A, except that Business User B uses a mobile device which can synchronize automatically once per hour, using the best available network (by cost).  Otherwise, their day is identical, and they intersect with the same networks.  The properties for Business User B are presented in table \ref{business_b_properties}. The XML source defining this user is available in listing \ref{business_b}.
+
+% Business User B Properties
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Location} & \textbf{Entry Time (s)} & \textbf{Expected Syncs/h} & \textbf{Expected Accesses/h} \\
+\hline
+Home & 0 & 1.0 & 0.00001 \\
+\hline
+Home & 25200 & 1.0 & 0.2 \\
+\hline
+Car & 28800 & 1.0 & 0.00001 \\
+\hline
+Office & 32400 & 1.0 & 10.0 \\
+\hline
+Lunch & 43200 & 1.0 & 2.0 \\
+\hline
+Office & 46800 & 1.0 & 10.0 \\
+\hline
+Car & 61200 & 1.0 & 0.00001 \\
+\hline
+Home & 64800 & 1.0 & 0.5 \\
+\hline
+Home & 79200 & 1.0 & 0.00001 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Basic Properties of Business User B}
+\label{business_b_properties}
+\end{table}
+
+\subsubsection{Mobile Salesperson A and B}
+
+Mobile Salesperson A is a user that spends their typical workday on the road, visiting customer sites, some of whom permit the salesperson assess to a virtually free high-speed public WiFi network.  The user spends significant time commuting between customer locations and their own companies office.  Mobile Salesperson A generally follows a corporate guideline which states that all users must synchronize their mobile devices once whenever they are at the office.  The basic parameters for this model user are detailed in table \ref{sales_a_properties}, with the networks available in each location listed in table \ref{sales_a_networks}, and the database properties in table \ref{sales_a_database}.  The XML source defining this user is available in listing \ref{sales_a}.
+
+% Mobile Salesperson A Properties
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Location} & \textbf{Entry Time (s)} & \textbf{Expected Syncs/h} & \textbf{Expected Accesses/h} \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Basic Properties of Mobile Salesperson A}
+\label{sales_a_properties}
+\end{table}
+
+% Mobile Salesperson A Networks
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Location} & \textbf{Networks} \\
+\hline
+? & ?, ? \\
+\hline
+? & ?, ? \\
+\hline
+? & ?, ? \\
+\hline
+? & ?, ? \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Networks available to Mobile Salesperson A by location}
+\label{sales_a_networks}
+\end{table}
+
+% Mobile Salesperson A Database
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Records} &\textbf{Arrival Rate} &\textbf{Maximum Arrivals} \\
+ &\textbf{(per hour)} &\textbf{(per interval)} \\
+\hline
+? & ? & ? \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Database properties for Mobile Salesperson A}
+\label{sales_a_database}
+\end{table}
+
+Mobile Salesperson B is identical to Mobile Salesperson A, except that Mobile Salesperson B uses a mobile device which can synchronize automatically once per hour, using the best available network (by cost).  Otherwise, their day is identical, and they intersect with the same networks.  The properties for Mobile Salesperson B are presented in table \ref{sales_b_properties}. The XML source defining this user is available in listing \ref{sales_b}.
+
+% Mobile Salesperson B Properties
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Location} & \textbf{Entry Time (s)} & \textbf{Expected Syncs/h} & \textbf{Expected Accesses/h} \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+? & ? & ?.? & ?.? \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Basic Properties of Mobile Salesperson B}
+\label{sales_b_properties}
+\end{table}
+
+\subsubsection{Truck Driver A}
+
+Truck Driver A presents a special example of a semi-connected mobile device, in that instead of a handheld unit, the truck contains a computer with an external antenna for connecting to different wireless networks.  As such, the truck is the semi-connected, mobile device.  In this model, the truck is of the type that does local deliveries during the day, and is typically driven through four locations:  the depot where it is parked at night, on the road doing deliveries throughout the morning, parked at a truck stop at lunch, back on the road for the afternoon, and back to the depot at the end of the work day.  In this scenario, the truck is configured to automatically synchronize on average once per hour.  The basic parameters for this model user are detailed in table \ref{trucker_a_properties}, with the networks available in each location listed in table \ref{trucker_a_networks}, and the database properties in table \ref{trucker_a_database}.  The XML source defining this user is available in listing \ref{trucker_a}.
+
+% Truck Driver A Properties
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Location} & \textbf{Entry Time (s)} & \textbf{Expected Syncs/h} & \textbf{Expected Accesses/h} \\
+\hline
+Depot & 0 & 1.0 & 0.00001 \\
+\hline
+Road & 32400 & 1.0 & 10.0 \\
+\hline
+Truck Stop & 43200 & 1.0 & 1.0 \\
+\hline
+Road & 46800 & 1.0 & 10.0 \\
+\hline
+Office & 61200 & 1.0 & 0.00001 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Basic Properties of Truck Driver A}
+\label{trucker_a_properties}
+\end{table}
+
+% Truck Driver A Networks
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Location} & \textbf{Networks} \\
+\hline
+Depot & GPRS, WiFi \\
+\hline
+Road & GPRS \\
+\hline
+Truck Stop & GPRS, Commercial WiFi \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Networks available to Truck Driver A by location}
+\label{trucker_a_networks}
+\end{table}
+
+% Truck Driver A Database
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Records} &\textbf{Arrival Rate} &\textbf{Maximum Arrivals} \\
+ &\textbf{(per hour)} &\textbf{(per interval)} \\
+\hline
+2000 & 20 & 5 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Database properties for Truck Driver A}
+\label{trucker_a_database}
+\end{table}
+
+\subsection{Experiment Parameters}
+
+Each user model is run through a single simulated day for an entire year (365 days).  After each simulated year, the simulation is automatically re-initialized and re-run.  This process of re-initialization and re-running occurs 250 times to account for differences in the generated databases, and all other random variables which are generated by the simulation at initialization time and which remain static for the duration of the simulated year.  
 
 \section{Results}
 
-Present the results here
+The simulation maintains track of the cost of accessing out-of-date information on the handheld device, the cost of using network resources, as well as the total data transferred within the simulation session, as detailed in section \ref{cost_controller}.  The final average and variance are calculated on a day-to-day basis; that is the elements tracked within the Cost Controller are averaged at the end of the total simulation run by dividing the total accumulated cost and average data transferred values by 91250 (365 days per simulation run multiplied by 250 simulation runs), generating the final averaged results for the run.  The variance for the run is automatically tracked, as it is not reset between simulation sessions, using the algorithm described by Knuth in \cite{RefWorks:42} (section 4.2.2, formulas 15 and 16), as mentioned in \ref{simcontroller}.  We present the results of running each of the above described user models through the simulation environment for each of the synchronization protocols tested below.
+
+\subsection{Simple User A}
+
+%\begin{figure}[htb]
+%\centering
+%\includegraphics{Figures/Business_User_A}
+%\caption[Graph displaying the results for Business User A]{Graph displaying the results for Business User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_a_results_graph}
+%\end{figure}
+
+\subsection{Simple User B}
+
+%\begin{figure}[htb]
+%\centering
+%\includegraphics{Figures/Business_User_A}
+%\caption[Graph displaying the results for Business User A]{Graph displaying the results for Business User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_a_results_graph}
+%\end{figure}
+
+\subsection{Business User A}
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Business_User_A}
+\caption[Graph displaying the results for Business User A]{Graph displaying the results for Business User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_a_results_graph}
+\end{figure}
+
+\subsection{Business User B}
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Business_User_B}
+\caption[Graph displaying the results for Business User B]{Graph displaying the results for Business User B, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_b_results_graph}
+\end{figure}
+
+\subsection{Mobile Salesperson A}
+
+%\begin{figure}[htb]
+%\centering
+%\includegraphics{Figures/Business_User_A}
+%\caption[Graph displaying the results for Business User A]{Graph displaying the results for Business User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_a_results_graph}
+%\end{figure}
+
+\subsection{Mobile Salesperson B}
+
+%\begin{figure}[htb]
+%\centering
+%\includegraphics{Figures/Business_User_A}
+%\caption[Graph displaying the results for Business User A]{Graph displaying the results for Business User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_a_results_graph}
+%\end{figure}
+
+\subsection{Truck Driver A}
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Truck_Driver_A}
+\caption[Graph displaying the results for Truck Driver A]{Graph displaying the results for Truck Driver A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{trucker_a_results_graph}
+\end{figure}
