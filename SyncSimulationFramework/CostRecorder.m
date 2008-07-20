@@ -61,7 +61,7 @@
 } // end-method
 
 - (NSString *)description {
-   return [NSString stringWithFormat:@"y=%.8fx+%.8f (%0.3f)", etherialCost, realCost, kilobytesTransferred];
+   return [NSString stringWithFormat:@"y=%.8fx+%.8f", etherialCost, realCost];
 } // end-method
 
 - (double)getKilobytesTransferred {

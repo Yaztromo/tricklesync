@@ -240,7 +240,7 @@
           withIterations:(unsigned int)x
             withCallback:(id<SimulationCallbackProtocol>)callback {
    int i, j, k=0;
-   CostRecorder *today, *delta;
+   CostRecorder *today, *delta, *finalCost;
    CFAbsoluteTime end, start=CFAbsoluteTimeGetCurrent();
    percentComplete = 0.0;
 
@@ -281,7 +281,8 @@
    [callback setPercentCompleted:100.0];
    
    CFGregorianUnits units = CFAbsoluteTimeGetDifferenceAsGregorianUnits (end, start, NULL, (kCFGregorianUnitsHours | kCFGregorianUnitsMinutes | kCFGregorianUnitsSeconds));
-   NSLog(@"Simulation run covering %d days in %d iterations completed in %02d:%02d:%07.4f with an average cost function %@ (%@), and variance function %@.", days, x, units.hours, units.minutes, units.seconds, [cost averageCostOver:k], mean, S);
+   finalCost = [cost averageCostOver:k];
+   NSLog(@"Simulation run covering %d days in %d iterations completed in %02d:%02d:%07.4f with an average cost function %@ (%@), and variance function %@, with average data %0.3fKiB.", days, x, units.hours, units.minutes, units.seconds, finalCost, mean, S, [finalCost kilobytesTransferred]);
 } // end-method
 
 @end
