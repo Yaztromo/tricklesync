@@ -217,6 +217,7 @@
       NSLog(@"Unable to load XML document due to %@.", err);
       return nil;
    } else {
+      NSLog(@"Opened file \"%@\" for processing.", filename);
       return [self initWithXMLDocument:xmlDoc];
    } // end-if
 } // end-constructor
