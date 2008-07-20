@@ -367,11 +367,13 @@ Note that for all the result sets below, while results for all five algorithms w
 
 \subsection{Simple User A}
 
-%\begin{figure}[htb]
-%\centering
-%\includegraphics{Figures/Business_User_A}
-%\caption[Graph displaying the results for Business User A]{Graph displaying the results for Business User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_a_results_graph}
-%\end{figure}
+Simple User A demonstrates how the ETS algorithm can improve upon infrequent synchronization throughout the day, while maintaining a low network cost profile.  In this model, as the only available network is virtually free the cost of synchronization is quite low.  As the ETS algorithm can automatically determine for itself how frequently to synchronize, it can reduce the probability of using out-of-date record information in this user model.  At the ETS target out-of-date record access cost of \$5, both the Fast Sync and Slow Sync algorithms, synchronizing on average four times per day, would cost this user an average of \$36.08, whereas the ETS algorithm would cost on average approximately \$5.85.  Figure \ref{simple_a_results_graph} displays the results for this experiment. See table \ref{simple_b:rawresults} for the full results for Simple User B.
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Simple_User_A}
+\caption[Graph displaying the results for Simple User A]{Graph displaying the results for Simple User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{simple_a_results_graph}
+\end{figure}
 
 \subsection{Simple User B}
 
