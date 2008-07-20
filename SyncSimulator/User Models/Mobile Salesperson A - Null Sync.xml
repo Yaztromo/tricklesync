@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etssimulation>
+	<networks>
+		<network name="GPRS" cost="0.000048828125" xferrate="57.0" expecteddisocnnectsperhour="0.1"/>
+		<network name="WiFi" cost="0.000000000001" xferrate="49000.0" expecteddisocnnectsperhour="0.01"/>
+	</networks>
+
+	<locations>
+		<location name="home">
+			<localnet>GPRS</localnet>
+			<localnet>WiFi</localnet>
+		</location>
+		<location name="car">
+			<localnet>GPRS</localnet>
+		</location>
+		<location name="office">
+			<localnet>GPRS</localnet>
+			<localnet>WiFi</localnet>
+		</location>
+		<location name="CustomerSite">
+			<localnet>GPRS</localnet>
+		</location>
+	</locations>
+
+	<userschedule>
+		<entry locname="home" time="0" expectedsyncs="0.0" expectedaccesses="0.00001"/>
+		<entry locname="home" time="21600" expectedsyncs="4" expectedaccesses="4"/>		
+		<entry locname="car" time="22500" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="office" time="24900" expectedsyncs="4" expectedaccesses="3"/>
+		<entry locname="CustomerSite" time="27000" expectedsyncs="4" expectedaccesses="2"/>
+		<entry locname="car" time="27600" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="CustomerSite" time="27900" expectedsyncs="4" expectedaccesses="2"/>
+		<entry locname="car" time="29700" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="CustomerSite" time="30000" expectedsyncs="4" expectedaccesses="2"/>
+		<entry locname="car" time="32400" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="home" time="34200" expectedsyncs="4" expectedaccesses="4"/>		
+		<entry locname="car" time="34800" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="CustomerSite" time="35700" expectedsyncs="4" expectedaccesses="2"/>
+		<entry locname="car" time="37800" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="CustomerSite" time="37920" expectedsyncs="4" expectedaccesses="2"/>
+		<entry locname="car" time="41400" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="office" time="44100" expectedsyncs="4" expectedaccesses="3"/>
+		<entry locname="car" time="46800" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="CustomerSite" time="48600" expectedsyncs="4" expectedaccesses="2"/>
+		<entry locname="car" time="49500" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="CustomerSite" time="49620" expectedsyncs="4" expectedaccesses="2"/>
+		<entry locname="car" time="50700" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="CustomerSite" time="50820" expectedsyncs="4" expectedaccesses="2"/>
+		<entry locname="car" time="51900" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="home" time="53100" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="home" time="63000" expectedsyncs="4" expectedaccesses="5"/>
+		<entry locname="home" time="82800" expectedsyncs="0.0" expectedaccesses="0.00001"/>
+	</userschedule>
+
+	<database numrecords="1000" arrivalrate="20.0" interval="3600" maxarrivals="10"/>
+	
+	<syncprotocol name="NullSyncAdaptor">
+		<!-- ...protocol specific nodes go here... -->
+	</syncprotocol>
+</etssimulation>

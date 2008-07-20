@@ -32,6 +32,11 @@
 		8B523B100E315D57001516A6 /* Truck Driver A - Null Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8B523AF80E315D57001516A6 /* Truck Driver A - Null Sync.xml */; };
 		8B523B110E315D57001516A6 /* Truck Driver A - Random Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8B523AF90E315D57001516A6 /* Truck Driver A - Random Sync.xml */; };
 		8B523B120E315D57001516A6 /* Truck Driver A - Slow Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8B523AFA0E315D57001516A6 /* Truck Driver A - Slow Sync.xml */; };
+		8BC6F0C60E32FB1E006C1671 /* Mobile Salesperson A - ETS.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BC6F0C10E32FB1E006C1671 /* Mobile Salesperson A - ETS.xml */; };
+		8BC6F0C70E32FB1E006C1671 /* Mobile Salesperson A - Random Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BC6F0C20E32FB1E006C1671 /* Mobile Salesperson A - Random Sync.xml */; };
+		8BC6F0C80E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BC6F0C30E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml */; };
+		8BC6F0C90E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BC6F0C40E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml */; };
+		8BC6F0CA0E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BC6F0C50E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml */; };
 		8BF93F770D8614E700C90162 /* SyncSimulationFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF93F760D8614E700C90162 /* SyncSimulationFramework.framework */; };
 		8BF93FC30D86183000C90162 /* SyncSimulationFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8BF93F760D8614E700C90162 /* SyncSimulationFramework.framework */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
@@ -88,6 +93,11 @@
 		8B523AF80E315D57001516A6 /* Truck Driver A - Null Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Truck Driver A - Null Sync.xml"; sourceTree = "<group>"; };
 		8B523AF90E315D57001516A6 /* Truck Driver A - Random Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Truck Driver A - Random Sync.xml"; sourceTree = "<group>"; };
 		8B523AFA0E315D57001516A6 /* Truck Driver A - Slow Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Truck Driver A - Slow Sync.xml"; sourceTree = "<group>"; };
+		8BC6F0C10E32FB1E006C1671 /* Mobile Salesperson A - ETS.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - ETS.xml"; sourceTree = "<group>"; };
+		8BC6F0C20E32FB1E006C1671 /* Mobile Salesperson A - Random Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - Random Sync.xml"; sourceTree = "<group>"; };
+		8BC6F0C30E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - Null Sync.xml"; sourceTree = "<group>"; };
+		8BC6F0C40E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - Slow Sync.xml"; sourceTree = "<group>"; };
+		8BC6F0C50E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - Fast Sync.xml"; sourceTree = "<group>"; };
 		8BF93F760D8614E700C90162 /* SyncSimulationFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SyncSimulationFramework.framework; path = ../SyncSimulationFramework/build/Release/SyncSimulationFramework.framework; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* SyncSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SyncSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +196,11 @@
 		8B523AE20E315D56001516A6 /* User Models */ = {
 			isa = PBXGroup;
 			children = (
+				8BC6F0C10E32FB1E006C1671 /* Mobile Salesperson A - ETS.xml */,
+				8BC6F0C20E32FB1E006C1671 /* Mobile Salesperson A - Random Sync.xml */,
+				8BC6F0C30E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml */,
+				8BC6F0C40E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml */,
+				8BC6F0C50E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml */,
 				8B523AE30E315D56001516A6 /* Business User A - ETS.xml */,
 				8B523AE40E315D56001516A6 /* Business User A - Fast Sync.xml */,
 				8B523AE50E315D56001516A6 /* Business User A - Null Sync.xml */,
@@ -287,6 +302,11 @@
 				8B523B100E315D57001516A6 /* Truck Driver A - Null Sync.xml in Resources */,
 				8B523B110E315D57001516A6 /* Truck Driver A - Random Sync.xml in Resources */,
 				8B523B120E315D57001516A6 /* Truck Driver A - Slow Sync.xml in Resources */,
+				8BC6F0C60E32FB1E006C1671 /* Mobile Salesperson A - ETS.xml in Resources */,
+				8BC6F0C70E32FB1E006C1671 /* Mobile Salesperson A - Random Sync.xml in Resources */,
+				8BC6F0C80E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml in Resources */,
+				8BC6F0C90E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml in Resources */,
+				8BC6F0CA0E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
