@@ -11,7 +11,7 @@
 	</locations>
 
 	<userschedule>
-		<entry locname="home" time="0" expectedsyncs="0.166666666666667"" expectedaccesses="5"/>
+		<entry locname="home" time="0" expectedsyncs="0.166666666666667" expectedaccesses="5"/>
 	</userschedule>
 
 	<database numrecords="5000" arrivalrate="50.0" interval="3600" maxarrivals="10"/>
