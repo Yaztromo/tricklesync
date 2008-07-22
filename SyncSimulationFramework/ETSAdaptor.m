@@ -301,7 +301,7 @@
                currentThreshold = lowerThreshold;
                upperThreshold = [currentThreshold getNewUpperThreshold];
                lowerThreshold = [currentThreshold getNewLowerThreshold];
-            } else if (Tuppercost < Tcurrcost && Tuppercost < Tlowercost) {
+            } else if (Tuppercost < Tcurrcost && Tuppercost < Tlowercost && upperThreshold.cost.realCost > 0.0) {
                // The upper value is lowest
 #ifdef DEBUG_OUTPUT
                NSLog(@"Selecting upper boundry");
@@ -309,7 +309,7 @@
                currentThreshold = upperThreshold;
                upperThreshold = [currentThreshold getNewUpperThreshold];
                lowerThreshold = [currentThreshold getNewLowerThreshold];
-            } else if (Tlowercost <= Tcurrcost && Tlowercost <= Tuppercost) {
+            } else if (Tlowercost <= Tcurrcost && lowerThreshold.cost.realCost > 0.0) {
                // The lower value is the lowest
 #ifdef DEBUG_OUTPUT
                NSLog(@"Selecting lower boundry");
@@ -384,7 +384,7 @@
    currentThreshold = [[ThresholdPoint alloc] initWithUpperBound:T_UPPER andWithLowerBound:T_LOWER andWithValue:T_UPPER];
    upperThreshold = [currentThreshold getNewUpperThreshold];
    lowerThreshold = [currentThreshold getNewLowerThreshold];
-   state = 0;
+   state = -1;
    //NSLog(@"Initial Threshold Values Selected:\n  Middle (%@)\n  Upper (%@)\n  Lower (%@)\n", currentThreshold, upperThreshold, lowerThreshold);
    syncCount = 0;   
 } // end-method

@@ -36,7 +36,7 @@
                                           // class to have an alarm at the same time.
 }
 @property(readonly) unsigned int time;
-@property(readonly) unsigned int day;
+@property unsigned int day;
 
 - (id)init;
 

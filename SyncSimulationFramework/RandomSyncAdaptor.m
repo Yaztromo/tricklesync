@@ -79,10 +79,10 @@
       // Synchronize the first n records
       for(i=0;i<n;i++) {
          b = [syncController synchronizeRecord:[recs objectAtIndex:i]];
-         if (!b) {
-            NSLog(@"The sync was interrupted at record %d!", i);
-            break;
-         } // end-if
+         //if (!b) {
+            //NSLog(@"The sync was interrupted at record %d!", i);
+            //break;
+         //} // end-if
       } // end-for
       
       // Done!

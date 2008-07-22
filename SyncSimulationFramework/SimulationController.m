@@ -240,11 +240,12 @@
           withIterations:(unsigned int)x
             withCallback:(id<SimulationCallbackProtocol>)callback {
    int i, j, k=0;
-   CostRecorder *today, *delta, *finalCost;
+   CostRecorder *today, *delta, *finalCost, *yearlyCost;
    CFAbsoluteTime end, start=CFAbsoluteTimeGetCurrent();
    percentComplete = 0.0;
 
    for(j=0;j<x;j++) {
+      yearlyCost = [[CostRecorder alloc] init];
       for(i=0;i<days;i++) {
          [self resetSimulationForNextDay];
          [self startSimulatedDay];
@@ -254,6 +255,7 @@
          // Calculate todays cost
          today = [CostRecorder subtractWithValueA:cost andValueB:yesterday];
          // NSLog(@"The results for day n = %d is %@ (total = %@, yesterday = %@)", i, today, cost, yesterday);
+         [yearlyCost add:today];
          
          // Update the mean, and S
          delta = [CostRecorder subtractWithValueA:today andValueB:mean];
@@ -264,12 +266,16 @@
       } // end-for
       
       //NSLog(@"######################### [ ITERATION %03d COMPLETE ] #########################", j+1);
+      NSLog(@" ### Iteration %03d complete.  Cost: %@", j+1, [yearlyCost averageCostOver:days]);
       // One iteration is complete.  Reset the databases and run the next iteation
       // Firstly, reset the server database, and ensure that all objects which use it are updated to reflect the change
       [syncLogic.serverDatabase generateNewRecordSet];
       
       // Copy the changes into the mobile database
       [user.handheldDB reinitializeRecordsFromServerDB];
+      
+      // Reset back to day 0
+      [timer setDay:0];
       
       // Reset the protocol for th next run.
       [protocol resetProtocolData];
