@@ -37,6 +37,7 @@
 		8BC6F0C80E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BC6F0C30E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml */; };
 		8BC6F0C90E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BC6F0C40E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml */; };
 		8BC6F0CA0E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BC6F0C50E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml */; };
+		8BF8BAF40E37B9BF002EFEB5 /* Business User B - ETS 2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8BAF30E37B9BF002EFEB5 /* Business User B - ETS 2.xml */; };
 		8BF93F770D8614E700C90162 /* SyncSimulationFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF93F760D8614E700C90162 /* SyncSimulationFramework.framework */; };
 		8BF93FC30D86183000C90162 /* SyncSimulationFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8BF93F760D8614E700C90162 /* SyncSimulationFramework.framework */; };
 		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
@@ -98,6 +99,7 @@
 		8BC6F0C30E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - Null Sync.xml"; sourceTree = "<group>"; };
 		8BC6F0C40E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - Slow Sync.xml"; sourceTree = "<group>"; };
 		8BC6F0C50E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - Fast Sync.xml"; sourceTree = "<group>"; };
+		8BF8BAF30E37B9BF002EFEB5 /* Business User B - ETS 2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Business User B - ETS 2.xml"; sourceTree = "<group>"; };
 		8BF93F760D8614E700C90162 /* SyncSimulationFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SyncSimulationFramework.framework; path = ../SyncSimulationFramework/build/Release/SyncSimulationFramework.framework; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* SyncSimulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SyncSimulator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +209,7 @@
 				8B523AE60E315D56001516A6 /* Business User A - Random Sync.xml */,
 				8B523AE70E315D57001516A6 /* Business User A - Slow Sync.xml */,
 				8B523AE80E315D57001516A6 /* Business User B - Fast Sync.xml */,
+				8BF8BAF30E37B9BF002EFEB5 /* Business User B - ETS 2.xml */,
 				8B523AE90E315D57001516A6 /* Business User B - Null Sync.xml */,
 				8B523AEA0E315D57001516A6 /* Business User B - Random Sync.xml */,
 				8B523AEB0E315D57001516A6 /* Business User B - Slow Sync.xml */,
@@ -307,6 +310,7 @@
 				8BC6F0C80E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml in Resources */,
 				8BC6F0C90E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml in Resources */,
 				8BC6F0CA0E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml in Resources */,
+				8BF8BAF40E37B9BF002EFEB5 /* Business User B - ETS 2.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
