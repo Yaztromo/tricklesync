@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <etssimulation>
 	<networks>
-		<network name="WiFi" cost="0.000000000001" xferrate="49000.0" expecteddisocnnectsperhour="0.01"/>
+		<network name="GPRS" cost="0.000048828125" xferrate="57.0" expecteddisocnnectsperhour="0.1"/>
 	</networks>
 
 	<locations>
 		<location name="home">
-			<localnet>WiFi</localnet>
+			<localnet>GPRS</localnet>
 		</location>
 	</locations>
 
@@ -16,7 +16,7 @@
 
 	<database numrecords="5000" arrivalrate="50.0" interval="3600" maxarrivals="10"/>
 
-	<syncprotocol name="ETSAdaptor" k="10000">
+	<syncprotocol name="ETSAdaptor" k="1">
 		<!-- ...protocol specific nodes go here... -->
 	</syncprotocol>
 </etssimulation>

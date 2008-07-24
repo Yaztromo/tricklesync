@@ -37,11 +37,11 @@
 		8BC6F0C80E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BC6F0C30E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml */; };
 		8BC6F0C90E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BC6F0C40E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml */; };
 		8BC6F0CA0E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BC6F0C50E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml */; };
-		8BECADC60E39159D0009A8C3 /* Null User A - ETS $1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BECADC10E39159D0009A8C3 /* Null User A - ETS $1.xml */; };
-		8BECADC70E39159D0009A8C3 /* Null User A - ETS $10.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BECADC20E39159D0009A8C3 /* Null User A - ETS $10.xml */; };
-		8BECADC80E39159D0009A8C3 /* Null User A - ETS $100.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BECADC30E39159D0009A8C3 /* Null User A - ETS $100.xml */; };
-		8BECADC90E39159D0009A8C3 /* Null User A - ETS $1000.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BECADC40E39159D0009A8C3 /* Null User A - ETS $1000.xml */; };
-		8BECADCA0E39159D0009A8C3 /* Null User A - ETS $10000.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BECADC50E39159D0009A8C3 /* Null User A - ETS $10000.xml */; };
+		8BECADC60E39159D0009A8C3 /* Null User B - ETS $1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BECADC10E39159D0009A8C3 /* Null User B - ETS $1.xml */; };
+		8BECADC70E39159D0009A8C3 /* Null User B - ETS $10.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BECADC20E39159D0009A8C3 /* Null User B - ETS $10.xml */; };
+		8BECADC80E39159D0009A8C3 /* Null User B - ETS $100.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BECADC30E39159D0009A8C3 /* Null User B - ETS $100.xml */; };
+		8BECADC90E39159D0009A8C3 /* Null User B - ETS $1000.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BECADC40E39159D0009A8C3 /* Null User B - ETS $1000.xml */; };
+		8BECADCA0E39159D0009A8C3 /* Null User B - ETS $10000.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BECADC50E39159D0009A8C3 /* Null User B - ETS $10000.xml */; };
 		8BF8BAF40E37B9BF002EFEB5 /* Business User B - ETS 2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8BAF30E37B9BF002EFEB5 /* Business User B - ETS 2.xml */; };
 		8BF8BAFE0E38194C002EFEB5 /* Mobile Salesperson A - ETS $1.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8BAFD0E38194C002EFEB5 /* Mobile Salesperson A - ETS $1.xml */; };
 		8BF8BB030E3819A6002EFEB5 /* Mobile Salesperson A - ETS $10.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8BAFF0E3819A6002EFEB5 /* Mobile Salesperson A - ETS $10.xml */; };
@@ -109,11 +109,11 @@
 		8BC6F0C30E32FB1E006C1671 /* Mobile Salesperson A - Null Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - Null Sync.xml"; sourceTree = "<group>"; };
 		8BC6F0C40E32FB1E006C1671 /* Mobile Salesperson A - Slow Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - Slow Sync.xml"; sourceTree = "<group>"; };
 		8BC6F0C50E32FB1E006C1671 /* Mobile Salesperson A - Fast Sync.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - Fast Sync.xml"; sourceTree = "<group>"; };
-		8BECADC10E39159D0009A8C3 /* Null User A - ETS $1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Null User A - ETS $1.xml"; sourceTree = "<group>"; };
-		8BECADC20E39159D0009A8C3 /* Null User A - ETS $10.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Null User A - ETS $10.xml"; sourceTree = "<group>"; };
-		8BECADC30E39159D0009A8C3 /* Null User A - ETS $100.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Null User A - ETS $100.xml"; sourceTree = "<group>"; };
-		8BECADC40E39159D0009A8C3 /* Null User A - ETS $1000.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Null User A - ETS $1000.xml"; sourceTree = "<group>"; };
-		8BECADC50E39159D0009A8C3 /* Null User A - ETS $10000.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Null User A - ETS $10000.xml"; sourceTree = "<group>"; };
+		8BECADC10E39159D0009A8C3 /* Null User B - ETS $1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Null User B - ETS $1.xml"; sourceTree = "<group>"; };
+		8BECADC20E39159D0009A8C3 /* Null User B - ETS $10.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Null User B - ETS $10.xml"; sourceTree = "<group>"; };
+		8BECADC30E39159D0009A8C3 /* Null User B - ETS $100.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Null User B - ETS $100.xml"; sourceTree = "<group>"; };
+		8BECADC40E39159D0009A8C3 /* Null User B - ETS $1000.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Null User B - ETS $1000.xml"; sourceTree = "<group>"; };
+		8BECADC50E39159D0009A8C3 /* Null User B - ETS $10000.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Null User B - ETS $10000.xml"; sourceTree = "<group>"; };
 		8BF8BAF30E37B9BF002EFEB5 /* Business User B - ETS 2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Business User B - ETS 2.xml"; sourceTree = "<group>"; };
 		8BF8BAFD0E38194C002EFEB5 /* Mobile Salesperson A - ETS $1.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - ETS $1.xml"; sourceTree = "<group>"; };
 		8BF8BAFF0E3819A6002EFEB5 /* Mobile Salesperson A - ETS $10.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Mobile Salesperson A - ETS $10.xml"; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 		8B523AE20E315D56001516A6 /* User Models */ = {
 			isa = PBXGroup;
 			children = (
-				8BECADC00E3915780009A8C3 /* Simple User A - ETS */,
+				8BECADC00E3915780009A8C3 /* Simple User B - ETS */,
 				8BF8BAFC0E381917002EFEB5 /* Mobile Sales Person A - ETS */,
 				8BC6F0C10E32FB1E006C1671 /* Mobile Salesperson A - ETS.xml */,
 				8BC6F0C20E32FB1E006C1671 /* Mobile Salesperson A - Random Sync.xml */,
@@ -254,16 +254,16 @@
 			path = "User Models";
 			sourceTree = "<group>";
 		};
-		8BECADC00E3915780009A8C3 /* Simple User A - ETS */ = {
+		8BECADC00E3915780009A8C3 /* Simple User B - ETS */ = {
 			isa = PBXGroup;
 			children = (
-				8BECADC10E39159D0009A8C3 /* Null User A - ETS $1.xml */,
-				8BECADC20E39159D0009A8C3 /* Null User A - ETS $10.xml */,
-				8BECADC30E39159D0009A8C3 /* Null User A - ETS $100.xml */,
-				8BECADC40E39159D0009A8C3 /* Null User A - ETS $1000.xml */,
-				8BECADC50E39159D0009A8C3 /* Null User A - ETS $10000.xml */,
+				8BECADC10E39159D0009A8C3 /* Null User B - ETS $1.xml */,
+				8BECADC20E39159D0009A8C3 /* Null User B - ETS $10.xml */,
+				8BECADC30E39159D0009A8C3 /* Null User B - ETS $100.xml */,
+				8BECADC40E39159D0009A8C3 /* Null User B - ETS $1000.xml */,
+				8BECADC50E39159D0009A8C3 /* Null User B - ETS $10000.xml */,
 			);
-			name = "Simple User A - ETS";
+			name = "Simple User B - ETS";
 			sourceTree = "<group>";
 		};
 		8BF8BAFC0E381917002EFEB5 /* Mobile Sales Person A - ETS */ = {
@@ -362,11 +362,11 @@
 				8BF8BB040E3819A6002EFEB5 /* Mobile Salesperson A - ETS $100.xml in Resources */,
 				8BF8BB050E3819A6002EFEB5 /* Mobile Salesperson A - ETS $1000.xml in Resources */,
 				8BF8BB060E3819A6002EFEB5 /* Mobile Salesperson A - ETS $10000.xml in Resources */,
-				8BECADC60E39159D0009A8C3 /* Null User A - ETS $1.xml in Resources */,
-				8BECADC70E39159D0009A8C3 /* Null User A - ETS $10.xml in Resources */,
-				8BECADC80E39159D0009A8C3 /* Null User A - ETS $100.xml in Resources */,
-				8BECADC90E39159D0009A8C3 /* Null User A - ETS $1000.xml in Resources */,
-				8BECADCA0E39159D0009A8C3 /* Null User A - ETS $10000.xml in Resources */,
+				8BECADC60E39159D0009A8C3 /* Null User B - ETS $1.xml in Resources */,
+				8BECADC70E39159D0009A8C3 /* Null User B - ETS $10.xml in Resources */,
+				8BECADC80E39159D0009A8C3 /* Null User B - ETS $100.xml in Resources */,
+				8BECADC90E39159D0009A8C3 /* Null User B - ETS $1000.xml in Resources */,
+				8BECADCA0E39159D0009A8C3 /* Null User B - ETS $10000.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
