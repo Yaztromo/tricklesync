@@ -331,8 +331,8 @@
 	};
 	8B523AE30E315D56001516A6 /* Business User A - ETS.xml */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {949, 616}}";
-			sepNavSelRange = "{0, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {949, 630}}";
+			sepNavSelRange = "{192, 14}";
 			sepNavVisRange = "{0, 1214}";
 		};
 	};
@@ -606,9 +606,9 @@
 	};
 	8BC6F0C10E32FB1E006C1671 /* Mobile Salesperson A - ETS.xml */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {949, 854}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{822, 2244}";
+			sepNavIntBoundsRect = "{{0, 0}, {949, 938}}";
+			sepNavSelRange = "{0, 3066}";
+			sepNavVisRange = "{0, 1228}";
 		};
 	};
 	8BC6F0D60E32FB3A006C1671 /* PBXTextBookmark */ = {
@@ -734,6 +734,41 @@
 		rType = 0;
 		vrLen = 604;
 		vrLoc = 0;
+	};
+	8BF8BAF30E37B9BF002EFEB5 /* Business User B - ETS 2.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {949, 630}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1214}";
+		};
+	};
+	8BF8BAFD0E38194C002EFEB5 /* Mobile Salesperson A - ETS $1.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {866, 854}}";
+			sepNavSelRange = "{2979, 0}";
+			sepNavVisRange = "{899, 2166}";
+		};
+	};
+	8BF8BAFF0E3819A6002EFEB5 /* Mobile Salesperson A - ETS $10.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {866, 854}}";
+			sepNavSelRange = "{2980, 0}";
+			sepNavVisRange = "{899, 2167}";
+		};
+	};
+	8BF8BB000E3819A6002EFEB5 /* Mobile Salesperson A - ETS $100.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {866, 854}}";
+			sepNavSelRange = "{2981, 0}";
+			sepNavVisRange = "{979, 2088}";
+		};
+	};
+	8BF8BB010E3819A6002EFEB5 /* Mobile Salesperson A - ETS $1000.xml */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {866, 854}}";
+			sepNavSelRange = "{2982, 0}";
+			sepNavVisRange = "{979, 2089}";
+		};
 	};
 	8BF93FAE0D86178800C90162 /* SyncProtocol.h */ = {
 		isa = PBXFileReference;
