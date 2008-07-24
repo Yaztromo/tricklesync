@@ -35,7 +35,7 @@ GPRS & 57.0 & 0.000048828125 & 0.1 \\
 \label{common_networks}
 \end{table}
 
-% I should make some references here as to how I derived these values.
+The GPRS cost in Table \ref{common_networks} is based on a \$0.03 per kilobyte transfer charge.  The Commercial WiFi cost is based on a \$10 per hour rate.  The cost selected for WiFi connections is small but non-zero to accommodate for the cost of electricity and high speed network service.
 
 \subsubsection{Simple Users A and B}
 
@@ -295,7 +295,7 @@ Customer Site & GPRS \\
 
 \subsubsection{Truck Driver A}
 
-Truck Driver A presents a special example of a semi-connected mobile device, in that instead of a handheld unit, the truck contains a computer with an external antenna for connecting to different wireless networks.  As such, the truck is the semi-connected, mobile device.  In this model, the truck is of the type that does local deliveries during the day, and is typically driven through four locations:  the depot where it is parked at night, on the road doing deliveries throughout the morning, parked at a truck stop at lunch, back on the road for the afternoon, and back to the depot at the end of the work day.  In this scenario, the truck is configured to automatically synchronize on average once per hour.  The basic parameters for this model user are detailed in table \ref{trucker_a_properties}, with the networks available in each location listed in table \ref{trucker_a_networks}, and the database properties in table \ref{trucker_a_database}.  For the purposes of the ETS algorithm, the estimated cost of using out-of-date information is estimated to be \$250.  The XML source defining this user is available in listing \ref{trucker_a}.
+Truck Driver A presents a special example of a semi-connected mobile device, in that instead of a handheld unit, a delivery truck contains a computer with an external antenna for connecting to different wireless networks.  As such, the truck is the semi-connected, mobile device.  In this model, the truck is of the type that does local deliveries during the day, and is typically driven through four locations:  the depot where it is parked at night, on the road doing deliveries throughout the morning, parked at a truck stop at lunch, back on the road for the afternoon, and back to the depot at the end of the work day.  In this scenario, the truck is configured to automatically synchronize on average once per hour.  The basic parameters for this model user are detailed in table \ref{trucker_a_properties}, with the networks available in each location listed in table \ref{trucker_a_networks}, and the database properties in table \ref{trucker_a_database}.  For the purposes of the ETS algorithm, the estimated cost of using out-of-date information is estimated to be \$250.  The XML source defining this user is available in listing \ref{trucker_a}.
 
 % Truck Driver A Properties
 \begin{table}[htdp]
@@ -361,13 +361,13 @@ Each user model is run through a single simulated day for an entire year (365 da
 
 \section{Results}
 
-The simulation maintains track of the cost of accessing out-of-date information on the handheld device, the cost of using network resources, as well as the total data transferred within the simulation session, as detailed in section \ref{cost_controller}.  The final average and variance are calculated on a day-to-day basis; that is the elements tracked within the Cost Controller are averaged at the end of the total simulation run by dividing the total accumulated cost and average data transferred values by 91250 (365 days per simulation run multiplied by 250 simulation runs), generating the final averaged results for the run.  The variance for the run is automatically tracked, as it is not reset between simulation sessions, using the algorithm described by Knuth in \cite{RefWorks:42} (section 4.2.2, formulas 15 and 16), as mentioned in \ref{simcontroller}.  We present the results of running each of the above described user models through the simulation environment for each of the synchronization protocols tested below.
+The simulation maintains track of the cost of accessing out-of-date information on the handheld device, the cost of using network resources, as well as the total data transferred within the simulation session, as detailed in section \ref{cost_controller}.  The final average and variance are calculated on a day-to-day basis; that is the elements tracked within the Cost Controller are averaged at the end of the total simulation run by dividing the total accumulated cost and average data transferred values by 91250 (365 days per simulation run multiplied by 250 simulation runs), generating the final averaged results for the run.  The variance for the run is automatically tracked, as it is not reset between simulation sessions, using the algorithm described by Knuth in \cite{RefWorks:42} (section 4.2.2, formulas 15 and 16), as mentioned in \ref{simcontroller}.  Because of this, the variance values reflect the variance on a day-to-day basis, and not the variance between simulation iterations.  We present the results of running each of the above described user models through the simulation environment for each of the synchronization protocols tested below.
 
-Note that for all the result sets below, while results for all five algorithms were computed for each user model, only the results for Slow Sync, Fast Sync, and the ETS algorithms are graphed.  This is due to the fact that both Null Sync and Random Sync had such a high cost associated with them that it was impossible to include them in a graph of reasonable size and resolution in this paper that could include both, while at the same time allowing use to differentiate between the other three algorithms.  As such, the ETS algorithm is graphically compared only to the Fast Sync and Slow Sync algorithms.  However, the raw results for all five algorithms for each of the six user models evaluated are detailed in Appendix \ref{rawresults}.
+Note that for all the result sets below, while results for all five algorithms were computed for each user model, only the results for Slow Sync, Fast Sync, and the ETS algorithms are graphed.  This is due to the fact that both Null Sync and Random Sync had such a high cost associated with them in every model that it was impossible to include them in a graph of reasonable size and resolution in this paper that could include both, while at the same time allowing us to visually differentiate between the other three algorithms.  As such, the ETS algorithm is graphically compared only to the Fast Sync and Slow Sync algorithms.  However, the raw results for all five algorithms for each of the six user models evaluated are detailed in Appendix \ref{rawresults}.
 
 \subsection{Simple User A}
 
-Simple User A demonstrates how the ETS algorithm can improve upon infrequent synchronization throughout the day, while maintaining a low network cost profile.  In this model, as the only available network is virtually free the cost of synchronization is quite low.  As the ETS algorithm can automatically determine for itself how frequently to synchronize, it can reduce the probability of using out-of-date record information in this user model.  At the ETS target out-of-date record access cost of \$5, both the Fast Sync and Slow Sync algorithms, synchronizing on average four times per day, would cost this user an average of \$36.08, whereas the ETS algorithm would cost on average approximately \$5.85.  Figure \ref{simple_a_results_graph} displays the results for this experiment. See table \ref{simple_b:rawresults} for the full results for Simple User B.
+Simple User A demonstrates how the ETS algorithm can improve upon infrequent synchronization throughout the day, while maintaining a low network cost profile.  In this model, as the only available network is virtually free the cost of synchronization is quite low.  As the ETS algorithm can automatically determine for itself how frequently to synchronize, it can reduce the probability of using out-of-date record information in this user model.  At the ETS target out-of-date record access cost of \$5, both the Fast Sync and Slow Sync algorithms, synchronizing on average four times per day, would cost this user an average of \$36.08, whereas the ETS algorithm would cost on average approximately \$9.14.  Figure \ref{simple_a_results_graph} displays the results for this experiment. See table \ref{simple_a:rawresults} for the full results for Simple User A.
 
 \begin{figure}[htb]
 \centering
@@ -377,17 +377,27 @@ Simple User A demonstrates how the ETS algorithm can improve upon infrequent syn
 
 \subsection{Simple User B}
 
-%\begin{figure}[htb]
-%\centering
-%\includegraphics{Figures/Business_User_A}
-%\caption[Graph displaying the results for Business User A]{Graph displaying the results for Business User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_a_results_graph}
-%\end{figure}
+Simple User B demonstrates how the ETS algorithm can adapt itself to changing cost structures in a non-linear manner.  
+
+% Slow Sync Cost @ $5 target = $10540.38
+% Fast Sync Cost @ $5 target = $604.166
+% ETS Sync Cost @ $5 target = $ ???
+
+%
+% Compare Simple User B's ETS results to that of Simple User A here.
+%
+
+Figure \ref{simple_b_results_graph} displays the results for this experiment. See table \ref{simple_b:rawresults} for the full results for Simple User B.
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Simple_User_B}
+\caption[Graph displaying the results for Simple User B]{Graph displaying the results for Simple User B, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{simple_b_results_graph}
+\end{figure}
 
 \subsection{Business User A}
 
-Business User A shows very strong results in favour of the ETS algorithm, with the ETS algorithms cost equation resulting in both a lower result slope, and a lower y-intersection in the graph, signifying both a lower average network communication cost and fewer average out of date record accesses.  See figure \ref{business_a_results_graph}.  As expected, both the Fast Sync and Slow Sync algorithms have approximately the same slope, due to sharing the same average synchronization rate, however the Fast Sync algorithm does exhibit a lower network cost.  This is also to be expected, as the nature of the Fast Sync algorithm is to synchronize less data during each synchronization session.
-
-Interestingly, for Business User A the ETS algorithm synchronizes roughly 7\% more data on average than the Fast Sync algorithm, but does so at nearly 1/10th the cost.  See table \ref{business_a:rawresults} for the full results for Business User A.
+Business User A shows good results in favour of the ETS algorithm, with the ETS algorithms cost equation resulting in a lower result slope that either the Slow or Fast Sync algorithms, signifying fewer average out of date record accesses.  See figure \ref{business_a_results_graph}.  As expected, both the Fast Sync and Slow Sync algorithms have approximately the same slope, due to sharing the same average synchronization rate, however the Fast Sync algorithm does exhibit a lower network cost.  This is also to be expected, as the nature of the Fast Sync algorithm is to synchronize less data during each synchronization session.  While the ETS algorithm does exhibit a higher average daily network access cost that either the Slow Sync or Fast Sync algorithms, at the \$5 estimated out-of-date record access cost used for evaluating the ETS algorithm, the ETS algorithm costs less in actual dollar value.  Using this \$5 estimate, the Slow Sync algorithm would cost this user an average of \$36.06 per day, the Fast Sync algorithm would cost this user an average of \$30.838 per day, whereas the ETS algorithm would cost this user an average of \$29.736 per day.  See table \ref{business_a:rawresults} for the full results for Business User A.
 
 \begin{figure}[htb]
 \centering
@@ -396,6 +406,8 @@ Interestingly, for Business User A the ETS algorithm synchronizes roughly 7\% mo
 \end{figure}
 
 \subsection{Business User B}
+
+% FIXME -- with new $50 results.
 
 In contrast to Business User A, Business User B, who synchronizes once per hour when using the Fast Sync and Slow Sync algorithms, sees the ETS algorithm fare nearly equally to the performance of the other two algorithms in terms of the average number of out-of-date record accesses per day.  Where the ETS algorithm shines is in terms of average daily network cost, where it bests the Fast Sync algorithm by a factor of over 15500, with ETS on average costing less than half a cent per day, versus the Fast Sync algorithm costing an average of nearly \$40 per day.  Considering that the average cost for missed information input into the ETS algorithm for this user model was \$5, the ETS algorithm at this average cost factor was roughly 13.5 times less for ETS versus Fast Sync (\$3.18 versus \$43.22 respectively).  
 
@@ -411,15 +423,19 @@ Figure \ref{business_b_results_graph} displays the results for this experiment. 
 
 \subsection{Mobile Salesperson A}
 
-%\begin{figure}[htb]
-%\centering
-%\includegraphics{Figures/Business_User_A}
-%\caption[Graph displaying the results for Business User A]{Graph displaying the results for Business User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_a_results_graph}
-%\end{figure}
+Mobile Salesperson A synchronizes on average four times per hour while the device is powered on, which is the maximum per-hour rate that the ETS algorithm was designed to support (as per \ref{when_to_sync}).  Because of this high rate of synchronization, it is expected that both the Fast Sync and Slow Sync algorithms will have a relatively low incidence of out-of-date record accesses, at the expense of high network access cost.  This is reflected in the experimental results as presented in figure \ref{sales_a_results_graph}, where we can see that both the Slow Sync and Fast Sync algorithms have a low slope, indicating the average out-of-date record accesses, while simultaneously featuring a relatively high y-axis intersection, indicating a high average daily network access cost.  The ETS algorithm, in contrast, sacrifices being highly up-to-date in exchange for a savings in network access cost.  At the ETS target out-of-date access cost of \$10, this translates to an average per-day cost of \$14134.63 for the Slow Sync algorithm, \$97.17 for the Fast Sync algorithm, and \$85.21 for the ETS algorithm.  At the estimated \$10 out-of-date access cost, the solution automatically derived by the ETS algorithm continues to be competitive to the Fast Sync algorithm up to an out-of-date access cost of \$11.81, and is competitive with the Slow Sync algorithm up to an out-of-date access cost of \$2133.87.
+
+See table \ref{sales_a:rawresults} for the full results for Mobile Salesperson A.
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Mobile_Salesperson_A}
+\caption[Graph displaying the results for Mobile Salesperson A]{Graph displaying the results for Mobile Salesperson A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{sales_a_results_graph}
+\end{figure}
 
 \subsection{Truck Driver A}
 
-Truck Driver A appears to present a problem for the ETS algorithm: while the ETS algorithm initially outperforms both the Slow Sync and Fast Sync algorithms, it's higher slope (representing the average number of out-of-date record accesses) is higher than both, leading it to eventually out-cost both algorithms when used on an hourly basis.  This is especially problematic as for the ETS algorithm, the cost of out-of-date information for this user model was estimated to be \$250, however the ETS algorithm's use cost exceeds that of the Fast Sync algorithm when $x$, the cost of using out-of-date information, is greater than approximately \$17.888.  Figure \ref{trucker_a_results_graph} displays the results for this experiment. See table \ref{trucker_a:rawresults} for the full results for Truck Driver A.
+Truck Driver A appears to present a problem for the ETS algorithm: while the ETS algorithm initially outperforms both the Slow Sync and Fast Sync algorithms, it's higher slope (representing the average number of out-of-date record accesses) is higher than both, leading it to eventually out-cost both algorithms when used on an hourly basis.  This is especially problematic as for the ETS algorithm, the cost of out-of-date information for this user model was estimated to be \$250, however the ETS algorithm's use cost exceeds that of the Fast Sync algorithm when $x$, the cost of using out-of-date information, is greater than approximately \$20.86.  At the target average cost out-of-date record access cost of \$250, Slow Sync would cost this user, on average, \$7262.82 per day; Fast Sync would cost an average of \$250.05 per day, and the ETS algorithm would cost an average of \$620.57 per day.  Figure \ref{trucker_a_results_graph} displays the results for this experiment. See table \ref{trucker_a:rawresults} for the full results for Truck Driver A.
 
 \begin{figure}[htb]
 \centering

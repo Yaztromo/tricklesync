@@ -8,7 +8,7 @@ The sole goal of the Expedient Trickle Sync (ETS) algorithm is to reduce the cos
 
 The ETS algorithm attempts to minimize the cost of synchronization via four heuristic sub-algorithms:  determining when to synchronize, determining which available network to synchronize with, determining which subset of records to synchronize, and lastly by prioritizing the synchronization order.  While the intent of these four sub-algorithms is to reduce the overall cost of synchronization, they are not designed to guarantee absolute minimal synchronization cost; additionally, as they are based in part on a statistical analysis of the users past needs, sudden changes in a users habits could potentially circumvent these algorithms.  However, as these new user patterns take hold, the algorithm can learn from them in order to once again attempt to minimize the network cost; as such, the goal in cost reduction of the ETS protocol may not always be optimal when measured across short durations, it should approach an optimal level over the long term.
   
-\section{Determining when to synchronize}
+\section{Determining when to synchronize}\label{when_to_sync}
 
 Determining when the synchronize so as to minimize cost is an extremely complex task.  At a one-second resolution, there are $2^{86400}$ possible sets of synchronization points.  Determining which members of these sets have the minimal cost in a rigourous manner each day would be inordinately computationally intensive, and thus is completely infeasible.  As such, a heuristic mechanism that will quickly reduce the cost of synchronization with minimal computation is desirable.  Such a heuristic must be suitable for running on a mobile device, and thus cannot require significant computing power or memory.
 
