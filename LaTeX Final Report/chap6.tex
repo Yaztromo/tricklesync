@@ -427,7 +427,7 @@ Mobile Salesperson A synchronizes on average four times per hour while the devic
 
 See table \ref{sales_a:rawresults} for the full results for Mobile Salesperson A.
 
-When we attempt to evaluate the ETS algorithm against the Mobile Salesperson A user model against varying estimated average out-of-date record access cost factors $k$, where $k \in \{1, 10, 100, 1000, 10000\}$, we see that all five results are approximately linear; looking at the raw results in table 
+When we attempt to evaluate the ETS algorithm against the Mobile Salesperson A user model against varying estimated average out-of-date record access cost factors $k$, where $k \in \{1, 10, 100, 1000, 10000\}$, we can see from figure \ref{sales_a_results_k_graph} that all five results are approximately linear; looking at the raw results in table \ref{sales_a:ets-k_rawresults} we can see that while the slopes for all five solutions are virtually identical, there is some indication that as $k$ increases, the overall network access cost is likewise increasing.  This would appear to indicate an attempt on the part of the ETS algorithm to trade off an increasing frequency of synchronization in the more expensive networks to decrease out-of-date record accesses, however for unknown reasons this appears to be failing.  It would appear that the algorithm is frequently falling into a local minima, from which improvements are difficult to come by.
 
 \begin{figure}[htb]
 \centering
