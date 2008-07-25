@@ -1,6 +1,8 @@
 \chapter{Raw Result Data}\label{rawresults}
 
-The following table contains the raw result data for the simulations runs.  Each simulation ran for 365 simulated days, and was repeated 250 times.
+\section{User Model Protocol Comparisons}
+
+The following tables contains the raw result data for the user model simulations runs, with evaluations for each of the five tested synchronization algorithms.  Each simulation ran for 365 simulated days, and was repeated 250 times.
 
 % SIMPLE USER A
 
@@ -147,3 +149,54 @@ The following table contains the raw result data for the simulations runs.  Each
 \end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{ETS algorithm evaluations for varying values of $k$}
+
+The following tables contains the raw result data for the simulations runs evaluating only the ETS algorithm, but with differing input values $k$, where $k$ is the expected average out-of-date record access cost.  Each simulation ran for 365 simulated days, and was repeated 100 times.
+
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|l|l|l|}
+\hline
+\tiny\textbf{$k$} &  \tiny\textbf{Cost} & \tiny\textbf{Variance} & \tiny\textbf{Data (KiB/day)} \\
+\hline
+\tiny\textbf{1} & \tiny$stuff$ & \tiny$stuff $ & \tiny$stuff $ \\
+\hline
+\tiny\textbf{10} & \tiny$stuff$ & \tiny$stuff $ & \tiny$stuff $ \\
+\hline
+\tiny\textbf{100} & \tiny$stuff$ & \tiny$stuff $ & \tiny$stuff $ \\
+\hline
+\tiny\textbf{1000} & \tiny$stuff$ & \tiny$stuff $ & \tiny$stuff $ \\
+\hline
+\tiny\textbf{10000} & \tiny$stuff$ & \tiny$stuff $ & \tiny$stuff $ \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Raw Results for Simple User B when evaluating the ETS algorithm at different values of $k$}
+\label{simple_b:ets-k_rawresults}
+\end{table}
+
+\begin{table}[htdp]
+\begin{center}
+\begin{tabular}{|c|l|l|l|}
+\hline
+\tiny\textbf{$k$} &  \tiny\textbf{Cost} & \tiny\textbf{Variance} & \tiny\textbf{Data (KiB/day)} \\
+\hline
+\tiny\textbf{1} & \tiny$y=7.231x+12.842$ & \tiny$y=762.211x^2-16.919x+506.862$ & \tiny$4751.448$ \\
+\hline
+\tiny\textbf{10} & \tiny$y=7.254x+13.1779$ & \tiny$y=794.299x^2-22.691x+719.613$ & \tiny$4740.25 $ \\
+\hline
+\tiny\textbf{100} & \tiny$y=7.241x+26.484$ & \tiny$y=794.299x^2-22.691x+719.613$ & \tiny$4740.25 $ \\
+\hline
+\tiny\textbf{1000} & \tiny$y=7.016x+27.914$ & \tiny$y=762.609x^2-21.005x+644.540$ & \tiny$4749.796$ \\
+\hline
+\tiny\textbf{10000} & \tiny$y=7.105x+22.548$ & \tiny$y=769.260x^2-24.412x+654.498$ & \tiny$4749.619$ \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Raw Results for Mobile Salesperson A when evaluating the ETS algorithm at different values of $k$}
+\label{sales_a:ets-k_rawresults}
+\end{table}
+
+
+

@@ -41,6 +41,8 @@ The GPRS cost in Table \ref{common_networks} is based on a \$0.03 per kilobyte t
 
 The first user model used to evaluate the simulated synchronization algorithms is a basic model entitled \emph{Simple User A}, where the user remains in one location for the entire 24 hours day, with only WiFi based networking available.  They have an expected synchronization rate of 4 synchronizations per day, with an expected number of mobile device record accesses set to five per hour.  Simple User A synchronizes against a database that has 5000 records in it, with an average of 50 record updates per hour.  For the purposes of the ETS algorithm, the estimated cost of using out-of-date information is estimated to be \$5.  The XML source defining this user is available in listing \ref{basic_a}.
 
+Simple User B is also the target of a further experiment, involving running the simulation for each of the estimated average out-of-date record access costs $k$, where $k = {1, 10, 100, 1000}$.  This was done to evaluate how the ETS algorithm reacts as the cost of out-of-date record accesses increases.
+
 % Simple User A Properties
 \begin{table}[htdp]
 \begin{center}
@@ -215,7 +217,7 @@ Home & 79200 & 1.0 & 0.00001 \\
 
 Mobile Salesperson A is a user that spends their typical workday on the road, visiting customer sites, some of whom permit the salesperson assess to a virtually free high-speed public WiFi network.  The user spends significant time commuting between customer locations and their own companies office.  Mobile Salesperson A owns a device which automatically synchronizes information once every 15 minutes when powered on, and which is powered off at night.  For the purposes of the ETS algorithm, the estimated cost of using out-of-date information is estimated to be \$10.  The basic parameters for this model user are detailed in table \ref{sales_a_properties}, with the networks available in each location listed in table \ref{sales_a_networks}, and the database properties in table \ref{sales_a_database}.  The XML source defining this user is available in listing \ref{sales_a}.
 
-Mobile Salesperson A is also the target of a further experiment, involving running the simulation for each of the estimated average out-of-date record access costs $k$, where $k = {1, 10, 100, 1000}$.  This was done to evaluate how the ETS algorithm reacts as the cost of out-of-date record accesses increases.
+Akin to Simple User B, Mobile Salesperson A is also the target of a further experiment into how the ETS algorithm reacts as the cost of out-of-date record accesses increases. This involves running the simulation for each of the estimated average out-of-date record access costs $k$, where $k = {1, 10, 100, 1000}$.
 
 % Mobile Salesperson A Properties
 \begin{table}[htdp]
@@ -387,6 +389,10 @@ Simple User B also demonstrates that while the ETS algorithm does strive to mini
 
 Figure \ref{simple_b_results_graph} displays the results for this experiment. See table \ref{simple_b:rawresults} for the full results for Simple User B.
 
+%
+% Discuss the results of the k = {1, 10, 100, 1000, 10000}
+%
+
 \begin{figure}[htb]
 \centering
 \includegraphics{Figures/Simple_User_B}
@@ -421,14 +427,18 @@ Mobile Salesperson A synchronizes on average four times per hour while the devic
 
 See table \ref{sales_a:rawresults} for the full results for Mobile Salesperson A.
 
-%
-% Discuss the results of the k = {1, 10, 100, 1000, 10000}
-%
+When we attempt to evaluate the ETS algorithm against the Mobile Salesperson A user model against varying estimated average out-of-date record access cost factors $k$, where $k \in \{1, 10, 100, 1000, 10000\}$, we see that all five results are approximately linear; looking at the raw results in table 
 
 \begin{figure}[htb]
 \centering
 \includegraphics{Figures/Mobile_Salesperson_A}
 \caption[Graph displaying the results for Mobile Salesperson A]{Graph displaying the results for Mobile Salesperson A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{sales_a_results_graph}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Mobile_Salesperson_A_at_varying_k}
+\caption[Graph displaying ETS results for Mobile Salesperson A, at different values of k]{Graph displaying ETS results for Mobile Salesperson A, for $k \in \{1, 10, 100, 1000, 10000\}$.  In this graph, the x-axis represents $k$, while the y-axis represents the average cost of synchronization using the ETS algorithm, evaluated for $k$}\label{sales_a_results_k_graph}
 \end{figure}
 
 \subsection{Truck Driver A}
