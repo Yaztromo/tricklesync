@@ -14,17 +14,17 @@ The simulation itself runs at a resolution of one-second intervals.  We define a
 
 The goal of the simulation environment is to evaluate the overall cost of a synchronization algorithm by following a model user through a series of days as they\footnote{For the purposes of this paper, \emph{they} is used as a gender-neutral identifier for a single individual, as supported by references \cite{theyref3, theyref2, theyref1}.} synchronize their wireless mobile device through a programmed series of locations.  Within each location there may be a variety of network types available, each with their own cost structure and data transfer rates.  These elements will each be presented in this section.
 
-\subsection{Networks}
+\subsection{Networks}\label{networks}
 
 As we are evaluating the synchronization costs related to wireless mobile devices, we require some form of network transport for the transmission of synchronization data and metadata within our simulation environment.  These are expressed as a series of network objects, one per network which our sample user may intersect during the simulated day.
 
-The networks each have three primary attributes inside the simulation:  their transfer rate expressed as bytes per second ($N_{rate}$), the cost associated with each byte transferred ($N_{cost}$), and the probability per second that the connection can be lost ($P_{connection lost}$).  Each of these elements is an important part of the simulation execution, as they permit the simulation to determine the duration of a series of network operations, their related monetary cost, and at which probability a connection may be lost during a synchronization session.
+The networks each have three primary attributes inside the simulation:  their transfer rate expressed as bytes per second ($N_{rate}$), the cost associated with each byte transferred ($N_{cost}$), and the probability per second that the connection can be lost ($P_{connection lost}(N)$).  Each of these elements is an important part of the simulation execution, as they permit the simulation to determine the duration of a series of network operations, their related monetary cost, and at which probability a connection may be lost during a synchronization session.
 
 \subsection{Locations}
 
 A location is a specific geo-physical region that the user may be within during their simulated day.  A location is simply defined by zero or more networks which are accessible within that location.  Note that a given network may exist within multiple locations; for example, it is expected that generally a cellular network will be available in most locations within most urban areas.  Thus, the relationship between locations and networks is an N:M relationship.
 
-\subsection{Locales}
+\subsection{Locales}\label{locales}
 
 Locales build upon the physical locations by layering atop them temporal information; thus a locale is a location along with a time in which that location is entered.  This is used to permit the simulation to change from one location to the next during the duration of the simulated day.
 
@@ -32,7 +32,7 @@ Along with the time in which a location is entered ($L_{entry}$), the locale als
 
 Through the use of locale objects, we can permit the user to enter the same physical location at different times of day, with different mobile device usage patterns.  For example, a user who telecommutes from home and who uses their mobile device frequently during the normal work day may have a high expected database accesses value during business hours, but would have an exceedingly low expected database accesses at night while asleep.  In such a case the location is static, but the users usage patterns change.  Thus, the relationship between locations and locales is 1:N.  As the days are simulated from time 00:00:00 until time 23:59:59, the first defined locale is automatically entered at 00:00:00, and the last defined local persists until 23:59:59.
 
-\subsection{Records}
+\subsection{Records}\label{records}
 
 A record is the smallest unit of data exchanged during the synchronization process, and represents a logical unit of compound information.  For the purposes of the simulation, we do not actually model the record or its data, but instead simply maintain a record identification number, size, and revision number.  The identification number ($R_{ID}$) is used as a matching mechanism between a record stored in the mobile database and a record stored within the server database.  The size ($R_{size}$) is used for calculating how long it will take to transfer the record, as well as how much its transfer will cost.  Finally, the revision number ($R_{revision}$) is used as a mechanism for comparing matching records within the mobile and server databases to determine differences between the records.
 
@@ -50,7 +50,7 @@ The server database $S$ maintains an expected number of modification arrivals pe
 
 The mobile database $M$ handles whether or not the user has viewed a record during each one second interval in the simulation, based upon the expected mobile database accesses value stored in the current locale object.  During every tick, we choose a random number $n$ and compare it to the expected mobile database access rate per second in $L_{expected accesses}$.  If $L_{expected accesses} >= n$, an access has occurred.  We then determine which record has been accessed during this interval in a manner identical to that of how we determine which record to modify in the server database $S$, using a Normal distribution.  In this way the most-modfied records on the server are also the most frequently accessed records on the mobile database.  Unlike the server database, however, mobile database accesses are limited to one per tick, and as such form a Bernoulli Process (\ref{bernoulli}).
 
-\subsection{User}
+\subsection{User}\label{user}
 
 Tying the above simulated elements together is the user object ($U$).  Only a single simulated user exists within a simulation run, and they persist throughout every simulated day.  The user object maintains the list of locales available to the user, and manages the transition between one locale and another during the simulated day.  As such, the user object maintains a 1:N relationship with the locale objects.  The user object also contains the single instance of the mobile database, and as such has a 1:1 relationship with the mobile database object.
 
@@ -85,24 +85,23 @@ Generation of random, normally distributed values with other means ($\mu$) and s
 
 For testing whether or not a discrete event occurs at a given time $t$, a Bernoulli Process is used \cite{RefWorks:40}.  During simulation set-up, an expected number of events per hour ($E_{hour}$) is read from the configuration file, and divided to determine a probability-per-second for the event ($P(n)$), such that:
 \begin{equation}
-P(n)=\frac{E_{hour}}{3600}\label{bernoulli_prob}
+P_{bernoulli}(1)=\frac{E_{hour}}{3600}\label{bernoulli_prob}
 \end{equation}
 
-Every simulated second, an event trial occurs by selecting a uniformly distributed random number from the PRNG, and is compared against $P(n)$.  If the value is less than or equal to $P(n)$, the event occurs.  If it is less than $P(n)$, the event does not occur.  Note that due to this event determination mechanism, values of ($E_{hour}>3600$) are not supported.  However, this limitation is not an issue for the events where the Bernouilli Process is used, as sub-second accuracy is not provided, and values in excess of $3600$ would require an average of more than one event per second.  In cases where multiple events per second is desirable, a Poisson Process (\ref{poisson}) is used instead.
+Every simulated second, an event trial occurs by selecting a uniformly distributed random number from the PRNG, and is compared against $P_{bernoulli}(1)$.  If the value is less than or equal to $P_{bernoulli}(1)$, the event occurs.  If it is less than $P_{bernoulli}(1)$, the event does not occur.  Note that due to this event determination mechanism, values of ($E_{hour}>3600$) are not supported.  However, this limitation is not an issue for the events where the Bernouilli Process is used, as sub-second accuracy is not provided, and values in excess of $3600$ would require an average of more than one event per second.  In cases where multiple events per second is desirable, a Poisson Process (\ref{poisson}) is used instead.
 
 Bernoulli Process events are used for events which either occur or not during a one second interval.  Typically this is used to simulate user access to a handheld database record, as it is assumed the user may only access a single record at once.  Every locale has an independent ($E_{hour}$) for handheld record accesses.
 
 \subsection{Poisson Process}\label{poisson}
 
-For events which may occur multiple times in a single tick, a Poisson Process is utilized \cite{RefWorks:38, RefWorks:40}.  During simulation set-up, an expected number of events per hour ($E_{hour}$) is provided, along with a maximum number of permitted events per interval ($N_{max}$).  From these two values, a series of cumulative event probabilities is calculated, in the range of $[0..N_{max}]$.  That is, the probability of exactly $n$ events occurring during an interval with arrival rate $r$ and for interval $t$ is calculated as:
+For events which may occur multiple times in a single tick, a Poisson Process is utilized \cite{RefWorks:38, RefWorks:40}.  During simulation set-up, an expected number of events per hour ($E_{hour}$) is provided, along with a maximum number of permitted events per interval ($E_{max}$).  From these two values, a series of cumulative event probabilities is calculated, in the range of $[0..E_{max}]$.  That is, the probability of exactly $n$ events occurring during an interval with arrival rate $r$ and for interval $t$ is calculated as:
 \begin{equation}
-P(n) = \sum_{k=0}^n \frac{(rt)^k}{k!}e^{-rt}\label{poisson1}
+P_{poisson}(n) = \sum_{k=0}^n \frac{(rt)^k}{k!}e^{-rt}\label{poisson1}
 \end{equation}
 
-Every simulated second, an Poisson trial occurs by selecting a uniformly distributed random number 
-$R$ from the PRNG, and finding the smallest $n$ such that:
+Every simulated second, an Poisson trial occurs by selecting a uniformly distributed random number $Z$ from the PRNG, and finding the smallest $n$ such that:
 \begin{equation}
-P(n)>R\label{poissontrial}
+P(n)>Z\label{poissontrial}
 \end{equation}
 The result is the number of events which occurred during the current second.
 

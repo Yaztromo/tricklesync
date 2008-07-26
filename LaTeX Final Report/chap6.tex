@@ -226,32 +226,58 @@ Akin to Simple User B, Mobile Salesperson A is also the target of a further expe
 \hline
 \textbf{Location} & \textbf{Entry Time (s)} & \textbf{Expected Syncs/h} & \textbf{Expected Accesses/h} \\
 \hline
-Home & 0 & 0.0 & 0.00001 \\\hline
-Home & 21600 & 4 & 4 \\		\hline
-Car & 22500 & 4 & 5 \\\hline
-office & 24900 & 4 & 3 \\\hline
-Customer Site & 27000 & 4 & 2 \\\hline
-Car & 27600 & 4 & 5 \\\hline
-Customer Site & 27900 & 4 & 2 \\\hline
-Car & 29700 & 4 & 5 \\\hline
-Customer Site & 30000 & 4 & 2 \\\hline
-Car & 32400 & 4 & 5 \\\hline
-Home & 34200 & 4 & 4 \\		\hline
-Car & 34800 & 4 & 5 \\\hline
-Customer Site & 35700 & 4 & 2 \\\hline
-Car & 37800 & 4 & 5 \\\hline
-Customer Site & 37920 & 4 & 2 \\\hline
-Car & 41400 & 4 & 5 \\\hline
-office & 44100 & 4 & 3 \\\hline
-Car & 46800 & 4 & 5 \\\hline
-Customer Site & 48600 & 4 & 2 \\\hline
-Car & 49500 & 4 & 5 \\\hline
-Customer Site & 49620 & 4 & 2 \\\hline
-Car & 50700 & 4 & 5 \\\hline
-Customer Site & 50820 & 4 & 2 \\\hline
-Car & 51900 & 4 & 5 \\\hline
-Home & 53100 & 4 & 5 \\\hline
-Home & 63000 & 4 & 5 \\\hline
+Home & 0 & 0.0 & 0.00001 \\
+\hline
+Home & 21600 & 4 & 4 \\		
+\hline
+Car & 22500 & 4 & 5 \\
+\hline
+office & 24900 & 4 & 3 \\
+\hline
+Customer Site & 27000 & 4 & 2 \\
+\hline
+Car & 27600 & 4 & 5 \\
+\hline
+Customer Site & 27900 & 4 & 2 \\
+\hline
+Car & 29700 & 4 & 5 \\
+\hline
+Customer Site & 30000 & 4 & 2 \\
+\hline
+Car & 32400 & 4 & 5 \\
+\hline
+Home & 34200 & 4 & 4 \\		
+\hline
+Car & 34800 & 4 & 5 \\
+\hline
+Customer Site & 35700 & 4 & 2 \\
+\hline
+Car & 37800 & 4 & 5 \\
+\hline
+Customer Site & 37920 & 4 & 2 \\
+\hline
+Car & 41400 & 4 & 5 \\
+\hline
+office & 44100 & 4 & 3 \\
+\hline
+Car & 46800 & 4 & 5 \\
+\hline
+Customer Site & 48600 & 4 & 2 \\
+\hline
+Car & 49500 & 4 & 5 \\
+\hline
+Customer Site & 49620 & 4 & 2 \\
+\hline
+Car & 50700 & 4 & 5 \\
+\hline
+Customer Site & 50820 & 4 & 2 \\
+\hline
+Car & 51900 & 4 & 5 \\
+\hline
+Home & 53100 & 4 & 5 \\
+\hline
+Home & 63000 & 4 & 5 \\
+\hline
 Home & 82800 & 0.0 & 0.00001 \\
 \hline
 \end{tabular}
@@ -369,14 +395,24 @@ The simulation maintains track of the cost of accessing out-of-date information 
 
 Note that for all the result sets below, while results for all five algorithms were computed for each user model, only the results for Slow Sync, Fast Sync, and the ETS algorithms are graphed.  This is due to the fact that both Null Sync and Random Sync had such a high cost associated with them in every model that it was impossible to include them in a graph of reasonable size and resolution in this paper that could include both, while at the same time allowing us to visually differentiate between the other three algorithms.  As such, the ETS algorithm is graphically compared only to the Fast Sync and Slow Sync algorithms.  However, the raw results for all five algorithms for each of the six user models evaluated are detailed in Appendix \ref{rawresults}.
 
+In addition to the experiments comparing the different synchronization algorithms for each user model, an additional experiment was run for each model demonstrating the cost of synchronization using the ETS algorithm for each of 100 days.  The purposes of these experiments is to demonstrate whether or not the ETS algorithm is indeed able to minimize the synchronization cost over time, as is intended.  The results of these experiments are graphed, and are included below.
+
 \subsection{Simple User A}
 
 Simple User A demonstrates how the ETS algorithm can improve upon infrequent synchronization throughout the day, while maintaining a low network cost profile.  In this model, as the only available network is virtually free the cost of synchronization is quite low.  As the ETS algorithm can automatically determine for itself how frequently to synchronize, it can reduce the probability of using out-of-date record information in this user model.  At the ETS target out-of-date record access cost of \$5, both the Fast Sync and Slow Sync algorithms, synchronizing on average four times per day, would cost this user an average of \$36.08, whereas the ETS algorithm would cost on average approximately \$9.14.  Figure \ref{simple_a_results_graph} displays the results for this experiment. See table \ref{simple_a:rawresults} for the full results for Simple User A.
+
+A sample daily cost for a 100 day run of the ETS algorithm for Simple User A can be seen in figure \ref{simple_a_results_graph-100}.  Looking at the graph, we can see that in the first few days, a variety of high-cost options are evaluated, leading the algorithm to lower-cost opportunities on subsequent days.  However, there are aberrations from time to time, with random spikes occurring at several intervals.  These spikes would appear to be due to random convergences in the pseudo-random models; perhaps due to significant use of records with a low access probability, which the ETS algorithm has not synchronized for some time.
 
 \begin{figure}[htb]
 \centering
 \includegraphics{Figures/Simple_User_A}
 \caption[Graph displaying the results for Simple User A]{Graph displaying the results for Simple User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{simple_a_results_graph}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Simple_User_A-100_days}
+\caption{Graph displaying the daily ETS costs for Simple User A for a 100-day run}\label{simple_a_results_graph-100}
 \end{figure}
 
 \subsection{Simple User B}
@@ -389,9 +425,9 @@ Simple User B also demonstrates that while the ETS algorithm does strive to mini
 
 Figure \ref{simple_b_results_graph} displays the results for this experiment. See table \ref{simple_b:rawresults} for the full results for Simple User B.
 
-%
-% Discuss the results of the k = {1, 10, 100, 1000, 10000}
-%
+When we attempt to evaluate the ETS algorithm against the Simple User B user model against varying estimated average out-of-date record access cost factors $k$, where $k \in \{0.1, 1, 10, 100, 1000, 10000\}$, we can see from figure \ref{simple_b_results_k_graph} that the results appear to be linear.  However, looking at the graph in more detail (figure \ref{simple_b_results_k_graph2}), we can see that in fact that the results are not linear to the increases to $k$.  Indeed, looking at the raw results in table \ref{simple_b:ets-k_rawresults}, we can see that as $k$ increases, the slope $m$ of the solution line decreases, while the network communications cost $b$ and the average total data transferred both increase.  With these results, we can clearly see for this user model the ETS algorithm making the trade-off between minimizing out-of-date record accesses and the network cost of synchronization.
+
+A sample daily cost for a 100 day run of the ETS algorithm for Simple User B can be seen in figure \ref{simple_b_results_graph-100}.  Once again, we can see that the ETS algorithm quickly converges upon a relatively tight solution range.  It is interesting to note, however, that the very first value tested appears to have a lower overall cost associated with it than the final convergence range; this can be explained, however, if the initial tested value was sufficiently high that no synchronization occurred, as the ETS algorithm is designed to short-circuit around choices which prevent any synchronization during the day.  Being the first day, all records are initially considered to be in full synchronization, and thus only a small number of differences may be both generated and accessed, causing it to display an other low overall cost.
 
 \begin{figure}[htb]
 \centering
@@ -399,14 +435,40 @@ Figure \ref{simple_b_results_graph} displays the results for this experiment. Se
 \caption[Graph displaying the results for Simple User B]{Graph displaying the results for Simple User B, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{simple_b_results_graph}
 \end{figure}
 
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Simple_User_B_at_varying_k}
+\caption[Graph displaying ETS results for Simple User B, at different values of k]{Graph displaying ETS results for Simple User B, for $k \in \{0.1, 1, 10, 100\}$ in further detail.  In this graph, the x-axis represents $k$, while the y-axis represents the average cost of synchronization using the ETS algorithm, evaluated at $k$}\label{simple_b_results_k_graph}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Simple_User_B_at_varying_k_detail}
+\caption[Close-up detail displaying ETS results for Simple User B, at different values of k]{Graph displaying ETS results for Simple User B, for $k \in \{0.1, 1, 10, 100, 1000, 10000\}$.  In this graph, the x-axis represents $k$, while the y-axis represents the average cost of synchronization using the ETS algorithm, evaluated at $k$}\label{simple_b_results_k_graph2}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Simple_User_B-100_days}
+\caption{Graph displaying the daily ETS costs for Simple User B for a 100-day run}\label{simple_b_results_graph-100}
+\end{figure}
+
 \subsection{Business User A}
 
 Business User A shows good results in favour of the ETS algorithm, with the ETS algorithms cost equation resulting in a lower result slope that either the Slow or Fast Sync algorithms, signifying fewer average out of date record accesses.  See figure \ref{business_a_results_graph}.  As expected, both the Fast Sync and Slow Sync algorithms have approximately the same slope, due to sharing the same average synchronization rate, however the Fast Sync algorithm does exhibit a lower network cost.  This is also to be expected, as the nature of the Fast Sync algorithm is to synchronize less data during each synchronization session.  While the ETS algorithm does exhibit a higher average daily network access cost that either the Slow Sync or Fast Sync algorithms, at the \$5 estimated out-of-date record access cost used for evaluating the ETS algorithm, the ETS algorithm costs less in actual dollar value.  Using this \$5 estimate, the Slow Sync algorithm would cost this user an average of \$36.06 per day, the Fast Sync algorithm would cost this user an average of \$30.838 per day, whereas the ETS algorithm would cost this user an average of \$29.736 per day.  See table \ref{business_a:rawresults} for the full results for Business User A.
+
+A sample daily cost for a 100 day run of the ETS algorithm for Business User A can be seen in figure \ref{business_a_results_graph-100}.  Much like Simple User A, Business User A very quickly settles into a low cost range, however there are a variety of random spikes, which negatively affect the average daily cost.
 
 \begin{figure}[htb]
 \centering
 \includegraphics{Figures/Business_User_A}
 \caption[Graph displaying the results for Business User A]{Graph displaying the results for Business User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_a_results_graph}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Business_User_A-100_days}
+\caption{Graph displaying the daily ETS costs for Business User A for a 100-day run}\label{business_a_results_graph-100}
 \end{figure}
 
 \subsection{Business User B}
@@ -415,10 +477,18 @@ In contrast to Business User A, Business User B, who synchronizes once per hour 
 
 Figure \ref{business_b_results_graph} displays the results for this experiment. See table \ref{business_b:rawresults} for the full results for Business User B.
 
+A sample daily cost for a 100 day run of the ETS algorithm for Business User B can be seen in figure \ref{business_b_results_graph-100}.  As Business User B has the same daily routine as Business User A, to provide better contrast for the 100 day run with Business User A we have set the expected average out-of-date record cost $k$ to \$50, a ten-fold increase over Business User A.  The results are nearly identical to Business User A, however what spikes do appear to occur within the costs appears to be more muted.  While the decreased magnitude of these spikes may be due to the increased value of $k$, it may also simply be due to a lack of any random convergences in the 100 day run that have caused significant spikes in the other models.  As such, this lack of significant spikes may have less to do with $k$, than with good fortune while the test was being executed.
+
 \begin{figure}[htb]
 \centering
 \includegraphics{Figures/Business_User_B}
 \caption[Graph displaying the results for Business User B]{Graph displaying the results for Business User B, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_b_results_graph}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Business_User_B-100_days}
+\caption{Graph displaying the daily ETS costs for Business User B for a 100-day run}\label{business_b_results_graph-100}
 \end{figure}
 
 \subsection{Mobile Salesperson A}
@@ -427,7 +497,9 @@ Mobile Salesperson A synchronizes on average four times per hour while the devic
 
 See table \ref{sales_a:rawresults} for the full results for Mobile Salesperson A.
 
-When we attempt to evaluate the ETS algorithm against the Mobile Salesperson A user model against varying estimated average out-of-date record access cost factors $k$, where $k \in \{1, 10, 100, 1000, 10000\}$, we can see from figure \ref{sales_a_results_k_graph} that all five results are approximately linear; looking at the raw results in table \ref{sales_a:ets-k_rawresults} we can see that while the slopes for all five solutions are virtually identical, there is some indication that as $k$ increases, the overall network access cost is likewise increasing.  This would appear to indicate an attempt on the part of the ETS algorithm to trade off an increasing frequency of synchronization in the more expensive networks to decrease out-of-date record accesses, however for unknown reasons this appears to be failing.  It would appear that the algorithm is frequently falling into a local minima, from which improvements are difficult to come by.
+When we attempt to evaluate the ETS algorithm against the Mobile Salesperson A user model against varying estimated average out-of-date record access cost factors $k$, where $k \in \{0.1, 1, 10, 100, 1000, 10000\}$, we can see from figure \ref{sales_a_results_k_graph} that all six results are approximately linear; looking at the raw results in table \ref{sales_a:ets-k_rawresults} we can see that while the slopes for all six solutions are virtually identical, there is some indication that as $k$ increases, the overall network access cost is likewise increasing.  This would appear to indicate an attempt on the part of the ETS algorithm to trade off an increasing frequency of synchronization in the more expensive networks to decrease out-of-date record accesses, however for unknown reasons this appears to be failing.  It would appear that the algorithm is frequently falling into a local minima, from which improvements are difficult to come by.
+
+A sample daily cost for a 100 day run of the ETS algorithm for Mobile Salesperson A can be seen in figure \ref{sales_a_results_graph-100}.  Like most of the previous models, the ETS algorithm when run against Mobile Salesperson A appears to generally converge, however once again we see a number of random outliers which significantly negatively impact the overall average cost of synchronization.
 
 \begin{figure}[htb]
 \centering
@@ -438,15 +510,29 @@ When we attempt to evaluate the ETS algorithm against the Mobile Salesperson A u
 \begin{figure}[htb]
 \centering
 \includegraphics{Figures/Mobile_Salesperson_A_at_varying_k}
-\caption[Graph displaying ETS results for Mobile Salesperson A, at different values of k]{Graph displaying ETS results for Mobile Salesperson A, for $k \in \{1, 10, 100, 1000, 10000\}$.  In this graph, the x-axis represents $k$, while the y-axis represents the average cost of synchronization using the ETS algorithm, evaluated for $k$}\label{sales_a_results_k_graph}
+\caption[Graph displaying ETS results for Mobile Salesperson A, at different values of k]{Graph displaying ETS results for Mobile Salesperson A, for $k \in \{0.1, 1, 10, 100, 1000, 10000\}$.  In this graph, the x-axis represents $k$, while the y-axis represents the average cost of synchronization using the ETS algorithm, evaluated at $k$}\label{sales_a_results_k_graph}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Mobile_Salesperson_A-100_days}
+\caption{Graph displaying the daily ETS costs for Mobile Salesperson A for a 100-day run}\label{mobile_a_results_graph-100}
 \end{figure}
 
 \subsection{Truck Driver A}
 
 Truck Driver A appears to present a problem for the ETS algorithm: while the ETS algorithm initially outperforms both the Slow Sync and Fast Sync algorithms, its higher slope (representing the average number of out-of-date record accesses) is higher than both, leading it to eventually out-cost both algorithms when used on an hourly basis.  This is especially problematic as for the ETS algorithm, the cost of out-of-date information for this user model was estimated to be \$250, however the ETS algorithm's use cost exceeds that of the Fast Sync algorithm when the cost of using out-of-date information is greater than approximately \$20.86.  At the target average out-of-date record access cost of \$250, Slow Sync would cost this user, on average, \$7262.82 per day, Fast Sync would cost an average of \$250.05 per day, and the ETS algorithm would cost an average of \$620.57 per day.  Figure \ref{trucker_a_results_graph} displays the results for this experiment. See table \ref{trucker_a:rawresults} for the full results for Truck Driver A.
 
+A sample daily cost for a 100 day run of the ETS algorithm for Truck Driver A can be seen in figure \ref{trucker_a_results_graph-100}.  These results once again appear to mirror those of the previous algorithms, with general convergence with a few random spikes which increase the average daily cost of synchronization with the ETS algorithm.
+
 \begin{figure}[htb]
 \centering
 \includegraphics{Figures/Truck_Driver_A}
 \caption[Graph displaying the results for Truck Driver A]{Graph displaying the results for Truck Driver A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{trucker_a_results_graph}
+\end{figure}
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Truck_Driver_A-100_days}
+\caption{Graph displaying the daily ETS costs for Truck Driver A for a 100-day run}\label{trucker_a_results_graph-100}
 \end{figure}
