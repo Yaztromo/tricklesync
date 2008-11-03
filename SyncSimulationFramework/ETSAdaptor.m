@@ -26,6 +26,8 @@
 
 
 @implementation ETSAdaptor
+@synthesize k;
+
 -  (id)initWithController:(SyncLogicController *)controller
         andWithProperties:(NSXMLElement *)syncProtocolElement {
    int i, j;
@@ -200,7 +202,7 @@
       for(Record *rec in records) {
          if(![syncController synchronizeRecord:rec]) {
             // The transfer was aborted due to a network disconnection.
-            NSLog(@"*** Encountered a network disconnection event!");
+            //NSLog(@"*** Encountered a network disconnection event!");
             flag = FALSE;
             break;
          } // end-if

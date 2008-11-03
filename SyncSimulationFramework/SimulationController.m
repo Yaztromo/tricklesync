@@ -23,6 +23,7 @@
 
 
 #import "SimulationController.h"
+#include <stdio.h>
 
 @implementation SimulationController
 
@@ -240,6 +241,7 @@
           withIterations:(unsigned int)x
             withCallback:(id<SimulationCallbackProtocol>)callback {
    int i, j, k=0;
+   FILE *fh = fopen("ets_output.txt", "w");
    CostRecorder *today, *delta, *finalCost, *yearlyCost;
    CFAbsoluteTime end, start=CFAbsoluteTimeGetCurrent();
    percentComplete = 0.0;
@@ -255,6 +257,7 @@
          // Calculate todays cost
          today = [CostRecorder subtractWithValueA:cost andValueB:yesterday];
          // NSLog(@"The results for day n = %d is %@ (total = %@, yesterday = %@)", i, today, cost, yesterday);
+         fprintf(fh, "%03d, %0.3f\n", i, [today evaluateWith:[protocol k]]);
          [yearlyCost add:today];
          
          // Update the mean, and S
@@ -267,6 +270,7 @@
       
       //NSLog(@"######################### [ ITERATION %03d COMPLETE ] #########################", j+1);
       NSLog(@" ### Iteration %03d complete.  Cost: %@", j+1, [yearlyCost averageCostOver:days]);
+      fclose(fh);
       // One iteration is complete.  Reset the databases and run the next iteation
       // Firstly, reset the server database, and ensure that all objects which use it are updated to reflect the change
       [syncLogic.serverDatabase generateNewRecordSet];

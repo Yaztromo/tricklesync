@@ -62,6 +62,7 @@
    unsigned int syncCount;
    Network *mostExpensiveNetwork;
 }
+//@property(readonly) double k;
 
 -  (id)initWithController:(SyncLogicController *)controller
         andWithProperties:(NSXMLElement *)syncProtocolElement;

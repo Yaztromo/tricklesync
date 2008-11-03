@@ -32,6 +32,7 @@
 @class SyncLogicController;
 
 @protocol SyncProtocol <SimulationTickProtocol, SimulationAlarmProtocol>
+@property(readonly) double k;
 -  (id)initWithController:(SyncLogicController *)controller
         andWithProperties:(NSXMLElement *)syncProtocolElement;
 
