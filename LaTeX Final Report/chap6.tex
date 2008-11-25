@@ -108,7 +108,7 @@ Home & GPRS \\
 
 The purpose of these two users is to establish using a simple baseline how each synchronization algorithm compares when used in an all-day, single network environment.
 
-\subsubsection{Business User A and B}
+\subsubsection{Business User A, B, and C}
 
 The next model used to evaluate the synchronization algorithms is a more complex model, entitled \emph{Business User A}.  In this model, the user pursues a typical 09:00 - 17:00 work day, with a one hour lunch break, and a one hour commute between home and work.  Business User A uses a device which requires manual initiation of the synchronization process, and generally follows a corporate guideline which states that all users must synchronize once in the morning, and once in the afternoon.  The basic parameters for this model user are detailed in table \ref{business_a_properties}, with the networks available in each location listed in table \ref{business_a_networks}, and the database properties in table \ref{business_a_database}.  For the purposes of the ETS algorithm, the estimated cost of using out-of-date information is estimated to be \$5.  The XML source defining this user is available in listing \ref{business_a}.
 
@@ -212,6 +212,8 @@ Home & 79200 & 1.0 & 0.00001 \\
 \caption{Basic Properties of Business User B}
 \label{business_b_properties}
 \end{table}
+
+Business User C is a special experiment used to explore some of the issues encountered when synchronizing significantly larger data records, and how each synchronization algorithm performs under the stress of a much larger data set.  In regard to the configuration of the simulation environment, Business User C is identical to Business User A, as in table \ref{business_a_properties}.  Modified for this experiment are the pre-defined record size limits built into the simulation environment itself, as discussed in \ref{gaussian}.  In the Business User C experiment, the mean record size is increased to 4096 KB, with a deviation of 1024 KB.  This size range mimics the observed average sizes of digital music files of the sort that may be synchronized by a mobile music player device.
 
 \subsubsection{Mobile Salesperson A}
 
@@ -491,6 +493,22 @@ A sample daily cost for a 100 day run of the ETS algorithm for Business User B c
 \caption{Graph displaying the daily ETS costs for Business User B for a 100-day run}\label{business_b_results_graph-100}
 \end{figure}
 
+\subsection{Business User C}
+
+Contrasting again against Business User A, Business User C demonstrates some of the issues the synchronization algorithms display as record size increases, while all other variables remain the same.  As can be seen in \ref{business_c:rawresults}, the results for the Null Sync algorithm are virtually identical to those seen in the results for Business User A and Business User B; lacking any synchronization, and identical variables for access probabilities and server-side updates, large records go stale at the same rate as smaller records, and the final costs are statistically equivalent.
+
+Stale records appear to become a significant issue for the Slow Sync algorithm in this experiment.  Whereas in the cases of Business User A and B the Slow Sync and Fast Sync algorithms exhibit a roughly equivalent slope, in this experiment the slope of the Slow Sync algorithm results is approximately 2.6 times steeper.  The reason for this is evident in the average amount of data exchanged per day for each algorithm:  where the Fast Sync algorithm transmits approximately 3.7 GB of information daily, the Slow Sync algorithm transmits an approximate average of 48.4 GB of data each day, roughly 13 time more data.  The time to transmit this much information is significant, and thus it would appear that the Slow Sync algorithm is missing opportunities it would otherwise take to perform an synchronization, due to it not having completed the previous synchronizations session.
+
+The ETS algorithm shows mixed results in this test scenario.  On average, it exchanges roughly 8\% more information per day that the Fast Sync algorithm, and yet on average keeps data 4.6 times as fresh.  However, this improvement over the Fast Sync algorithm comes at the price of a nearly 35 times higher average daily network access cost.
+
+Figure \ref{business_c_results_graph} displays the results for this experiment. See table \ref{business_c:rawresults} for the full results for Business User B.
+
+\begin{figure}[htb]
+\centering
+\includegraphics{Figures/Business_User_C}
+\caption[Graph displaying the results for Business User C]{Graph displaying the results for Business User C, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_c_results_graph}
+\end{figure}
+
 \subsection{Mobile Salesperson A}
 
 Mobile Salesperson A synchronizes on average four times per hour while the device is powered on, which is the maximum per-hour rate that the ETS algorithm was designed to support (as discussed in section \ref{when_to_sync}).  Because of this high rate of synchronization, it is expected that both the Fast Sync and Slow Sync algorithms will have a relatively low incidence of out-of-date record accesses, at the expense of high network access cost.  This is reflected in the experimental results as presented in figure \ref{sales_a_results_graph}, where we can see that both the Slow Sync and Fast Sync algorithms have a low slope, indicating the average out-of-date record accesses, while simultaneously featuring a relatively high y-axis intersection, indicating a high average daily network access cost.  The ETS algorithm, in contrast, sacrifices being highly up-to-date in exchange for a savings in network access cost.  At the ETS target out-of-date access cost of \$10, this translates to an average per-day cost of \$14134.63 for the Slow Sync algorithm, \$97.17 for the Fast Sync algorithm, and \$85.21 for the ETS algorithm.  At the estimated \$10 out-of-date access cost, the solution automatically derived by the ETS algorithm continues to be competitive to the Fast Sync algorithm up to an out-of-date access cost of \$11.81, and is competitive with the Slow Sync algorithm up to an out-of-date access cost of \$2133.87.
@@ -552,6 +570,8 @@ Figure \ref{simple_b:fast_vs_ets} shows two graphs, comparing Simple User B's co
 \end{figure}
 
 A special area of concern is that of convincing the user to trust the ETS algorithms ability to minimize costs.  At the outset, costs may be extremely high as the algorithm evaluates threshold candidates which result in either huge network costs, or significant out-of-date information.  Because of this, it would be easy for some users to conclude after a week of use that the algorithm is very expensive and untrustworthy to use.  
+
+Another area of concern is demonstrated by comparing the ETS results for Business User A and Business User C.  In these two cases, the latter experiment uses a mean record size nearly 410 times larger than the former, however both exhibit nearly equivalent slopes, indicating a near-identical effort to keep data fresh.  Where the ETS algorithm fails in relation to Business User C is in terms of the network cost, which is significantly higher than that of the Fast Sync algorithm.  Note, however, that for Business User C the average network access cost is only approximately 327 times that of Business User A, which is about 80\% of the average record size difference, indicating that the ETS algorithm has achieved some improvements in this regard.  However, Business User C indicates that it is possible that record size, and consequently the cost to synchronize an individual record may not weigh heavily enough in the ETS algorithm.
 
 Overall, the results are felt to be positive in favour of the ETS algorithm as a cost-reducing mechanism for mobile device data synchronization, however it it not without its flaws.  As the example of Truck Driver A demonstrates, the algorithm may have a difficult time finding a minimum value that is better than the existing algorithms.  Additionally, the presence of random spikes in the 100-day graphs (figures \ref{simple_a_results_graph-100}, \ref{simple_b_results_graph-100}, \ref{business_a_results_graph-100}, \ref{business_b_results_graph-100}, \ref{sales_a_results_graph-100}, and \ref{trucker_a_results_graph-100}) is cause for concern, as poor threshold update decisions may be made based upon these random outliers.  Possible areas of further research to improve upon this thesis are details in section \ref{future_research} below.
 
