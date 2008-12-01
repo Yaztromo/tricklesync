@@ -405,16 +405,16 @@ Simple User A demonstrates how the ETS algorithm can improve upon infrequent syn
 
 A sample daily cost for a 100 day run of the ETS algorithm for Simple User A can be seen in figure \ref{simple_a_results_graph-100}.  Looking at the graph, we can see that in the first few days, a variety of high-cost options are evaluated, leading the algorithm to lower-cost opportunities on subsequent days.  However, there are aberrations from time to time, with random spikes occurring at several intervals.  These spikes would appear to be due to the use of records with a low access probability, which the ETS algorithm has not synchronized for some time.  These appear to have a significant impact on cost, and may indicate that these records need to be more aggressively synchronized as they progressively age.
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Simple_User_A}
-\caption[Graph displaying the results for Simple User A]{Graph displaying the results for Simple User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{simple_a_results_graph}
+\caption[Graph displaying the results for Simple User A]{Graph displaying the results for Simple User A, using the Slow Sync, Fast Sync, and ETS algorithms.  In this graph, the $x$ axis represents possible values for $k$, and the $y$ axis represents the average daily synchronization cost.}\label{simple_a_results_graph}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Simple_User_A-100_days}
-\caption{Graph displaying the daily ETS costs for Simple User A for a 100-day run}\label{simple_a_results_graph-100}
+\caption[Graph displaying the daily ETS costs for Simple User A for a 100-day run]{Graph displaying the daily ETS costs for Simple User A for a 100-day run.  In this graph, the $x$ axis represents the simulated day number, and the $y$ axis represents the cost of synchronization.}\label{simple_a_results_graph-100}
 \end{figure}
 
 \subsection{Simple User B}
@@ -431,28 +431,28 @@ When we attempt to evaluate the ETS algorithm against the Simple User B user mod
 
 A sample daily cost for a 100 day run of the ETS algorithm for Simple User B can be seen in figure \ref{simple_b_results_graph-100}.  Once again, we can see that the ETS algorithm quickly converges upon a relatively tight solution range.  It is interesting to note, however, that the very first value tested appears to have a lower overall cost associated with it than the final convergence range; this can be explained, however, if the initial tested value was sufficiently high that no synchronization occurred, as the ETS algorithm is designed to short-circuit around choices which prevent any synchronization during the day.  Being the first day, all records are initially considered to be in full synchronization, and thus only a small number of differences may be both generated and accessed, causing it to display an other low overall cost.
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Simple_User_B}
-\caption[Graph displaying the results for Simple User B]{Graph displaying the results for Simple User B, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{simple_b_results_graph}
+\caption[Graph displaying the results for Simple User B]{Graph displaying the results for Simple User B, using the Slow Sync, Fast Sync, and ETS algorithms.  In this graph, the $x$ axis represents possible values for $k$, and the $y$ axis represents the average daily synchronization cost.}\label{simple_b_results_graph}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Simple_User_B_at_varying_k}
-\caption[Graph displaying ETS results for Simple User B, at different values of k]{Graph displaying ETS results for Simple User B, for $k \in \{0.1, 1, 10, 100\}$ in further detail.  In this graph, the x-axis represents $k$, while the y-axis represents the average cost of synchronization using the ETS algorithm, evaluated at $k$}\label{simple_b_results_k_graph}
+\caption[Graph displaying ETS results for Simple User B, at different values of k]{Graph displaying ETS results for Simple User B, for  $k \in \{0.1, 1, 10, 100, 1000, 10000\}$.  In this graph, the x-axis represents $k$, while the y-axis represents the average cost of synchronization using the ETS algorithm.}\label{simple_b_results_k_graph}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Simple_User_B_at_varying_k_detail}
-\caption[Close-up detail displaying ETS results for Simple User B, at different values of k]{Graph displaying ETS results for Simple User B, for $k \in \{0.1, 1, 10, 100, 1000, 10000\}$.  In this graph, the x-axis represents $k$, while the y-axis represents the average cost of synchronization using the ETS algorithm, evaluated at $k$}\label{simple_b_results_k_graph2}
+\caption[Close-up detail displaying ETS results for Simple User B, at different values of k]{Graph displaying ETS results for Simple User B, for $k \in \{0.1, 1, 10, 100\}$.  In this graph, the x-axis represents $k$, while the y-axis represents the average cost of synchronization using the ETS algorithm}\label{simple_b_results_k_graph2}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Simple_User_B-100_days}
-\caption{Graph displaying the daily ETS costs for Simple User B for a 100-day run}\label{simple_b_results_graph-100}
+\caption[Graph displaying the daily ETS costs for Simple User B for a 100-day run]{Graph displaying the daily ETS costs for Simple User B for a 100-day run.  In this graph, the $x$ axis represents the simulated day number, and the $y$ axis represents the cost of synchronization.}\label{simple_b_results_graph-100}
 \end{figure}
 
 \subsection{Business User A}
@@ -461,16 +461,16 @@ Business User A shows good results in favour of the ETS algorithm, with the ETS 
 
 A sample daily cost for a 100 day run of the ETS algorithm for Business User A can be seen in figure \ref{business_a_results_graph-100}.  Much like Simple User A, Business User A very quickly settles into a low cost range, however there are a variety of random spikes, which negatively affect the average daily cost.
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Business_User_A}
-\caption[Graph displaying the results for Business User A]{Graph displaying the results for Business User A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_a_results_graph}
+\caption[Graph displaying the results for Business User A]{Graph displaying the results for Business User A, using the Slow Sync, Fast Sync, and ETS algorithms.  In this graph, the $x$ axis represents possible values for $k$, and the $y$ axis represents the average daily synchronization cost.}\label{business_a_results_graph}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Business_User_A-100_days}
-\caption{Graph displaying the daily ETS costs for Business User A for a 100-day run}\label{business_a_results_graph-100}
+\caption[Graph displaying the daily ETS costs for Business User A for a 100-day run]{Graph displaying the daily ETS costs for Business User A for a 100-day run.  In this graph, the $x$ axis represents the simulated day number, and the $y$ axis represents the cost of synchronization.}\label{business_a_results_graph-100}
 \end{figure}
 
 \subsection{Business User B}
@@ -481,16 +481,16 @@ Figure \ref{business_b_results_graph} displays the results for this experiment. 
 
 A sample daily cost for a 100 day run of the ETS algorithm for Business User B can be seen in figure \ref{business_b_results_graph-100}.  As Business User B has the same daily routine as Business User A, to provide better contrast for the 100 day run with Business User A we have set the expected average out-of-date record cost $k$ to \$50, a ten-fold increase over Business User A.  The results are nearly identical to Business User A, however what spikes do appear to occur within the costs appears to be more muted.  While the decreased magnitude of these spikes may be due to the increased value of $k$, it may also simply be due to a lack of any random convergences in the 100 day run that have caused significant spikes in the other models.  As such, this lack of significant spikes may have less to do with $k$, than with good fortune while the test was being executed.
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Business_User_B}
-\caption[Graph displaying the results for Business User B]{Graph displaying the results for Business User B, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_b_results_graph}
+\caption[Graph displaying the results for Business User B]{Graph displaying the results for Business User B, using the Slow Sync, Fast Sync, and ETS algorithms.  In this graph, the $x$ axis represents possible values for $k$, and the $y$ axis represents the average daily synchronization cost.}\label{business_b_results_graph}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Business_User_B-100_days}
-\caption{Graph displaying the daily ETS costs for Business User B for a 100-day run}\label{business_b_results_graph-100}
+\caption[Graph displaying the daily ETS costs for Business User B for a 100-day run]{Graph displaying the daily ETS costs for Business User B for a 100-day run.  In this graph, the $x$ axis represents the simulated day number, and the $y$ axis represents the cost of synchronization.}\label{business_b_results_graph-100}
 \end{figure}
 
 \subsection{Business User C}
@@ -503,10 +503,10 @@ The ETS algorithm shows mixed results in this test scenario.  On average, it exc
 
 Figure \ref{business_c_results_graph} displays the results for this experiment. See table \ref{business_c:rawresults} for the full results for Business User B.
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Business_User_C}
-\caption[Graph displaying the results for Business User C]{Graph displaying the results for Business User C, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{business_c_results_graph}
+\caption[Graph displaying the results for Business User C]{Graph displaying the results for Business User C, using the Slow Sync, Fast Sync, and ETS algorithms.  In this graph, the $x$ axis represents possible values for $k$, and the $y$ axis represents the average daily synchronization cost.}\label{business_c_results_graph}
 \end{figure}
 
 \subsection{Mobile Salesperson A}
@@ -519,22 +519,22 @@ When we attempt to evaluate the ETS algorithm against the Mobile Salesperson A u
 
 A sample daily cost for a 100 day run of the ETS algorithm for Mobile Salesperson A can be seen in figure \ref{sales_a_results_graph-100}.  Like most of the previous models, the ETS algorithm when run against Mobile Salesperson A appears to generally converge, however once again we see a number of random outliers which significantly negatively impact the overall average cost of synchronization.
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Mobile_Salesperson_A}
-\caption[Graph displaying the results for Mobile Salesperson A]{Graph displaying the results for Mobile Salesperson A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{sales_a_results_graph}
+\caption[Graph displaying the results for Mobile Salesperson A]{Graph displaying the results for Mobile Salesperson A, using the Slow Sync, Fast Sync, and ETS algorithms.  In this graph, the $x$ axis represents possible values for $k$, and the $y$ axis represents the average daily synchronization cost.}\label{sales_a_results_graph}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Mobile_Salesperson_A_at_varying_k}
 \caption[Graph displaying ETS results for Mobile Salesperson A, at different values of k]{Graph displaying ETS results for Mobile Salesperson A, for $k \in \{0.1, 1, 10, 100, 1000, 10000\}$.  In this graph, the x-axis represents $k$, while the y-axis represents the average cost of synchronization using the ETS algorithm, evaluated at $k$}\label{sales_a_results_k_graph}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Mobile_Salesperson_A-100_days}
-\caption{Graph displaying the daily ETS costs for Mobile Salesperson A for a 100-day run}\label{sales_a_results_graph-100}
+\caption[Graph displaying the daily ETS costs for Mobile Salesperson A for a 100-day run]{Graph displaying the daily ETS costs for Mobile Salesperson A for a 100-day run.  In this graph, the $x$ axis represents the simulated day number, and the $y$ axis represents the cost of synchronization.}\label{sales_a_results_graph-100}
 \end{figure}
 
 \subsection{Truck Driver A}
@@ -543,16 +543,16 @@ Truck Driver A appears to present a problem for the ETS algorithm: while the ETS
 
 A sample daily cost for a 100 day run of the ETS algorithm for Truck Driver A can be seen in figure \ref{trucker_a_results_graph-100}.  These results once again appear to mirror those of the previous algorithms, with general convergence with a few random spikes which increase the average daily cost of synchronization with the ETS algorithm.
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Truck_Driver_A}
-\caption[Graph displaying the results for Truck Driver A]{Graph displaying the results for Truck Driver A, using the Slow Sync, Fast Sync, and ETS algorithms.}\label{trucker_a_results_graph}
+\caption[Graph displaying the results for Truck Driver A]{Graph displaying the results for Truck Driver A, using the Slow Sync, Fast Sync, and ETS algorithms.  In this graph, the $x$ axis represents possible values for $k$, and the $y$ axis represents the average daily synchronization cost.}\label{trucker_a_results_graph}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[p]
 \centering
 \includegraphics{Figures/Truck_Driver_A-100_days}
-\caption{Graph displaying the daily ETS costs for Truck Driver A for a 100-day run}\label{trucker_a_results_graph-100}
+\caption[Graph displaying the daily ETS costs for Truck Driver A for a 100-day run]{Graph displaying the daily ETS costs for Truck Driver A for a 100-day run.  In this graph, the $x$ axis represents the simulated day number, and the $y$ axis represents the cost of synchronization.}\label{trucker_a_results_graph-100}
 \end{figure}
 
 \section{Analysis of Results}
@@ -566,7 +566,7 @@ Figure \ref{simple_b:fast_vs_ets} shows two graphs, comparing Simple User B's co
 \begin{figure}[htb]
 \centering
 \includegraphics[width=\textwidth]{Figures/Fast_Sync_vs_ETS_with_1STDev}
-\caption[Graphs comparing Fast Sync to ETS at 1 Standard Deviation]{Graphs comparing Fast Sync (left) to ETS (right) at 1 Standard Deviation, based on the results for Simple User B.  In this view, the darker shaded area constitutes the range up to one standard deviation from the average cost line.}\label{simple_b:fast_vs_ets}
+\caption[Graphs comparing Fast Sync to ETS at 1 Standard Deviation]{Graphs comparing Fast Sync (left) to ETS (right) at 1 Standard Deviation, based on the results for Simple User B.  In this view, the darker shaded area constitutes the range up to one standard deviation from the average cost line.  In this graph, the $x$ axis represents possible values for $k$, and the $y$ axis represents the average daily synchronization cost.}\label{simple_b:fast_vs_ets}
 \end{figure}
 
 A special area of concern is that of convincing the user to trust the ETS algorithms ability to minimize costs.  At the outset, costs may be extremely high as the algorithm evaluates threshold candidates which result in either huge network costs, or significant out-of-date information.  Because of this, it would be easy for some users to conclude after a week of use that the algorithm is very expensive and untrustworthy to use.  

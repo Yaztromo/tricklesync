@@ -45,7 +45,7 @@ Learning the optimal threshold value is difficult, as both raising and lowering 
 \begin{figure}[htb]
 \centering
 \includegraphics{Figures/Threshold_Evaluation}
-\caption{How modifying the threshold could negatively impact cost.}\label{threshold_options}
+\caption[How modifying the threshold could negatively impact cost]{How modifying the threshold could negatively impact cost.}\label{threshold_options}
 \end{figure}
 
 In order to determine whether cost improvements would occur when the threshold is increased, decreased, or by staying at the current threshold point, the ETS algorithm tests three different threshold points, within a range consisting of an \emph{upper point}, a \emph{lower point}, and \emph{midpoint}.  During intervening days, these three points are used for synchronization, and the cost of their use recorded.  After analyzing the cost associated with each of these three points, one is selected to become the new midpoint, and new upper and lower bounds are computed.
