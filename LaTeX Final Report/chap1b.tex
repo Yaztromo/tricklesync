@@ -3,10 +3,9 @@
 %%%
 
 \section{Introduction}
-
 Mobile device data synchronization is a relatively new field of research, with the majority conducted within the past fifteen years.  However, while mobile devices have some specialized needs and requirements, the basics are direct consequences of earlier research into file and database replication, as is used by distributed file systems and database systems.  In particular, as mobile devices are portable and semi-connected, research into optimistic replication techniques for file and database systems has been the primary focus.  
 
-Research into file and database replication appears to have followed the rise of computer networking, with much research invested into this area during the mid to late 1980's.  Work in file and database replication schemes typically uses earlier theoretical research in the study of set reconciliation to determine the subset of information to be synchronized.
+Research into file and database replication appears to have followed the rise of computer networking, with much research invested into this area during the mid to late 1980's.  Work in file and database replication schemes has fed into (and been fed by) theoretical research in the study of set reconciliation.
 
 Also of note is a parallel area of research into clock synchronization.  While the problems in clock synchronization are different than in other data synchronization systems, many of these systems rely on synchronized clocks with a reasonable accuracy in order to perform tasks in set reconciliation, and thus I consider research into clock synchronization to be pertinent to this research.
 
@@ -15,21 +14,44 @@ I this chapter, I will survey some of the important research from the areas of s
 % SET RECONCILIATION
 \section{Set Reconciliation}
 
-\subsection{Hash Coding}
+The problem of determining what information needs to be synchronized between two data sets can be generalized mathematically.  This generalized problem is known as \emph{Set Reconciliation}.  This generalized problem has been researched extensively in a variety of different settings, including the areas of Error-Correcting Codes, Communication Complexity Theory, and Set Representation \cite{RefWorks:17}.
 
-\subsection{Difference Isolation}
+An early example of an efficient algorithm that can be used for testing set membership is the Bloom Filter \cite{RefWorks:7}.  In a Bloom Filter, records are fed into $k$ hash functions, to obtain $k$ positions into an array of size $m$.  Each of these $k$ hash results, the $kth$ value in the filter array is set to $1$.  Once a set of records has been fed into the filter, a record can be tested to see if it has membership in the set by feeding it into the $k$ hash functions, obtaining $k$ array positions, and testing the values within the array for each of these positions  If any of the $k$ array positions is $0$, then the record cannot have membership in the set.  Bloom Filters guarantee that no false negatives can be reported, however false positives are not only possible, but as the number of records added to the set increases, the probability of false positives increases.  Due to this, Bloom Filters do not provide a good solution to the Set Reconciliation problem.
 
+The problem of set reconciliation is modelled as computing the symmetric difference shown in equation \ref{set_difference_eqn} \cite{RefWorks:17}.  In essence, it is the union of the differences between the two sets, such that the solution is the union of the set of records in set A that are not in set B, and those in set B that are not in set A.
+
+\begin{equation}
+S_A \oplus S_B = (S_A - S_B) \cup (S_B - S_A)
+\label{set_difference_eqn}
+\end{equation}
+
+A number of solutions to \ref{set_difference_eqn} involving the computation of characteristic polynomials have been proposed \cite{RefWorks:17, RefWorks:2, RefWorks:24}, and have been demonstrated to have near optimal communication complexity, permitting the solution to \ref{set_difference_eqn} to be computed with minimal network packet exchange.  In this scheme, characteristic polynomials are derived for both sets, based on a hash of their records.  We treat these sets as being part of a sufficiently large finite field, so as to constrain the size of the polynomial evaluations, and to ensure integer evaluations for divisions.   Once the polynomials are derived, a set of agreed upon sample points are used to evaluate the characteristic polynomials.  These evaluations are then interpolated by solving a generalized Vandermonde system of equations.  The zeroes of the resulting polynomials are determined, which results in the set differences for both devices respectively.
+
+Solutions to the set reconciliation problem have also been proposed using generalized error control codes.  In this system, the set reconciliation problem becomes a variation of the graph colouring problem, known as second order colouring \cite{RefWorks:15}.  Current research into this solution is limited to a one-way reconciliation, wherein only a single message of communication is permitted to complete the reconciliation.
+
+\subsection{Difference Isolation}\label{difference_isolation}
+
+Early research into the generalized notion of set reconciliation often frequently dealt with the sub-problem of difference isolation.  Given two sets of data, difference isolation algorithms attempt to generate a result that describes the differences between one set versus the other.  Implementations are frequently one-way, describing data elements that were removed in one of the sets, and added to the other \cite{359467, diff1}.  Difference Isolation algorithms can be seen as a one-way synchronization mechanism, and are used in a variety of contexts to find the differences between two files.  A particular problem space that Difference Isolation algorithms are used in is that of Source Code Management systems, such as Subversion and CVS  \cite{RefWorks:8, wiki:CVS}, where source file versions are stored as a series of differences from the previously stored version (or conversely, where previous stored versions are maintained as a series of differences from the most current version).  In this way, storage is conserved, and it becomes relatively simple to move from one file revision to the next, while maintaining local, unsynchronized differences.
 
 %%% FILE AND DATABASE REPLICATION
 \section {File and Database Replication}
 
+Another significant relevant area of existing research is in the field of File and Database replication.  Large scale data storage in file systems and databases were early important drivers for computer use within government and corporate institutions, and with the rise of computer networking, research began into mechanisms where information could be distributed and replicated between multiple systems.  This was undertaken for a variety of reasons: improved locality of information, better use of expensive disks, delegation of data administration, disconnected operation, and fault tolerance being significant research drivers \cite{RefWorks:16}.
+
+Research into file and database replication began out of the drive towards distributed systems in the 1970's.  One early paper \cite{807732} proposed a "tolerable, as well as tolerant resource sharing environment" based on a single primary server and multiple backup servers, any of which can perform the "primary duties" of responding to queries and modifications.  These changes are then immediately synchronized to provide n-fault tolerance.
+
+Later efforts \cite{138877, RefWorks:16, RefWorks:27, 50215, 335391, bengal, 384020, RefWorks:18} continue to enhance and expand the research into file and database replication, offering such improvements as lazy replication strategies \cite{138877}, disconnected operation \cite{RefWorks:16}, managing update conflicts \cite{RefWorks:27}, exploiting application semantics to guarantee correctness and improve performance \ref{50215}, improved policies to enhance data freshness \cite{335391}, and using a transformational approach to safely and generically synchronize data \cite{RefWorks:18}.
+
+Much of this research into file and database replication has led to actual implementations, such as the CODA File System \cite{RefWorks:16}, the Bayou weakly connected storage system \cite{RefWorks:27}, the Bengal Database Replication System \cite{bengal}, and the IceCube reconciliation framework \cite{384020}.  These research platforms have been used to demonstrate the feasibility of differing approaches to file and database replication, and provide important reference platforms for implementing the above mentioned concepts into real-world systems.
+
 \subsection{Source Code Management Systems}
 
+A specialized application of file system replication is that of Source Code Management.  In a source code management system, multiple revisions of every tracked file are maintained using delta storage \cite{rochkind:scc} to maintain the differences between adjacent revisions of the same file, by using difference isolation mechanisms as discussed above in \ref{difference_isolation}.  Users interact with the system via a series of updates and commits, whereby either the local repository is brought into sync with changes made to a remote repository since the last update session, or a remote repository is updated to reflect changes made to the local repository since the last commit session \cite{wiki:CVS, RefWorks:8}.  Files can exist within multiple revision streams that are rooted to the main code base (typically called the \emph{trunk} \cite{wiki:CVS, RefWorks:8}), known as \emph{branches} \cite{811111}, which can later be synchronized  back to the trunk.
+
+It is worth noting that the typical synchronization operations in a source code management system are one-way, requiring both a commit and an update to bring both a local and a remote repository into sync.  Files that contain modifications during these one-way synchronizations within both the local and the remote repositories can have their modifications automatically resolved if they exist within different parts of the file, however when they occur within the same region of a given file, a conflict occurs which the user must manually resolve \cite{wiki:CVS, RefWorks:8}.
 
 %%% OPTIMISTIC REPLICATION
 \section{Optimistic Replication}
-
-\subsection{Cache Coherency}
 
 
 %%% MOBILE DEVICE SYNCHRONIZATION
