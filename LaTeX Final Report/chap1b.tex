@@ -9,7 +9,7 @@ Research into file and database replication appears to have followed the rise of
 
 Also of note is a parallel area of research into clock synchronization.  While the problems in clock synchronization are different than in other data synchronization systems, many of these systems rely on synchronized clocks with a reasonable accuracy in order to perform tasks in set reconciliation, and thus I consider research into clock synchronization to be pertinent to this research.
 
-I this chapter, I will survey some of the important research from the areas of set reconciliation, file and database replication, optimistic replication, mobile device data synchronization, and clock synchronization.
+In the previous chapter (\ref{background}), I described the current research into mobile device synchronization.  In this chapter, I will survey some of the important research from the areas of set reconciliation, file and database replication, optimistic replication, and clock synchronization.
 
 % SET RECONCILIATION
 \section{Set Reconciliation}
@@ -59,26 +59,15 @@ Optimistic replication systems require no locking, and are based on the assumpti
 
 A detailed survey of optimistic replication is undertaken in \cite{RefWorks:22}.
 
-%%% MOBILE DEVICE SYNCHRONIZATION
-\section{Mobile Device Synchronization}
-
-\cite{1019402}					%% Fast PDA synchronization using characteristic polynomial interpolation
-\cite{RefWorks:2}				%% On the scalability of data synchronization protocols for {PDA}s and mobile devices
-\cite{RefWorks:24}				%% Efficient PDA synchronization
-\cite{optSyncTimes}				%% Optimising Synchronisation Times for Mobile Devices
-\cite{865151}					%% Improving Data Consistency in Mobile Computing Using Isolation-Only Transactons
-\cite{1704823}					%% A User-Centered Approach to Active Replica Management in Mobile Environments
-\cite{mukhopadhyay2008mbt}		%% Model Based Techniques for Data Reliability in Wireless Sensor Networks
-\cite{RefWorks:12}				%% Conduit cascades and secure synchronization
-\cite{1027356}					%% Roam: a scalable replication system for mobility
-\cite{RefWorks:31}				%% The jSyncManager: A Synchronization Solution for PalmOS Devices
-\cite{RefWorks:5}				%% {O}pen {T}echnology {A}ssisted {P}ractice {A}pplication {S}uite
-\cite{1704817}					%% Data Replication for Improving Data Accessibility in Ad Hoc Networks
-\cite{301345}					%% Decentralized replicated-object protocols
-
 %%%CLOCK SYNCHRONIZATION
 \section{Clock Synchronization}
 
-\cite{RefWorks:37}				%% Probabilistic clock synchronization
-\cite{359563}					%% Time, clocks, and the ordering of events in a distributed system
+Data synchronization mechanisms have also been used for ensuring that clocks on differing systems are within an acceptable bound.  Clocks can be used to determine a \emph{happened before} partial ordering \cite{359563}, and in order to effectively compute this ordering between events in a distributed system, it is desirable for the clocks between those systems to be effectively synchronized.
 
+Clock synchronization has a special concern not typically found in other synchronization and replication systems, in that the value being synchronized is time itself.  Time is continually progressing, and as such in order to ensure that the end result of the synchronization is that the two clocks on either end of the communication channel are within an acceptable precision value of each other, the message delay involved in transmitting the time value must be taken into account \cite{RefWorks:37}.  Thus, if system $A$ sends time value $t_A$ to system $B$, with message delay $m$, the time that $B$ should configure itself to use ($t_B$) would be calculated as shown in equation \ref{clock_delay}:
+\begin{equation}
+t_B = t_A + m
+\label{clock_delay}
+\end{equation}
+
+The key area of research into clock synchronization is determining the value of $m$ in equation \ref{clock_delay}.  In Cristian's algorithm \cite{RefWorks:37}, $m$ is calculated by dividing the round trip time from request to response in half, and using this value as the message delay.  More advanced algorithms, such as the one presented in \cite{1017463}, can better resist transient faults through self-stabilization.
