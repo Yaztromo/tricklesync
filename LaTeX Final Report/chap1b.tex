@@ -40,11 +40,11 @@ Another significant relevant area of existing research is in the field of File a
 
 Research into file and database replication began out of the drive towards distributed systems in the 1970's.  One early paper \cite{807732} proposed a "tolerable, as well as tolerant resource sharing environment" based on a single primary server and multiple backup servers, any of which can perform the "primary duties" of responding to queries and modifications.  These changes are then immediately synchronized to provide n-fault tolerance.
 
-Later efforts \cite{138877, RefWorks:16, RefWorks:27, 50215, 335391, bengal, 384020, RefWorks:18} continue to enhance and expand the research into file and database replication, offering such improvements as lazy replication strategies \cite{138877}, disconnected operation \cite{RefWorks:16}, managing update conflicts \cite{RefWorks:27}, exploiting application semantics to guarantee correctness and improve performance \ref{50215}, improved policies to enhance data freshness \cite{335391}, and using a transformational approach to safely and generically synchronize data \cite{RefWorks:18}.
+Later efforts \cite{138877, RefWorks:16, RefWorks:27, 50215, 335391, bengal, 384020, RefWorks:18} continue to enhance and expand the research into file and database replication, offering such improvements as lazy replication strategies \cite{138877}, disconnected operation \cite{RefWorks:16}, managing update conflicts \cite{RefWorks:27}, exploiting application semantics to guarantee correctness and improve performance \cite{50215}, improved policies to enhance data freshness \cite{335391}, and using a transformational approach to safely and generically synchronize data \cite{RefWorks:18}.
 
 Much of this research into file and database replication has led to actual implementations, such as the CODA File System \cite{RefWorks:16}, the Bayou weakly connected storage system \cite{RefWorks:27}, the Bengal Database Replication System \cite{bengal}, and the IceCube reconciliation framework \cite{384020}.  These research platforms have been used to demonstrate the feasibility of differing approaches to file and database replication, and provide important reference platforms for implementing the above mentioned concepts into real-world systems.
 
-\subsection{Source Code Management Systems}
+\subsection{Source Code Management Systems}\label{scms}
 
 A specialized application of file system replication is that of Source Code Management.  In a source code management system, multiple revisions of every tracked file are maintained using delta storage \cite{rochkind:scc} to maintain the differences between adjacent revisions of the same file, by using difference isolation mechanisms as discussed above in \ref{difference_isolation}.  Users interact with the system via a series of updates and commits, whereby either the local repository is brought into sync with changes made to a remote repository since the last update session, or a remote repository is updated to reflect changes made to the local repository since the last commit session \cite{wiki:CVS, RefWorks:8}.  Files can exist within multiple revision streams that are rooted to the main code base (typically called the \emph{trunk} \cite{wiki:CVS, RefWorks:8}), known as \emph{branches} \cite{811111}, which can later be synchronized  back to the trunk.
 
@@ -53,12 +53,32 @@ It is worth noting that the typical synchronization operations in a source code 
 %%% OPTIMISTIC REPLICATION
 \section{Optimistic Replication}
 
+Replication solutions developed thus far fall into two distinct camps:  those which use a record locking mechanism during changes (\emph{pessimistic replication} \cite{RefWorks:6}), and those which perform no record locking, but which require user interactive or heuristic mechanisms for dealing with conflicts (\emph{optimistic replication}).  Traditionally, distributed applications have used the pessimistic replication model, however the pessimistic model works best in situations where latencies are low, and failures are uncommon \cite{RefWorks:22}.  They also scale poorly \cite{1124156}.
+
+Optimistic replication systems require no locking, and are based on the assumption that conflicts will occur rarely, if at all, and that when they do occur, they will be relatively easy to manage and correct.  This can improve availability, as data will continue to be available even in the face of a network partition.  In addition, optimistic protocols can boost overall system performance \cite{970581}. The benefits of optimistic replication schemes come at a cost however:  replicas can diverge, and conflicts between concurrent operations can occur, which must be managed.  In some cases, conflict management cannot be handled automatically, and thus may require user intervention to solve (e.g., as discussed in \ref{scms}).
+
+A detailed survey of optimistic replication is undertaken in \cite{RefWorks:22}.
 
 %%% MOBILE DEVICE SYNCHRONIZATION
 \section{Mobile Device Synchronization}
 
+\cite{1019402}					%% Fast PDA synchronization using characteristic polynomial interpolation
+\cite{RefWorks:2}				%% On the scalability of data synchronization protocols for {PDA}s and mobile devices
+\cite{RefWorks:24}				%% Efficient PDA synchronization
+\cite{optSyncTimes}				%% Optimising Synchronisation Times for Mobile Devices
+\cite{865151}					%% Improving Data Consistency in Mobile Computing Using Isolation-Only Transactons
+\cite{1704823}					%% A User-Centered Approach to Active Replica Management in Mobile Environments
+\cite{mukhopadhyay2008mbt}		%% Model Based Techniques for Data Reliability in Wireless Sensor Networks
+\cite{RefWorks:12}				%% Conduit cascades and secure synchronization
+\cite{1027356}					%% Roam: a scalable replication system for mobility
+\cite{RefWorks:31}				%% The jSyncManager: A Synchronization Solution for PalmOS Devices
+\cite{RefWorks:5}				%% {O}pen {T}echnology {A}ssisted {P}ractice {A}pplication {S}uite
+\cite{1704817}					%% Data Replication for Improving Data Accessibility in Ad Hoc Networks
+\cite{301345}					%% Decentralized replicated-object protocols
 
 %%%CLOCK SYNCHRONIZATION
 \section{Clock Synchronization}
 
+\cite{RefWorks:37}				%% Probabilistic clock synchronization
+\cite{359563}					%% Time, clocks, and the ordering of events in a distributed system
 

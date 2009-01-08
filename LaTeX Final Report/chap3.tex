@@ -79,6 +79,8 @@ Generation of random, normally distributed values with other means ($\mu$) and s
 \varphi_{\mu,\sigma^2} = \mu + \sigma \varphi_{0,1}\label{normal_dist}
 \end{equation}
 
+In certain situations, it is desirable to calculate the probability of a value within a range occurring within a normal distribution.  To calculate this, an algorithm is used to compute the inverse normal cumulative distribution function.  This algorithm is presented in \cite{ltqnorm}.
+
 \subsection{Bernoulli Process}\label{bernoulli}
 
 For testing whether or not a discrete event occurs at a given time $t$, a Bernoulli Process is used \cite{RefWorks:40}.  During simulation set-up, an expected number of events per hour ($E_{hour}$) is read from the configuration file, and divided to determine a probability-per-second for the event ($P(n)$), such that:
