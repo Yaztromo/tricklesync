@@ -6,6 +6,8 @@
 
 Expedient Trickle Sync (ETS) was developed as part of my Master's research in Computer Science at the University of Victoria (2007–2009).
 
+This work grew out of earlier research into mobile synchronization systems, including the author’s Honours B.Sc. thesis project, jSyncManager. Practical experience applying synchronization technology to mobile electronic medical records systems motivated the exploration of adaptive synchronization policies presented here.
+
 The project explored a simple adaptive synchronization strategy for occasionally connected mobile devices. Rather than synchronizing data at fixed intervals, ETS periodically evaluates the expected cost of continuing to operate with stale data and synchronizes only when that expected cost exceeds the cost of transmitting the updated information.
 
 At the time this work was conducted, mobile devices were significantly more resource constrained than they are today. CPU performance, battery life, memory, and wireless data costs all influenced the design of the algorithm.
